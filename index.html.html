@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="محمد إيهاب - خبير إدارة الحملات الإعلانية على Meta وGoogle وTikTok. حوّل إعلاناتك إلى نتائج فعلية ومبيعات حقيقية.">
+<meta name="keywords" content="محمد إيهاب, حملات إعلانية, Meta Ads, Google Ads, TikTok Ads, تسويق رقمي">
+<meta property="og:title" content="محمد إيهاب - خبير إعلانات رقمية">
+<meta property="og:description" content="حوّل إعلاناتك إلى نتائج فعلية ومبيعات حقيقية">
+<title>MO EHAB | خبير إعلانات رقمية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#7C3AED;--purple-light:#9F67FF;--purple-dark:#5B21B6;
+  --cyan:#06B6D4;--cyan-light:#22D3EE;
+  --bg:#0F172A;--card:#111827;--card-hover:#1E293B;
+  --text:#F8FAFC;--text-muted:#94A3B8;--text-dim:#64748B;
+  --border:rgba(124,58,237,0.2);--border-glow:rgba(124,58,237,0.5);
+  --glow-purple:rgba(124,58,237,0.15);--glow-cyan:rgba(6,182,212,0.15);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;overflow-x:hidden;direction:rtl}
+.en{font-family:'Poppins',sans-serif}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all 0.3s}
+.nav-logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.95rem;font-weight:500;transition:color 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;width:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:width 0.3s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:0.6rem 1.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.3s;text-decoration:none}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(124,58,237,0.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all 0.3s;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:rgba(15,23,42,0.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text);text-decoration:none;font-size:1.5rem;font-weight:700}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 2rem 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(124,58,237,0.25) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(6,182,212,0.12) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0.4;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.4}90%{opacity:0.4}100%{transform:translateY(-100px) rotate(720deg);opacity:0}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,0.05) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 70%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;animation:fadeUp 1s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.4);border-radius:50px;padding:0.5rem 1.2rem;font-size:0.85rem;color:var(--purple-light);margin-bottom:2rem;animation:fadeUp 1s 0.2s ease both}
+.hero-badge .dot{width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.5}}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--text) 0%,rgba(248,250,252,0.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 span{background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-muted);max-width:700px;margin:0 auto 2.5rem;line-height:1.8;animation:fadeUp 1s 0.4s ease both}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem;animation:fadeUp 1s 0.6s ease both}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:0.9rem 2.2rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(124,58,237,0.5)}
+.btn-secondary{background:transparent;border:2px solid var(--border-glow);color:var(--text);padding:0.9rem 2.2rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem}
+.btn-secondary:hover{background:rgba(124,58,237,0.1);transform:translateY(-3px);border-color:var(--purple-light)}
+.stats-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 0.8s ease both}
+.stat-card{background:rgba(17,24,39,0.8);border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.8rem;text-align:center;backdrop-filter:blur(10px);transition:all 0.3s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--glow-purple),transparent);opacity:0;transition:opacity 0.3s}
+.stat-card:hover{border-color:var(--purple-light);transform:translateY(-5px)}
+.stat-card:hover::before{opacity:1}
+.stat-num{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem}
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.5;animation:fadeUp 2s 1.5s ease both}
+.scroll-ind span{font-size:0.75rem;color:var(--text-muted)}
+.scroll-arrow{width:24px;height:40px;border:2px solid var(--border-glow);border-radius:12px;display:flex;justify-content:center;padding-top:6px}
+.scroll-arrow::after{content:'';width:4px;height:8px;background:var(--purple-light);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{transform:translateY(0);opacity:1}100%{transform:translateY(12px);opacity:0}}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.container{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.4);color:var(--purple-light);font-size:0.8rem;font-weight:700;padding:0.4rem 1rem;border-radius:50px;margin-bottom:1rem;letter-spacing:0.05em}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:1rem;line-height:1.2}
+.section-title span{background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{color:var(--text-muted);font-size:1.05rem;line-height:1.8;max-width:600px}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* SERVICES */
+#services{background:linear-gradient(180deg,var(--bg) 0%,rgba(124,58,237,0.03) 50%,var(--bg) 100%)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:all 0.4s;cursor:pointer;position:relative;overflow:hidden;group:true}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--glow-purple),var(--glow-cyan));opacity:0;transition:opacity 0.4s;border-radius:20px}
+.service-card:hover{border-color:var(--purple-light);transform:translateY(-8px);box-shadow:0 20px 60px rgba(124,58,237,0.2)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.2));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.2rem;position:relative;z-index:1;transition:all 0.4s}
+.service-card:hover .service-icon{background:linear-gradient(135deg,var(--purple),var(--cyan));transform:scale(1.1)}
+.service-name{font-size:1.1rem;font-weight:800;margin-bottom:0.6rem;position:relative;z-index:1}
+.service-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.7;position:relative;z-index:1}
+.service-arrow{position:absolute;bottom:1.5rem;left:1.5rem;color:var(--purple-light);opacity:0;transform:translateX(-10px);transition:all 0.3s;font-size:1.2rem}
+.service-card:hover .service-arrow{opacity:1;transform:translateX(0)}
+
+/* RESULTS */
+#results{background:var(--card)}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.result-main{grid-column:1/3}
+.dashboard-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden}
+.dashboard-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.dashboard-title{font-weight:700;font-size:1.1rem}
+.badge-live{background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.4);color:var(--cyan);font-size:0.75rem;padding:0.3rem 0.8rem;border-radius:50px;display:flex;align-items:center;gap:0.4rem}
+.badge-live::before{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.metric{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.15);border-radius:12px;padding:1rem;text-align:center}
+.metric-val{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.metric-lab{font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem}
+.chart-area{height:180px;position:relative;overflow:hidden;border-radius:12px;background:rgba(124,58,237,0.04);padding:1rem}
+.chart-bars{display:flex;align-items:flex-end;height:100%;gap:8px}
+.bar{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--purple),rgba(124,58,237,0.3));transition:all 0.3s;animation:barUp 1s ease both}
+@keyframes barUp{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+.bar.cyan{background:linear-gradient(180deg,var(--cyan),rgba(6,182,212,0.3))}
+.bar.mixed{background:linear-gradient(180deg,var(--purple-light),var(--cyan))}
+.roas-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.roas-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:1.8rem;position:relative;overflow:hidden}
+.roas-card::after{content:'';position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle,var(--glow-purple),transparent);pointer-events:none}
+.roas-tag{font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem}
+.roas-num{font-family:'Poppins',sans-serif;font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.roas-sub{font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem}
+.roas-change{display:inline-flex;align-items:center;gap:0.3rem;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--cyan);font-size:0.8rem;padding:0.2rem 0.7rem;border-radius:50px;margin-top:0.8rem}
+.progress-block{margin-top:1.5rem}
+.progress-label{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem}
+.progress-bar{height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:3px;animation:fillBar 2s ease both}
+@keyframes fillBar{from{width:0}to{width:var(--w)}}
+
+/* WHY */
+#why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+.why-item{display:flex;gap:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden}
+.why-item::before{content:'';position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle,var(--glow-purple),transparent);pointer-events:none}
+.why-item:hover{border-color:var(--purple-light);transform:translateY(-5px);box-shadow:0 15px 40px rgba(124,58,237,0.15)}
+.why-icon{width:48px;height:48px;min-width:48px;background:linear-gradient(135deg,var(--purple),rgba(6,182,212,0.8));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.why-text h3{font-size:1rem;font-weight:800;margin-bottom:0.4rem}
+.why-text p{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
+
+/* TESTIMONIALS */
+#testimonials{background:linear-gradient(180deg,var(--bg) 0%,rgba(6,182,212,0.03) 50%,var(--bg) 100%)}
+.testimonials-slider{position:relative;overflow:hidden;margin-top:3rem}
+.testimonials-track{display:flex;gap:1.5rem;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.testi-card{background:rgba(17,24,39,0.8);border:1px solid var(--border);border-radius:20px;padding:2rem;min-width:360px;max-width:360px;backdrop-filter:blur(20px);position:relative;overflow:hidden;flex-shrink:0}
+.testi-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,0.05),rgba(6,182,212,0.05));pointer-events:none}
+.testi-quote{font-size:2rem;color:var(--purple-light);margin-bottom:1rem;opacity:0.6}
+.testi-text{font-size:0.95rem;color:var(--text-muted);line-height:1.8;margin-bottom:1.5rem}
+.testi-author{display:flex;align-items:center;gap:1rem}
+.testi-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:white}
+.testi-name{font-weight:700;font-size:0.95rem}
+.testi-role{font-size:0.8rem;color:var(--text-dim)}
+.stars{color:#F59E0B;font-size:0.9rem;margin-bottom:0.3rem}
+.slider-dots{display:flex;justify-content:center;gap:0.6rem;margin-top:2rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--text-dim);transition:all 0.3s;cursor:pointer;border:none}
+.dot.active{width:24px;border-radius:4px;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+
+/* CONTACT */
+#contact{background:var(--card)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;margin-top:3rem}
+.contact-info h3{font-size:1.3rem;font-weight:800;margin-bottom:1rem}
+.contact-info p{color:var(--text-muted);line-height:1.8;margin-bottom:2rem}
+.contact-feature{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;font-size:0.95rem;color:var(--text-muted)}
+.contact-feature .icon{width:36px;height:36px;background:rgba(124,58,237,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--purple-light);flex-shrink:0}
+.form-card{background:var(--bg);border:1px solid var(--border);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;background:radial-gradient(circle,var(--glow-purple),transparent);pointer-events:none}
+.form-group{margin-bottom:1.2rem;position:relative;z-index:1}
+.form-group label{display:block;font-size:0.88rem;color:var(--text-muted);font-weight:600;margin-bottom:0.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:0.85rem 1.1rem;color:var(--text);font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;transition:all 0.3s;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--purple-light);box-shadow:0 0 0 3px rgba(124,58,237,0.15)}
+.form-group select{cursor:pointer}
+.form-group select option{background:var(--card);color:var(--text)}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:1rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.05rem;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(124,58,237,0.4)}
+.form-submit:active{transform:translateY(0)}
+.success-msg{display:none;text-align:center;padding:2rem}
+.success-icon{font-size:3rem;margin-bottom:1rem}
+.success-msg h3{font-size:1.3rem;font-weight:800;color:var(--cyan);margin-bottom:0.5rem}
+.success-msg p{color:var(--text-muted);font-size:0.95rem}
+
+/* CTA */
+#cta{background:var(--bg);position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(124,58,237,0.15) 0%,transparent 70%)}
+.cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto}
+.cta-content h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:1.5rem;line-height:1.2}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+
+/* FOOTER */
+footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.footer-logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-desc{font-size:0.88rem;color:var(--text-muted);max-width:300px;line-height:1.7;margin-top:0.5rem}
+.social-links{display:flex;gap:0.8rem}
+.social-link{width:42px;height:42px;background:rgba(124,58,237,0.1);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;text-decoration:none;transition:all 0.3s;color:var(--text-muted)}
+.social-link:hover{background:linear-gradient(135deg,var(--purple),var(--cyan));border-color:transparent;transform:translateY(-3px);color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.copyright{font-size:0.85rem;color:var(--text-dim)}
+.footer-wa{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:0.6rem 1.5rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s}
+.footer-wa:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(37,211,102,0.3)}
+
+/* FLOATING WA */
+.float-wa{position:fixed;bottom:2rem;left:2rem;z-index:999;width:56px;height:56px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 8px 30px rgba(37,211,102,0.4);animation:waPulse 3s infinite;transition:transform 0.3s}
+.float-wa:hover{transform:scale(1.1)}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 30px rgba(37,211,102,0.4)}50%{box-shadow:0 8px 50px rgba(37,211,102,0.7),0 0 0 15px rgba(37,211,102,0.1)}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero{padding:5rem 1.5rem 3rem}
+  .stats-row{gap:0.8rem}
+  .stat-card{padding:0.8rem 1rem}
+  .stat-num{font-size:1.4rem}
+  section{padding:4rem 1.5rem}
+  .results-grid{grid-template-columns:1fr}
+  .result-main{grid-column:1}
+  .roas-cards{grid-template-columns:1fr}
+  .metrics-row{grid-template-columns:repeat(2,1fr)}
+  .contact-wrap{grid-template-columns:1fr}
+  .footer-top{flex-direction:column;align-items:flex-start}
+  .testi-card{min-width:300px;max-width:300px}
+  .why-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:300px;justify-content:center}
+  .stats-row{grid-template-columns:repeat(2,1fr);display:grid}
+  .metrics-row{grid-template-columns:repeat(2,1fr)}
+}
+
+/* LOADING SCREEN */
+.loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity 0.8s,visibility 0.8s}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:2px;animation:loadFill 1.5s ease forwards}
+@keyframes loadFill{from{width:0}to{width:100%}}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-logo">ME</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/201090200880" class="float-wa" target="_blank" aria-label="تواصل واتساب" title="تواصل واتساب">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo" style="font-family:'Bebas Neue','Poppins',sans-serif;font-size:1.8rem;font-weight:400;letter-spacing:0.15em;background:linear-gradient(135deg,#9F67FF,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MO EHAB</div>
+  <ul class="nav-links">
+    <li><a href="#hero">الرئيسية</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#results">النتائج</a></li>
+    <li><a href="#testimonials">آراء العملاء</a></li>
+    <li><a href="#contact">تواصل معنا</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">اطلب عرض سعر</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMenu()">الرئيسية</a>
+  <a href="#services" onclick="closeMenu()">الخدمات</a>
+  <a href="#results" onclick="closeMenu()">النتائج</a>
+  <a href="#testimonials" onclick="closeMenu()">آراء العملاء</a>
+  <a href="#contact" onclick="closeMenu()">تواصل معنا</a>
+  <a href="https://wa.me/201090200880" target="_blank" style="color:#25D366">تواصل واتساب</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      متاح للعمل الآن
+    </div>
+    <h1>حوّل إعلاناتك إلى<br><span>نتائج فعلية ومبيعات حقيقية</span></h1>
+    <p class="hero-sub">خبير في إدارة الحملات الإعلانية وتحقيق أفضل النتائج للمتاجر والشركات والجمعيات عبر Meta وGoogle وTikTok — بخبرة تزيد عن 5 سنوات في القطاع غير الربحي بالمملكة العربية السعودية، شاملةً منصة <strong style="color:var(--cyan)">جود</strong> للجمعيات الخيرية</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        اطلب عرض سعر
+      </a>
+      <a href="https://wa.me/201090200880" class="btn-secondary" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        تواصل واتساب
+      </a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" data-count="70">0</div>
+        <div class="stat-label">+M Impressions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-count="59">0</div>
+        <div class="stat-label">+K Followers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-count="390">0</div>
+        <div class="stat-label">+K Engagements</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-count="500">0</div>
+        <div class="stat-label">+ Successful Campaigns</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <span>اسحب لأسفل</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">الخدمات</div>
+      <h2 class="section-title">ما الذي يمكنني <span>تقديمه لك؟</span></h2>
+      <p class="section-sub">حلول إعلانية متكاملة تغطي جميع المنصات الرقمية</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <div class="service-icon">📘</div>
+        <div class="service-name">Meta Ads Management</div>
+        <div class="service-desc">إدارة احترافية لحملات فيسبوك وإنستغرام مع تحسين مستمر لتحقيق أفضل CPA</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.15s">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">Google Ads</div>
+        <div class="service-desc">حملات بحث وعرض وشوبينج متقدمة بأعلى نسبة تحويل وأقل تكلفة ممكنة</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <div class="service-icon">🎵</div>
+        <div class="service-name">TikTok Ads</div>
+        <div class="service-desc">إعلانات تيك توك الإبداعية التي تصل لملايين المستخدمين وتحقق نتائج مذهلة</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.25s">
+        <div class="service-icon">👻</div>
+        <div class="service-name">Snapchat Ads</div>
+        <div class="service-desc">حملات سناب شات المستهدفة للوصول لجمهور الخليج بكفاءة عالية</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.3s">
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Conversion Optimization</div>
+        <div class="service-desc">تحسين معدلات التحويل وتقليل تسرب العملاء في كل مرحلة من رحلة الشراء</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.35s">
+        <div class="service-icon">🎯</div>
+        <div class="service-name">Landing Page Design</div>
+        <div class="service-desc">تصميم صفحات هبوط عالية التحويل تقنع الزائر وتحوله إلى عميل</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.4s">
+        <div class="service-icon">📊</div>
+        <div class="service-name">Analytics & Reporting</div>
+        <div class="service-desc">تقارير شاملة ودقيقة توضح أداء الحملات وتساعد على اتخاذ قرارات مدروسة</div>
+        <div class="service-arrow">←</div>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.45s">
+        <div class="service-icon">🔄</div>
+        <div class="service-name">Retargeting Campaigns</div>
+        <div class="service-desc">حملات إعادة الاستهداف التي تُعيد الزوار المهتمين وتزيد نسبة الإغلاق</div>
+        <div class="service-arrow">←</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">النتائج</div>
+      <h2 class="section-title">أرقام <span>حقيقية</span> لا وعود</h2>
+      <p class="section-sub">نتائج موثقة من حملات ناجحة في السوق الخليجي والعربي</p>
+    </div>
+    <div class="results-grid" style="margin-top:3rem">
+      <div class="result-main reveal">
+        <div class="dashboard-card">
+          <div class="dashboard-header">
+            <div class="dashboard-title">لوحة تحليل الحملات - Q1 2025</div>
+            <div class="badge-live">Live Dashboard</div>
+          </div>
+          <div class="metrics-row">
+            <div class="metric">
+              <div class="metric-val">4.8x</div>
+              <div class="metric-lab">ROAS متوسط</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">38%</div>
+              <div class="metric-lab">تخفيض CPA</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">12.4%</div>
+              <div class="metric-lab">معدل التحويل</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">+127%</div>
+              <div class="metric-lab">نمو المبيعات</div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-bars" id="chartBars"></div>
+          </div>
+        </div>
+      </div>
+      <div class="roas-cards reveal" style="transition-delay:0.2s">
+        <div class="roas-card">
+          <div class="roas-tag">متجر إلكتروني - المملكة</div>
+          <div class="roas-num">6.2x</div>
+          <div class="roas-sub">عائد الإنفاق الإعلاني</div>
+          <div class="roas-change">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            +240% مقارنة بالسابق
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>Meta Ads</span><span>82%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--w:82%"></div></div>
+          </div>
+        </div>
+        <div class="roas-card">
+          <div class="roas-tag">جمعية خيرية - الإمارات</div>
+          <div class="roas-num">-62%</div>
+          <div class="roas-sub">تخفيض تكلفة التبرع</div>
+          <div class="roas-change">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            3x تبرعات أكثر
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>Google Ads</span><span>91%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--w:91%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">لماذا أنا؟</div>
+      <h2 class="section-title">ما يميزني عن <span>غيري</span></h2>
+      <p class="section-sub">خبرة حقيقية في السوق + نتائج موثقة + متابعة يومية لحملاتك</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal" style="transition-delay:0.1s">
+        <div class="why-icon">🌍</div>
+        <div class="why-text">
+          <h3>خبرة فعلية في السوق الخليجي</h3>
+          <p>تجربة واسعة مع العملاء في السعودية والإمارات والكويت وقطر وفهم عميق للمستهلك الخليجي</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.15s">
+        <div class="why-icon">📈</div>
+        <div class="why-text">
+          <h3>متابعة وتحسين يومي للحملات</h3>
+          <p>لا نتركها تعمل وحدها، يومياً نراقب ونعدل ونحسن للحصول على أفضل نتيجة</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.2s">
+        <div class="why-icon">📋</div>
+        <div class="why-text">
+          <h3>تقارير احترافية واضحة</h3>
+          <p>تقارير أسبوعية وشهرية شاملة بلغة مفهومة تظهر لك بالضبط أين تذهب ميزانيتك</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.25s">
+        <div class="why-icon">🎯</div>
+        <div class="why-text">
+          <h3>نتائج قابلة للقياس</h3>
+          <p>نعمل بمؤشرات أداء واضحة وأهداف محددة ونُحاسب أنفسنا على تحقيقها</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.3s">
+        <div class="why-icon">🤲</div>
+        <div class="why-text">
+          <h3>+5 سنوات في القطاع غير الربحي بالسعودية</h3>
+          <p>خبرة متعمقة مع الجمعيات الخيرية والمنظمات غير الربحية في المملكة، وفهم حقيقي لطبيعة حملات التبرع وجذب المتبرعين</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.33s">
+        <div class="why-icon">💚</div>
+        <div class="why-text">
+          <h3>خبير في منصة جود للجمعيات الخيرية</h3>
+          <p>تجربة فعلية مع منصة جود السعودية وآليات الإعلان والاستهداف الخاص بها لتحقيق أعلى معدلات تبرع بأقل تكلفة ممكنة</p>
+        </div>
+      </div>
+      <div class="why-item reveal" style="transition-delay:0.35s">
+        <div class="why-icon">🔬</div>
+        <div class="why-text">
+          <h3>استراتيجيات مبنية على البيانات</h3>
+          <p>قرارات الحملات مبنية على تحليل البيانات وليس التخمين، لأن البيانات لا تكذب</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">آراء العملاء</div>
+      <h2 class="section-title">ماذا يقول <span>عملاؤنا؟</span></h2>
+      <p class="section-sub">تجارب حقيقية من عملاء راضين عن النتائج</p>
+    </div>
+    <div class="testimonials-slider" style="margin-top:3rem">
+      <div class="testimonials-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">محمد غيّر تماماً طريقة إدارتنا للإعلانات. كنا نصرف كثيراً بنتائج محدودة، والآن ROAS وصل 5.8x وما زال يتحسن.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">أح</div>
+            <div>
+              <div class="testi-name">أحمد الحربي</div>
+              <div class="testi-role">صاحب متجر إلكتروني - الرياض</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">عملنا مع محمد على حملة جمع تبرعات وحقق نتائج خيالية. تكلفة التبرع انخفضت 65% وعدد المتبرعين زاد 3 أضعاف.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">سع</div>
+            <div>
+              <div class="testi-name">سعد العتيبي</div>
+              <div class="testi-role">مدير جمعية خيرية - الكويت</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">من أفضل ما استثمرنا فيه هذا العام. التقارير واضحة، التواصل سريع، والنتائج تتحدث عن نفسها. أنصح به بشدة.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">نو</div>
+            <div>
+              <div class="testi-name">نورة السبيعي</div>
+              <div class="testi-role">مديرة تسويق - دبي</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">أخذنا حملات تيك توك وسناب شات من صفر، والآن قناة سناب شات وحدها تجلب 40% من مبيعاتنا. محمد فهم السوق الخليجي.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">عب</div>
+            <div>
+              <div class="testi-name">عبدالله القحطاني</div>
+              <div class="testi-role">مؤسس براند أزياء - الرياض</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">ما يميز محمد هو متابعته اليومية والتحسين المستمر. لا يترك الحملة تعمل وحدها، دايماً يُحسّن ويطور. محترف حقيقي.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">من</div>
+            <div>
+              <div class="testi-name">منال الزهراني</div>
+              <div class="testi-role">صاحبة كلينيك تجميل - جدة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag">تواصل معنا</div>
+      <h2 class="section-title">ابدأ رحلة <span>نجاحك</span> اليوم</h2>
+      <p class="section-sub">أخبرني عن مشروعك وسأرسل لك خطة مخصصة خلال 24 ساعة</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal-right">
+        <h3>لماذا تتواصل الآن؟</h3>
+        <p>اتركني أتولى إعلاناتك بينما أنت تركز على نمو أعمالك. خبرة + تحسين يومي + نتائج مضمونة.</p>
+        <div class="contact-feature">
+          <div class="icon">⚡</div>
+          <span>رد خلال 24 ساعة مع خطة مخصصة</span>
+        </div>
+        <div class="contact-feature">
+          <div class="icon">🎁</div>
+          <span>استشارة أولى مجانية بدون أي التزام</span>
+        </div>
+        <div class="contact-feature">
+          <div class="icon">📊</div>
+          <span>تقرير تحليل حملاتك الحالية مجاناً</span>
+        </div>
+        <div class="contact-feature">
+          <div class="icon">🔒</div>
+          <span>معلوماتك سرية تماماً</span>
+        </div>
+        <br>
+        <a href="https://wa.me/201090200880" class="btn-primary" target="_blank" style="display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          تواصل واتساب الآن
+        </a>
+      </div>
+      <div class="reveal-left">
+        <div class="form-card">
+          <div id="formContent">
+            <div class="form-group">
+              <label>الاسم الكامل</label>
+              <input type="text" id="fname" placeholder="اكتب اسمك هنا" required>
+            </div>
+            <div class="form-group">
+              <label>رقم الواتساب</label>
+              <input type="tel" id="fphone" placeholder="أدخل رقمك مع كود الدولة (مثال: +966XXXXXXXXX)" required>
+            </div>
+            <div class="form-group">
+              <label>نوع النشاط</label>
+              <select id="ftype">
+                <option value="">اختر نوع النشاط</option>
+                <option>متجر إلكتروني</option>
+                <option>جمعية خيرية / غير ربحي</option>
+                <option>شركة خدمات</option>
+                <option>مطعم أو كافيه</option>
+                <option>عيادة / مركز طبي</option>
+                <option>عقارات</option>
+                <option>تعليم / كورسات</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>الميزانية الإعلانية الشهرية</label>
+              <select id="fbudget">
+                <option value="">اختر الميزانية</option>
+                <option>أقل من 5,000 ريال</option>
+                <option>5,000 - 15,000 ريال</option>
+                <option>15,000 - 50,000 ريال</option>
+                <option>50,000 - 100,000 ريال</option>
+                <option>أكثر من 100,000 ريال</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>الهدف من الحملة</label>
+              <select id="fgoal">
+                <option value="">اختر الهدف</option>
+                <option>زيادة المبيعات</option>
+                <option>جلب عملاء محتملين</option>
+                <option>زيادة الوعي بالعلامة</option>
+                <option>جمع تبرعات</option>
+                <option>زيادة المتابعين</option>
+                <option>تحسين نتائج حملات قائمة</option>
+              </select>
+            </div>
+            <button class="form-submit" onclick="submitForm()">
+              ابدأ الآن ← احصل على استشارتك المجانية
+            </button>
+          </div>
+          <div class="success-msg" id="successMsg">
+            <div class="success-icon">✅</div>
+            <h3>تم الإرسال بنجاح!</h3>
+            <p>شكراً لك، سيتواصل معك محمد خلال 24 ساعة عبر الواتساب المُدخل.</p>
+            <br>
+            <a href="https://wa.me/201090200880" class="btn-primary" target="_blank" style="display:inline-flex;justify-content:center;width:100%">تواصل مباشرة الآن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-content reveal">
+      <div class="section-tag">الآن أو لا</div>
+      <h2 class="section-title">جاهز تبدأ حملتك الإعلانية <span>بشكل احترافي؟</span></h2>
+      <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.8;margin-top:1rem">لا تترك منافسيك يستفيدون من فرص تستطيع الحصول عليها. تواصل الآن وابدأ رحلة نمو حقيقية.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/201090200880" class="btn-primary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          تواصل واتساب
+        </a>
+        <a href="#contact" class="btn-secondary">
+          🗓️ احجز استشارة مجانية
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo" style="font-family:'Bebas Neue','Poppins',sans-serif;font-size:2rem;font-weight:400;letter-spacing:0.15em;background:linear-gradient(135deg,#9F67FF,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MO EHAB</div>
+        <p class="footer-desc">خبير إدارة الحملات الإعلانية على Meta وGoogle وTikTok. نحوّل ميزانيتك إلى مبيعات حقيقية.</p>
+      </div>
+      <div class="social-links">
+        <a href="https://wa.me/201090200880" class="social-link" target="_blank" title="واتساب">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mohamed-ehab-8b964314a" class="social-link" target="_blank" title="لينكدإن">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="copyright">© 2025 <span style="font-family:'Bebas Neue','Poppins',sans-serif;letter-spacing:0.12em;background:linear-gradient(135deg,#9F67FF,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">MO EHAB</span>. جميع الحقوق محفوظة.</span>
+      <a href="https://wa.me/201090200880" class="footer-wa" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        تواصل واتساب
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// LOADER
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1600)});
+
+// PARTICLES
+(function(){
+  const p=document.getElementById('particles');
+  const colors=['rgba(124,58,237,0.6)','rgba(6,182,212,0.5)','rgba(159,103,255,0.4)'];
+  for(let i=0;i<30;i++){
+    const d=document.createElement('div');
+    const sz=Math.random()*4+2;
+    d.className='particle';
+    d.style.cssText=`width:${sz}px;height:${sz}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*20}s`;
+    p.appendChild(d);
+  }
+})();
+
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.style.background=window.scrollY>50?'rgba(15,23,42,0.95)':'rgba(15,23,42,0.85)';
+});
+
+// MOBILE MENU
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// COUNTER ANIMATION
+function animateCounter(el){
+  const target=parseInt(el.dataset.count);
+  const unit=el.parentElement.querySelector('.stat-label').textContent.includes('M')?'M+':el.parentElement.querySelector('.stat-label').textContent.includes('K')?'K+':'+';
+  let current=0;
+  const increment=target/60;
+  const timer=setInterval(()=>{
+    current+=increment;
+    if(current>=target){current=target;clearInterval(timer);}
+    el.textContent=Math.floor(current)+(target>=100?'+':'');
+  },20);
+}
+
+// CHART BARS
+(function(){
+  const bars=document.getElementById('chartBars');
+  const heights=[45,60,40,75,55,90,70,85,65,95,80,100];
+  const classes=['','cyan','','mixed','','cyan','','','mixed','','cyan',''];
+  heights.forEach((h,i)=>{
+    const b=document.createElement('div');
+    b.className='bar '+(classes[i]||'');
+    b.style.cssText=`height:${h}%;animation-delay:${i*0.08}s`;
+    bars.appendChild(b);
+  });
+})();
+
+// TESTIMONIALS SLIDER
+(function(){
+  const track=document.getElementById('testiTrack');
+  const cards=track.querySelectorAll('.testi-card');
+  const dots=document.getElementById('sliderDots');
+  let current=0;
+  let cardW=0;
+  
+  function getCardW(){
+    cardW=cards[0].offsetWidth+24;
+  }
+  
+  cards.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.onclick=()=>goTo(i);
+    dots.appendChild(d);
+  });
+  
+  function goTo(n){
+    current=n;
+    getCardW();
+    const maxSlide=Math.max(0,cards.length-Math.floor(track.parentElement.offsetWidth/cardW));
+    const slide=Math.min(n,maxSlide);
+    track.style.transform=`translateX(${slide*cardW}px)`;
+    dots.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+  }
+  
+  setInterval(()=>goTo((current+1)%cards.length),4000);
+  window.addEventListener('resize',()=>goTo(current));
+})();
+
+// SCROLL REVEAL
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // counter
+      const counters=e.target.querySelectorAll?e.target.querySelectorAll('[data-count]'):[];
+      counters.forEach(animateCounter);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+// Counter in stats (hero)
+const statObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const statsRow=document.querySelector('.stats-row');
+if(statsRow)statObs.observe(statsRow);
+
+// FORM SUBMIT
+function submitForm(){
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  const type=document.getElementById('ftype').value;
+  if(!name||!phone||!type){
+    alert('يرجى تعبئة الحقول المطلوبة');
+    return;
+  }
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+  // WhatsApp redirect with form data
+  const msg=`مرحباً محمد، أنا ${name}%0Aرقم الواتساب: ${phone}%0Aنوع النشاط: ${type}`;
+  setTimeout(()=>{window.open(`https://wa.me/201090200880?text=${msg}`,'_blank')},1500);
+}
+
+// ACTIVE NAV LINK
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let curr='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100)curr=s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+curr?'var(--purple-light)':'';
+  });
+});
+</script>
+</body>
+</html>
