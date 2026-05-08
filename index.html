@@ -247,6 +247,8 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
 .loader-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:2px;animation:loadFill 1.5s ease forwards}
 @keyframes loadFill{from{width:0}to{width:100%}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init("rGVd6Ic-IkuX_RM1M");</script>
 </head>
 <body>
 
@@ -433,7 +435,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
           </div>
         </div>
       </div>
-      <div class="roas-cards reveal" style="transition-delay:0.2s">
+      <div class="roas-cards reveal" style="transition-delay:0.2s;grid-template-columns:repeat(2,1fr)">
         <div class="roas-card">
           <div class="roas-tag">متجر إلكتروني - المملكة</div>
           <div class="roas-num">6.2x</div>
@@ -457,6 +459,32 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:3rem 2r
           </div>
           <div class="progress-block">
             <div class="progress-label"><span>Google Ads</span><span>91%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--w:91%"></div></div>
+          </div>
+        </div>
+        <div class="roas-card">
+          <div class="roas-tag">🎵 TikTok Ads — جمعية خيرية - السعودية</div>
+          <div class="roas-num">6,000</div>
+          <div class="roas-sub">متبرع حقيقي من الصفر</div>
+          <div class="roas-change">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            من 0 إلى 6,000 متبرع
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>TikTok Ads</span><span>88%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--w:88%"></div></div>
+          </div>
+        </div>
+        <div class="roas-card">
+          <div class="roas-tag">👻 Snapchat Ads — مجال غير ربحي - السعودية</div>
+          <div class="roas-num">5x</div>
+          <div class="roas-sub">عائد الإنفاق الإعلاني ROAS</div>
+          <div class="roas-change">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            نتائج موثقة وحقيقية
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>Snapchat Ads</span><span>91%</span></div>
             <div class="progress-bar"><div class="progress-fill" style="--w:91%"></div></div>
           </div>
         </div>
@@ -871,15 +899,31 @@ function submitForm(){
   const name=document.getElementById('fname').value.trim();
   const phone=document.getElementById('fphone').value.trim();
   const type=document.getElementById('ftype').value;
+  const budget=document.getElementById('fbudget').value;
+  const goal=document.getElementById('fgoal').value;
   if(!name||!phone||!type){
     alert('يرجى تعبئة الحقول المطلوبة');
     return;
   }
-  document.getElementById('formContent').style.display='none';
-  document.getElementById('successMsg').style.display='block';
-  // WhatsApp redirect with form data
-  const msg=`مرحباً محمد، أنا ${name}%0Aرقم الواتساب: ${phone}%0Aنوع النشاط: ${type}`;
-  setTimeout(()=>{window.open(`https://wa.me/201090200880?text=${msg}`,'_blank')},1500);
+  const btn=document.querySelector('.form-submit');
+  btn.textContent='جاري الإرسال...';
+  btn.disabled=true;
+  emailjs.send('service_9cxvcty','template_pe3ve0g',{
+    name:name,
+    phone:phone,
+    type:type,
+    budget:budget||'غير محدد',
+    goal:goal||'غير محدد'
+  }).then(()=>{
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    const msg=`مرحباً محمد، أنا ${name}%0Aرقم الواتساب: ${phone}%0Aنوع النشاط: ${type}%0Aالميزانية: ${budget}%0Aالهدف: ${goal}`;
+    setTimeout(()=>{window.open(`https://wa.me/201090200880?text=${msg}`,'_blank')},1500);
+  }).catch(()=>{
+    btn.textContent='ابدأ الآن ← احصل على استشارتك المجانية';
+    btn.disabled=false;
+    alert('حدث خطأ، يرجى المحاولة مرة أخرى أو التواصل عبر الواتساب مباشرة');
+  });
 }
 
 // ACTIVE NAV LINK
