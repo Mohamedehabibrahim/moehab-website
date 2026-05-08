@@ -100,7 +100,7 @@ section{padding:6rem 2rem}
 
 /* RESULTS */
 #results{background:var(--card)}
-.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.results-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:3rem}
 .result-main{grid-column:1/3}
 .dashboard-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden}
 .dashboard-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
@@ -117,7 +117,7 @@ section{padding:6rem 2rem}
 @keyframes barUp{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
 .bar.cyan{background:linear-gradient(180deg,var(--cyan),rgba(6,182,212,0.3))}
 .bar.mixed{background:linear-gradient(180deg,var(--purple-light),var(--cyan))}
-.roas-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.roas-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;grid-column:1/3}
 .roas-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:1.8rem;position:relative;overflow:hidden}
 .roas-card::after{content:'';position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle,var(--glow-purple),transparent);pointer-events:none}
 .roas-tag{font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem}
