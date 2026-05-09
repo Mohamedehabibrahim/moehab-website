@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MO EHAB - CRO Manager & Paid Ads Specialist">
+<title>MO EHAB | Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#7C3AED;--cyan:#06B6D4;
+  --bg:#0F172A;--card:#111827;
+}
+body{
+  background:var(--bg);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cairo',sans-serif;
+  overflow:hidden;
+  position:relative;
+}
+
+/* BG */
+.bg-glow{position:fixed;inset:0;pointer-events:none}
+.bg-glow::before{
+  content:'';position:absolute;
+  top:-20%;left:50%;transform:translateX(-50%);
+  width:80%;height:60%;
+  background:radial-gradient(ellipse,rgba(124,58,237,0.2) 0%,transparent 65%);
+}
+.bg-glow::after{
+  content:'';position:absolute;
+  bottom:-20%;left:50%;transform:translateX(-50%);
+  width:60%;height:50%;
+  background:radial-gradient(ellipse,rgba(6,182,212,0.1) 0%,transparent 65%);
+}
+.bg-grid{
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,58,237,0.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+
+/* CARD */
+.card{
+  position:relative;z-index:2;
+  width:100%;max-width:400px;
+  padding:2.5rem 1.5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1.2rem;
+  animation:fadeUp 0.8s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* AVATAR */
+.avatar{
+  width:90px;height:90px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;
+  letter-spacing:0.1em;
+  color:white;
+  box-shadow:0 0 0 3px rgba(124,58,237,0.3),0 0 30px rgba(124,58,237,0.3);
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+
+.name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;
+  letter-spacing:0.15em;
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,0.8));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+
+.title{
+  font-size:0.85rem;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.06em;
+  text-align:center;
+  line-height:1.6;
+  animation:fadeUp 0.8s 0.3s ease both;
+}
+.title span{color:var(--cyan);font-weight:600}
+
+.divider{
+  width:40px;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));
+  border-radius:2px;
+  animation:fadeUp 0.8s 0.35s ease both;
+}
+
+/* LINKS */
+.links{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:0.9rem;
+  margin-top:0.5rem;
+}
+
+.link-btn{
+  width:100%;
+  background:rgba(17,24,39,0.8);
+  border:1px solid rgba(124,58,237,0.2);
+  border-radius:14px;
+  padding:1rem 1.4rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  text-decoration:none;
+  color:white;
+  transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(10px);
+  animation:fadeUp 0.8s ease both;
+}
+.link-btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(6,182,212,0.05));
+  opacity:0;
+  transition:opacity 0.3s;
+}
+.link-btn:hover{
+  border-color:rgba(124,58,237,0.6);
+  transform:translateY(-3px) scale(1.01);
+  box-shadow:0 15px 40px rgba(124,58,237,0.2);
+}
+.link-btn:hover::before{opacity:1}
+
+.link-btn:nth-child(1){animation-delay:0.4s}
+.link-btn:nth-child(2){animation-delay:0.5s}
+.link-btn:nth-child(3){animation-delay:0.6s}
+.link-btn:nth-child(4){animation-delay:0.7s}
+
+.link-icon{
+  width:42px;height:42px;min-width:42px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+  flex-shrink:0;
+}
+
+.link-icon.website{background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(6,182,212,0.3))}
+.link-icon.whatsapp{background:rgba(37,211,102,0.15)}
+.link-icon.linkedin{background:rgba(10,102,194,0.2)}
+.link-icon.email{background:rgba(234,88,12,0.15)}
+
+.link-text{flex:1;text-align:right}
+.link-title{font-size:0.95rem;font-weight:700;color:white}
+.link-sub{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.1rem}
+
+.link-arrow{
+  color:rgba(255,255,255,0.2);
+  font-size:1rem;
+  transition:all 0.3s;
+  flex-shrink:0;
+}
+.link-btn:hover .link-arrow{
+  color:var(--cyan);
+  transform:translateX(-4px);
+}
+
+/* FOOTER */
+.footer{
+  font-size:0.75rem;
+  color:rgba(255,255,255,0.2);
+  letter-spacing:0.05em;
+  margin-top:0.5rem;
+  animation:fadeUp 0.8s 0.8s ease both;
+}
+.footer span{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.85rem;
+  letter-spacing:0.1em;
+  background:linear-gradient(135deg,rgba(124,58,237,0.6),rgba(6,182,212,0.6));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+
+<div class="card">
+  <div class="avatar">ME</div>
+  <div class="name">MO EHAB</div>
+  <div class="title"><span>CRO Manager</span> · Paid Ads Specialist<br>Meta · Google · TikTok · Snapchat</div>
+  <div class="divider"></div>
+
+  <div class="links">
+    <a href="https://moehabads.com" class="link-btn" target="_blank">
+      <div class="link-icon website">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="link-title">الموقع الرسمي</div>
+        <div class="link-sub">moehabads.com</div>
+      </div>
+      <div class="link-arrow">←</div>
+    </a>
+
+    <div class="link-btn" onclick="toggleWa()" style="cursor:pointer">
+      <div class="link-icon whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="link-title">واتساب</div>
+        <div class="link-sub">اضغط لاختيار الرقم</div>
+      </div>
+      <div class="link-arrow" id="waArrow">←</div>
+    </div>
+    <!-- WA Dropdown -->
+    <div id="waDropdown" style="display:none;width:100%;background:rgba(17,24,39,0.95);border:1px solid rgba(37,211,102,0.2);border-radius:14px;overflow:hidden;margin-top:-0.5rem">
+      <a href="https://wa.me/201090200880" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.4rem;text-decoration:none;color:white;transition:background 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)" onmouseover="this.style.background='rgba(37,211,102,0.08)'" onmouseout="this.style.background='transparent'">
+        <span style="font-size:1.2rem">🇪🇬</span>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700">مصر</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);direction:ltr">+20 109 020 0880</div>
+        </div>
+      </a>
+      <a href="https://wa.me/966580395350" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.4rem;text-decoration:none;color:white;transition:background 0.2s" onmouseover="this.style.background='rgba(37,211,102,0.08)'" onmouseout="this.style.background='transparent'">
+        <span style="font-size:1.2rem">🇸🇦</span>
+        <div>
+          <div style="font-size:0.9rem;font-weight:700">السعودية</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);direction:ltr">+966 580 395 350</div>
+        </div>
+      </a>
+    </div>
+
+    <a href="https://www.linkedin.com/in/mohamed-ehab-8b964314a" class="link-btn" target="_blank">
+      <div class="link-icon linkedin">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="link-title">LinkedIn</div>
+        <div class="link-sub">Mohamed Ehab</div>
+      </div>
+      <div class="link-arrow">←</div>
+    </a>
+
+    <a href="mailto:mr.mohammedihab@gmail.com" class="link-btn">
+      <div class="link-icon email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="link-text">
+        <div class="link-title">إيميل</div>
+        <div class="link-sub">mr.mohammedihab@gmail.com</div>
+      </div>
+      <div class="link-arrow">←</div>
+    </a>
+  </div>
+
+  <div class="footer">© 2025 <span>MO EHAB</span> · moehabads.com</div>
+</div>
+
+<script>
+function toggleWa(){
+  const d=document.getElementById('waDropdown');
+  const a=document.getElementById('waArrow');
+  if(d.style.display==='none'){
+    d.style.display='block';
+    a.style.transform='rotate(90deg)';
+    a.style.color='#25D366';
+  } else {
+    d.style.display='none';
+    a.style.transform='';
+    a.style.color='';
+  }
+}
+</script>
+</body>
+</html>
