@@ -2,128 +2,93 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<!-- Google Ads tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1044456347"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-1044456347');
-</script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2541852719594723');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2541852719594723&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MO EHAB | الخدمات والباقات</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --purple:#7C3AED;--purple-light:#9F67FF;
-  --cyan:#06B6D4;
-  --bg:#0F172A;--card:#111827;--card2:#1E293B;
-  --text:#F8FAFC;--muted:#94A3B8;--dim:#64748B;
-  --border:rgba(124,58,237,0.2);--border-glow:rgba(124,58,237,0.4);
-}
+:root{--purple:#7C3AED;--pl:#9F67FF;--cyan:#06B6D4;--bg:#0F172A;--card:#111827;--card2:#1E293B;--text:#F8FAFC;--muted:#94A3B8;--dim:#64748B;--border:rgba(124,58,237,0.2);--glow:rgba(124,58,237,0.4)}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;overflow-x:hidden}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:65px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:0.15em;background:linear-gradient(135deg,#9F67FF,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-back{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:.15em;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-back{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .3s}
 .nav-back:hover{color:var(--text)}
-
-.hero{padding:8rem 2rem 3rem;text-align:center}
-.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);color:var(--purple-light);font-size:0.82rem;padding:0.4rem 1rem;border-radius:50px;margin-bottom:1.5rem}
-.hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.2;margin-bottom:1rem}
-.hero h1 span{background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:var(--muted);font-size:1rem;max-width:550px;margin:0 auto 2rem;line-height:1.8}
-
-.currency-toggle{display:inline-flex;background:var(--card);border:1px solid var(--border);border-radius:50px;padding:4px;gap:4px;margin-bottom:3rem}
-.curr-btn{padding:0.5rem 1.5rem;border-radius:50px;border:none;cursor:pointer;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;transition:all 0.3s;color:var(--muted);background:transparent}
-.curr-btn.active-sar{background:linear-gradient(135deg,#F59E0B,#D97706);color:white}
-.curr-btn.active-egp{background:linear-gradient(135deg,#10B981,#059669);color:white}
-
-.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
-section{padding:4rem 2rem}
-.section-label{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple-light);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem}
-.section-label::before{content:'';display:block;width:20px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan))}
-.section-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:0.5rem}
-.section-sub{color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:2.5rem}
-.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.3),transparent);margin:0}
-
-.packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
-.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;position:relative;transition:all 0.3s;display:flex;flex-direction:column}
-.pkg-card:hover{border-color:var(--purple-light);transform:translateY(-5px);box-shadow:0 15px 40px rgba(124,58,237,0.15)}
-.pkg-card.featured{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,58,237,0.08),rgba(6,182,212,0.04))}
-.pkg-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;font-size:0.7rem;font-weight:800;padding:0.25rem 0.7rem;border-radius:50px}
-.pkg-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2)}
-.pkg-name{font-size:1rem;font-weight:800;margin-bottom:0.4rem}
-.pkg-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
-.pkg-price{margin-bottom:1.2rem}
+.discount-banner{margin-top:60px;background:linear-gradient(135deg,var(--purple),var(--cyan));padding:.75rem 2rem;text-align:center;font-size:.9rem;font-weight:700}
+.discount-banner span{background:rgba(255,255,255,.2);padding:2px 10px;border-radius:20px;margin-right:.5rem;font-size:.8rem}
+.hero{padding:3rem 2rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:70%;height:60%;background:radial-gradient(ellipse,rgba(124,58,237,.18),transparent 65%);pointer-events:none}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;line-height:1.3;margin-bottom:.8rem}
+.hero h1 span{background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto}
+.tabs-wrap{padding:0 2rem .5rem;position:sticky;top:60px;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.tabs{display:flex;gap:.3rem;max-width:1000px;margin:0 auto;padding:.8rem 0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:.5rem 1.2rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .3s;white-space:nowrap}
+.tab:hover{border-color:var(--glow);color:var(--text)}
+.tab.active{background:linear-gradient(135deg,var(--purple),var(--cyan));border-color:transparent;color:white}
+.content{max-width:1000px;margin:0 auto;padding:2rem 2rem 6rem}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.panel-head{text-align:center;margin-bottom:2rem}
+.panel-head h2{font-size:1.5rem;font-weight:900;margin-bottom:.5rem}
+.panel-head h2 span{background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.panel-head p{color:var(--muted);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.pkg{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+.pkg:hover{border-color:var(--pl);transform:translateY(-4px);box-shadow:0 15px 40px rgba(124,58,237,.15)}
+.pkg.featured{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.04))}
+.pkg-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:20px}
+.pkg-icon{font-size:1.6rem;margin-bottom:.8rem}
+.pkg-name{font-size:.95rem;font-weight:800;margin-bottom:.4rem}
+.pkg-desc{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;flex:1}
+.price-box{margin-bottom:1rem}
+.curr-toggle{display:flex;gap:4px;margin-bottom:.6rem}
+.curr-btn{padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Cairo',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .2s}
+.curr-btn.active-s{background:rgba(245,158,11,.2);border-color:#F59E0B;color:#F59E0B}
+.curr-btn.active-e{background:rgba(16,185,129,.2);border-color:#10B981;color:#10B981}
 .price-sar,.price-egp{display:none}
 .price-sar.show,.price-egp.show{display:block}
-.price-num{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:800;line-height:1}
-.price-sar .price-num{color:#F59E0B}
-.price-egp .price-num{color:#10B981}
-.price-unit{font-size:0.78rem;color:var(--dim);margin-top:0.2rem}
-.price-old{font-size:1rem;color:var(--dim);text-decoration:line-through;margin-bottom:0.2rem;font-family:'Poppins',sans-serif;}
-.discount-badge{display:inline-block;background:linear-gradient(135deg,#EF4444,#DC2626);color:white;font-size:0.72rem;font-weight:800;padding:2px 8px;border-radius:50px;margin-bottom:0.3rem;}
-.price-curr{font-size:0.85rem;font-weight:600;opacity:0.7}
-.pkg-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;flex:1}
-.pkg-features li{font-size:0.83rem;color:var(--muted);display:flex;align-items:center;gap:0.6rem}
-.pkg-features li::before{content:'✓';color:var(--cyan);font-weight:800;flex-shrink:0}
-.pkg-btn{width:100%;background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:0.85rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:800;font-size:0.95rem;cursor:pointer;transition:all 0.3s;margin-top:auto}
-.pkg-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(124,58,237,0.35)}
-.pkg-btn.outline{background:transparent;border:1.5px solid var(--border-glow);color:var(--text)}
-.pkg-btn.outline:hover{background:rgba(124,58,237,0.1);border-color:var(--purple-light)}
-
-/* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.price-old{font-size:.8rem;color:var(--dim);text-decoration:line-through}
+.price-new{font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;line-height:1.1}
+.price-sar .price-new{color:#F59E0B}
+.price-egp .price-new{color:#10B981}
+.price-unit{font-size:.75rem;color:var(--dim);margin-top:2px}
+.badge-50{display:inline-block;background:#EF4444;color:white;font-size:.68rem;font-weight:800;padding:1px 6px;border-radius:10px;margin-bottom:4px}
+.features{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.features li{font-size:.8rem;color:var(--muted);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.features li::before{content:'✓';color:var(--cyan);font-weight:800;flex-shrink:0}
+.pkg-btn{width:100%;background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.75rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .3s;margin-top:auto}
+.pkg-btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(124,58,237,.35)}
+.pkg-btn.outline{background:transparent;border:1.5px solid var(--glow);color:var(--text)}
+.pkg-btn.outline:hover{background:rgba(124,58,237,.1)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
 .modal-overlay.open{display:flex}
-.modal-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;width:90%;max-width:420px;position:relative}
-.modal-close{position:absolute;top:1rem;left:1rem;background:transparent;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1;z-index:10}
-.modal-title{font-size:1.1rem;font-weight:800;margin-bottom:0.3rem}
-.modal-pkg{font-size:0.85rem;color:var(--muted);margin-bottom:0.5rem}
-.modal-price{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.5rem}
-#paypal-button-container{min-height:50px}
-.modal-or{text-align:center;color:var(--dim);font-size:0.85rem;margin:1rem 0}
-.modal-instapay{width:100%;background:linear-gradient(135deg,#7C3AED,#06B6D4);border:none;color:white;padding:0.8rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;display:block;text-align:center;margin-top:0.5rem}
-.modal-wa{width:100%;background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:0.8rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;display:block;text-align:center;margin-top:0.5rem}
-
-.payment-section{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;margin-top:4rem;text-align:center}
-.payment-methods{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
-.pay-method{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:0.8rem 1.5rem;font-size:0.9rem;font-weight:600;display:flex;align-items:center;gap:0.6rem;color:var(--muted)}
-
-.cta-section{text-align:center;padding:4rem 2rem}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
-.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:0.9rem 2rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,0.35)}
-
-.float-wa{position:fixed;bottom:1.5rem;left:1.5rem;z-index:999;width:52px;height:52px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 25px rgba(37,211,102,0.4);transition:transform 0.3s}
+.modal-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;width:90%;max-width:400px;position:relative}
+.modal-close{position:absolute;top:1rem;left:1rem;background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.modal-title{font-size:1rem;font-weight:800;margin-bottom:.3rem}
+.modal-pkg{font-size:.82rem;color:var(--muted);margin-bottom:.5rem}
+.modal-price{font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.2rem}
+#paypal-button-container{min-height:44px}
+.modal-or{text-align:center;color:var(--dim);font-size:.82rem;margin:.8rem 0}
+.modal-instapay,.modal-wa{width:100%;border:none;color:white;padding:.75rem;border-radius:10px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none;display:block;text-align:center;margin-top:.5rem}
+.modal-instapay{background:linear-gradient(135deg,var(--purple),var(--cyan))}
+.modal-wa{background:linear-gradient(135deg,#25D366,#128C7E)}
+.float-wa{position:fixed;bottom:1.5rem;left:1.5rem;z-index:999;width:50px;height:50px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:transform .3s}
 .float-wa:hover{transform:scale(1.1)}
-
-@media(max-width:640px){.packages-grid{grid-template-columns:1fr}.payment-methods{flex-direction:column;align-items:center}.cta-btns{flex-direction:column;align-items:center}}
+.cta-section{text-align:center;padding:3rem 2rem;background:var(--card2);border-top:1px solid var(--border)}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:.85rem 1.8rem;border-radius:50px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(37,211,102,.3)}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.cta-btns{flex-direction:column;align-items:center}}
 </style>
 </head>
 <body>
 
-<a href="https://wa.me/966580395350" class="float-wa" title="واتساب">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a href="https://wa.me/966580395350" class="float-wa" target="_blank">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <nav>
@@ -131,14 +96,259 @@ section{padding:4rem 2rem}
   <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
 </nav>
 
+<div class="discount-banner"><span>🔥 عرض محدود</span>خصم 50% على جميع الخدمات — لفترة محدودة فقط!</div>
+
 <div class="hero">
-  <div class="hero-tag">💼 الخدمات والباقات</div>
-  <h1>اختر الباقة<br><span>المناسبة لك</span></h1>
-  <p>خدمات إعلانية متكاملة بأسعار واضحة — بدون مفاجآت</p>
-  <div class="currency-toggle">
-    <button class="curr-btn active-sar" id="sar-btn" onclick="setCurrency('sar')">🇸🇦 ريال سعودي</button>
-    <button class="curr-btn" id="egp-btn" onclick="setCurrency('egp')">🇪🇬 جنيه مصري</button>
+  <h1>اختر الخدمة<br><span>المناسبة لك</span></h1>
+  <p>خدمات إعلانية ورقمية متكاملة بأسعار واضحة — بدون مفاجآت</p>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('ads',this)">📢 إدارة الإعلانات</button>
+    <button class="tab" onclick="showTab('consult',this)">💬 الاستشارات</button>
+    <button class="tab" onclick="showTab('tracking',this)">🎯 أدوات التتبع</button>
+    <button class="tab" onclick="showTab('data',this)">📊 تحليل البيانات</button>
+    <button class="tab" onclick="showTab('landing',this)">🌐 صفحات الهبوط</button>
+    <button class="tab" onclick="showTab('ecom',this)">🛒 المتاجر</button>
+    <button class="tab" onclick="showTab('seo',this)">🔍 SEO</button>
   </div>
+</div>
+
+<div class="content">
+
+<!-- ADS -->
+<div class="tab-panel active" id="tab-ads">
+  <div class="panel-head"><h2>إدارة <span>الحملات الإعلانية</span></h2><p>إدارة احترافية مع متابعة يومية وتقارير شهرية</p></div>
+  <div class="grid">
+    <div class="pkg">
+      <div class="pkg-icon">📘</div><div class="pkg-name">منصة واحدة</div>
+      <div class="pkg-desc">إدارة حملاتك على منصة واحدة بمتابعة يومية وتحسين مستمر</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">1,500 ر.س</div><div class="price-new">750 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">8,000 ج.م</div><div class="price-new">4,000 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>إدارة منصة واحدة</li><li>متابعة يومية</li><li>تقرير شهري</li><li>تحسين مستمر</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('منصة واحدة','750 ر.س / شهرياً','4,000 ج.م / شهرياً','200')">🛒 اطلب الآن</button>
+    </div>
+    <div class="pkg">
+      <div class="pkg-icon">📱</div><div class="pkg-name">منصتين</div>
+      <div class="pkg-desc">إدارة منصتين بتكامل كامل لأفضل نتائج</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">2,500 ر.س</div><div class="price-new">1,250 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">13,000 ج.م</div><div class="price-new">6,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>إدارة منصتين</li><li>استراتيجية متكاملة</li><li>متابعة يومية</li><li>تقارير مفصلة</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('منصتين','1,250 ر.س / شهرياً','6,500 ج.م / شهرياً','334')">🛒 اطلب الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأكثر طلباً</div>
+      <div class="pkg-icon">🚀</div><div class="pkg-name">3 منصات</div>
+      <div class="pkg-desc">حضور قوي على 3 منصات بأقل تكلفة لكل نتيجة</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">3,500 ر.س</div><div class="price-new">1,750 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">18,000 ج.م</div><div class="price-new">9,000 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>إدارة 3 منصات</li><li>استراتيجية موحدة</li><li>متابعة يومية</li><li>تقارير أسبوعية وشهرية</li><li>CRO مجاناً</li></ul>
+      <button class="pkg-btn" onclick="openModal('3 منصات','1,750 ر.س / شهرياً','9,000 ج.م / شهرياً','467')">🚀 اطلب الآن</button>
+    </div>
+    <div class="pkg">
+      <div class="pkg-icon">🏆</div><div class="pkg-name">كل المنصات</div>
+      <div class="pkg-desc">Meta · Google · TikTok · Snapchat — تغطية شاملة</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">5,000 ر.س</div><div class="price-new">2,500 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">26,000 ج.م</div><div class="price-new">13,000 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>4+ منصات</li><li>استراتيجية متكاملة</li><li>متابعة يومية مكثفة</li><li>تقارير أسبوعية وشهرية</li><li>CRO + تتبع مجاناً</li></ul>
+      <button class="pkg-btn" onclick="openModal('كل المنصات','2,500 ر.س / شهرياً','13,000 ج.م / شهرياً','667')">🚀 اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONSULT -->
+<div class="tab-panel" id="tab-consult">
+  <div class="panel-head"><h2>باقات <span>الاستشارة</span></h2><p>جلسات متخصصة لتحسين أداء حملاتك</p></div>
+  <div class="grid grid-2">
+    <div class="pkg">
+      <div class="pkg-icon">💬</div><div class="pkg-name">استشارة ساعة</div>
+      <div class="pkg-desc">جلسة مركزة لحل مشكلة محددة أو تقييم حملاتك الحالية</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">300 ر.س</div><div class="price-new">150 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">جلسة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">1,500 ج.م</div><div class="price-new">750 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">جلسة واحدة</div></div>
+      </div>
+      <ul class="features"><li>جلسة ساعة كاملة</li><li>تقييم حملاتك</li><li>توصيات فورية</li><li>تسجيل الجلسة</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('استشارة ساعة','150 ر.س','750 ج.م','40')">📅 احجز الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأفضل قيمة</div>
+      <div class="pkg-icon">📅</div><div class="pkg-name">استشارة شهرية</div>
+      <div class="pkg-desc">4 جلسات شهرية لمتابعة مستمرة وتحسين استراتيجيتك</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">1,000 ر.س</div><div class="price-new">500 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">5,000 ج.م</div><div class="price-new">2,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
+      </div>
+      <ul class="features"><li>4 جلسات شهرية</li><li>متابعة مستمرة</li><li>خطة تحسين شهرية</li><li>تسجيل الجلسات</li><li>دعم واتساب</li></ul>
+      <button class="pkg-btn" onclick="openModal('استشارة شهرية','500 ر.س / شهرياً','2,500 ج.م / شهرياً','134')">📅 احجز الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKING -->
+<div class="tab-panel" id="tab-tracking">
+  <div class="panel-head"><h2>أدوات <span>التتبع</span></h2><p>ربط Pixel وConversions API لتتبع دقيق</p></div>
+  <div class="grid grid-2">
+    <div class="pkg">
+      <div class="pkg-icon">🎯</div><div class="pkg-name">Meta Pixel + Conversions API</div>
+      <div class="pkg-desc">ربط Meta Pixel وإعداد CAPI لتتبع دقيق بدون فقدان بيانات</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">300 ر.س</div><div class="price-new">150 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">1,500 ج.م</div><div class="price-new">750 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>ربط Meta Pixel</li><li>إعداد Conversions API</li><li>اختبار الأحداث</li><li>تقرير تأكيد</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('Meta Pixel + CAPI','150 ر.س','750 ج.م','40')">⚡ اطلب الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأشمل</div>
+      <div class="pkg-icon">⚡</div><div class="pkg-name">باقة تتبع شاملة</div>
+      <div class="pkg-desc">ربط كامل — Meta + Google + TikTok + Snapchat</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">1,000 ر.س</div><div class="price-new">500 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">5,000 ج.م</div><div class="price-new">2,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>Meta Pixel + CAPI</li><li>Google Tag Manager</li><li>TikTok Pixel</li><li>Snapchat Pixel</li><li>GA4 + تقرير شامل</li></ul>
+      <button class="pkg-btn" onclick="openModal('باقة تتبع شاملة','500 ر.س','2,500 ج.م','134')">⚡ اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- DATA -->
+<div class="tab-panel" id="tab-data">
+  <div class="panel-head"><h2>تحليل <span>البيانات</span></h2><p>لوحات تحكم احترافية وتقارير دقيقة</p></div>
+  <div class="grid grid-2">
+    <div class="pkg">
+      <div class="pkg-icon">📊</div><div class="pkg-name">إعداد GA4 + Looker Studio</div>
+      <div class="pkg-desc">ربط Google Analytics 4 وإعداد لوحة تقارير مخصصة</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">800 ر.س</div><div class="price-new">400 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">4,000 ج.م</div><div class="price-new">2,000 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>ربط GA4</li><li>إعداد Looker Studio</li><li>لوحة مخصصة</li><li>شرح الاستخدام</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('GA4 + Looker Studio','400 ر.س','2,000 ج.م','107')">⚡ اطلب الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأفضل نتائج</div>
+      <div class="pkg-icon">📈</div><div class="pkg-name">تقارير شهرية مستمرة</div>
+      <div class="pkg-desc">تقارير تحليلية شهرية مع توصيات التحسين</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">500 ر.س</div><div class="price-new">250 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">2,500 ج.م</div><div class="price-new">1,250 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>تقرير شهري مفصل</li><li>تحليل كل منصة</li><li>توصيات التحسين</li><li>مقارنة بالشهر السابق</li></ul>
+      <button class="pkg-btn" onclick="openModal('تقارير شهرية','250 ر.س / شهرياً','1,250 ج.م / شهرياً','67')">⚡ اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- LANDING -->
+<div class="tab-panel" id="tab-landing">
+  <div class="panel-head"><h2>صفحات <span>الهبوط</span></h2><p>تصميم ديناميكي يحول الزوار إلى عملاء</p></div>
+  <div class="grid grid-2">
+    <div class="pkg featured" style="max-width:400px;margin:0 auto">
+      <div class="pkg-badge">الأكثر طلباً</div>
+      <div class="pkg-icon">🎯</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
+      <div class="pkg-desc">تصميم احترافي بهوية براندك مع ربط أدوات التتبع وسرعة تحميل عالية</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">200 ر.س</div><div class="price-new">100 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">800 ج.م</div><div class="price-new">400 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>تصميم متجاوب</li><li>هوية بصرية مخصصة</li><li>ربط Pixel + Analytics</li><li>نموذج أو واتساب</li><li>سرعة تحميل عالية</li><li>تسليم 5 أيام</li></ul>
+      <button class="pkg-btn" onclick="openModal('صفحة هبوط ديناميكية','100 ر.س','400 ج.م','27')">🚀 اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- ECOM -->
+<div class="tab-panel" id="tab-ecom">
+  <div class="panel-head"><h2>إعداد <span>المتاجر الإلكترونية</span></h2><p>إعداد متجرك باحترافية على جميع المنصات</p></div>
+  <div class="grid">
+    <div class="pkg">
+      <div class="pkg-icon">🛒</div><div class="pkg-name">إعداد Zid أو Salla</div>
+      <div class="pkg-desc">إعداد كامل مع الأقسام والدفع والشحن والدومين</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">600 ر.س</div><div class="price-new">300 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">3,000 ج.م</div><div class="price-new">1,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>إعداد الأقسام</li><li>إعدادات الدفع والشحن</li><li>ربط الدومين</li><li>SEO أساسي</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('إعداد Zid أو Salla','300 ر.س','1,500 ج.م','80')">🛒 اطلب الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأكثر طلباً</div>
+      <div class="pkg-icon">🚀</div><div class="pkg-name">إعداد Shopify</div>
+      <div class="pkg-desc">إعداد كامل مع تخصيص الثيم وبوابات الدفع الدولية</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">1,000 ر.س</div><div class="price-new">500 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">5,000 ج.م</div><div class="price-new">2,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>تخصيص الثيم</li><li>بوابات دفع دولية</li><li>شحن دولي</li><li>ربط الدومين + SSL</li></ul>
+      <button class="pkg-btn" onclick="openModal('إعداد Shopify','500 ر.س','2,500 ج.م','134')">🛒 اطلب الآن</button>
+    </div>
+    <div class="pkg">
+      <div class="pkg-icon">📦</div><div class="pkg-name">رفع المنتجات</div>
+      <div class="pkg-desc">رفع المنتجات باحترافية مع الأوصاف والصور والفئات</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">300 ر.س</div><div class="price-new">150 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">حتى 50 منتج</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">1,500 ج.م</div><div class="price-new">750 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">حتى 50 منتج</div></div>
+      </div>
+      <ul class="features"><li>رفع حتى 50 منتج</li><li>أوصاف وصور احترافية</li><li>تصنيف الفئات</li><li>+150 ر.س لكل 50 إضافي</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('رفع المنتجات','150 ر.س','750 ج.م','40')">📦 اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEO -->
+<div class="tab-panel" id="tab-seo">
+  <div class="panel-head"><h2>تحسين محركات البحث <span>SEO</span></h2><p>ارتفع في نتائج Google باحترافية</p></div>
+  <div class="grid grid-2">
+    <div class="pkg">
+      <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO الأساسية</div>
+      <div class="pkg-desc">تهيئة شاملة للموقع أو المتجر لمحركات البحث</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">600 ر.س</div><div class="price-new">300 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">3,000 ج.م</div><div class="price-new">1,500 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
+      </div>
+      <ul class="features"><li>تحليل الكلمات المفتاحية</li><li>تهيئة Meta Tags</li><li>تحسين سرعة الموقع</li><li>ربط Search Console</li><li>تقرير شامل</li></ul>
+      <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','300 ر.س','1,500 ج.م','80')">⚡ اطلب الآن</button>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأفضل نتائج</div>
+      <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري مستمر</div>
+      <div class="pkg-desc">تحسين مستمر لضمان الصعود والحفاظ على الترتيب</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active-s" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="badge-50">خصم 50%</div><div class="price-old">800 ر.س</div><div class="price-new">400 <span style="font-size:.9rem">ر.س</span></div><div class="price-unit">شهرياً</div></div>
+        <div class="price-egp"><div class="badge-50">خصم 50%</div><div class="price-old">4,000 ج.م</div><div class="price-new">2,000 <span style="font-size:.9rem">ج.م</span></div><div class="price-unit">شهرياً</div></div>
+      </div>
+      <ul class="features"><li>تحسين مستمر</li><li>بناء الروابط الخلفية</li><li>تحسين المحتوى</li><li>تقرير شهري</li><li>متابعة المنافسين</li></ul>
+      <button class="pkg-btn" onclick="openModal('SEO شهري','400 ر.س / شهرياً','2,000 ج.م / شهرياً','107')">🚀 اطلب الآن</button>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <!-- MODAL -->
@@ -151,253 +361,14 @@ section{padding:4rem 2rem}
     <div id="paypal-button-container"></div>
     <div class="modal-or">— أو —</div>
     <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="modal-instapay">💳 ادفع عبر InstaPay</a>
-    <a id="waLink" href="https://wa.me/966580395350" target="_blank" class="modal-wa">💬 تواصل واتساب للتأكيد</a>
-  </div>
-</div>
-
-<!-- SECTION 1 -->
-<section>
-  <div class="container">
-    <div class="section-label">إدارة المنصات</div>
-    <h2 class="section-title">باقات إدارة الحملات الإعلانية</h2>
-    <p class="section-sub">إدارة احترافية لحملاتك على جميع المنصات مع متابعة يومية وتقارير شهرية</p>
-    <div class="packages-grid">
-      <div class="pkg-card">
-        <div class="pkg-icon">📘</div>
-        <div class="pkg-name">منصة واحدة</div>
-        <div class="pkg-desc">إدارة حملاتك على منصة واحدة بمتابعة يومية وتحسين مستمر</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">1,500 ر.س</div><div class="price-num">750 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">8,000 ج.م</div><div class="price-num">4,000 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>إدارة منصة واحدة</li><li>متابعة يومية للحملات</li><li>تقرير شهري</li><li>تحسين مستمر للأداء</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('منصة واحدة')">🛒 اطلب الآن</button>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-icon">📱</div>
-        <div class="pkg-name">منصتين</div>
-        <div class="pkg-desc">إدارة منصتين بتكامل كامل بينهم لأفضل نتائج</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">2,500 ر.س</div><div class="price-num">1,250 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">13,000 ج.م</div><div class="price-num">6,500 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>إدارة منصتين</li><li>استراتيجية متكاملة</li><li>متابعة يومية</li><li>تقارير مفصلة</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('منصتين')">🛒 اطلب الآن</button>
-      </div>
-      <div class="pkg-card featured">
-        <div class="pkg-badge">الأكثر طلباً</div>
-        <div class="pkg-icon">🚀</div>
-        <div class="pkg-name">3 منصات</div>
-        <div class="pkg-desc">حضور قوي على 3 منصات بأقل تكلفة لكل نتيجة</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">3,500 ر.س</div><div class="price-num">1,750 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">18,000 ج.م</div><div class="price-num">9,000 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>إدارة 3 منصات</li><li>استراتيجية موحدة</li><li>متابعة يومية</li><li>تقارير أسبوعية وشهرية</li><li>تحسين CRO مجاناً</li>
-        </ul>
-        <button class="pkg-btn" onclick="openModal('3 منصات')">🚀 اطلب الآن</button>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-icon">🏆</div>
-        <div class="pkg-name">كل المنصات</div>
-        <div class="pkg-desc">Meta · Google · TikTok · Snapchat — تغطية شاملة</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">5,000 ر.س</div><div class="price-num">2,500 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">26,000 ج.م</div><div class="price-num">13,000 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>4+ منصات إعلانية</li><li>استراتيجية متكاملة</li><li>متابعة يومية مكثفة</li><li>تقارير أسبوعية وشهرية</li><li>CRO + تتبع مجاناً</li>
-        </ul>
-        <button class="pkg-btn" onclick="openModal('كل المنصات')">🚀 اطلب الآن</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- SECTION 2 -->
-<section>
-  <div class="container">
-    <div class="section-label">الاستشارات</div>
-    <h2 class="section-title">باقات الاستشارة</h2>
-    <p class="section-sub">جلسات استشارية متخصصة لتحسين أداء حملاتك</p>
-    <div class="packages-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-      <div class="pkg-card">
-        <div class="pkg-icon">💬</div>
-        <div class="pkg-name">استشارة ساعة</div>
-        <div class="pkg-desc">جلسة مركزة لحل مشكلة محددة أو تقييم حملاتك الحالية</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">300 ر.س</div><div class="price-num">150 <span class="price-curr">ر.س</span></div><div class="price-unit">جلسة واحدة</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">1,500 ج.م</div><div class="price-num">750 <span class="price-curr">ج.م</span></div><div class="price-unit">جلسة واحدة</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>جلسة مدتها ساعة</li><li>تقييم حملاتك الحالية</li><li>توصيات فورية</li><li>تسجيل الجلسة</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('استشارة ساعة')">📅 اطلب الآن</button>
-      </div>
-      <div class="pkg-card featured">
-        <div class="pkg-badge">الأفضل قيمة</div>
-        <div class="pkg-icon">📅</div>
-        <div class="pkg-name">استشارة شهرية</div>
-        <div class="pkg-desc">4 جلسات شهرية لمتابعة مستمرة وتحسين استراتيجيتك</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">1,000 ر.س</div><div class="price-num">500 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">5,000 ج.م</div><div class="price-num">2,500 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>4 جلسات شهرية</li><li>متابعة مستمرة</li><li>خطة تحسين شهرية</li><li>تسجيل كل الجلسات</li><li>دعم واتساب</li>
-        </ul>
-        <button class="pkg-btn" onclick="openModal('استشارة شهرية')">📅 اطلب الآن</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- SECTION 3 -->
-<section>
-  <div class="container">
-    <div class="section-label">تحليل البيانات</div>
-    <h2 class="section-title">باقات ربط وتحليل البيانات</h2>
-    <p class="section-sub">إعداد لوحات تحكم احترافية وتقارير تحليلية</p>
-    <div class="packages-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-      <div class="pkg-card">
-        <div class="pkg-icon">📊</div>
-        <div class="pkg-name">إعداد GA4 + Looker Studio</div>
-        <div class="pkg-desc">ربط Google Analytics 4 وإعداد لوحة تقارير احترافية</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">800 ر.س</div><div class="price-num">400 <span class="price-curr">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">4,000 ج.م</div><div class="price-num">2,000 <span class="price-curr">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>ربط GA4 بالموقع</li><li>إعداد Looker Studio</li><li>لوحة تقارير مخصصة</li><li>شرح كامل للاستخدام</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('GA4 + Looker Studio')">⚡ اطلب الآن</button>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-icon">📈</div>
-        <div class="pkg-name">تقارير شهرية مستمرة</div>
-        <div class="pkg-desc">تقارير تحليلية شهرية مفصلة لأداء حملاتك</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">500 ر.س</div><div class="price-num">250 <span class="price-curr">ر.س</span></div><div class="price-unit">شهرياً</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">2,500 ج.م</div><div class="price-num">1,250 <span class="price-curr">ج.م</span></div><div class="price-unit">شهرياً</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>تقرير شهري مفصل</li><li>تحليل أداء كل منصة</li><li>توصيات التحسين</li><li>مقارنة بالشهر السابق</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('تقارير شهرية')">⚡ اطلب الآن</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- SECTION 4 -->
-<section>
-  <div class="container">
-    <div class="section-label">أدوات التتبع</div>
-    <h2 class="section-title">باقات ربط أدوات التتبع</h2>
-    <p class="section-sub">ربط Pixel وConversions API وTag Manager لتتبع دقيق</p>
-    <div class="packages-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-      <div class="pkg-card">
-        <div class="pkg-icon">🎯</div>
-        <div class="pkg-name">Meta Pixel + Conversions API</div>
-        <div class="pkg-desc">ربط Meta Pixel وإعداد Conversions API لتتبع دقيق</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">300 ر.س</div><div class="price-num">150 <span class="price-curr">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">1,500 ج.م</div><div class="price-num">750 <span class="price-curr">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>ربط Meta Pixel</li><li>إعداد Conversions API</li><li>اختبار الأحداث</li><li>تقرير تأكيد الربط</li>
-        </ul>
-        <button class="pkg-btn outline" onclick="openModal('Meta Pixel + CAPI')">⚡ اطلب الآن</button>
-      </div>
-      <div class="pkg-card featured">
-        <div class="pkg-badge">الأشمل</div>
-        <div class="pkg-icon">⚡</div>
-        <div class="pkg-name">باقة تتبع شاملة</div>
-        <div class="pkg-desc">ربط كامل لجميع أدوات التتبع — Meta + Google + TikTok + Snapchat</div>
-        <div class="pkg-price">
-          <div class="price-sar show"><div class="discount-badge">خصم 50%</div><div class="price-old">1,000 ر.س</div><div class="price-num">500 <span class="price-curr">ر.س</span></div><div class="price-unit">مرة واحدة</div></div>
-          <div class="price-egp"><div class="discount-badge">خصم 50%</div><div class="price-old">5,000 ج.م</div><div class="price-num">2,500 <span class="price-curr">ج.م</span></div><div class="price-unit">مرة واحدة</div></div>
-        </div>
-        <ul class="pkg-features">
-          <li>Meta Pixel + CAPI</li><li>Google Tag Manager</li><li>TikTok Pixel</li><li>Snapchat Pixel</li><li>اختبار كامل للأحداث</li><li>GA4 + تقرير شامل</li>
-        </ul>
-        <button class="pkg-btn" onclick="openModal('باقة تتبع شاملة')">⚡ اطلب الآن</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: LANDING PAGES -->
-<section>
-  <div class="container">
-    <div class="section-label">تصميم صفحات الهبوط</div>
-    <h2 class="section-title">باقات تصميم <span>صفحات الهبوط</span></h2>
-    <p class="section-sub">صفحات هبوط ديناميكية احترافية تحول الزوار إلى عملاء فعليين</p>
-    <div class="packages-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-      <div class="pkg-card featured">
-        <div class="pkg-badge">الأكثر طلباً</div>
-        <div class="pkg-icon">🎯</div>
-        <div class="pkg-name">صفحة هبوط ديناميكية</div>
-        <div class="pkg-desc">تصميم صفحة هبوط احترافية بهوية براندك مع تصميم ديناميكي متجاوب مع جميع الأجهزة</div>
-        <div class="pkg-price">
-          <div class="price-sar show">
-            <div class="discount-badge">خصم 50%</div>
-            <div class="price-old">200 ر.س</div>
-            <div class="price-num">100 <span class="price-curr">ر.س</span></div>
-            <div class="price-unit">مرة واحدة</div>
-          </div>
-          <div class="price-egp">
-            <div class="discount-badge">خصم 50%</div>
-            <div class="price-old">800 ج.م</div>
-            <div class="price-num">400 <span class="price-curr">ج.م</span></div>
-            <div class="price-unit">مرة واحدة</div>
-          </div>
-        </div>
-        <ul class="pkg-features">
-          <li>تصميم ديناميكي متجاوب</li>
-          <li>هوية بصرية مخصصة للبراند</li>
-          <li>ربط Meta Pixel + Google Analytics</li>
-          <li>نموذج تواصل أو واتساب</li>
-          <li>سرعة تحميل عالية</li>
-          <li>تسليم خلال 5 أيام عمل</li>
-        </ul>
-        <button class="pkg-btn" onclick="openModal('صفحة هبوط ديناميكية')">🚀 اطلب الآن</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- PAYMENT METHODS -->
-<div class="container">
-  <div class="payment-section" style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;margin-top:2rem;text-align:center">
-    <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.5rem">طرق الدفع المتاحة</h3>
-    <p style="color:var(--muted);font-size:0.9rem">ادفع بالطريقة الأنسب لك بأمان تام</p>
-    <div class="payment-methods">
-      <div class="pay-method"><span>💳</span> PayPal</div>
-      <div class="pay-method"><span>🏦</span> تحويل بنكي</div>
-      <div class="pay-method"><span>💚</span> إنستاباي</div>
-    </div>
+    <a id="waLink" href="https://wa.me/966580395350" target="_blank" class="modal-wa">💬 تواصل واتساب</a>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta-section">
-  <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.35);color:var(--purple-light);font-size:0.82rem;padding:0.4rem 1rem;border-radius:50px;margin-bottom:1.5rem">🎁 استشارة أولى مجانية</div>
-  <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;margin-bottom:0.8rem">مش متأكد من الباقة المناسبة؟</h2>
-  <p style="color:var(--muted);font-size:0.95rem">تواصل معي وأنا هساعدك تختار الباقة الأنسب لميزانيتك وأهدافك</p>
+  <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.5rem">مش متأكد من الخدمة المناسبة؟</h2>
+  <p style="color:var(--muted);font-size:.9rem">تواصل معي واختار الباقة الأنسب لميزانيتك وأهدافك</p>
   <div class="cta-btns">
     <a href="https://wa.me/966580395350" class="btn-wa" target="_blank">🇸🇦 واتساب السعودية</a>
     <a href="https://wa.me/201090200880" class="btn-wa" target="_blank">🇪🇬 واتساب مصر</a>
@@ -405,92 +376,46 @@ section{padding:4rem 2rem}
 </div>
 
 <script>
-// Packages data
-const pkgs = {
-  'منصة واحدة':    {sar:'750 ر.س / شهرياً', egp:'4,000 ج.م / شهرياً', usd:'200'},
-  'منصتين':         {sar:'1,250 ر.س / شهرياً', egp:'6,500 ج.م / شهرياً', usd:'334'},
-  '3 منصات':        {sar:'1,750 ر.س / شهرياً', egp:'9,000 ج.م / شهرياً', usd:'467'},
-  'كل المنصات':     {sar:'2,500 ر.س / شهرياً', egp:'13,000 ج.م / شهرياً', usd:'667'},
-  'استشارة ساعة':   {sar:'150 ر.س', egp:'750 ج.م', usd:'40'},
-  'استشارة شهرية':  {sar:'500 ر.س / شهرياً', egp:'2,500 ج.م / شهرياً', usd:'134'},
-  'GA4 + Looker Studio': {sar:'400 ر.س', egp:'2,000 ج.م', usd:'107'},
-  'تقارير شهرية':   {sar:'250 ر.س / شهرياً', egp:'1,250 ج.م / شهرياً', usd:'67'},
-  'Meta Pixel + CAPI':   {sar:'150 ر.س', egp:'750 ج.م', usd:'40'},
-  'باقة تتبع شاملة': {sar:'500 ر.س', egp:'2,500 ج.م', usd:'134'},
-  'صفحة هبوط ديناميكية': {sar:'100 ر.س', egp:'400 ج.م', usd:'27'},
-};
-
-let currentPkg = null;
-let paypalLoaded = false;
-let ppButtons = null;
-
-function setCurrency(curr) {
-  document.querySelectorAll('.price-sar').forEach(el => el.classList.toggle('show', curr === 'sar'));
-  document.querySelectorAll('.price-egp').forEach(el => el.classList.toggle('show', curr === 'egp'));
-  document.getElementById('sar-btn').className = 'curr-btn' + (curr === 'sar' ? ' active-sar' : '');
-  document.getElementById('egp-btn').className = 'curr-btn' + (curr === 'egp' ? ' active-egp' : '');
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
 }
-
-function openModal(pkgName) {
-  currentPkg = pkgs[pkgName];
-  if (!currentPkg) return;
-  
-  const curr = document.getElementById('sar-btn').classList.contains('active-sar') ? 'sar' : 'egp';
-  document.getElementById('modalPkgName').textContent = pkgName;
-  document.getElementById('modalPrice').textContent = curr === 'sar' ? currentPkg.sar : currentPkg.egp;
-  
-  // WhatsApp message
-  const msg = encodeURIComponent('مرحباً، أنا مهتم بـ ' + pkgName + ' — ' + (curr === 'sar' ? currentPkg.sar : currentPkg.egp));
-  document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + msg;
-  
-  document.getElementById('paypal-button-container').innerHTML = '';
+function setCurr(btn,curr){
+  const box=btn.closest('.price-box');
+  box.querySelectorAll('.curr-btn').forEach(b=>b.className='curr-btn');
+  btn.classList.add(curr==='s'?'active-s':'active-e');
+  box.querySelector('.price-sar').classList.toggle('show',curr==='s');
+  box.querySelector('.price-egp').classList.toggle('show',curr==='e');
+}
+let paypalLoaded=false,ppButtons=null;
+function openModal(pkg,sar,egp,usd){
+  document.getElementById('modalPkgName').textContent=pkg;
+  document.getElementById('modalPrice').textContent=sar;
+  const msg=encodeURIComponent('مرحباً، أنا مهتم بـ '+pkg+' — '+sar);
+  document.getElementById('waLink').href='https://wa.me/966580395350?text='+msg;
+  document.getElementById('paypal-button-container').innerHTML='';
   document.getElementById('payModal').classList.add('open');
-  
-  // Load PayPal
-  loadPayPal(function() {
-    if (ppButtons) { try { ppButtons.close(); } catch(e) {} }
-    ppButtons = paypal.Buttons({
-      createOrder: function(data, actions) {
-        return fetch('/.netlify/functions/create-paypal-order', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({amount: currentPkg.usd, currency: 'USD', packageName: pkgName})
-        }).then(function(r) { return r.json(); }).then(function(d) { return d.id; });
-      },
-      onApprove: function(data, actions) {
-        return fetch('/.netlify/functions/capture-paypal-order', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({orderID: data.orderID})
-        }).then(function() {
-          closeModal();
-          alert('تم الدفع بنجاح! سيتواصل معك محمد خلال 24 ساعة 🎉');
-        });
-      },
-      onError: function() {
-        console.log('PayPal error');
-      }
+  loadPayPal(function(){
+    if(ppButtons){try{ppButtons.close()}catch(e){}}
+    ppButtons=paypal.Buttons({
+      createOrder:function(d,a){return fetch('/.netlify/functions/create-paypal-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:usd,currency:'USD',packageName:pkg})}).then(r=>r.json()).then(d=>d.id)},
+      onApprove:function(data){return fetch('/.netlify/functions/capture-paypal-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderID:data.orderID})}).then(function(){closeModal();alert('تم الدفع بنجاح! سيتواصل معك محمد خلال 24 ساعة 🎉')})},
+      onError:function(){}
     });
     ppButtons.render('#paypal-button-container');
   });
 }
-
-function closeModal() {
-  document.getElementById('payModal').classList.remove('open');
-}
-
-function loadPayPal(cb) {
-  if (paypalLoaded && window.paypal) { cb(); return; }
-  var s = document.createElement('script');
-  s.src = 'https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
-  s.onload = function() { paypalLoaded = true; cb(); };
+function closeModal(){document.getElementById('payModal').classList.remove('open')}
+document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+function loadPayPal(cb){
+  if(paypalLoaded&&window.paypal){cb();return}
+  var s=document.createElement('script');
+  s.src='https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
+  s.onload=function(){paypalLoaded=true;cb()};
   document.body.appendChild(s);
 }
-
-// Close modal on overlay click
-document.getElementById('payModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
 </script>
 </body>
 </html>
