@@ -268,14 +268,14 @@ function loadPayPal() {
     paypal.Buttons({
       createOrder: function(data, actions) {
         if (!validateForm()) return;
-        return fetch('/.netlify/functions/create-paypal-order', {
+        return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({amount: '5.33', currency: 'USD', packageName: 'خطتك في دقائق'})
         }).then(r => r.json()).then(d => d.id);
       },
       onApprove: function(data) {
-        return fetch('/.netlify/functions/capture-paypal-order', {
+        return fetch('https://paypal-capture-order.mr-mohammedihab.workers.dev', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({orderID: data.orderID})
@@ -331,7 +331,7 @@ async function generatePlan() {
   }, 4000);
 
   try {
-    const response = await fetch('/.netlify/functions/generate-plan', {
+    const response = await fetch('https://generate-plan.mr-mohammedihab.workers.dev', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
