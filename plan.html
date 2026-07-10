@@ -208,9 +208,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
     <div class="payment-methods">
       <div id="paypal-container"></div>
       <div class="pay-or">أو</div>
-      <a href="#" class="pay-btn pay-instapay" onclick="handleInstapay()">
-        💳 ادفع عبر InstaPay + تواصل واتساب
-      </a>
+      <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;text-align:center">
+        <p style="font-size:.82rem;color:#94A3B8;margin-bottom:.8rem">ادفع عبر InstaPay ثم أرسل إيصال الدفع على واتساب</p>
+        <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="pay-btn pay-instapay" style="margin-bottom:.6rem;display:block" onclick="">
+          💳 افتح InstaPay للدفع
+        </a>
+        <a href="#" class="pay-btn" style="background:linear-gradient(135deg,#25D366,#128C7E);display:block" onclick="handleInstapay()">
+          📲 أرسل إيصال الدفع على واتساب
+        </a>
+      </div>
     </div>
   </div>
 
@@ -256,6 +262,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 <script>
 let planText = '';
 let paypalLoaded = false;
+
+// Access code check
+const urlParams = new URLSearchParams(window.location.search);
+const accessCode = urlParams.get('access');
+const VALID_CODES = ['MOEHAB2026', 'PLAN2026', 'INSTAPAY'];
+const hasAccess = VALID_CODES.includes(accessCode);
+
+if (hasAccess) {
+  // Hide payment, show form directly
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('paymentCard').style.display = 'none';
+    document.getElementById('formCard').style.display = 'block';
+    // Add confirm button
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = 'pay-btn pay-paypal';
+    confirmBtn.style.marginTop = '1rem';
+    confirmBtn.innerHTML = '⚡ توليد خطتي التسويقية الآن';
+    confirmBtn.onclick = function() {
+      if (!validateForm()) return;
+      generatePlan();
+    };
+    document.getElementById('formCard').appendChild(confirmBtn);
+  });
+}
 
 // Currency detection
 let isEgypt = false;
