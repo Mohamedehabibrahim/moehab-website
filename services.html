@@ -511,8 +511,8 @@ function openModal(pkg,sar,egp,usd){
   loadPayPal(function(){
     if(ppButtons){try{ppButtons.close()}catch(e){}}
     ppButtons=paypal.Buttons({
-      createOrder:function(d,a){return fetch('/.netlify/functions/create-paypal-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:usd,currency:'USD',packageName:pkg})}).then(r=>r.json()).then(d=>d.id)},
-      onApprove:function(data){return fetch('/.netlify/functions/capture-paypal-order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderID:data.orderID})}).then(function(){closeModal();alert('تم الدفع بنجاح! سيتواصل معك محمد خلال 24 ساعة 🎉')})},
+      createOrder:function(d,a){return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:usd,currency:'USD',packageName:pkg})}).then(r=>r.json()).then(d=>d.id)},
+      onApprove:function(data){return fetch('https://paypal-capture-order.mr-mohammedihab.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderID:data.orderID})}).then(function(){closeModal();alert('تم الدفع بنجاح! سيتواصل معك محمد خلال 24 ساعة 🎉')})},
       onError:function(){}
     });
     ppButtons.render('#paypal-button-container');
