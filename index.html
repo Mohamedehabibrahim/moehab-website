@@ -715,11 +715,11 @@ footer{
     <div class="reveal">
       <div class="section-label" style="justify-content:center">تواصل معي</div>
       <h2 class="section-title">ابدأ معي النهارده</h2>
-      <p class="section-sub" style="margin:0 auto">استشارة مجانية بدون أي التزام — بشوف وضعك وبقولك إيه أفضل خطوة</p>
+      <p class="section-sub" style="margin:0 auto">استشارة مجانية بدون أي التزام — سأقوم بتحليل وضعك وتحديد أفضل خطة إعلانية لتحقيق أهدافك</p>
     </div>
     <form class="contact-form reveal" id="contactForm">
       <div class="form-row">
-        <input type="text" class="form-input" placeholder="الاسم" required>
+        <input type="text" class="form-input" placeholder="الاسم الكريم" required>
         <input type="tel" class="form-input" placeholder="رقم الواتساب" required>
       </div>
       <select class="form-select" required>
@@ -731,8 +731,8 @@ footer{
         <option>استشارة</option>
         <option>أخرى</option>
       </select>
-      <textarea class="form-textarea" placeholder="اكتب رسالتك هنا..."></textarea>
-      <button type="submit" class="form-submit">ابعت الرسالة 🚀</button>
+      <textarea class="form-textarea" placeholder="كيف يمكنني مساعدتك؟"></textarea>
+      <button type="submit" class="form-submit">أرسل رسالتك 🚀</button>
     </form>
     <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap">
       <a href="https://wa.me/966580395350" style="color:#25D366;text-decoration:none;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.4rem" target="_blank">
@@ -760,17 +760,33 @@ footer{
 
 <script>
 // EmailJS
-(function(){if(typeof emailjs!=='undefined')emailjs.init('rGVd6Ic-IkuX_RM1M')})();
+(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';s.onload=function(){emailjs.init('rGVd6Ic-IkuX_RM1M')};document.head.appendChild(s)})();
 
 // Form
 document.getElementById('contactForm').addEventListener('submit',function(e){
   e.preventDefault();
   const btn=this.querySelector('.form-submit');
+  const form=this;
+  const name=form.querySelector('input[type="text"]').value;
+  const phone=form.querySelector('input[type="tel"]').value;
+  const service=form.querySelector('select').value;
+  const message=form.querySelector('textarea').value;
   btn.textContent='جاري الإرسال...';btn.disabled=true;
-  setTimeout(function(){
-    btn.textContent='تم الإرسال! ✅';
-    setTimeout(function(){btn.textContent='ابعت الرسالة 🚀';btn.disabled=false},3000);
-  },1500);
+  emailjs.send('service_9cxvcty','template_pe3ve0g',{
+    from_name:name,
+    phone:phone,
+    service:service,
+    message:message,
+    to_name:'محمد إيهاب'
+  }).then(function(){
+    btn.textContent='تم الإرسال بنجاح ✅';
+    form.reset();
+    setTimeout(function(){btn.textContent='أرسل رسالتك 🚀';btn.disabled=false},3000);
+  }).catch(function(err){
+    console.log(err);
+    btn.textContent='حدث خطأ — تواصل واتساب';
+    btn.disabled=false;
+  });
 });
 
 // Reveal
