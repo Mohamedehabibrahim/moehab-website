@@ -435,8 +435,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
     <div class="modal-price" id="modalPrice"></div>
     <div id="paypal-button-container"></div>
     <div class="modal-or">— أو —</div>
-    <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="modal-instapay">💳 ادفع عبر InstaPay</a>
-    <a id="waLink" href="https://wa.me/966580395350" target="_blank" class="modal-wa">💬 تواصل واتساب</a>
+    <a id="instaLink" href="#" target="_blank" class="modal-instapay" onclick="openInstapay()">💳 ادفع عبر InstaPay</a>
+    <a id="waLink" href="https://wa.me/966580395350" target="_blank" class="modal-wa">💬 تواصل واتساب للتأكيد</a>
   </div>
 </div>
 
@@ -517,6 +517,17 @@ function openModal(pkg,sar,egp,usd){
     });
     ppButtons.render('#paypal-button-container');
   });
+}
+function openInstapay(){
+  const pkg = document.getElementById('modalPkgName').textContent;
+  const price = document.getElementById('modalPrice').textContent;
+  const msg = encodeURIComponent(
+    'مرحباً، أريد الاشتراك في خدمة: ' + pkg + '\n' +
+    'السعر: ' + price + '\n\n' +
+    'سأقوم بإرسال إيصال الدفع عبر InstaPay على الرقم:\n' +
+    'https://ipn.eg/S/bas6h2/instapay/0iNsR1'
+  );
+  window.open('https://wa.me/966580395350?text=' + msg, '_blank');
 }
 function closeModal(){document.getElementById('payModal').classList.remove('open')}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
