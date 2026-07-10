@@ -116,8 +116,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
   <h1>خطتك التسويقية<br><span>في دقائق</span></h1>
   <p>أدخل بيانات مشروعك واحصل على خطة تسويقية رقمية كاملة ومخصصة لك فوراً</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem">
-    <div class="hero-price">🇸🇦 <span>20</span> ريال</div>
-    <div class="hero-price">🇪🇬 <span>100</span> جنيه</div>
+    <div class="hero-price" id="heroPrice">⟳ جاري التحميل...</div>
   </div>
 </div>
 
@@ -203,14 +202,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
   <div class="payment-card" id="paymentCard">
     <h2>💳 إتمام الدفع</h2>
     <div class="payment-amount">
-      <div class="amount-num">20 ريال <span style="font-size:1.2rem;color:#94A3B8;font-weight:400">|</span> 100 ج.م</div>
+      <div class="amount-num" id="payAmount">⟳</div>
       <div class="amount-label">خطة تسويقية كاملة مخصصة لمشروعك</div>
     </div>
     <div class="payment-methods">
       <div id="paypal-container"></div>
       <div class="pay-or">أو</div>
-      <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="pay-btn pay-instapay" onclick="handleInstapay()">
-        💳 ادفع عبر InstaPay
+      <a href="#" class="pay-btn pay-instapay" onclick="handleInstapay()">
+        💳 ادفع عبر InstaPay + تواصل واتساب
       </a>
     </div>
   </div>
@@ -258,6 +257,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 let planText = '';
 let paypalLoaded = false;
 
+// Currency detection
+let isEgypt = false;
+let planAmount = '5.33'; // USD for SAR
+
+async function detectCurrency() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    if (data.country_code === 'EG') {
+      isEgypt = true;
+      planAmount = '1.00'; // ~100 EGP in USD
+      document.getElementById('heroPrice').innerHTML = '🇪🇬 <span>100</span> جنيه فقط';
+      document.getElementById('payAmount').textContent = '100 ج.م';
+    } else {
+      isEgypt = false;
+      planAmount = '5.33';
+      document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
+      document.getElementById('payAmount').textContent = '20 ريال';
+    }
+  } catch(e) {
+    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال | 🇪🇬 <span>100</span> ج.م';
+    document.getElementById('payAmount').textContent = '20 ريال | 100 ج.م';
+  }
+}
+detectCurrency();
+
 // Load PayPal
 function loadPayPal() {
   if (paypalLoaded) return;
@@ -271,7 +296,7 @@ function loadPayPal() {
         return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({amount: '5.33', currency: 'USD', packageName: 'خطتك في دقائق'})
+          body: JSON.stringify({amount: planAmount, currency: 'USD', packageName: 'خطتك في دقائق'})
         }).then(r => r.json()).then(d => d.id);
       },
       onApprove: function(data) {
@@ -303,11 +328,17 @@ function validateForm() {
 
 function handleInstapay() {
   if (!validateForm()) return false;
-  setTimeout(() => {
-    if (confirm('هل أتممت الدفع عبر InstaPay؟')) {
-      generatePlan();
-    }
-  }, 3000);
+  const projectName = document.getElementById('projectName').value;
+  const goal = document.getElementById('goal').value;
+  const msg = encodeURIComponent(
+    'مرحباً، أريد الحصول على خطة تسويقية ⚡\n\n' +
+    'اسم المشروع: ' + projectName + '\n' +
+    'الهدف: ' + goal + '\n\n' +
+    'سأقوم بالدفع ' + (isEgypt ? '100 ج.م' : '20 ريال') + ' عبر InstaPay:\n' +
+    'https://ipn.eg/S/bas6h2/instapay/0iNsR1\n\n' +
+    'وسأرسل إيصال الدفع هنا للتأكيد.'
+  );
+  window.open('https://wa.me/966580395350?text=' + msg, '_blank');
 }
 
 async function generatePlan() {
