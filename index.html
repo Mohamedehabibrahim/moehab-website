@@ -486,12 +486,34 @@ footer{
 </nav>
 
 <!-- AI BANNER -->
-<div style="background:linear-gradient(90deg,#6D28D9,#0EA5E9);padding:.7rem 2rem;text-align:center;position:relative;z-index:99;margin-top:60px">
-  <a href="/plan" style="text-decoration:none;color:white;display:inline-flex;align-items:center;gap:.8rem;font-size:.88rem;font-weight:700;flex-wrap:wrap;justify-content:center">
-    <span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:20px;font-size:.75rem">جديد ⚡</span>
-    أنشئ خطتك التسويقية بالذكاء الاصطناعي في دقائق — 20 ريال | 100 ج.م
-    <span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:20px;font-size:.75rem">ابدأ الآن ←</span>
-  </a>
+<div style="background:linear-gradient(90deg,#6D28D9,#4F46E5,#0EA5E9);padding:.6rem 0;position:relative;z-index:99;margin-top:60px;overflow:hidden">
+  <style>
+    .marquee-track { display:flex; width:max-content; animation: marquee 20s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-item { display:inline-flex; align-items:center; gap:.6rem; padding:0 2rem; white-space:nowrap; color:white; font-size:.85rem; font-weight:700; text-decoration:none; }
+    .marquee-badge { background:rgba(255,255,255,0.2); padding:2px 8px; border-radius:20px; font-size:.72rem; }
+    .marquee-sep { color:rgba(255,255,255,0.3); padding:0 .5rem; }
+  </style>
+  <div class="marquee-track">
+    <a href="/plan" class="marquee-item"><span class="marquee-badge">⚡ جديد</span> خطتك التسويقية في دقائق <span class="marquee-badge">20 ريال</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/cv" class="marquee-item"><span class="marquee-badge">📄 جديد</span> سيرتك الذاتية في دقائق <span class="marquee-badge">15 ريال</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/plan" class="marquee-item"><span class="marquee-badge">🤖 AI</span> خطة تسويقية مخصصة لمشروعك <span class="marquee-badge">ابدأ الآن</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/cv" class="marquee-item"><span class="marquee-badge">✨ احترافي</span> سيرة ذاتية بالذكاء الاصطناعي <span class="marquee-badge">75 جنيه</span></a>
+    <span class="marquee-sep">✦</span>
+    <!-- Duplicate for seamless loop -->
+    <a href="/plan" class="marquee-item"><span class="marquee-badge">⚡ جديد</span> خطتك التسويقية في دقائق <span class="marquee-badge">20 ريال</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/cv" class="marquee-item"><span class="marquee-badge">📄 جديد</span> سيرتك الذاتية في دقائق <span class="marquee-badge">15 ريال</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/plan" class="marquee-item"><span class="marquee-badge">🤖 AI</span> خطة تسويقية مخصصة لمشروعك <span class="marquee-badge">ابدأ الآن</span></a>
+    <span class="marquee-sep">✦</span>
+    <a href="/cv" class="marquee-item"><span class="marquee-badge">✨ احترافي</span> سيرة ذاتية بالذكاء الاصطناعي <span class="marquee-badge">75 جنيه</span></a>
+    <span class="marquee-sep">✦</span>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -556,11 +578,11 @@ footer{
       ⚡ مدعوم بالذكاء الاصطناعي
     </div>
     <h2 style="font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:900;line-height:1.2;margin-bottom:1rem">
-      أنشئ خطتك التسويقية<br>
+      خدماتنا بالذكاء الاصطناعي<br>
       <span style="background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">في أقل من 10 دقائق</span>
     </h2>
     <p style="color:#94A3B8;font-size:1rem;max-width:550px;margin:0 auto 2rem;line-height:1.8">
-      أدخل بيانات مشروعك واحصل على خطة تسويقية رقمية كاملة ومخصصة لك — منصات + استهداف + ميزانية + توقعات
+      خطة تسويقية كاملة أو سيرة ذاتية احترافية — مخصصة لك فوراً بدون انتظار
     </p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem">
       <div style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:#64748B">✅ خطة مخصصة لمشروعك</div>
