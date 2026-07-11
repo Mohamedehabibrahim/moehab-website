@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سيرتك الذاتية في دقائق ⚡ | MO EHAB</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7C3AED;--pl:#9F67FF;--cyan:#06B6D4;--bg:#0F172A;--card:#111827;--text:#F8FAFC;--muted:#94A3B8;--dim:#64748B;--border:rgba(124,58,237,0.2)}
+body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:.15em;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-back{color:var(--muted);text-decoration:none;font-size:.85rem}
+.nav-back:hover{color:var(--text)}
+
+.hero{padding:5rem 2rem 2rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:70%;height:60%;background:radial-gradient(ellipse,rgba(124,58,237,0.15),transparent 65%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:var(--pl);font-size:.8rem;font-weight:700;padding:.4rem 1rem;border-radius:20px;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.2;margin-bottom:.8rem}
+.hero h1 span{background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto 1rem;line-height:1.8}
+.hero-price{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(6,182,212,0.1));border:1px solid rgba(124,58,237,0.3);padding:.5rem 1.5rem;border-radius:20px;font-size:1rem;font-weight:800}
+.hero-price span{color:#FCD34D;font-size:1.2rem}
+
+.steps{display:flex;justify-content:center;gap:1rem;padding:1.5rem 2rem;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted)}
+.step-num{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-arrow{color:var(--dim);font-size:.8rem}
+
+.main{max-width:760px;margin:0 auto;padding:1rem 2rem 6rem}
+
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.form-card h2{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-full{grid-column:1/-1}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-label{font-size:.82rem;font-weight:700;color:var(--muted)}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Cairo',sans-serif;font-size:.9rem;transition:border-color .2s;direction:rtl;width:100%}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--pl)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--dim)}
+.form-select option{background:#111827}
+.form-textarea{resize:vertical;min-height:80px}
+
+.payment-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.payment-card h2{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem}
+.payment-amount{text-align:center;padding:1.5rem;background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(6,182,212,0.05));border:1px solid rgba(124,58,237,0.2);border-radius:12px;margin-bottom:1.5rem}
+.amount-num{font-family:'Poppins',sans-serif;font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.amount-label{font-size:.82rem;color:var(--muted);margin-top:.3rem}
+.pay-btn{width:100%;padding:.85rem;border-radius:10px;border:none;font-family:'Cairo',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.8rem}
+.pay-paypal{background:linear-gradient(135deg,#003087,#009cde);color:white}
+.pay-instapay{background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;text-decoration:none}
+#paypal-container{min-height:150px;margin-bottom:.5rem}
+.pay-or{text-align:center;color:var(--dim);font-size:.82rem;margin:.5rem 0}
+
+.loading-card{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:3rem 2rem;text-align:center}
+.loading-card.show{display:block}
+.loading-icon{font-size:3rem;animation:spin 2s linear infinite;display:inline-block}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.loading-title{font-size:1.2rem;font-weight:800;margin:1rem 0 .5rem}
+.loading-sub{color:var(--muted);font-size:.88rem}
+.loading-steps{margin-top:1.5rem;display:flex;flex-direction:column;gap:.5rem}
+.loading-step{font-size:.82rem;color:var(--dim);display:flex;align-items:center;gap:.5rem;justify-content:center}
+.loading-step.done{color:#10B981}
+.loading-step.active{color:var(--pl)}
+
+.result-card{display:none;background:var(--card);border:1px solid rgba(16,185,129,0.3);border-radius:16px;padding:2rem}
+.result-card.show{display:block;animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.result-title{font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:.5rem}
+.result-badge{background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:10px}
+.result-actions{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.btn-download{background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.8rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:all .3s}
+.btn-download:hover{transform:translateY(-1px)}
+.btn-consult{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:.8rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+
+/* CV Preview */
+.cv-preview{background:#fff;color:#1a1a1a;border-radius:8px;padding:0;overflow:hidden;margin-top:1rem}
+.cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;text-align:center}
+.cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}
+.cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}
+.cv-contact{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:.82rem;opacity:.85}
+.cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}
+.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}
+.cv-main{}
+.cv-section{margin-bottom:1.2rem}
+.cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}
+.cv-item{margin-bottom:.8rem}
+.cv-item-title{font-size:.9rem;font-weight:800;color:#1a1a1a}
+.cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}
+.cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}
+.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}
+.cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}
+.cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}
+.cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
+
+.trust{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;padding:1rem 2rem;margin-bottom:1rem}
+.trust-item{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--dim)}
+
+@media(max-width:640px){
+  .form-grid{grid-template-columns:1fr}
+  .form-full{grid-column:1}
+  .cv-body{grid-template-columns:1fr}
+  .result-actions{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MO EHAB</div>
+  <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
+</nav>
+
+<div class="hero">
+  <div><span class="hero-badge">⚡ مدعوم بالذكاء الاصطناعي</span></div>
+  <h1>سيرتك الذاتية<br><span>في دقائق</span></h1>
+  <p>أدخل بياناتك واحصل على سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي — جاهزة للتحميل فوراً</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem">
+    <div class="hero-price" id="heroPrice">⟳ جاري التحميل...</div>
+  </div>
+</div>
+
+<div class="steps">
+  <div class="step"><div class="step-num">١</div><span>أدخل بياناتك</span></div>
+  <div class="step-arrow">←</div>
+  <div class="step"><div class="step-num">٢</div><span>ادفع</span></div>
+  <div class="step-arrow">←</div>
+  <div class="step"><div class="step-num">٣</div><span>حمّل سيرتك فوراً</span></div>
+</div>
+
+<div class="main">
+
+  <!-- FORM -->
+  <div class="form-card" id="formCard">
+    <h2>📋 بياناتك الأساسية</h2>
+    <div class="form-grid">
+
+      <!-- الاسم -->
+      <div class="form-group">
+        <label class="form-label">الاسم الكامل *</label>
+        <input type="text" class="form-input" id="fullName" placeholder="محمد أحمد">
+      </div>
+
+      <!-- المسمى -->
+      <div class="form-group">
+        <label class="form-label">المسمى الوظيفي *</label>
+        <input type="text" class="form-input" id="jobTitle" placeholder="مسوق رقمي | مطور ويب">
+      </div>
+
+      <!-- الإيميل -->
+      <div class="form-group">
+        <label class="form-label">البريد الإلكتروني *</label>
+        <input type="email" class="form-input" id="email" placeholder="example@email.com">
+      </div>
+
+      <!-- الهاتف مع كود الدولة -->
+      <div class="form-group">
+        <label class="form-label">رقم الهاتف *</label>
+        <div style="display:flex;gap:.5rem">
+          <select class="form-select" id="countryCode" style="width:120px;flex-shrink:0">
+            <option value="+966">🇸🇦 +966</option>
+            <option value="+20">🇪🇬 +20</option>
+            <option value="+971">🇦🇪 +971</option>
+            <option value="+965">🇰🇼 +965</option>
+            <option value="+974">🇶🇦 +974</option>
+            <option value="+973">🇧🇭 +973</option>
+            <option value="+968">🇴🇲 +968</option>
+            <option value="+962">🇯🇴 +962</option>
+            <option value="+961">🇱🇧 +961</option>
+            <option value="+249">🇸🇩 +249</option>
+          </select>
+          <input type="tel" class="form-input" id="phone" placeholder="5XX XXX XXXX" style="flex:1">
+        </div>
+      </div>
+
+      <!-- سنوات الخبرة -->
+      <div class="form-group">
+        <label class="form-label">سنوات الخبرة *</label>
+        <select class="form-select" id="experience">
+          <option value="" disabled selected>اختر</option>
+          <option>حديث التخرج</option>
+          <option>1-3 سنوات</option>
+          <option>3-5 سنوات</option>
+          <option>5-10 سنوات</option>
+          <option>أكثر من 10 سنوات</option>
+        </select>
+      </div>
+
+      <!-- المجال -->
+      <div class="form-group">
+        <label class="form-label">مجال العمل *</label>
+        <select class="form-select" id="workExp">
+          <option value="" disabled selected>اختر مجالك</option>
+          <option>التسويق الرقمي والإعلانات</option>
+          <option>البرمجة وتطوير الويب</option>
+          <option>التصميم الجرافيكي</option>
+          <option>المبيعات وخدمة العملاء</option>
+          <option>المحاسبة والمالية</option>
+          <option>الموارد البشرية</option>
+          <option>إدارة المشاريع</option>
+          <option>الطب والصحة</option>
+          <option>التعليم والتدريب</option>
+          <option>الهندسة</option>
+          <option>الإعلام والصحافة</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+
+      <!-- المهارات -->
+      <div class="form-group form-full">
+        <label class="form-label">المهارات * — اختر من القائمة أو أضف يدوياً</label>
+        <div id="skillsChips" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;min-height:36px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:.5rem"></div>
+        <div id="skillsSuggestions" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem"></div>
+        <div style="display:flex;gap:.5rem">
+          <input type="text" class="form-input" id="skillInput" placeholder="أضف مهارة يدوياً..." onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillManual()}">
+          <button type="button" onclick="addSkillManual()" style="background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap">+ إضافة</button>
+        </div>
+        <input type="hidden" id="skills">
+      </div>
+
+      <!-- التعليم -->
+      <div class="form-group">
+        <label class="form-label">المؤهل الدراسي *</label>
+        <select class="form-select" id="education">
+          <option value="" disabled selected>اختر</option>
+          <option>دكتوراه</option>
+          <option>ماجستير</option>
+          <option>بكالوريوس</option>
+          <option>دبلوم</option>
+          <option>ثانوية عامة</option>
+          <option>دورات وشهادات مهنية</option>
+        </select>
+      </div>
+
+      <!-- التخصص -->
+      <div class="form-group">
+        <label class="form-label">التخصص والجامعة</label>
+        <input type="text" class="form-input" id="eduDetails" placeholder="تسويق — جامعة القاهرة">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">سنة التخرج</label>
+        <select class="form-select" id="gradYear">
+          <option value="" disabled selected>اختر السنة</option>
+          <option>2026</option>
+          <option>2025</option>
+          <option>2024</option>
+          <option>2023</option>
+          <option>2022</option>
+          <option>2021</option>
+          <option>2020</option>
+          <option>2019</option>
+          <option>2018</option>
+          <option>2017</option>
+          <option>2016</option>
+          <option>2015</option>
+          <option>2014</option>
+          <option>2013</option>
+          <option>2012</option>
+          <option>2011</option>
+          <option>2010</option>
+          <option>2009</option>
+          <option>2008</option>
+          <option>2007</option>
+          <option>2006</option>
+          <option>2005</option>
+          <option>2004</option>
+          <option>2003</option>
+          <option>2002</option>
+          <option>2001</option>
+          <option>2000</option>
+          <option>1999</option>
+          <option>1998</option>
+          <option>1997</option>
+          <option>1996</option>
+          <option>1995</option>
+          <option>1994</option>
+          <option>1993</option>
+          <option>1992</option>
+          <option>1991</option>
+          <option>1990</option>
+        </select>
+      </div>
+
+      <!-- اللغات -->
+      <div class="form-group form-full">
+        <label class="form-label">اللغات</label>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);cursor:pointer">
+            <input type="checkbox" id="lang_ar" checked style="accent-color:var(--purple)"> العربية
+          </label>
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);cursor:pointer">
+            <input type="checkbox" id="lang_en" style="accent-color:var(--purple)"> الإنجليزية
+          </label>
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);cursor:pointer">
+            <input type="checkbox" id="lang_fr" style="accent-color:var(--purple)"> الفرنسية
+          </label>
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);cursor:pointer">
+            <input type="checkbox" id="lang_tr" style="accent-color:var(--purple)"> التركية
+          </label>
+        </div>
+      </div>
+
+      <!-- الدولة والمدينة -->
+      <div class="form-group">
+        <label class="form-label">الدولة</label>
+        <select class="form-select" id="country">
+          <option value="" disabled selected>اختر الدولة</option>
+          <option>المملكة العربية السعودية</option>
+          <option>مصر</option>
+          <option>الإمارات العربية المتحدة</option>
+          <option>الكويت</option>
+          <option>قطر</option>
+          <option>البحرين</option>
+          <option>عُمان</option>
+          <option>الأردن</option>
+          <option>لبنان</option>
+          <option>السودان</option>
+          <option>المغرب</option>
+          <option>تونس</option>
+          <option>الجزائر</option>
+          <option>أخرى</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">المدينة</label>
+        <input type="text" class="form-input" id="city" placeholder="الرياض / القاهرة / دبي">
+      </div>
+
+      <!-- لغة السيرة -->
+      <div class="form-group">
+        <label class="form-label">لغة السيرة الذاتية *</label>
+        <div style="display:flex;gap:.8rem;margin-top:.3rem">
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--text);cursor:pointer;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.3);padding:.5rem 1rem;border-radius:8px;flex:1;justify-content:center">
+            <input type="radio" name="cvLang" id="cvLangAr" value="ar" checked style="accent-color:var(--purple)"> 🇸🇦 عربي
+          </label>
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--text);cursor:pointer;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.3);padding:.5rem 1rem;border-radius:8px;flex:1;justify-content:center">
+            <input type="radio" name="cvLang" id="cvLangEn" value="en" style="accent-color:var(--purple)"> 🇺🇸 English
+          </label>
+        </div>
+      </div>
+
+      <!-- صورة شخصية -->
+      <div class="form-group">
+        <label class="form-label">صورة شخصية (اختياري)</label>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <div id="photoPreview" style="width:60px;height:60px;border-radius:50%;background:rgba(124,58,237,0.15);border:2px dashed rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;overflow:hidden">👤</div>
+          <div style="flex:1">
+            <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(this)">
+            <button type="button" onclick="document.getElementById('photoInput').click()" style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:var(--pl);padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;width:100%">📷 رفع صورة</button>
+            <p style="font-size:.72rem;color:var(--dim);margin-top:.3rem">JPG أو PNG — حجم مناسب</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="payment-card" id="paymentCard">
+    <h2>💳 إتمام الدفع</h2>
+    <div class="payment-amount">
+      <div class="amount-num" id="payAmount" style="font-family:'Poppins',sans-serif;font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,#9F67FF,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">⟳</div>
+      <div class="amount-label">سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي</div>
+    </div>
+    <div id="paypal-container"></div>
+    <div class="pay-or">— أو —</div>
+    <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;text-align:center">
+      <p style="font-size:.82rem;color:#94A3B8;margin-bottom:.8rem">ادفع عبر InstaPay ثم أرسل إيصال الدفع على واتساب</p>
+      <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="pay-btn pay-instapay" style="margin-bottom:.6rem;display:flex">
+        💳 افتح InstaPay للدفع
+      </a>
+      <a href="#" class="pay-btn" style="background:linear-gradient(135deg,#25D366,#128C7E);display:flex" onclick="handleInstapay()">
+        📲 أرسل إيصال الدفع على واتساب
+      </a>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading-card" id="loadingCard">
+    <div class="loading-icon">⚡</div>
+    <div class="loading-title">جاري إعداد سيرتك الذاتية</div>
+    <div class="loading-sub">الذكاء الاصطناعي يكتب سيرتك الذاتية الاحترافية</div>
+    <div class="loading-steps">
+      <div class="loading-step done" id="step1">✓ تم استلام بياناتك</div>
+      <div class="loading-step active" id="step2">⟳ كتابة النبذة الشخصية</div>
+      <div class="loading-step" id="step3">○ صياغة الخبرات باحترافية</div>
+      <div class="loading-step" id="step4">○ تصميم السيرة الذاتية</div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="result-title">✅ سيرتك الذاتية جاهزة <span class="result-badge">احترافية</span></div>
+    </div>
+    <div id="cvPreview"></div>
+    <div class="result-actions">
+      <button class="btn-download" onclick="downloadCV()">📄 تحميل PDF</button>
+      <a href="https://wa.me/966580395350" target="_blank" class="btn-consult">💬 تواصل معنا</a>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="trust-item">🔒 بياناتك آمنة</div>
+    <div class="trust-item">⚡ سيرة فورية</div>
+    <div class="trust-item">🎨 تصميم احترافي</div>
+    <div class="trust-item">📄 قابلة للتحميل</div>
+  </div>
+
+</div>
+
+<script>
+let cvData = {};
+let paypalLoaded = false;
+let isEgypt = false;
+let cvAmount = '4.00';
+
+// Access code check
+const urlParams = new URLSearchParams(window.location.search);
+const accessCode = urlParams.get('access');
+const VALID_CODES = ['MOEHAB2026', 'CV2026', 'INSTAPAY'];
+const hasAccess = VALID_CODES.includes(accessCode);
+
+if (hasAccess) {
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('paymentCard').style.display = 'none';
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = 'pay-btn pay-paypal';
+    confirmBtn.style.marginTop = '1rem';
+    confirmBtn.style.width = '100%';
+    confirmBtn.innerHTML = '⚡ إنشاء سيرتي الذاتية الآن';
+    confirmBtn.onclick = function() { if (validateForm()) generateCV(); };
+    document.getElementById('formCard').appendChild(confirmBtn);
+  });
+}
+
+// Currency detection
+async function detectCurrency() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    if (data.country_code === 'EG') {
+      isEgypt = true;
+      cvAmount = '1.00';
+      document.getElementById('heroPrice').innerHTML = '🇪🇬 <span>75</span> جنيه فقط';
+      document.getElementById('payAmount').innerHTML = '75 <span style="font-size:1.2rem">ج.م</span>';
+    } else {
+      isEgypt = false;
+      cvAmount = '4.00';
+      document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>15</span> ريال فقط';
+      document.getElementById('payAmount').innerHTML = '15 <span style="font-size:1.2rem">ريال</span>';
+    }
+  } catch(e) {
+    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>15</span> ريال | 🇪🇬 <span>75</span> ج.م';
+    document.getElementById('payAmount').innerHTML = '15 ريال <span style="font-size:1rem;opacity:.5">|</span> 75 ج.م';
+  }
+}
+detectCurrency();
+
+function validateForm() {
+  const required = ['fullName','jobTitle','email','phone','experience','workExp','skills','education'];
+  for (const id of required) {
+    if (!document.getElementById(id).value) {
+      alert('من فضلك أكمل جميع الحقول المطلوبة *');
+      document.getElementById(id).focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+function loadPayPal() {
+  if (paypalLoaded) return;
+  const s = document.createElement('script');
+  s.src = 'https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
+  s.onload = function() {
+    paypalLoaded = true;
+    paypal.Buttons({
+      createOrder: function() {
+        if (!validateForm()) return;
+        return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({amount: cvAmount, currency: 'USD', packageName: 'سيرتك في دقائق'})
+        }).then(r => r.json()).then(d => d.id);
+      },
+      onApprove: function(data) {
+        return fetch('https://paypal-capture-order.mr-mohammedihab.workers.dev', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({orderID: data.orderID})
+        }).then(() => generateCV());
+      },
+      onError: function() { alert('حدث خطأ في الدفع — تواصل معنا على واتساب'); }
+    }).render('#paypal-container');
+  };
+  document.body.appendChild(s);
+}
+
+function handleInstapay() {
+  const name = document.getElementById('fullName').value || 'العميل';
+  const msg = encodeURIComponent(
+    'مرحباً، أريد إنشاء سيرة ذاتية ⚡\n\n' +
+    'الاسم: ' + name + '\n' +
+    'سأقوم بالدفع ' + (isEgypt ? '75 ج.م' : '15 ريال') + ' عبر InstaPay:\n' +
+    'https://ipn.eg/S/bas6h2/instapay/0iNsR1\n\n' +
+    'وسأرسل إيصال الدفع هنا للتأكيد.'
+  );
+  window.open('https://wa.me/966580395350?text=' + msg, '_blank');
+}
+
+async function generateCV() {
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('paymentCard').style.display = 'none';
+  document.getElementById('loadingCard').classList.add('show');
+
+  setTimeout(() => {
+    document.getElementById('step2').className = 'loading-step done';
+    document.getElementById('step2').textContent = '✓ كتابة النبذة الشخصية';
+    document.getElementById('step3').className = 'loading-step active';
+    document.getElementById('step3').textContent = '⟳ صياغة الخبرات باحترافية';
+  }, 2000);
+  setTimeout(() => {
+    document.getElementById('step3').className = 'loading-step done';
+    document.getElementById('step3').textContent = '✓ صياغة الخبرات باحترافية';
+    document.getElementById('step4').className = 'loading-step active';
+    document.getElementById('step4').textContent = '⟳ تصميم السيرة الذاتية';
+  }, 4000);
+
+  try {
+    const response = await fetch('https://generate-plan.mr-mohammedihab.workers.dev', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        projectName: 'CV',
+        industry: 'سيرة ذاتية',
+        audience: document.getElementById('fullName').value,
+        budget: document.getElementById('experience').value,
+        goal: document.getElementById('jobTitle').value,
+        country: document.getElementById('country').value || (isEgypt ? 'مصر' : 'السعودية'),
+        extra: `
+          الاسم: ${document.getElementById('fullName').value}
+          المسمى: ${document.getElementById('jobTitle').value}
+          الإيميل: ${document.getElementById('email').value}
+          الهاتف: ${document.getElementById('countryCode').value + document.getElementById('phone').value}
+          الموقع: ${document.getElementById('location').value}
+          الخبرة: ${document.getElementById('experience').value}
+          الخبرات: ${document.getElementById('workExp').value}
+          الدولة: ${document.getElementById('country').value}
+          المدينة: ${document.getElementById('city').value}
+          لغة السيرة: ${document.getElementById('cvLangAr').checked ? 'عربي - اكتب كل شيء بالعربية' : 'English - write everything in English'}
+          المهارات: ${document.getElementById('skills').value}
+          التعليم: ${document.getElementById('education').value} - ${document.getElementById('eduDetails').value} ${document.getElementById('gradYear').value}
+          اللغات: ${[
+            document.getElementById('lang_ar').checked ? 'العربية' : '',
+            document.getElementById('lang_en').checked ? 'الإنجليزية' : '',
+            document.getElementById('lang_fr').checked ? 'الفرنسية' : '',
+            document.getElementById('lang_tr').checked ? 'التركية' : ''
+          ].filter(Boolean).join(', ')}
+          النبذة: ${document.getElementById('summary').value}
+
+          اكتب نبذة شخصية احترافية لا تزيد عن 3 أسطر.
+          ثم اكتب وصفاً احترافياً لكل خبرة عملية.
+          الرد يكون JSON فقط بهذا الشكل:
+          {"summary":"...","experiences":[{"title":"...","company":"...","period":"...","desc":"..."}],"skills":["..."],"languages":[{"name":"...","level":"...","percent":80}]}
+        `
+      })
+    });
+
+    const data = await response.json();
+    let cvJson = {};
+    try {
+      const jsonMatch = data.plan.match(/\{[\s\S]*\}/);
+      if (jsonMatch) cvJson = JSON.parse(jsonMatch[0]);
+    } catch(e) { cvJson = {}; }
+
+    renderCV(cvJson);
+
+  } catch(err) {
+    alert('حدث خطأ — يرجى التواصل على واتساب');
+  }
+}
+
+function renderCV(ai) {
+  const name = document.getElementById('fullName').value;
+  const title = document.getElementById('jobTitle').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('countryCode').value + document.getElementById('phone').value;
+  const location = [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join('، ');
+  const education = document.getElementById('education').value + (document.getElementById('eduDetails').value ? ' — ' + document.getElementById('eduDetails').value : '');
+  const skills = ai.skills || document.getElementById('skills').value.split(',').map(s => s.trim());
+  const summary = ai.summary || document.getElementById('summary').value;
+  const experiences = ai.experiences || [];
+  const languages = ai.languages || [{name:'العربية',level:'ممتاز',percent:100},{name:'الإنجليزية',level:'جيد',percent:70}];
+
+  const cvHTML = `
+  <div class="cv-preview" id="cvContent">
+    <div class="cv-header">
+      <div class="cv-name">${name}</div>
+      <div class="cv-title">${title}</div>
+      <div class="cv-contact">
+        ${email ? `<span>✉ ${email}</span>` : ''}
+        ${phone ? `<span>📞 ${phone}</span>` : ''}
+        ${location ? `<span>📍 ${location}</span>` : ''}
+      </div>
+    </div>
+    <div class="cv-body">
+      <div class="cv-sidebar">
+        <div class="cv-section">
+          <div class="cv-section-title">المهارات</div>
+          ${skills.map(s => `<span class="cv-skill">${s}</span>`).join('')}
+        </div>
+        <div class="cv-section">
+          <div class="cv-section-title">التعليم</div>
+          <div class="cv-item-desc" style="font-size:.82rem;color:#444">${education}</div>
+        </div>
+        <div class="cv-section">
+          <div class="cv-section-title">اللغات</div>
+          ${languages.map(l => `
+            <div class="cv-lang">
+              <span>${l.name}</span>
+              <span style="font-size:.72rem;color:#888">${l.level}</span>
+            </div>
+            <div class="cv-lang-bar"><div class="cv-lang-fill" style="width:${l.percent}%"></div></div>
+          `).join('')}
+        </div>
+      </div>
+      <div class="cv-main">
+        ${summary ? `
+        <div class="cv-section">
+          <div class="cv-section-title">نبذة شخصية</div>
+          <div class="cv-item-desc">${summary}</div>
+        </div>` : ''}
+        <div class="cv-section">
+          <div class="cv-section-title">الخبرات العملية</div>
+          ${experiences.length > 0 ? experiences.map(exp => `
+            <div class="cv-item">
+              <div class="cv-item-title">${exp.title}</div>
+              <div class="cv-item-sub">${exp.company} ${exp.period ? '| ' + exp.period : ''}</div>
+              <div class="cv-item-desc">${exp.desc}</div>
+            </div>
+          `).join('') : `<div class="cv-item-desc">${document.getElementById('workExp').value}</div>`}
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('loadingCard').classList.remove('show');
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('cvPreview').innerHTML = cvHTML;
+}
+
+function downloadCV() {
+  const name = document.getElementById('fullName').value;
+  const cvContent = document.getElementById('cvContent').outerHTML;
+  const win = window.open('', '_blank');
+  win.document.write(`
+    <!DOCTYPE html><html lang="ar" dir="rtl">
+    <head><meta charset="UTF-8"><title>CV - ${name}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;direction:rtl}
+    .cv-preview{background:#fff;color:#1a1a1a}
+    .cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;text-align:center}
+    .cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}
+    .cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}
+    .cv-contact{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:.82rem;opacity:.85}
+    .cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}
+    .cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}
+    .cv-section{margin-bottom:1.2rem}
+    .cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}
+    .cv-item{margin-bottom:.8rem}
+    .cv-item-title{font-size:.9rem;font-weight:800;color:#1a1a1a}
+    .cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}
+    .cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}
+    .cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}
+    .cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}
+    .cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}
+    .cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
+    .footer{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}
+    @media print{button{display:none}.footer{display:none}}
+    </style></head>
+    <body>
+    ${cvContent}
+    <div class="footer">تم إنشاؤها بواسطة MO EHAB | moehabads.com</div>
+    <br><button onclick="window.print()" style="display:block;margin:1rem auto;padding:.5rem 1.5rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:6px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer">🖨️ طباعة / حفظ PDF</button>
+    </body></html>
+  `);
+  win.document.close();
+}
+
+loadPayPal();
+</script>
+</body>
+</html>
