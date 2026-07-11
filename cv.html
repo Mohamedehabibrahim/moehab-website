@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
 .main{max-width:760px;margin:0 auto;padding:1rem 2rem 6rem}
 
-.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;position:relative;z-index:1}
 .form-card h2{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .form-full{grid-column:1/-1}
@@ -214,15 +214,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
       </div>
 
       <!-- المهارات -->
-      <div class="form-group form-full">
+      <div class="form-group form-full" style="position:relative;z-index:20">
         <label class="form-label">المهارات * — اختر مجال العمل أولاً لتظهر الاقتراحات</label>
-        <div id="skillsChips" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;min-height:36px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:.5rem"></div>
+        <div id="skillsChips" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;min-height:36px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:.5rem;position:relative;z-index:10"></div>
         <div id="skillsSuggestions" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem">
           <span id="skillsHint" style="color:var(--dim);font-size:.78rem;font-style:italic">← اختر مجال العمل أولاً لتظهر مهارات مقترحة</span>
         </div>
         <div style="display:flex;gap:.5rem">
-          <input type="text" class="form-input" id="skillInput" placeholder="أضف مهارة يدوياً..." onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillManual()}">
-          <button type="button" onclick="addSkillManual()" style="background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap">+ إضافة</button>
+          <input type="text" class="form-input" id="skillInput" placeholder="أضف مهارة يدوياً..." style="position:relative;z-index:10" onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillManual()}">
+          <button type="button" onclick="addSkillManual()" style="background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;position:relative;z-index:10">+ إضافة</button>
         </div>
         <input type="hidden" id="skills">
       </div>
@@ -709,6 +709,88 @@ function downloadCV() {
 }
 
 loadPayPal();
+
+// ═══ SKILLS SYSTEM ═══
+const skillsByField = {
+  'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','Email Marketing','تحليل البيانات','Canva','Excel'],
+  'البرمجة وتطوير الويب': ['Python','JavaScript','React','Vue.js','Node.js','PHP','Laravel','MySQL','MongoDB','Git','HTML/CSS','Flutter'],
+  'التصميم الجرافيكي': ['Photoshop','Illustrator','Figma','Canva','After Effects','Premiere Pro','InDesign','UI/UX','Branding'],
+  'المبيعات وخدمة العملاء': ['مهارات التفاوض','CRM','خدمة العملاء','المبيعات B2B','Cold Calling','Excel','Salesforce','إدارة العملاء'],
+  'المحاسبة والمالية': ['Excel','QuickBooks','SAP','تحليل مالي','ميزانيات','ضرائب','IFRS','Power BI','محاسبة تكاليف'],
+  'الموارد البشرية': ['التوظيف','تقييم الأداء','Excel','SAP HR','تدريب وتطوير','قانون العمل','Payroll','كتابة السياسات'],
+  'إدارة المشاريع': ['PMP','Agile','Scrum','MS Project','Jira','Trello','إدارة المخاطر','تخطيط استراتيجي','Excel'],
+  'الطب والصحة': ['الفحص السريري','التشخيص','الرعاية الصحية','أنظمة المستشفيات','الإسعافات الأولية','التوثيق الطبي'],
+  'التعليم والتدريب': ['تصميم المناهج','التدريس','LMS','Zoom','تقييم الطلاب','إدارة الفصل','التعليم الإلكتروني'],
+  'الهندسة': ['AutoCAD','SolidWorks','MATLAB','إدارة المشاريع','الرسم الهندسي','PLC','SCADA','ISO'],
+  'الإعلام والصحافة': ['الكتابة الإبداعية','التحرير','Premiere Pro','التصوير','SEO','وسائل التواصل','Adobe Suite'],
+  'أخرى': ['Excel','Word','PowerPoint','التواصل','العمل الجماعي','إدارة الوقت','حل المشكلات']
+};
+
+let selectedSkills = [];
+
+function updateSuggestions() {
+  const field = document.getElementById('workExp').value;
+  const container = document.getElementById('skillsSuggestions');
+  container.innerHTML = '';
+  if (!field) {
+    container.innerHTML = '<span style="color:#64748B;font-size:.78rem;font-style:italic">← اختر مجال العمل أولاً</span>';
+    return;
+  }
+  const suggestions = skillsByField[field] || [];
+  suggestions.forEach(function(skill) {
+    if (selectedSkills.indexOf(skill) === -1) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.textContent = '+ ' + skill;
+      chip.style.cssText = 'background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);color:#A78BFA;padding:3px 10px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;margin:2px';
+      chip.onclick = function() { addSkill(skill); };
+      container.appendChild(chip);
+    }
+  });
+}
+
+function addSkill(skill) {
+  if (selectedSkills.indexOf(skill) !== -1) return;
+  selectedSkills.push(skill);
+  renderChips();
+  updateSuggestions();
+  document.getElementById('skills').value = selectedSkills.join(', ');
+}
+
+function addSkillManual() {
+  var input = document.getElementById('skillInput');
+  var val = input.value.trim();
+  if (!val) return;
+  addSkill(val);
+  input.value = '';
+}
+
+function removeSkill(skill) {
+  selectedSkills = selectedSkills.filter(function(s) { return s !== skill; });
+  renderChips();
+  updateSuggestions();
+  document.getElementById('skills').value = selectedSkills.join(', ');
+}
+
+function renderChips() {
+  var container = document.getElementById('skillsChips');
+  if (selectedSkills.length === 0) {
+    container.innerHTML = '<span style="color:#64748B;font-size:.8rem;padding:.2rem .5rem">اختر مهاراتك من الاقتراحات أدناه أو أضفها يدوياً...</span>';
+    return;
+  }
+  container.innerHTML = selectedSkills.map(function(s) {
+    return '<span style="background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;margin:2px">' +
+      s + '<button type="button" onclick="removeSkill('' + s.replace(/'/g,"\'") + '')" style="background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0;line-height:1;margin-right:3px">×</button></span>';
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderChips();
+  var el = document.getElementById('workExp');
+  if (el) el.addEventListener('change', updateSuggestions);
+});
+// ═══ END SKILLS ═══
+
 </script>
 </body>
 </html>
