@@ -705,6 +705,23 @@ loadPayPal();
 
 
 
+
+// Photo preview
+var photoBase64 = '';
+function previewPhoto(input) {
+  var file = input.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    photoBase64 = e.target.result;
+    var preview = document.getElementById('photoPreview');
+    if (preview) {
+      preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
 // ═══ SKILLS SYSTEM ═══
 const skillsByField = {
   'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel'],
