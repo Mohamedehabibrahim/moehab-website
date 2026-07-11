@@ -777,17 +777,28 @@ function removeSkill(skill) {
 function renderChips() {
   var container = document.getElementById('skillsChips');
   if (!container) return;
+  container.innerHTML = '';
   if (selectedSkills.length === 0) {
-    container.innerHTML = '<span style="color:#64748B;font-size:.8rem;padding:.2rem">اختر مهاراتك من الاقتراحات أدناه أو أضفها يدوياً...</span>';
+    var hint = document.createElement('span');
+    hint.style.cssText = 'color:#64748B;font-size:.8rem;padding:.2rem';
+    hint.textContent = 'اختر مهاراتك من الاقتراحات أدناه أو أضفها يدوياً...';
+    container.appendChild(hint);
     return;
   }
-  var html = '';
   for (var i = 0; i < selectedSkills.length; i++) {
-    var s = selectedSkills[i];
-    html += '<span style="background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;margin:2px">' +
-      s + '<button type="button" onclick="removeSkill(this.getAttribute('data-s'))" data-s="' + s + '" style="background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0 0 0 4px;line-height:1">×</button></span>';
+    (function(s) {
+      var span = document.createElement('span');
+      span.style.cssText = 'background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;margin:2px';
+      span.textContent = s;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = '×';
+      btn.style.cssText = 'background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0 0 0 4px;line-height:1';
+      btn.onclick = function() { removeSkill(s); };
+      span.appendChild(btn);
+      container.appendChild(span);
+    })(selectedSkills[i]);
   }
-  container.innerHTML = html;
 }
 
 window.addEventListener('load', function() {
