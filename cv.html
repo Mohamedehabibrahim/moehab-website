@@ -215,9 +215,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
       <!-- المهارات -->
       <div class="form-group form-full">
-        <label class="form-label">المهارات * — اختر من القائمة أو أضف يدوياً</label>
+        <label class="form-label">المهارات * — اختر مجال العمل أولاً لتظهر الاقتراحات</label>
         <div id="skillsChips" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem;min-height:36px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:.5rem"></div>
-        <div id="skillsSuggestions" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem"></div>
+        <div id="skillsSuggestions" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem">
+          <span id="skillsHint" style="color:var(--dim);font-size:.78rem;font-style:italic">← اختر مجال العمل أولاً لتظهر مهارات مقترحة</span>
+        </div>
         <div style="display:flex;gap:.5rem">
           <input type="text" class="form-input" id="skillInput" placeholder="أضف مهارة يدوياً..." onkeydown="if(event.key==='Enter'){event.preventDefault();addSkillManual()}">
           <button type="button" onclick="addSkillManual()" style="background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap">+ إضافة</button>
@@ -442,6 +444,13 @@ if (hasAccess) {
     document.getElementById('formCard').appendChild(confirmBtn);
   });
 }
+
+// Init skills
+document.addEventListener('DOMContentLoaded', function() {
+  renderChips();
+  const workExpEl = document.getElementById('workExp');
+  if (workExpEl) workExpEl.addEventListener('change', updateSuggestions);
+});
 
 // Currency detection
 async function detectCurrency() {
