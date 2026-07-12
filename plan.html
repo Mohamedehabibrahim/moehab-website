@@ -304,20 +304,22 @@ async function detectCurrency() {
   try {
     const res = await fetch('https://ipapi.co/json/');
     const data = await res.json();
-    if (data.country_code === 'EG') {
-      isEgypt = true;
-      planAmount = '1.00'; // ~100 EGP in USD
-      document.getElementById('heroPrice').innerHTML = '🇪🇬 <span>100</span> جنيه فقط';
-      document.getElementById('payAmount').textContent = '100 ج.م';
-    } else {
-      isEgypt = false;
-      planAmount = '5.33';
-      document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
-      document.getElementById('payAmount').textContent = '20 ريال';
-    }
+    const cc = data.country_code;
+    const currencies = {
+      'EG': { flag:'🇪🇬', amount:'100', label:'ج.م',  usd:'1.00' },
+      'AE': { flag:'🇦🇪', amount:'20',  label:'درهم', usd:'5.45' },
+      'QA': { flag:'🇶🇦', amount:'20',  label:'ر.ق',  usd:'5.49' },
+      'KW': { flag:'🇰🇼', amount:'2',   label:'د.ك',  usd:'6.50' },
+    };
+    const cur = currencies[cc] || { flag:'🇸🇦', amount:'20', label:'ريال', usd:'5.33' };
+    planAmount = cur.usd;
+    isEgypt = (cc === 'EG');
+    document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
+    document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
   } catch(e) {
-    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال | 🇪🇬 <span>100</span> ج.م';
-    document.getElementById('payAmount').textContent = '20 ريال | 100 ج.م';
+    planAmount = '5.33';
+    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
+    document.getElementById('payAmount').innerHTML = '20 <span style="font-size:1.2rem">ريال</span>';
   }
 }
 detectCurrency();
