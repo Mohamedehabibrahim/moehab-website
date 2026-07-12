@@ -459,20 +459,23 @@ async function detectCurrency() {
   try {
     const res = await fetch('https://ipapi.co/json/');
     const data = await res.json();
-    if (data.country_code === 'EG') {
-      isEgypt = true;
-      cvAmount = '1.00';
-      document.getElementById('heroPrice').innerHTML = '🇪🇬 <span>75</span> جنيه فقط';
-      document.getElementById('payAmount').innerHTML = '75 <span style="font-size:1.2rem">ج.م</span>';
-    } else {
-      isEgypt = false;
-      cvAmount = '4.00';
-      document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>15</span> ريال فقط';
-      document.getElementById('payAmount').innerHTML = '15 <span style="font-size:1.2rem">ريال</span>';
-    }
+    const cc = data.country_code;
+
+    const currencies = {
+      'EG': { flag:'🇪🇬', amount:'75', label:'ج.م',  usd:'2.00' },
+      'AE': { flag:'🇦🇪', amount:'10', label:'درهم', usd:'2.72' },
+      'QA': { flag:'🇶🇦', amount:'10', label:'ر.ق',  usd:'2.75' },
+      'KW': { flag:'🇰🇼', amount:'1',  label:'د.ك',  usd:'3.25' },
+    };
+
+    const cur = currencies[cc] || { flag:'🇸🇦', amount:'10', label:'ريال', usd:'2.67' };
+    cvAmount = cur.usd;
+    document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
+    document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
   } catch(e) {
-    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>15</span> ريال | 🇪🇬 <span>75</span> ج.م';
-    document.getElementById('payAmount').innerHTML = '15 ريال <span style="font-size:1rem;opacity:.5">|</span> 75 ج.م';
+    cvAmount = '2.67';
+    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>10</span> ريال فقط';
+    document.getElementById('payAmount').innerHTML = '10 <span style="font-size:1.2rem">ريال</span>';
   }
 }
 detectCurrency();
@@ -522,7 +525,7 @@ function handleInstapay() {
   const msg = encodeURIComponent(
     'مرحباً، أريد إنشاء سيرة ذاتية ⚡\n\n' +
     'الاسم: ' + name + '\n' +
-    'سأقوم بالدفع ' + (isEgypt ? '75 ج.م' : '15 ريال') + ' عبر InstaPay:\n' +
+    'سأقوم بالدفع ' + (isEgypt ? '75 ج.م' : '10 ريال') + ' عبر InstaPay:\n' +
     'https://ipn.eg/S/bas6h2/instapay/0iNsR1\n\n' +
     'وسأرسل إيصال الدفع هنا للتأكيد.'
   );
