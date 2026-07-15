@@ -713,174 +713,45 @@ function renderCV(ai) {
 function downloadCV() {
   const name = document.getElementById('fullName').value;
   const cvContent = document.getElementById('cvContent').outerHTML;
+
+  const html = '<!DOCTYPE html><html lang="ar" dir="rtl"><head>' +
+    '<meta charset="UTF-8">' +
+    '<title>السيرة الذاتية - ' + name + '</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
+    '<style>' +
+    '*{margin:0;padding:0;box-sizing:border-box}' +
+    'body{font-family:Cairo,Arial,sans-serif;direction:rtl;background:#fff;color:#1a1a1a}' +
+    '.cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;display:flex;align-items:center;gap:1.5rem}' +
+    '.cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}' +
+    '.cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}' +
+    '.cv-contact{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;opacity:.85}' +
+    '.cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}' +
+    '.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}' +
+    '.cv-section{margin-bottom:1.2rem}' +
+    '.cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}' +
+    '.cv-item{margin-bottom:.8rem}' +
+    '.cv-item-title{font-size:.9rem;font-weight:800}' +
+    '.cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}' +
+    '.cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}' +
+    '.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}' +
+    '.cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}' +
+    '.cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}' +
+    '.cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}' +
+    'img{max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.5)}' +
+    '.footer-note{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}' +
+    '.print-btn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}' +
+    '@media print{.print-btn{display:none}}' +
+    '</style></head><body>' +
+    cvContent +
+    '<div class="footer-note">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>' +
+    '<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>' +
+    '</body></html>';
+
   const win = window.open('', '_blank');
-  win.document.write(`
-    <!DOCTYPE html><html lang="ar" dir="rtl">
-    <head>
-    <meta charset="UTF-8">
-    <title>السيرة الذاتية - ${name}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-      *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Cairo',Arial,sans-serif;direction:rtl;background:#fff;color:#1a1a1a}
-      .cv-preview{background:#fff}
-      .cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;display:flex;align-items:center;gap:1.5rem}
-      .cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}
-      .cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}
-      .cv-contact{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;opacity:.85}
-      .cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}
-      .cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}
-      .cv-section{margin-bottom:1.2rem}
-      .cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}
-      .cv-item{margin-bottom:.8rem}
-      .cv-item-title{font-size:.9rem;font-weight:800}
-      .cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}
-      .cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}
-      .cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}
-      .cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}
-      .cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}
-      .cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
-      .footer-note{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}
-      .print-btn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}
-      img{max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.5)}
-      @media print{.print-btn{display:none}}
-    </style>
-    </head>
-    <body>
-    ${cvContent}
-    <div class="footer-note">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>
-    <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
-    </body></html>
-  `);
-  win.document.close();
-}
-</script>
-</head>
-    <body>
-    ${cvContent}
-    <div class="footer">تم إنشاؤها بواسطة MO EHAB | moehabads.com</div>
-    <br><button onclick="window.print()" style="display:block;margin:1rem auto;padding:.5rem 1.5rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:6px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer">🖨️ طباعة / حفظ PDF</button>
-    </body></html>
-  `);
+  win.document.write(html);
   win.document.close();
 }
 
-loadPayPal();
-
-
-
-
-// Photo preview
-var photoBase64 = '';
-function previewPhoto(input) {
-  var file = input.files[0];
-  if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    photoBase64 = e.target.result;
-    var preview = document.getElementById('photoPreview');
-    if (preview) {
-      preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
-    }
-  };
-  reader.readAsDataURL(file);
-}
-
-// ═══ SKILLS SYSTEM ═══
-const skillsByField = {
-  'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel'],
-  'البرمجة وتطوير الويب': ['Python','JavaScript','React','Vue.js','Node.js','PHP','Laravel','MySQL','Git','HTML/CSS','Flutter'],
-  'التصميم الجرافيكي': ['Photoshop','Illustrator','Figma','Canva','After Effects','Premiere Pro','UI/UX'],
-  'المبيعات وخدمة العملاء': ['التفاوض','CRM','خدمة العملاء','Excel','Salesforce','إدارة العملاء'],
-  'المحاسبة والمالية': ['Excel','QuickBooks','SAP','تحليل مالي','ميزانيات','Power BI'],
-  'الموارد البشرية': ['التوظيف','تقييم الأداء','Excel','SAP HR','تدريب وتطوير','Payroll'],
-  'إدارة المشاريع': ['PMP','Agile','Scrum','Jira','Trello','MS Project','Excel'],
-  'الطب والصحة': ['الفحص السريري','التشخيص','الرعاية الصحية','الإسعافات الأولية'],
-  'التعليم والتدريب': ['تصميم المناهج','التدريس','Zoom','تقييم الطلاب','التعليم الإلكتروني'],
-  'الهندسة': ['AutoCAD','SolidWorks','MATLAB','الرسم الهندسي','إدارة المشاريع'],
-  'الإعلام والصحافة': ['الكتابة','التحرير','Premiere Pro','التصوير','Adobe Suite'],
-  'أخرى': ['Excel','Word','PowerPoint','التواصل','العمل الجماعي','إدارة الوقت']
-};
-
-var selectedSkills = [];
-
-function updateSuggestions() {
-  var field = document.getElementById('workExp').value;
-  var container = document.getElementById('skillsSuggestions');
-  if (!container) return;
-  container.innerHTML = '';
-  if (!field) {
-    container.innerHTML = '<span style="color:#64748B;font-size:.78rem">← اختر مجال العمل أولاً</span>';
-    return;
-  }
-  var suggestions = skillsByField[field] || [];
-  for (var i = 0; i < suggestions.length; i++) {
-    var skill = suggestions[i];
-    if (selectedSkills.indexOf(skill) === -1) {
-      (function(s) {
-        var chip = document.createElement('button');
-        chip.type = 'button';
-        chip.textContent = '+ ' + s;
-        chip.style.cssText = 'background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:3px 10px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;margin:2px';
-        chip.onclick = function() { addSkill(s); };
-        container.appendChild(chip);
-      })(skill);
-    }
-  }
-}
-
-function addSkill(skill) {
-  if (selectedSkills.indexOf(skill) !== -1) return;
-  selectedSkills.push(skill);
-  renderChips();
-  updateSuggestions();
-  var hiddenInput = document.getElementById('skills');
-  if (hiddenInput) hiddenInput.value = selectedSkills.join(', ');
-}
-
-function addSkillManual() {
-  var input = document.getElementById('skillInput');
-  if (!input) return;
-  var val = input.value.trim();
-  if (!val) return;
-  addSkill(val);
-  input.value = '';
-}
-
-function removeSkill(skill) {
-  selectedSkills = selectedSkills.filter(function(s) { return s !== skill; });
-  renderChips();
-  updateSuggestions();
-  var hiddenInput = document.getElementById('skills');
-  if (hiddenInput) hiddenInput.value = selectedSkills.join(', ');
-}
-
-function renderChips() {
-  var container = document.getElementById('skillsChips');
-  if (!container) return;
-  container.innerHTML = '';
-  if (selectedSkills.length === 0) {
-    var hint = document.createElement('span');
-    hint.style.cssText = 'color:#64748B;font-size:.8rem;padding:.2rem';
-    hint.textContent = 'اختر مهاراتك من الاقتراحات أدناه أو أضفها يدوياً...';
-    container.appendChild(hint);
-    return;
-  }
-  for (var i = 0; i < selectedSkills.length; i++) {
-    (function(s) {
-      var span = document.createElement('span');
-      span.style.cssText = 'background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;margin:2px';
-      span.textContent = s;
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = '×';
-      btn.style.cssText = 'background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0 0 0 4px;line-height:1';
-      btn.onclick = function() { removeSkill(s); };
-      span.appendChild(btn);
-      container.appendChild(span);
-    })(selectedSkills[i]);
-  }
-}
 
 window.addEventListener('load', function() {
   renderChips();
