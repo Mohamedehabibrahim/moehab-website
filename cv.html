@@ -514,6 +514,8 @@ async function detectCurrency() {
     document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>10</span> ريال فقط';
     document.getElementById('payAmount').innerHTML = '10 <span style="font-size:1.2rem">ريال</span>';
   }
+  // Load PayPal AFTER currency is set
+  loadPayPal();
 }
 detectCurrency();
 
