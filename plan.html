@@ -358,6 +358,8 @@ async function detectCurrency() {
     document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
     document.getElementById('payAmount').innerHTML = '20 <span style="font-size:1.2rem">ريال</span>';
   }
+  // Load PayPal AFTER currency is set
+  loadPayPal();
 }
 detectCurrency();
 
@@ -481,60 +483,44 @@ async function generatePlan() {
 function downloadPDF() {
   const projectName = document.getElementById('projectName').value;
   const win = window.open('', '_blank');
-  win.document.write(`
-    <!DOCTYPE html><html lang="ar" dir="rtl">
-    <head>
-    <meta charset="UTF-8">
-    <title>خطة ${projectName} التسويقية | MO EHAB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-      *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Cairo',Arial,sans-serif;direction:rtl;padding:40px;max-width:800px;margin:0 auto;color:#1a1a1a;line-height:1.8;background:#fff}
-      .header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:24px;border-radius:12px;margin-bottom:30px}
-      .header h1{font-size:1.4rem;font-weight:900;margin-bottom:.3rem}
-      .header p{font-size:.85rem;opacity:.85}
-      h2{color:#7C3AED;font-size:1.1rem;font-weight:800;margin-top:1.8rem;margin-bottom:.6rem;padding-right:.8rem;border-right:3px solid #7C3AED}
-      p{margin-bottom:.8rem;font-size:.92rem;color:#333}
-      ul,ol{padding-right:1.5rem;margin-bottom:.8rem}
-      li{margin-bottom:.4rem;font-size:.9rem;color:#444}
-      strong{color:#1a1a1a;font-weight:700}
-      .footer{margin-top:40px;padding-top:16px;border-top:2px solid #f0f0f0;text-align:center;color:#888;font-size:.8rem}
-      .print-btn{display:block;margin:20px auto;padding:.7rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:1rem;cursor:pointer}
-      @media print{.print-btn{display:none}body{padding:20px}}
-    </style>
-    </head>
-    <body>
-    <div class="header">
-      <h1>⚡ خطتك التسويقية في دقائق</h1>
-      <p>خطة تسويقية مخصصة لـ: ${projectName} | مُعدّة بالذكاء الاصطناعي</p>
-    </div>
-    ${planText
-      .replace(/## (.*)/g, '<h2>$1</h2>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/^- (.*)/gm, '<li>$1</li>')
-      .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n/g, '<br>')
-    }
-    <div class="footer">مُعدّة بواسطة MO EHAB | moehabads.com</div>
-    <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
-    </body></html>
-  `);
-  win.document.close();
-}
-</script>
-</head><body>
-    <div class="header"><h1>⚡ خطتك في دقائق</h1><p>خطة تسويقية لـ: ${projectName} | مُعدّة بالذكاء الاصطناعي</p></div>
-    ${planText.replace(/## (.*)/g, '<h2>$1</h2>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}
-    <div class="footer">مُعدّة بواسطة MO EHAB | moehabads.com</div>
-    <br><button onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
-    </body></html>
-  `);
+  
+  const formatted = planText
+    .replace(/## (.*)/g, '<h2>$1</h2>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^- (.*)/gm, '<li>$1</li>')
+    .replace(/\n/g, '<br>');
+
+  const html = '<!DOCTYPE html><html lang="ar" dir="rtl"><head>' +
+    '<meta charset="UTF-8">' +
+    '<title>خطة ' + projectName + ' التسويقية</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
+    '<style>' +
+    '*{margin:0;padding:0;box-sizing:border-box}' +
+    'body{font-family:Cairo,Arial,sans-serif;direction:rtl;padding:40px;max-width:800px;margin:0 auto;color:#1a1a1a;line-height:1.8;background:#fff}' +
+    '.header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:24px;border-radius:12px;margin-bottom:30px}' +
+    '.header h1{font-size:1.4rem;font-weight:900;margin-bottom:.3rem}' +
+    '.header p{font-size:.85rem;opacity:.85}' +
+    'h2{color:#7C3AED;font-size:1.1rem;font-weight:800;margin-top:1.8rem;margin-bottom:.6rem;padding-right:.8rem;border-right:3px solid #7C3AED}' +
+    'p{margin-bottom:.8rem;font-size:.92rem;color:#333}' +
+    'li{margin-bottom:.4rem;font-size:.9rem;color:#444}' +
+    'strong{color:#1a1a1a;font-weight:700}' +
+    '.footer{margin-top:40px;padding-top:16px;border-top:2px solid #f0f0f0;text-align:center;color:#888;font-size:.8rem}' +
+    '.print-btn{display:block;margin:20px auto;padding:.7rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;font-size:1rem;cursor:pointer}' +
+    '@media print{.print-btn{display:none}}' +
+    '</style></head><body>' +
+    '<div class="header"><h1>⚡ خطتك التسويقية في دقائق</h1>' +
+    '<p>خطة تسويقية مخصصة لـ: ' + projectName + ' | مُعدّة بالذكاء الاصطناعي</p></div>' +
+    '<div>' + formatted + '</div>' +
+    '<div class="footer">مُعدّة بواسطة MO EHAB | moehabads.com</div>' +
+    '<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>' +
+    '</body></html>';
+
+  win.document.write(html);
   win.document.close();
 }
 
-// Load PayPal on page load
-loadPayPal();
+
+// PayPal loaded after currency detection above
 </script>
 </body>
 </html>
