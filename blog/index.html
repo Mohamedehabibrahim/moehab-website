@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدونة MO EHAB | تسويق رقمي وإعلانات</title>
-<meta name="description" content="مقالات عملية في التسويق الرقمي وإدارة إعلانات Meta وGoogle وTikTok. نصائح مجربة من خبير بخبرة +10 سنوات في السوق السعودي والمصري.">
-<meta name="keywords" content="مدونة تسويق رقمي, إعلانات Meta, Google Ads, TikTok Ads, نصائح تسويق, خبير إعلانات">
+<title>مدونة MO EHAB | تسويق رقمي وذكاء اصطناعي وإعلانات</title>
+<meta name="description" content="مقالات عملية في التسويق الرقمي والذكاء الاصطناعي وإدارة إعلانات Meta وGoogle وTikTok وSnapchat. نصائح مجربة من خبير بخبرة +10 سنوات.">
+<meta name="keywords" content="مدونة تسويق رقمي, إعلانات Meta, Google Ads, TikTok Ads, ذكاء اصطناعي تسويق, Claude AI, ROAS">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://moehabads.com/blog">
-<meta property="og:title" content="مدونة MO EHAB | تسويق رقمي وإعلانات">
-<meta property="og:description" content="مقالات عملية في التسويق الرقمي من خبير بخبرة +10 سنوات">
+<meta property="og:title" content="مدونة MO EHAB | تسويق رقمي وذكاء اصطناعي">
+<meta property="og:description" content="مقالات عملية في التسويق الرقمي والذكاء الاصطناعي من خبير بخبرة +10 سنوات">
 <meta property="og:url" content="https://moehabads.com/blog">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
@@ -55,31 +55,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .hero{padding:5rem 2rem 3rem;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(124,58,237,0.12),transparent)}
 .hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:900;margin-bottom:.8rem}
 .hero h1 span{background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto}
-.container{max-width:1000px;margin:0 auto;padding:3rem 2rem 6rem}
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-.featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;border:1px solid rgba(124,58,237,0.35);border-radius:14px;overflow:hidden;text-decoration:none;transition:all .3s}
-.featured:hover{border-color:rgba(124,58,237,0.6);transform:translateY(-2px)}
-.featured-img{background:linear-gradient(135deg,rgba(24,119,242,0.25),rgba(109,40,217,0.15));display:flex;align-items:center;justify-content:center;font-size:5rem;padding:3rem}
-.featured-body{padding:2rem;background:var(--card)}
-.feat-badge{display:inline-block;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#FCD34D;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:20px;margin-bottom:.8rem}
-.feat-title{font-size:1.3rem;font-weight:900;color:var(--text);line-height:1.3;margin-bottom:.8rem}
-.feat-desc{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
-.feat-link{color:#A78BFA;font-weight:700;font-size:.88rem}
-.blog-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;text-decoration:none;display:block}
-.blog-card:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-3px)}
-.card-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem}
-.c1{background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.1))}
-.c2{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(239,68,68,0.1))}
-.c3{background:linear-gradient(135deg,rgba(0,0,0,0.3),rgba(109,40,217,0.15))}
-.c4{background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(245,158,11,0.1))}
-.card-body{padding:1.2rem}
-.card-cat{font-size:.72rem;font-weight:700;color:#A78BFA;margin-bottom:.4rem}
-.card-title{font-size:.95rem;font-weight:800;color:var(--text);line-height:1.4;margin-bottom:.6rem}
-.card-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
-.card-meta{display:flex;justify-content:space-between;font-size:.75rem;color:var(--dim)}
+.hero p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto .8rem}
+.hero-cats{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.8rem}
+.hero-cat{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);color:#A78BFA;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.container{max-width:1100px;margin:0 auto;padding:3rem 2rem 6rem}
+.section-title{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:1.2rem;padding-right:.8rem;border-right:3px solid var(--purple)}
+.featured-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.featured-card{background:var(--card);border:1px solid rgba(124,58,237,0.3);border-radius:14px;overflow:hidden;text-decoration:none;transition:all .3s;display:block}
+.featured-card:hover{border-color:rgba(124,58,237,0.6);transform:translateY(-3px)}
+.fc-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.fc-body{padding:1.5rem}
+.fc-badge{display:inline-block;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#FCD34D;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:.6rem}
+.fc-title{font-size:1.1rem;font-weight:900;color:var(--text);line-height:1.3;margin-bottom:.5rem}
+.fc-desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.fc-meta{font-size:.75rem;color:var(--dim)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s;text-decoration:none;display:block}
+.blog-card:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-2px)}
+.bc-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.ai-bg{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.1))}
+.meta-bg{background:linear-gradient(135deg,rgba(24,119,242,0.2),rgba(109,40,217,0.1))}
+.data-bg{background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.1))}
+.time-bg{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(239,68,68,0.1))}
+.tiktok-bg{background:linear-gradient(135deg,rgba(0,0,0,0.3),rgba(109,40,217,0.15))}
+.snap-bg{background:linear-gradient(135deg,rgba(255,252,0,0.15),rgba(245,158,11,0.1))}
+.google-bg{background:linear-gradient(135deg,rgba(234,67,53,0.2),rgba(66,133,244,0.1))}
+.funnel-bg{background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(236,72,153,0.1))}
+.err-bg{background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(245,158,11,0.1))}
+.bc-body{padding:1rem}
+.bc-cat{font-size:.7rem;font-weight:700;color:#A78BFA;margin-bottom:.3rem}
+.bc-title{font-size:.9rem;font-weight:800;color:var(--text);line-height:1.4;margin-bottom:.5rem}
+.bc-meta{font-size:.73rem;color:var(--dim);display:flex;justify-content:space-between}
 .float-wa{position:fixed;bottom:1.5rem;left:1.5rem;z-index:999;width:50px;height:50px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4)}
-@media(max-width:768px){.featured{grid-template-columns:1fr}.featured-img{display:none}.nav-links li:not(:last-child){display:none}}
+@media(max-width:768px){.featured-grid{grid-template-columns:1fr}.nav-links li:not(:last-child){display:none}}
 </style>
 </head>
 <body>
@@ -100,63 +108,109 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
 <div class="hero">
   <h1>مدونة <span>MO EHAB</span></h1>
-  <p>مقالات عملية في التسويق الرقمي من خبرة حقيقية — لا كلام نظري</p>
+  <p>15 مقال عملي في التسويق الرقمي والذكاء الاصطناعي — من خبرة حقيقية لا كلام نظري</p>
+  <div class="hero-cats">
+    <span class="hero-cat">📢 Meta Ads</span>
+    <span class="hero-cat">🤖 AI</span>
+    <span class="hero-cat">📱 TikTok</span>
+    <span class="hero-cat">👻 Snapchat</span>
+    <span class="hero-cat">📊 Google</span>
+    <span class="hero-cat">🎯 Strategy</span>
+  </div>
 </div>
 
 <div class="container">
-  <div class="blog-grid">
 
-    <a href="/blog/blog-1" class="featured">
-      <div class="featured-img">📢</div>
-      <div class="featured-body">
-        <span class="feat-badge">⭐ الأكثر قراءة</span>
-        <div class="feat-title">إزاي تخفض تكلفة الإعلان على Meta بدون ما تقلل النتائج</div>
-        <div class="feat-desc">7 استراتيجيات مجربة من حملات حققت ROAS 12x وخفضت التكلفة 62%</div>
-        <div class="feat-link">اقرأ المقال ←</div>
+  <!-- Featured -->
+  <div class="section-title">⭐ المقالات المميزة</div>
+  <div class="featured-grid">
+    <a href="/blog/blog-1" class="featured-card">
+      <div class="fc-img" style="background:linear-gradient(135deg,rgba(24,119,242,0.2),rgba(109,40,217,0.15))">📢</div>
+      <div class="fc-body">
+        <span class="fc-badge">الأكثر قراءة</span>
+        <div class="fc-title">إزاي تخفض تكلفة الإعلان على Meta بدون ما تقلل النتائج</div>
+        <div class="fc-desc">7 استراتيجيات مجربة حققت ROAS 12x وخفضت التكلفة 62%</div>
+        <div class="fc-meta">📅 يوليو 2026 · ⏱️ 7 دقائق</div>
       </div>
     </a>
-
-    <a href="/blog/blog-2" class="blog-card">
-      <div class="card-img c1">📊</div>
-      <div class="card-body">
-        <div class="card-cat">📊 تحليل البيانات</div>
-        <div class="card-title">الفرق بين ROAS وROI — وإيه الأهم لمتجرك</div>
-        <div class="card-desc">كتير ناس بتخلط بين المصطلحين — اعرف الفرق واتخذ قرارات أذكى</div>
-        <div class="card-meta"><span>📅 يوليو 2026</span><span>⏱️ 6 دقائق</span></div>
+    <a href="/blog/blog-6" class="featured-card">
+      <div class="fc-img" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.1))">🤖</div>
+      <div class="fc-body">
+        <span class="fc-badge" style="background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.3);color:#A78BFA">جديد</span>
+        <div class="fc-title">كيفية ربط Claude AI بحملاتك الإعلانية</div>
+        <div class="fc-desc">دليل عملي لاستخدام الذكاء الاصطناعي في إدارة الإعلانات</div>
+        <div class="fc-meta">📅 يوليو 2026 · ⏱️ 8 دقائق</div>
       </div>
     </a>
-
-    <a href="/blog/blog-3" class="blog-card">
-      <div class="card-img c2">⏰</div>
-      <div class="card-body">
-        <div class="card-cat">⏰ استراتيجية</div>
-        <div class="card-title">أفضل وقت لتشغيل الإعلانات في السعودية ومصر</div>
-        <div class="card-desc">بيانات حقيقية من حملات شغالة في السوق السعودي والمصري</div>
-        <div class="card-meta"><span>📅 يوليو 2026</span><span>⏱️ 5 دقائق</span></div>
-      </div>
-    </a>
-
-    <a href="/blog/blog-4" class="blog-card">
-      <div class="card-img c3">📱</div>
-      <div class="card-body">
-        <div class="card-cat">📱 TikTok Ads</div>
-        <div class="card-title">إزاي تستهدف الجمهور الصح على TikTok Ads</div>
-        <div class="card-desc">دليل الاستهداف على TikTok للسوق العربي — ROAS 8.71x من تجربة حقيقية</div>
-        <div class="card-meta"><span>📅 يوليو 2026</span><span>⏱️ 7 دقائق</span></div>
-      </div>
-    </a>
-
-    <a href="/blog/blog-5" class="blog-card">
-      <div class="card-img c4">⚠️</div>
-      <div class="card-body">
-        <div class="card-cat">⚠️ أخطاء شائعة</div>
-        <div class="card-title">5 أخطاء بتخلي إعلاناتك تخسر فلوسك كل يوم</div>
-        <div class="card-desc">أكتر 5 أخطاء بشوفها يومياً وإزاي تتجنبها لتحسين نتائجك</div>
-        <div class="card-meta"><span>📅 يوليو 2026</span><span>⏱️ 6 دقائق</span></div>
-      </div>
-    </a>
-
   </div>
+
+  <!-- AI Articles -->
+  <div class="section-title" style="margin-top:2rem">🤖 الذكاء الاصطناعي والتسويق</div>
+  <div class="blog-grid" style="margin-bottom:2rem">
+    <a href="/blog/blog-7" class="blog-card">
+      <div class="bc-img ai-bg">🧠</div>
+      <div class="bc-body"><div class="bc-cat">🤖 AI</div><div class="bc-title">الذكاء الاصطناعي في التسويق الرقمي — الدليل الكامل 2026</div><div class="bc-meta"><span>يوليو 2026</span><span>9 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-8" class="blog-card">
+      <div class="bc-img ai-bg">⚔️</div>
+      <div class="bc-body"><div class="bc-cat">🤖 AI</div><div class="bc-title">ChatGPT vs Claude — إيه الأفضل للمسوق الرقمي العربي؟</div><div class="bc-meta"><span>يوليو 2026</span><span>7 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-11" class="blog-card">
+      <div class="bc-img ai-bg">✍️</div>
+      <div class="bc-body"><div class="bc-cat">✍️ كتابة</div><div class="bc-title">إزاي تكتب إعلان ناجح بالذكاء الاصطناعي — Prompts جاهزة</div><div class="bc-meta"><span>يوليو 2026</span><span>8 دقائق</span></div></div>
+    </a>
+  </div>
+
+  <!-- Platforms -->
+  <div class="section-title">📱 المنصات الإعلانية</div>
+  <div class="blog-grid" style="margin-bottom:2rem">
+    <a href="/blog/blog-4" class="blog-card">
+      <div class="bc-img tiktok-bg">📱</div>
+      <div class="bc-body"><div class="bc-cat">📱 TikTok</div><div class="bc-title">إزاي تستهدف الجمهور الصح على TikTok Ads</div><div class="bc-meta"><span>يوليو 2026</span><span>7 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-9" class="blog-card">
+      <div class="bc-img snap-bg">👻</div>
+      <div class="bc-body"><div class="bc-cat">👻 Snapchat</div><div class="bc-title">Snapchat Ads — دليل الاستهداف في السوق الخليجي</div><div class="bc-meta"><span>يوليو 2026</span><span>8 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-10" class="blog-card">
+      <div class="bc-img google-bg">📊</div>
+      <div class="bc-body"><div class="bc-cat">📊 مقارنة</div><div class="bc-title">Google Ads vs Meta Ads — إيه الأنسب لمشروعك؟</div><div class="bc-meta"><span>يوليو 2026</span><span>7 دقائق</span></div></div>
+    </a>
+  </div>
+
+  <!-- Strategy -->
+  <div class="section-title">🎯 الاستراتيجية والتحليل</div>
+  <div class="blog-grid">
+    <a href="/blog/blog-2" class="blog-card">
+      <div class="bc-img data-bg">📊</div>
+      <div class="bc-body"><div class="bc-cat">📊 تحليل</div><div class="bc-title">الفرق بين ROAS وROI — وإيه الأهم لمتجرك</div><div class="bc-meta"><span>يوليو 2026</span><span>6 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-3" class="blog-card">
+      <div class="bc-img time-bg">⏰</div>
+      <div class="bc-body"><div class="bc-cat">⏰ استراتيجية</div><div class="bc-title">أفضل وقت لتشغيل الإعلانات في السعودية ومصر</div><div class="bc-meta"><span>يوليو 2026</span><span>5 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-12" class="blog-card">
+      <div class="bc-img meta-bg">🎯</div>
+      <div class="bc-body"><div class="bc-cat">🎯 Pixel</div><div class="bc-title">Meta Pixel — الدليل الكامل للإعداد والتتبع</div><div class="bc-meta"><span>يوليو 2026</span><span>8 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-13" class="blog-card">
+      <div class="bc-img funnel-bg">🎯</div>
+      <div class="bc-body"><div class="bc-cat">🎯 Funnel</div><div class="bc-title">إزاي تبني Funnel إعلاني ناجح من الصفر</div><div class="bc-meta"><span>يوليو 2026</span><span>9 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-14" class="blog-card">
+      <div class="bc-img data-bg">📈</div>
+      <div class="bc-body"><div class="bc-cat">📊 أهداف</div><div class="bc-title">Awareness vs Conversions — إمتى تستخدم كل هدف؟</div><div class="bc-meta"><span>يوليو 2026</span><span>7 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-15" class="blog-card">
+      <div class="bc-img data-bg">📋</div>
+      <div class="bc-body"><div class="bc-cat">📊 تقارير</div><div class="bc-title">كيفية إعداد تقرير إعلاني احترافي لعملائك</div><div class="bc-meta"><span>يوليو 2026</span><span>7 دقائق</span></div></div>
+    </a>
+    <a href="/blog/blog-5" class="blog-card">
+      <div class="bc-img err-bg">⚠️</div>
+      <div class="bc-body"><div class="bc-cat">⚠️ أخطاء</div><div class="bc-title">5 أخطاء بتخلي إعلاناتك تخسر فلوسك كل يوم</div><div class="bc-meta"><span>يوليو 2026</span><span>6 دقائق</span></div></div>
+    </a>
+  </div>
+
 </div>
 
 </body>
