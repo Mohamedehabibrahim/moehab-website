@@ -473,9 +473,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 // Auto-detect currency by country
 async function detectCurrency() {
   try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json();
-    if (data.country_code === 'EG') {
+    let cc = null;
+    try {
+      const res = await fetch('https://ipapi.co/country/', {signal: AbortSignal.timeout(3000)});
+      cc = (await res.text()).trim();
+    } catch(e1) {
+      try {
+        const res2 = await fetch('https://api.country.is/', {signal: AbortSignal.timeout(3000)});
+        const d2 = await res2.json();
+        cc = d2.country;
+      } catch(e2) {
+        const res3 = await fetch('https://ipwho.is/', {signal: AbortSignal.timeout(3000)});
+        const d3 = await res3.json();
+        cc = d3.country_code;
+      }
+    }
+    if (cc === 'EG') {
       // Egypt - show EGP
       document.querySelectorAll('.curr-btn').forEach(btn => {
         if (btn.onclick && btn.onclick.toString().includes("'e'")) {
