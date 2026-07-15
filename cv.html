@@ -716,65 +716,43 @@ function downloadCV() {
   const win = window.open('', '_blank');
   win.document.write(`
     <!DOCTYPE html><html lang="ar" dir="rtl">
-    <head><meta charset="UTF-8">
-<title>سيرتك الذاتية في دقائق ⚡ | CV احترافي بالذكاء الاصطناعي ATS</title>
-<meta name="description" content="أنشئ سيرة ذاتية احترافية متوافقة مع نظام ATS بالذكاء الاصطناعي في دقائق. قابلة للتحميل PDF فوراً. بـ 10 ريال فقط.">
-<meta name="keywords" content="سيرة ذاتية احترافية, CV بالعربي, سيرة ذاتية ATS, نموذج سيرة ذاتية, CV بالذكاء الاصطناعي, سيرة ذاتية جاهزة">
-<meta name="author" content="محمد إيهاب | MO EHAB">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://moehabads.com/cv.html">
-
-<!-- Open Graph -->
-<meta property="og:title" content="سيرتك الذاتية في دقائق ⚡ | CV احترافي بالذكاء الاصطناعي ATS">
-<meta property="og:description" content="أنشئ سيرة ذاتية احترافية متوافقة مع نظام ATS بالذكاء الاصطناعي في دقائق. قابلة للتحميل PDF فوراً. بـ 10 ريال فقط.">
-<meta property="og:url" content="https://moehabads.com/cv.html">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://moehabads.com/og-image.jpg">
-<meta property="og:locale" content="ar_SA">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="سيرتك الذاتية في دقائق ⚡ | CV احترافي بالذكاء الاصطناعي ATS">
-<meta name="twitter:description" content="أنشئ سيرة ذاتية احترافية متوافقة مع نظام ATS بالذكاء الاصطناعي في دقائق. قابلة للتحميل PDF فوراً. بـ 10 ريال فقط.">
+    <head>
+    <meta charset="UTF-8">
+    <title>السيرة الذاتية - ${name}</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Cairo',sans-serif;direction:rtl}
-    .cv-preview{background:#fff;color:#1a1a1a}
-    .cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;text-align:center}
-    .cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}
-    .cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}
-    .cv-contact{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:.82rem;opacity:.85}
-    .cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}
-    .cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}
-    .cv-section{margin-bottom:1.2rem}
-    .cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}
-    .cv-item{margin-bottom:.8rem}
-    .cv-item-title{font-size:.9rem;font-weight:800;color:#1a1a1a}
-    .cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}
-    .cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}
-    .cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}
-    .cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}
-    .cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}
-    .cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
-    .footer{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}
-    @media print{button{display:none}.footer{display:none}}
-    </style><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "سيرتك الذاتية في دقائق",
-  "description": "سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي",
-  "url": "https://moehabads.com/cv",
-  "provider": {
-    "@type": "Person",
-    "name": "محمد إيهاب"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "10",
-    "priceCurrency": "SAR"
-  }
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{font-family:'Cairo',Arial,sans-serif;direction:rtl;background:#fff;color:#1a1a1a}
+      .cv-preview{background:#fff}
+      .cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;display:flex;align-items:center;gap:1.5rem}
+      .cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}
+      .cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}
+      .cv-contact{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;opacity:.85}
+      .cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}
+      .cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}
+      .cv-section{margin-bottom:1.2rem}
+      .cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}
+      .cv-item{margin-bottom:.8rem}
+      .cv-item-title{font-size:.9rem;font-weight:800}
+      .cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}
+      .cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}
+      .cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}
+      .cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}
+      .cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}
+      .cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
+      .footer-note{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}
+      .print-btn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}
+      img{max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.5)}
+      @media print{.print-btn{display:none}}
+    </style>
+    </head>
+    <body>
+    ${cvContent}
+    <div class="footer-note">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>
+    <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+    </body></html>
+  `);
+  win.document.close();
 }
 </script>
 </head>
