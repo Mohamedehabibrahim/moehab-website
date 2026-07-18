@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>من أنا | محمد إيهاب — MO EHAB</title>
+<meta name="description" content="محمد إيهاب — CRO Manager وخبير إعلانات رقمية بخبرة +10 سنوات في السوق السعودي والخليجي. Meta · Google · TikTok · Snapchat">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://moehabads.com/about">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EF8X2FRN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-G8EF8X2FRN');</script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#7C3AED;--cyan:#06B6D4;--bg:#0F172A;--card:#111827;--text:#F8FAFC;--muted:#94A3B8;--dim:#64748B;--border:rgba(124,58,237,0.2)}
+body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;line-height:1.8}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:1.1rem;font-weight:800;letter-spacing:.1em;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600}
+.nav-links a:hover{color:var(--text)}
+
+/* Hero */
+.hero{padding:5rem 2rem 3rem;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(124,58,237,0.12),transparent)}
+.avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:900;color:white;margin:0 auto 1.2rem;font-family:'Poppins',sans-serif}
+.hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;margin-bottom:.5rem}
+.hero h1 span{background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem}
+.hero-tags{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.hero-tag{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);color:#A78BFA;font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:20px}
+
+.container{max-width:900px;margin:0 auto;padding:3rem 2rem 6rem}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:3rem}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center}
+.stat-num{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:900;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-lbl{font-size:.78rem;color:var(--muted);margin-top:.3rem}
+
+/* Section */
+.section{margin-bottom:3rem}
+.section-title{font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;padding-right:.8rem;border-right:3px solid var(--purple)}
+p{font-size:.93rem;color:var(--muted);margin-bottom:1rem;line-height:1.9}
+
+/* Platforms */
+.platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem}
+.platform{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:.8rem}
+.platform-icon{font-size:1.5rem}
+.platform-name{font-size:.9rem;font-weight:800}
+.platform-desc{font-size:.78rem;color:var(--muted)}
+
+/* Results */
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:3rem}
+.result{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center}
+.result-num{font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:900;color:#A78BFA;line-height:1}
+.result-lbl{font-size:.78rem;color:var(--muted);margin-top:.3rem;line-height:1.4}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(109,40,217,0.15),rgba(14,165,233,0.08));border:1px solid rgba(124,58,237,0.3);border-radius:16px;padding:2rem;text-align:center;margin-top:3rem}
+.cta h3{font-size:1.2rem;font-weight:900;margin-bottom:.5rem}
+.cta p{color:var(--muted);font-size:.9rem;margin-bottom:1.2rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;padding:.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:800;font-size:.9rem;display:inline-block}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:800;font-size:.9rem;display:inline-block}
+
+@media(max-width:640px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://moehabads.com" class="nav-logo">MO EHAB</a>
+  <ul class="nav-links">
+    <li><a href="https://moehabads.com">الرئيسية</a></li>
+    <li><a href="https://moehabads.com/services">الخدمات</a></li>
+    <li><a href="https://moehabads.com/blog">المدونة</a></li>
+    <li><a href="https://moehabads.com/plan" style="background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:.3rem .9rem;border-radius:6px;font-weight:700">خطتك في دقائق ⚡</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="avatar">م</div>
+  <h1>محمد إيهاب — <span>MO EHAB</span></h1>
+  <div class="hero-title">CRO Manager | Paid Ads Specialist | Digital Marketing Expert</div>
+  <div class="hero-tags">
+    <span class="hero-tag">Meta Ads</span>
+    <span class="hero-tag">Google Ads</span>
+    <span class="hero-tag">TikTok Ads</span>
+    <span class="hero-tag">Snapchat Ads</span>
+    <span class="hero-tag">+10 سنوات خبرة</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">+10</div><div class="stat-lbl">سنوات خبرة في الإعلانات الرقمية</div></div>
+    <div class="stat"><div class="stat-num">12.56x</div><div class="stat-lbl">أعلى ROAS حققته على Meta</div></div>
+    <div class="stat"><div class="stat-num">519K</div><div class="stat-lbl">ريال مبيعات في 6 أشهر</div></div>
+    <div class="stat"><div class="stat-num">6,000+</div><div class="stat-lbl">متبرع من الصفر</div></div>
+  </div>
+
+  <!-- About -->
+  <div class="section">
+    <div class="section-title">من أنا؟</div>
+    <p>أنا محمد إيهاب — CRO Manager وخبير إعلانات رقمية متخصص في السوق السعودي والخليجي والمصري. أمتلك خبرة تزيد عن 10 سنوات في إدارة حملات إعلانية على منصات Meta وGoogle وTikTok وSnapchat.</p>
+    <p>بدأت مسيرتي في التسويق الرقمي وتخصصت تدريجياً في إدارة الإعلانات المدفوعة وتحسين معدلات التحويل. عملت مع عشرات العملاء في السعودية ومصر والإمارات — من متاجر إلكترونية وشركات خدمات إلى جمعيات خيرية.</p>
+    <p>أؤمن بأن الإعلان الناجح لا يقاس بعدد الزيارات — بل بالأرقام الحقيقية: المبيعات والعملاء المحتملين والعائد على الاستثمار.</p>
+  </div>
+
+  <!-- Platforms -->
+  <div class="section">
+    <div class="section-title">المنصات التي أتخصص فيها</div>
+    <div class="platforms">
+      <div class="platform">
+        <div class="platform-icon">📘</div>
+        <div><div class="platform-name">Meta Ads</div><div class="platform-desc">Facebook وInstagram — مبيعات ورسايل ومتابعين</div></div>
+      </div>
+      <div class="platform">
+        <div class="platform-icon">🔍</div>
+        <div><div class="platform-name">Google Ads</div><div class="platform-desc">Search وDisplay وShopping</div></div>
+      </div>
+      <div class="platform">
+        <div class="platform-icon">📱</div>
+        <div><div class="platform-name">TikTok Ads</div><div class="platform-desc">ROAS 8.71x من تجربة حقيقية</div></div>
+      </div>
+      <div class="platform">
+        <div class="platform-icon">👻</div>
+        <div><div class="platform-name">Snapchat Ads</div><div class="platform-desc">18,207 عملية شراء بـ ROAS 6x</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="section">
+    <div class="section-title">نتائج حقيقية من شغل فعلي</div>
+    <div class="results">
+      <div class="result"><div class="result-num">12.56x</div><div class="result-lbl">ROAS على Meta Ads لمتجر سعودي</div></div>
+      <div class="result"><div class="result-num">519K</div><div class="result-lbl">ريال مبيعات في 6 أشهر</div></div>
+      <div class="result"><div class="result-num">8.71x</div><div class="result-lbl">ROAS على TikTok Ads</div></div>
+      <div class="result"><div class="result-num">18,207</div><div class="result-lbl">عملية شراء على Snapchat</div></div>
+      <div class="result"><div class="result-num">6,000+</div><div class="result-lbl">متبرع من الصفر لجمعية خيرية</div></div>
+      <div class="result"><div class="result-num">62%</div><div class="result-lbl">تخفيض في تكلفة التبرع</div></div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="section">
+    <div class="section-title">ماذا أقدم؟</div>
+    <p>أقدم خدمات إعلانية رقمية متكاملة تشمل:</p>
+    <ul style="padding-right:1.5rem;color:var(--muted);font-size:.92rem">
+      <li style="margin-bottom:.5rem">إدارة حملات Meta Ads وGoogle Ads وTikTok وSnapchat</li>
+      <li style="margin-bottom:.5rem">تحسين معدلات التحويل CRO</li>
+      <li style="margin-bottom:.5rem">إعداد أدوات التتبع والتحليل (Pixel وGA4)</li>
+      <li style="margin-bottom:.5rem">تصميم صفحات هبوط احترافية</li>
+      <li style="margin-bottom:.5rem">إعداد وإدارة المتاجر الإلكترونية</li>
+      <li style="margin-bottom:.5rem">تحسين محركات البحث SEO</li>
+      <li style="margin-bottom:.5rem">خطط تسويقية بالذكاء الاصطناعي</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <h3>هل أنت مستعد للبدء؟ 🚀</h3>
+    <p>تواصل معي الآن للحصول على استشارة مجانية وتحليل حملاتك</p>
+    <div class="cta-btns">
+      <a href="https://moehabads.com/services" class="btn-primary">اعرف الباقات والأسعار</a>
+      <a href="https://wa.me/966580395350" class="btn-wa" target="_blank">💬 واتساب الآن</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
