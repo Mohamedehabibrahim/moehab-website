@@ -879,7 +879,7 @@ function openInstapay(){
   window.open('https://wa.me/966580395350?text=' + msg, '_blank');
 }
 function closeModal(){document.getElementById('payModal').classList.remove('open')}
-document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
 function loadPayPal(cb){
   if(paypalLoaded&&window.paypal){cb();return}
   var s=document.createElement('script');
@@ -890,7 +890,7 @@ function loadPayPal(cb){
 </script>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+<div class="modal-overlay" id="payModal" >
   <div class="modal-box">
     <button onclick="closeModal()" style="position:absolute;top:1rem;left:1rem;background:none;border:none;color:#94A3B8;font-size:1.5rem;cursor:pointer;line-height:1">×</button>
     <div style="text-align:center;margin-bottom:1.5rem">
