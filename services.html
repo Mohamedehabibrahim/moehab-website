@@ -44,6 +44,9 @@ snaptr('track','PAGE_VIEW');
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600}
+.nav-links a:hover{color:var(--text)}
 .nav-logo{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:.15em;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-back{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .3s}
 .nav-back:hover{color:var(--text)}
@@ -134,8 +137,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 </a>
 
 <nav>
-  <div class="nav-logo">MO EHAB</div>
-  <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
+  <a href="https://moehabads.com" class="nav-logo">MO EHAB</a>
+  <ul class="nav-links">
+    <li><a href="/">الرئيسية</a></li>
+    <li><a href="/blog">المدونة</a></li>
+    <li><a href="/plan" style="background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:.3rem .9rem;border-radius:6px;font-weight:700">خطتك في دقائق ⚡</a></li>
+    <li><button id="langToggle" onclick="toggleServLang()" style="background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:4px 12px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.8rem;font-weight:700;cursor:pointer">🇺🇸 English</button></li>
+  </ul>
 </nav>
 
 <div class="discount-banner"><span>🔥 عرض محدود</span>خصم 50% على جميع الخدمات — لفترة محدودة فقط!</div>
@@ -430,6 +438,9 @@ snaptr('track','PAGE_VIEW');
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600}
+.nav-links a:hover{color:var(--text)}
 .nav-logo{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:.15em;background:linear-gradient(135deg,var(--pl),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-back{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .3s}
 .nav-back:hover{color:var(--text)}
@@ -520,8 +531,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 </a>
 
 <nav>
-  <div class="nav-logo">MO EHAB</div>
-  <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
+  <a href="https://moehabads.com" class="nav-logo">MO EHAB</a>
+  <ul class="nav-links">
+    <li><a href="/">الرئيسية</a></li>
+    <li><a href="/blog">المدونة</a></li>
+    <li><a href="/plan" style="background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:.3rem .9rem;border-radius:6px;font-weight:700">خطتك في دقائق ⚡</a></li>
+    <li><button id="langToggle" onclick="toggleServLang()" style="background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:4px 12px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.8rem;font-weight:700;cursor:pointer">🇺🇸 English</button></li>
+  </ul>
 </nav>
 
 <div class="discount-banner"><span>🔥 عرض محدود</span>خصم 50% على جميع الخدمات — لفترة محدودة فقط!</div>
@@ -546,38 +562,276 @@ async function detectCurrency() {
         const d2 = await res2.json();
         cc = d2.country;
       } catch(e2) {
-        const res3 = await fetch('https://ipwho.is/', {signal: AbortSignal.timeout(3000)});
-        const d3 = await res3.json();
-        cc = d3.country_code;
+        try {
+          const res3 = await fetch('https://ipwho.is/', {signal: AbortSignal.timeout(3000)});
+          const d3 = await res3.json();
+          cc = d3.country_code;
+        } catch(e3) { cc = 'SA'; }
       }
     }
+
+    // Egypt → EGP | Others → SAR (default)
+    // AE, QA, KW, BH, OM → SAR (same currency zone)
     if (cc === 'EG') {
-      // Egypt - show EGP
-      document.querySelectorAll('.curr-btn').forEach(btn => {
-        if (btn.onclick && btn.onclick.toString().includes("'e'")) {
-          btn.classList.add('active-e');
-          btn.classList.remove('active-s');
-        } else {
-          btn.classList.remove('active-s');
-          btn.classList.remove('active-e');
-        }
-      });
-      document.querySelectorAll('.price-sar').forEach(el => el.classList.remove('show'));
-      document.querySelectorAll('.price-egp').forEach(el => el.classList.add('show'));
-      // Update all currency toggle buttons
+      // Show EGP prices
       document.querySelectorAll('.curr-toggle').forEach(toggle => {
         const sarBtn = toggle.querySelector('.curr-btn:first-child');
         const egpBtn = toggle.querySelector('.curr-btn:last-child');
         if(sarBtn) sarBtn.className = 'curr-btn';
         if(egpBtn) egpBtn.className = 'curr-btn active-e';
       });
+      document.querySelectorAll('.price-sar').forEach(el => el.classList.remove('show'));
+      document.querySelectorAll('.price-egp').forEach(el => el.classList.add('show'));
+    } else {
+      // Show SAR prices (default for SA, AE, QA, KW, BH, OM and all others)
+      document.querySelectorAll('.curr-toggle').forEach(toggle => {
+        const sarBtn = toggle.querySelector('.curr-btn:first-child');
+        const egpBtn = toggle.querySelector('.curr-btn:last-child');
+        if(sarBtn) sarBtn.className = 'curr-btn active-s';
+        if(egpBtn) egpBtn.className = 'curr-btn';
+      });
+      document.querySelectorAll('.price-sar').forEach(el => el.classList.add('show'));
+      document.querySelectorAll('.price-egp').forEach(el => el.classList.remove('show'));
     }
-    // Default is SAR (already set)
   } catch(e) {
     console.log('Currency detection failed, using default SAR');
   }
 }
 detectCurrency();
+
+
+// ═══ SERVICES LANGUAGE ═══
+const ARABIC_COUNTRIES_S = ['SA','EG','AE','QA','KW','BH','OM','JO','LB','SD','MA','TN','DZ','IQ','SY','YE','LY'];
+let servLang = 'ar';
+
+const SERV_EN = {
+  hero_h1: 'Choose The Right<br><span>Service For You</span>',
+  hero_p: 'Complete digital advertising services with transparent pricing — no surprises',
+  banner: '🔥 Limited Offer — 50% OFF all services for a limited time!',
+  tabs: ['📢 Ad Management','💬 Consulting & Reports','🛒 E-Commerce','🌐 Landing & SEO','🤖 AI Services'],
+
+  // AD MANAGEMENT
+  ads_title: 'Ad Campaign <span>Management</span>',
+  ads_desc: 'Choose your goal — I'll handle the rest',
+  ads_pkgs: [
+    { name:'Sales Campaign', desc:'For e-commerce stores — targeted campaigns for highest ROAS and real conversions', unit:'monthly', btn:'🛒 Order Now' },
+    { name:'Messages Campaign', desc:'For services and businesses — attract potential customers who contact you directly', unit:'monthly', btn:'💬 Order Now' },
+    { name:'Followers Campaign', desc:'Build a real and engaged audience and strengthen your brand's digital presence', unit:'monthly', btn:'👥 Order Now' },
+    { name:'Full Package', desc:'Sales + Messages + Followers — complete coverage across all platforms', unit:'monthly', btn:'🚀 Order Now' },
+  ],
+  ads_features: [
+    ['Complete sales campaign setup','Targeting potential buyers','Continuous ROAS optimization','Daily follow-up and monthly report'],
+    ['Professional messages campaign setup','Precise audience targeting','Optimizing cost per message','Daily follow-up and monthly report'],
+    ['Targeted follower growth campaign','Real and engaged audience','Improving engagement rate','Daily follow-up and monthly report'],
+    ['All platforms management','Sales + Messages + Followers','Intensive daily follow-up','Weekly and monthly reports','Free CRO + Tracking'],
+  ],
+
+  // CONSULTING
+  consult_title: 'Consulting <span>& Reports</span>',
+  consult_desc: 'Specialized marketing consulting and tracking tools and data analysis',
+  consult_pkgs: [
+    { name:'1-Hour Consultation', desc:'Focused session to solve a specific problem or evaluate your current campaigns', unit:'per session', btn:'📅 Book Now' },
+    { name:'Monthly Consulting', desc:'4 monthly sessions for continuous follow-up and strategy improvement', unit:'monthly — 4 sessions', btn:'📅 Book Now' },
+    { name:'Meta Pixel + CAPI', desc:'Connect Meta Pixel and set up Conversions API for accurate tracking', unit:'one time', btn:'⚡ Order Now' },
+    { name:'Full Tracking Package', desc:'Complete setup — Meta + Google + TikTok + Snapchat', unit:'one time', btn:'⚡ Order Now' },
+    { name:'GA4 + Looker Studio', desc:'Custom dashboard to track your website and campaign performance', unit:'one time', btn:'📊 Order Now' },
+    { name:'Monthly Reports', desc:'Professional monthly performance reports for your clients with premium design', unit:'monthly', btn:'📈 Order Now' },
+  ],
+  consult_features: [
+    ['1-hour full session','Campaign evaluation','Immediate recommendations','Session recording'],
+    ['4 monthly sessions','Continuous follow-up','Monthly improvement plan','Session recordings','WhatsApp support'],
+    ['Meta Pixel setup','Conversions API setup','Event testing','Confirmation report'],
+    ['Meta Pixel + CAPI','Google Tag Manager','TikTok Pixel','Snapchat Pixel','GA4 + full report'],
+    ['GA4 setup','Looker Studio setup','Custom dashboard','Usage training'],
+    ['Detailed monthly report','Professional design','Clear recommendations','PDF file'],
+  ],
+
+  // ECOM
+  ecom_title: 'E-Commerce <span>Stores</span>',
+  ecom_desc: 'Setup and manage your stores on Zid, Salla, Shopify, Amazon and Noon',
+  ecom_pkgs: [
+    { name:'Zid or Salla Setup', desc:'Complete store setup on Zid or Salla with payment and shipping settings', unit:'one time', btn:'🛍️ Order Now' },
+    { name:'Shopify Setup', desc:'Professional Shopify store setup with custom theme and complete settings', unit:'one time', btn:'🛒 Order Now' },
+    { name:'Product Upload', desc:'Upload and optimize product data with professional images and descriptions', unit:'up to 50 products', btn:'📦 Order Now' },
+    { name:'Amazon & Noon Management', desc:'Full management of your Amazon or Noon account — products, ads, SEO and shipping', unit:'monthly', btn:'🚀 Order Now' },
+  ],
+  ecom_features: [
+    ['Complete store setup','Payment and shipping settings','Domain connection','Management training'],
+    ['Full Shopify setup','Professional theme','Payment and shipping settings','Essential apps'],
+    ['Upload up to 50 products','Description optimization','Price and inventory setup','Category setup'],
+    ['Add 15 products monthly','Ad campaign management','Product SEO optimization','FBA shipping plan','Order and inventory tracking','Monthly sales report'],
+  ],
+
+  // LANDING
+  landing_title: 'Landing Pages <span>& SEO</span>',
+  landing_desc: 'Professional landing pages and search engine optimization',
+  landing_pkgs: [
+    { name:'Dynamic Landing Page', desc:'Professional landing page with custom design for your brand and campaigns', unit:'one time', btn:'🌐 Order Now' },
+    { name:'Basic SEO Setup', desc:'Optimize your website for search engines — Meta Tags, Schema and speed', unit:'one time', btn:'🔍 Order Now' },
+    { name:'Monthly SEO', desc:'Continuous search engine optimization with content and link building monthly', unit:'monthly', btn:'📈 Order Now' },
+  ],
+  landing_features: [
+    ['Custom brand design','Mobile responsive','Full Pixel and tracking setup','Contact form and WhatsApp button'],
+    ['Meta Tags optimization','Schema Markup','Speed optimization','Sitemap and Robots.txt'],
+    ['Continuous keyword optimization','Monthly SEO articles','Backlink building','Monthly ranking report'],
+  ],
+
+  // AI
+  ai_title: 'AI <span>Services</span>',
+  ai_desc: 'Your marketing plan and CV in minutes powered by AI',
+  ai_pkgs: [
+    { name:'Your Plan in Minutes', desc:'Complete digital marketing plan for your project powered by AI in under 10 minutes', unit:'per plan', btn:'⚡ Start Now' },
+    { name:'Your CV in Minutes', desc:'Professional ATS-compatible CV powered by AI — Arabic or English', unit:'per CV', btn:'📄 Start Now' },
+  ],
+  ai_features: [
+    ['Customized marketing plan','Best platforms and targeting strategy','Budget allocation and expected goals','Content plan and action steps','Downloadable PDF'],
+    ['ATS-compatible CV','Arabic or English option','Professional design with photo','Instant PDF download'],
+  ],
+
+  badge_popular: 'Most Popular',
+  badge_best: 'Best Value',
+  badge_new: 'New',
+  badge_offer: '50% OFF',
+};
+
+const SERV_AR = {
+  hero_h1: 'اختر الخدمة<br><span>المناسبة لك</span>',
+  hero_p: 'خدمات إعلانية ورقمية متكاملة بأسعار واضحة — بدون مفاجآت',
+  banner: '🔥 عرض محدود — خصم 50% على جميع الخدمات لفترة محدودة فقط!',
+  tabs: ['📢 إدارة الإعلانات','💬 الاستشارات والتقارير','🛒 المتاجر الإلكترونية','🌐 صفحات الهبوط والـ SEO','🤖 خدمات AI'],
+};
+
+const USD_PRICES_MAP = {
+  0: ['$380/mo','$270/mo','$160/mo','$550/mo'],
+  1: ['$35','$110/mo','$55','$110','$85','$55/mo'],
+  2: ['$65','$110','$85','$134/mo'],
+  3: ['$80','$65','$85/mo'],
+  4: ['$6','$3'],
+};
+
+function applyServLang(lang) {
+  servLang = lang;
+  const isEn = lang === 'en';
+  document.documentElement.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+  document.documentElement.setAttribute('lang', isEn ? 'en' : 'ar');
+  const btn = document.getElementById('langToggle');
+  if(btn) btn.textContent = isEn ? '🇸🇦 عربي' : '🇺🇸 English';
+
+  if(isEn) {
+    // Hero
+    const h1 = document.querySelector('.hero h1');
+    if(h1) h1.innerHTML = SERV_EN.hero_h1;
+    const p = document.querySelector('.hero p');
+    if(p) p.textContent = SERV_EN.hero_p;
+
+    // Banner
+    const banner = document.querySelector('.discount-banner');
+    if(banner) banner.innerHTML = SERV_EN.banner;
+
+    // Tabs
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach((tab, i) => { if(SERV_EN.tabs[i]) tab.textContent = SERV_EN.tabs[i]; });
+
+    // Update each panel
+    const panels = ['ads','consult','ecom','landing','ai'];
+    const panelData = [
+      { title: SERV_EN.ads_title, desc: SERV_EN.ads_desc, pkgs: SERV_EN.ads_pkgs, features: SERV_EN.ads_features },
+      { title: SERV_EN.consult_title, desc: SERV_EN.consult_desc, pkgs: SERV_EN.consult_pkgs, features: SERV_EN.consult_features },
+      { title: SERV_EN.ecom_title, desc: SERV_EN.ecom_desc, pkgs: SERV_EN.ecom_pkgs, features: SERV_EN.ecom_features },
+      { title: SERV_EN.landing_title, desc: SERV_EN.landing_desc, pkgs: SERV_EN.landing_pkgs, features: SERV_EN.landing_features },
+      { title: SERV_EN.ai_title, desc: SERV_EN.ai_desc, pkgs: SERV_EN.ai_pkgs, features: SERV_EN.ai_features },
+    ];
+
+    panels.forEach((panelId, pi) => {
+      const panel = document.getElementById('tab-' + panelId);
+      if(!panel) return;
+      const data = panelData[pi];
+
+      // Title & desc
+      const h2 = panel.querySelector('h2');
+      if(h2) h2.innerHTML = data.title;
+      const pdesc = panel.querySelector('.panel-head p');
+      if(pdesc) pdesc.textContent = data.desc;
+
+      // Packages
+      const pkgs = panel.querySelectorAll('.pkg');
+      pkgs.forEach((pkg, i) => {
+        const pd = data.pkgs[i];
+        if(!pd) return;
+
+        const name = pkg.querySelector('.pkg-name');
+        if(name) name.textContent = pd.name;
+
+        const desc = pkg.querySelector('.pkg-desc');
+        if(desc) desc.textContent = pd.desc;
+
+        const btn2 = pkg.querySelector('.pkg-btn');
+        if(btn2) btn2.textContent = pd.btn;
+
+        // USD price
+        let usdEl = pkg.querySelector('.usd-price');
+        if(!usdEl) {
+          usdEl = document.createElement('div');
+          usdEl.className = 'usd-price';
+          usdEl.style.cssText = 'background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:1.1rem;font-weight:900;padding:8px 12px;border-radius:8px;text-align:center;margin:8px 0;font-family:Poppins,sans-serif;';
+          const priceBox = pkg.querySelector('.price-box');
+          if(priceBox) priceBox.before(usdEl);
+        }
+        const usdPrice = USD_PRICES_MAP[pi] && USD_PRICES_MAP[pi][i];
+        usdEl.textContent = usdPrice || '';
+        usdEl.style.display = usdPrice ? 'block' : 'none';
+
+        // Features
+        const feats = pkg.querySelectorAll('.features li');
+        const featData = data.features[i];
+        if(featData) {
+          feats.forEach((feat, fi) => {
+            if(featData[fi]) feat.textContent = featData[fi];
+          });
+        }
+
+        // Unit
+        const units = pkg.querySelectorAll('.price-unit');
+        units.forEach(u => { if(pd.unit) u.textContent = pd.unit; });
+      });
+    });
+
+    // Badges
+    document.querySelectorAll('.pkg-badge').forEach(b => {
+      if(b.textContent.includes('الأكثر')) b.textContent = 'Most Popular';
+      if(b.textContent.includes('الأفضل')) b.textContent = 'Best Value';
+      if(b.textContent.includes('جديد')) b.textContent = 'New';
+    });
+
+  } else {
+    // Reload page to restore Arabic (simplest approach)
+    location.reload();
+  }
+}
+
+function toggleServLang() {
+  applyServLang(servLang === 'ar' ? 'en' : 'ar');
+}
+
+async function detectServLanguage() {
+  try {
+    let cc = null;
+    try {
+      const res = await fetch('https://ipapi.co/country/', {signal: AbortSignal.timeout(3000)});
+      cc = (await res.text()).trim();
+    } catch(e) {
+      try {
+        const r2 = await fetch('https://api.country.is/', {signal: AbortSignal.timeout(3000)});
+        cc = (await r2.json()).country;
+      } catch(e2) { cc = 'SA'; }
+    }
+    if (!ARABIC_COUNTRIES_S.includes(cc)) {
+      applyServLang('en');
+    }
+  } catch(e) {}
+}
+detectServLanguage();
+// ═══ END SERVICES LANGUAGE ═══
 
 function showTab(id,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
@@ -634,5 +888,26 @@ function loadPayPal(cb){
   document.body.appendChild(s);
 }
 </script>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button onclick="closeModal()" style="position:absolute;top:1rem;left:1rem;background:none;border:none;color:#94A3B8;font-size:1.5rem;cursor:pointer;line-height:1">×</button>
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <div style="font-size:.75rem;font-weight:700;color:#A78BFA;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem">الخدمة المختارة</div>
+      <div id="modalPkgName" style="font-size:1.2rem;font-weight:900;color:#F8FAFC"></div>
+      <div id="modalPrice" style="font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:.3rem 0"></div>
+    </div>
+    <div id="paypal-button-container" style="min-height:150px;margin-bottom:1rem"></div>
+    <div style="text-align:center;color:#64748B;font-size:.8rem;margin:.5rem 0">— أو —</div>
+    <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;text-align:center;margin-bottom:.8rem">
+      <p style="font-size:.82rem;color:#94A3B8;margin-bottom:.8rem">ادفع عبر InstaPay ثم أرسل إيصال على واتساب</p>
+      <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" style="display:block;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:.7rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.88rem;margin-bottom:.5rem">💳 افتح InstaPay</a>
+      <a id="waLink" href="https://wa.me/966580395350" target="_blank" style="display:block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.7rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.88rem">📲 أرسل إيصال على واتساب</a>
+    </div>
+    <a id="instaLink" href="#" style="display:none"></a>
+  </div>
+</div>
+
 </body>
 </html>
