@@ -179,7 +179,7 @@ textarea{resize:vertical;min-height:70px}
     <span class="hero-badge">⚡ تجتاز فلاتر التوظيف</span>
     <span class="hero-badge">📄 PDF فوري</span>
   </div>
-  <div class="hero-price" id="heroPrice">⟳ جاري التحميل...</div>
+  <div class="hero-price" id="heroPrice">🇸🇦 <span>10</span> ريال فقط</div>
 </div>
 
 <div class="main">
@@ -358,7 +358,7 @@ textarea{resize:vertical;min-height:70px}
 <div class="payment-card" id="paymentCard">
   <h2>💳 إتمام الدفع</h2>
   <div class="amount-box">
-    <div class="amount-num" id="payAmount">⟳</div>
+    <div class="amount-num" id="payAmount">10 <span style="font-size:1.2rem">ريال</span></div>
     <div class="amount-label">سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي</div>
   </div>
   <div id="paypal-container"></div>
@@ -445,9 +445,6 @@ function getExperiences() {
   return exps;
 }
 
-// Add first experience field automatically
-window.addEventListener('DOMContentLoaded', function() { addExpField(); });
-
 // ═══ SKILLS ═══
 var skillsByField = {
   'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel'],
@@ -465,8 +462,6 @@ var skillsByField = {
 };
 
 var selectedSkills = [];
-
-document.getElementById('workExp').addEventListener('change', updateSuggestions);
 
 function updateSuggestions() {
   var field = document.getElementById('workExp').value;
@@ -505,9 +500,7 @@ function addSkillManual() {
   input.focus();
 }
 
-document.getElementById('skillInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') { e.preventDefault(); addSkillManual(); }
-});
+
 
 function removeSkill(skill) {
   selectedSkills = selectedSkills.filter(function(s) { return s !== skill; });
@@ -579,15 +572,6 @@ function validateForm() {
 var urlParams = new URLSearchParams(window.location.search);
 var accessCode = urlParams.get('access');
 var VALID_CODES = ['MOEHAB2026','CV2026','INSTAPAY'];
-if (VALID_CODES.indexOf(accessCode) !== -1) {
-  document.getElementById('paymentCard').style.display = 'none';
-  var btn = document.createElement('button');
-  btn.type = 'button';
-  btn.style.cssText = 'width:100%;padding:.85rem;border-radius:10px;border:none;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;font-family:Cairo,sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;margin-top:1rem';
-  btn.textContent = '⚡ إنشاء سيرتي الذاتية الآن';
-  btn.addEventListener('click', function() { if (validateForm()) generateCV(); });
-  document.getElementById('formCard').appendChild(btn);
-}
 
 // ═══ CURRENCY + PAYPAL ═══
 var cvAmount = '2.67';
@@ -621,11 +605,8 @@ async function detectCurrency() {
     document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
     var waMsg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية\nسأدفع ' + cur.amount + ' ' + cur.label + ' عبر InstaPay:\nhttps://ipn.eg/S/bas6h2/instapay/0iNsR1');
     document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + waMsg;
-  } catch(e) {
-    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>10</span> ريال فقط';
-    document.getElementById('payAmount').innerHTML = '10 <span style="font-size:1.2rem">ريال</span>';
-  }
-  // Load PayPal AFTER currency is set
+  } catch(e) {}
+  // Load PayPal after currency detection
   if (VALID_CODES.indexOf(accessCode) === -1) loadPayPal();
 }
 
@@ -654,6 +635,37 @@ function loadPayPal() {
   };
   document.body.appendChild(s);
 }
+
+// ═══ INIT ═══
+window.addEventListener('DOMContentLoaded', function() {
+  // Add first experience field
+  addExpField();
+
+  // Skills field listener
+  var workExpEl = document.getElementById('workExp');
+  if (workExpEl) workExpEl.addEventListener('change', updateSuggestions);
+
+  // Skill input Enter key
+  var skillInput = document.getElementById('skillInput');
+  if (skillInput) skillInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); addSkillManual(); }
+  });
+
+  // Access code
+  if (VALID_CODES.indexOf(accessCode) !== -1) {
+    var pc = document.getElementById('paymentCard');
+    if (pc) pc.style.display = 'none';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.style.cssText = 'width:100%;padding:.85rem;border-radius:10px;border:none;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;font-family:Cairo,sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;margin-top:1rem';
+    btn.textContent = '⚡ إنشاء سيرتي الذاتية الآن';
+    btn.addEventListener('click', function() { if (validateForm()) generateCV(); });
+    var fc = document.getElementById('formCard');
+    if (fc) fc.appendChild(btn);
+  }
+
+  renderChips();
+});
 
 detectCurrency();
 
