@@ -156,7 +156,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 
 <nav>
   <div class="nav-logo">MO EHAB</div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+  <button id="langToggle" onclick="toggleCVLang()" style="background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:4px 12px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.8rem;font-weight:700;cursor:pointer">🇺🇸 English</button>
   <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
+</div>
 </nav>
 
 <div class="hero">
@@ -467,73 +470,166 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 </div>
 
 <script>
-let cvData = {};
-let paypalLoaded = false;
-let isEgypt = false;
-let cvAmount = '4.00';
+// ═══ SKILLS BY FIELD ═══
+const skillsByField = {
+  'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel','Email Marketing'],
+  'البرمجة وتطوير الويب': ['Python','JavaScript','React','Vue.js','Node.js','PHP','Laravel','MySQL','MongoDB','Git','HTML/CSS','Flutter'],
+  'التصميم الجرافيكي': ['Photoshop','Illustrator','Figma','Canva','After Effects','Premiere Pro','InDesign','UI/UX','Branding'],
+  'المبيعات وخدمة العملاء': ['التفاوض','CRM','خدمة العملاء','Excel','Salesforce','إدارة العملاء','Cold Calling'],
+  'المحاسبة والمالية': ['Excel','QuickBooks','SAP','تحليل مالي','ميزانيات','Power BI','IFRS'],
+  'الموارد البشرية': ['التوظيف','تقييم الأداء','Excel','SAP HR','تدريب وتطوير','Payroll'],
+  'إدارة المشاريع': ['PMP','Agile','Scrum','Jira','Trello','MS Project','Excel'],
+  'الطب والصحة': ['الفحص السريري','التشخيص','الرعاية الصحية','الإسعافات الأولية'],
+  'التعليم والتدريب': ['تصميم المناهج','التدريس','Zoom','تقييم الطلاب','التعليم الإلكتروني'],
+  'الهندسة': ['AutoCAD','SolidWorks','MATLAB','الرسم الهندسي','إدارة المشاريع'],
+  'الإعلام والصحافة': ['الكتابة','التحرير','Premiere Pro','التصوير','Adobe Suite'],
+  'أخرى': ['Excel','Word','PowerPoint','التواصل','العمل الجماعي','إدارة الوقت']
+};
 
-// Access code check
+var selectedSkills = [];
+
+function updateSuggestions() {
+  var field = document.getElementById('workExp').value;
+  var container = document.getElementById('skillsSuggestions');
+  if (!container) return;
+  container.innerHTML = '';
+  if (!field) {
+    container.innerHTML = '<span style="color:#64748B;font-size:.78rem">← اختر مجال العمل أولاً</span>';
+    return;
+  }
+  var suggestions = skillsByField[field] || [];
+  for (var i = 0; i < suggestions.length; i++) {
+    (function(skill) {
+      if (selectedSkills.indexOf(skill) !== -1) return;
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.textContent = '+ ' + skill;
+      chip.style.cssText = 'background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:3px 10px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;margin:2px';
+      chip.onclick = function() { addSkill(skill); };
+      container.appendChild(chip);
+    })(suggestions[i]);
+  }
+}
+
+function addSkill(skill) {
+  if (selectedSkills.indexOf(skill) !== -1) return;
+  selectedSkills.push(skill);
+  renderChips();
+  updateSuggestions();
+  var hidden = document.getElementById('skills');
+  if (hidden) hidden.value = selectedSkills.join(', ');
+}
+
+function addSkillManual() {
+  var input = document.getElementById('skillInput');
+  if (!input) return;
+  var val = input.value.trim();
+  if (!val) return;
+  addSkill(val);
+  input.value = '';
+}
+
+function removeSkill(skill) {
+  selectedSkills = selectedSkills.filter(function(s) { return s !== skill; });
+  renderChips();
+  updateSuggestions();
+  var hidden = document.getElementById('skills');
+  if (hidden) hidden.value = selectedSkills.join(', ');
+}
+
+function renderChips() {
+  var container = document.getElementById('skillsChips');
+  if (!container) return;
+  container.innerHTML = '';
+  if (selectedSkills.length === 0) {
+    var hint = document.createElement('span');
+    hint.style.cssText = 'color:#64748B;font-size:.8rem;padding:.2rem';
+    hint.textContent = 'اختر مهاراتك من الاقتراحات أدناه...';
+    container.appendChild(hint);
+    return;
+  }
+  selectedSkills.forEach(function(s) {
+    var span = document.createElement('span');
+    span.style.cssText = 'background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;margin:2px';
+    span.textContent = s + ' ';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = '×';
+    btn.style.cssText = 'background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0;line-height:1';
+    btn.onclick = (function(skill) { return function() { removeSkill(skill); }; })(s);
+    span.appendChild(btn);
+    container.appendChild(span);
+  });
+}
+
+// ═══ PHOTO ═══
+var photoBase64 = '';
+function previewPhoto(input) {
+  var file = input.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    photoBase64 = e.target.result;
+    var preview = document.getElementById('photoPreview');
+    if (preview) preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ═══ ACCESS CODE ═══
 const urlParams = new URLSearchParams(window.location.search);
 const accessCode = urlParams.get('access');
 const VALID_CODES = ['MOEHAB2026', 'CV2026', 'INSTAPAY'];
 const hasAccess = VALID_CODES.includes(accessCode);
 
-if (hasAccess) {
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('paymentCard').style.display = 'none';
-    const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'pay-btn pay-paypal';
-    confirmBtn.style.marginTop = '1rem';
-    confirmBtn.style.width = '100%';
-    confirmBtn.innerHTML = '⚡ إنشاء سيرتي الذاتية الآن';
-    confirmBtn.onclick = function() { if (validateForm()) generateCV(); };
-    document.getElementById('formCard').appendChild(confirmBtn);
-  });
-}
+// ═══ CURRENCY ═══
+const ARABIC_CC_CV = ['SA','EG','AE','QA','KW','BH','OM','JO','LB','SD','MA','TN','DZ','IQ','SY','YE','LY'];
+var cvAmount = '2.67';
+var isEgyptCV = false;
 
-// Currency detection
 async function detectCurrency() {
   try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json();
-    const cc = data.country_code;
-
+    let cc = 'SA';
+    try {
+      const r = await fetch('https://ipapi.co/country/', {signal: AbortSignal.timeout(3000)});
+      cc = (await r.text()).trim();
+    } catch(e) {
+      try {
+        const r2 = await fetch('https://api.country.is/', {signal: AbortSignal.timeout(3000)});
+        cc = (await r2.json()).country;
+      } catch(e2) {}
+    }
     const currencies = {
-      'EG': { flag:'🇪🇬', amount:'75', label:'ج.م',  usd:'2.00' },
-      'AE': { flag:'🇦🇪', amount:'10', label:'درهم', usd:'2.72' },
-      'QA': { flag:'🇶🇦', amount:'10', label:'ر.ق',  usd:'2.75' },
-      'KW': { flag:'🇰🇼', amount:'1',  label:'د.ك',  usd:'3.25' },
+      'EG': {flag:'🇪🇬', amount:'75', label:'ج.م', usd:'2.00'},
+      'AE': {flag:'🇦🇪', amount:'10', label:'درهم', usd:'2.72'},
+      'QA': {flag:'🇶🇦', amount:'10', label:'ر.ق', usd:'2.75'},
+      'KW': {flag:'🇰🇼', amount:'1', label:'د.ك', usd:'3.25'},
     };
-
-    const cur = currencies[cc] || { flag:'🇸🇦', amount:'10', label:'ريال', usd:'2.67' };
+    const cur = currencies[cc] || (ARABIC_CC_CV.includes(cc)
+      ? {flag:'🇸🇦', amount:'10', label:'ريال', usd:'2.67'}
+      : {flag:'🇺🇸', amount:'3', label:'USD', usd:'3.00'});
     cvAmount = cur.usd;
-    document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
-    document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
+    isEgyptCV = (cc === 'EG');
+    const hp = document.getElementById('heroPrice');
+    const pa = document.getElementById('payAmount');
+    if (hp) hp.innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
+    if (pa) pa.innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
   } catch(e) {
     cvAmount = '2.67';
-    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>10</span> ريال فقط';
-    document.getElementById('payAmount').innerHTML = '10 <span style="font-size:1.2rem">ريال</span>';
+    var hp = document.getElementById('heroPrice');
+    var pa = document.getElementById('payAmount');
+    if (hp) hp.innerHTML = '🇸🇦 <span>10</span> ريال فقط';
+    if (pa) pa.innerHTML = '10 <span style="font-size:1.2rem">ريال</span>';
   }
-  // Load PayPal AFTER currency is set
-  loadPayPal();
-}
-detectCurrency();
-
-function validateForm() {
-  const required = ['fullName','jobTitle','email','phone','experience','workExp','skills','education'];
-  for (const id of required) {
-    if (!document.getElementById(id).value) {
-      alert('من فضلك أكمل جميع الحقول المطلوبة *');
-      document.getElementById(id).focus();
-      return false;
-    }
-  }
-  return true;
+  // Load PayPal AFTER currency
+  if (!hasAccess) loadPayPal();
 }
 
+// ═══ PAYPAL ═══
+var paypalLoaded = false;
 function loadPayPal() {
   if (paypalLoaded) return;
-  const s = document.createElement('script');
+  var s = document.createElement('script');
   s.src = 'https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
   s.onload = function() {
     paypalLoaded = true;
@@ -559,38 +655,71 @@ function loadPayPal() {
   document.body.appendChild(s);
 }
 
+// ═══ INSTAPAY ═══
 function handleInstapay() {
-  const name = document.getElementById('fullName').value || 'العميل';
-  const msg = encodeURIComponent(
-    'مرحباً، أريد إنشاء سيرة ذاتية ⚡\n\n' +
-    'الاسم: ' + name + '\n' +
-    'سأقوم بالدفع ' + (isEgypt ? '75 ج.م' : '10 ريال') + ' عبر InstaPay:\n' +
-    'https://ipn.eg/S/bas6h2/instapay/0iNsR1\n\n' +
-    'وسأرسل إيصال الدفع هنا للتأكيد.'
-  );
+  var name = document.getElementById('fullName').value || 'العميل';
+  var msg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية ⚡
+
+الاسم: ' + name + '
+سأقوم بالدفع ' + (isEgyptCV ? '75 ج.م' : '10 ريال') + ' عبر InstaPay:
+https://ipn.eg/S/bas6h2/instapay/0iNsR1
+
+وسأرسل إيصال الدفع هنا للتأكيد.');
   window.open('https://wa.me/966580395350?text=' + msg, '_blank');
 }
 
+// ═══ VALIDATE ═══
+function validateForm() {
+  var required = ['fullName','jobTitle','email','phone','experience','workExp','education'];
+  for (var i = 0; i < required.length; i++) {
+    var el = document.getElementById(required[i]);
+    if (!el || !el.value) {
+      alert('من فضلك أكمل جميع الحقول المطلوبة *');
+      if (el) el.focus();
+      return false;
+    }
+  }
+  if (selectedSkills.length === 0) {
+    alert('من فضلك أضف مهارة واحدة على الأقل');
+    return false;
+  }
+  return true;
+}
+
+// ═══ GENERATE CV ═══
 async function generateCV() {
   document.getElementById('formCard').style.display = 'none';
   document.getElementById('paymentCard').style.display = 'none';
-  document.getElementById('loadingCard').classList.add('show');
+  var lc = document.getElementById('loadingCard');
+  lc.classList.add('show');
 
-  setTimeout(() => {
-    document.getElementById('step2').className = 'loading-step done';
-    document.getElementById('step2').textContent = '✓ كتابة النبذة الشخصية';
-    document.getElementById('step3').className = 'loading-step active';
-    document.getElementById('step3').textContent = '⟳ صياغة الخبرات باحترافية';
+  setTimeout(function() {
+    var s2 = document.getElementById('step2');
+    if(s2) { s2.className='loading-step done'; s2.textContent='✓ كتابة النبذة الشخصية'; }
+    var s3 = document.getElementById('step3');
+    if(s3) { s3.className='loading-step active'; s3.textContent='⟳ صياغة الخبرات'; }
   }, 2000);
-  setTimeout(() => {
-    document.getElementById('step3').className = 'loading-step done';
-    document.getElementById('step3').textContent = '✓ صياغة الخبرات باحترافية';
-    document.getElementById('step4').className = 'loading-step active';
-    document.getElementById('step4').textContent = '⟳ تصميم السيرة الذاتية';
+  setTimeout(function() {
+    var s3 = document.getElementById('step3');
+    if(s3) { s3.className='loading-step done'; s3.textContent='✓ صياغة الخبرات'; }
+    var s4 = document.getElementById('step4');
+    if(s4) { s4.className='loading-step active'; s4.textContent='⟳ تصميم السيرة الذاتية'; }
   }, 4000);
 
+  var cvLangEl = document.querySelector('input[name="cvLang"]:checked');
+  var cvLang = cvLangEl ? cvLangEl.value : 'ar';
+  var city = document.getElementById('city') ? document.getElementById('city').value : '';
+  var country = document.getElementById('country') ? document.getElementById('country').value : '';
+  var gradYear = document.getElementById('gradYear') ? document.getElementById('gradYear').value : '';
+  var langs = [];
+  ['lang_ar','lang_en','lang_fr','lang_tr'].forEach(function(id) {
+    var el = document.getElementById(id);
+    var labels = {lang_ar:'العربية',lang_en:'الإنجليزية',lang_fr:'الفرنسية',lang_tr:'التركية'};
+    if (el && el.checked) langs.push(labels[id]);
+  });
+
   try {
-    const response = await fetch('https://generate-plan.mr-mohammedihab.workers.dev', {
+    var response = await fetch('https://generate-plan.mr-mohammedihab.workers.dev', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -599,169 +728,153 @@ async function generateCV() {
         audience: document.getElementById('fullName').value,
         budget: document.getElementById('experience').value,
         goal: document.getElementById('jobTitle').value,
-        country: document.getElementById('country').value || (isEgypt ? 'مصر' : 'السعودية'),
-        extra: `
-          الاسم: ${document.getElementById('fullName').value}
-          المسمى: ${document.getElementById('jobTitle').value}
-          الإيميل: ${document.getElementById('email').value}
-          الهاتف: ${document.getElementById('countryCode').value + document.getElementById('phone').value}
-          الموقع: ${document.getElementById('location').value}
-          الخبرة: ${document.getElementById('experience').value}
-          الخبرات: ${document.getElementById('workExp').value}
-          الدولة: ${document.getElementById('country').value}
-          المدينة: ${document.getElementById('city').value}
-          لغة السيرة: ${document.getElementById('cvLangAr').checked ? 'عربي - اكتب كل شيء بالعربية' : 'English - write everything in English'}
-          المهارات: ${document.getElementById('skills').value}
-          التعليم: ${document.getElementById('education').value} - ${document.getElementById('eduDetails').value} ${document.getElementById('gradYear').value}
-          اللغات: ${[
-            document.getElementById('lang_ar').checked ? 'العربية' : '',
-            document.getElementById('lang_en').checked ? 'الإنجليزية' : '',
-            document.getElementById('lang_fr').checked ? 'الفرنسية' : '',
-            document.getElementById('lang_tr').checked ? 'التركية' : ''
-          ].filter(Boolean).join(', ')}
-          النبذة: ${document.getElementById('summary').value}
+        country: country || (isEgyptCV ? 'مصر' : 'السعودية'),
+        extra: 'الاسم: ' + document.getElementById('fullName').value +
+          '
+المسمى: ' + document.getElementById('jobTitle').value +
+          '
+الإيميل: ' + document.getElementById('email').value +
+          '
+الهاتف: ' + (document.getElementById('countryCode') ? document.getElementById('countryCode').value : '') + document.getElementById('phone').value +
+          '
+الموقع: ' + city + ', ' + country +
+          '
+الخبرة: ' + document.getElementById('experience').value +
+          '
+المجال: ' + document.getElementById('workExp').value +
+          '
+المهارات: ' + selectedSkills.join(', ') +
+          '
+التعليم: ' + document.getElementById('education').value +
+          (document.getElementById('eduDetails') ? ' - ' + document.getElementById('eduDetails').value : '') +
+          ' ' + gradYear +
+          '
+اللغات: ' + langs.join(', ') +
+          '
+لغة السيرة: ' + (cvLang === 'ar' ? 'عربي - اكتب كل شيء بالعربية' : 'English - write everything in English') +
+          '
 
-          اكتب نبذة شخصية احترافية لا تزيد عن 3 أسطر.
-          ثم اكتب وصفاً احترافياً لكل خبرة عملية.
-          الرد يكون JSON فقط بهذا الشكل:
-          {"summary":"...","experiences":[{"title":"...","company":"...","period":"...","desc":"..."}],"skills":["..."],"languages":[{"name":"...","level":"...","percent":80}]}
-        `
+اكتب نبذة شخصية احترافية لا تزيد عن 3 أسطر ثم اكتب وصفاً احترافياً لكل خبرة.' +
+          '
+الرد يكون JSON فقط: {"summary":"...","experiences":[{"title":"...","company":"...","period":"...","desc":"..."}],"skills":["..."],"languages":[{"name":"...","level":"...","percent":80}]}'
       })
     });
-
-    const data = await response.json();
-    let cvJson = {};
+    var data = await response.json();
+    var cvJson = {};
     try {
-      const jsonMatch = data.plan.match(/\{[\s\S]*\}/);
-      if (jsonMatch) cvJson = JSON.parse(jsonMatch[0]);
-    } catch(e) { cvJson = {}; }
-
+      var match = data.plan.match(/\{[\s\S]*\}/);
+      if (match) cvJson = JSON.parse(match[0]);
+    } catch(e) {}
     renderCV(cvJson);
-
   } catch(err) {
     alert('حدث خطأ — يرجى التواصل على واتساب');
   }
 }
 
+// ═══ RENDER CV ═══
 function renderCV(ai) {
-  const name = document.getElementById('fullName').value;
-  const title = document.getElementById('jobTitle').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('countryCode').value + document.getElementById('phone').value;
-  const location = [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join('، ');
-  const education = document.getElementById('education').value + (document.getElementById('eduDetails').value ? ' — ' + document.getElementById('eduDetails').value : '');
-  const skills = ai.skills || document.getElementById('skills').value.split(',').map(s => s.trim());
-  const summary = ai.summary || document.getElementById('summary').value;
-  const experiences = ai.experiences || [];
-  const languages = ai.languages || [{name:'العربية',level:'ممتاز',percent:100},{name:'الإنجليزية',level:'جيد',percent:70}];
+  var name = document.getElementById('fullName').value;
+  var title = document.getElementById('jobTitle').value;
+  var email = document.getElementById('email').value;
+  var phone = (document.getElementById('countryCode') ? document.getElementById('countryCode').value : '') + document.getElementById('phone').value;
+  var city = document.getElementById('city') ? document.getElementById('city').value : '';
+  var country = document.getElementById('country') ? document.getElementById('country').value : '';
+  var location = [city, country].filter(Boolean).join('، ');
+  var education = document.getElementById('education').value + (document.getElementById('eduDetails') && document.getElementById('eduDetails').value ? ' — ' + document.getElementById('eduDetails').value : '') + (document.getElementById('gradYear') && document.getElementById('gradYear').value ? ' ' + document.getElementById('gradYear').value : '');
+  var skills = ai.skills || selectedSkills;
+  var summary = ai.summary || '';
+  var experiences = ai.experiences || [];
+  var languages = ai.languages || [{name:'العربية',level:'ممتاز',percent:100}];
 
-  const cvHTML = `
-  <div class="cv-preview" id="cvContent">
-    <div class="cv-header">
-      <div class="cv-name">${name}</div>
-      <div class="cv-title">${title}</div>
-      <div class="cv-contact">
-        ${email ? `<span>✉ ${email}</span>` : ''}
-        ${phone ? `<span>📞 ${phone}</span>` : ''}
-        ${location ? `<span>📍 ${location}</span>` : ''}
-      </div>
-    </div>
-    <div class="cv-body">
-      <div class="cv-sidebar">
-        <div class="cv-section">
-          <div class="cv-section-title">المهارات</div>
-          ${skills.map(s => `<span class="cv-skill">${s}</span>`).join('')}
-        </div>
-        <div class="cv-section">
-          <div class="cv-section-title">التعليم</div>
-          <div class="cv-item-desc" style="font-size:.82rem;color:#444">${education}</div>
-        </div>
-        <div class="cv-section">
-          <div class="cv-section-title">اللغات</div>
-          ${languages.map(l => `
-            <div class="cv-lang">
-              <span>${l.name}</span>
-              <span style="font-size:.72rem;color:#888">${l.level}</span>
-            </div>
-            <div class="cv-lang-bar"><div class="cv-lang-fill" style="width:${l.percent}%"></div></div>
-          `).join('')}
-        </div>
-      </div>
-      <div class="cv-main">
-        ${summary ? `
-        <div class="cv-section">
-          <div class="cv-section-title">نبذة شخصية</div>
-          <div class="cv-item-desc">${summary}</div>
-        </div>` : ''}
-        <div class="cv-section">
-          <div class="cv-section-title">الخبرات العملية</div>
-          ${experiences.length > 0 ? experiences.map(exp => `
-            <div class="cv-item">
-              <div class="cv-item-title">${exp.title}</div>
-              <div class="cv-item-sub">${exp.company} ${exp.period ? '| ' + exp.period : ''}</div>
-              <div class="cv-item-desc">${exp.desc}</div>
-            </div>
-          `).join('') : `<div class="cv-item-desc">${document.getElementById('workExp').value}</div>`}
-        </div>
-      </div>
-    </div>
-  </div>`;
+  var cvHTML = '<div class="cv-preview" id="cvContent">' +
+    '<div class="cv-header" style="display:flex;align-items:center;gap:1.5rem;text-align:right">' +
+    (photoBase64 ? '<img src="' + photoBase64 + '" style="width:80px;height:80px;border-radius:50%;border:3px solid rgba(255,255,255,0.5);object-fit:cover;flex-shrink:0">' : '') +
+    '<div style="flex:1">' +
+    '<div class="cv-name">' + name + '</div>' +
+    '<div class="cv-title">' + title + '</div>' +
+    '<div class="cv-contact">' +
+    (email ? '<span>✉ ' + email + '</span>' : '') +
+    (phone ? '<span>📞 ' + phone + '</span>' : '') +
+    (location ? '<span>📍 ' + location + '</span>' : '') +
+    '</div></div></div>' +
+    '<div class="cv-body">' +
+    '<div class="cv-sidebar">' +
+    '<div class="cv-section"><div class="cv-section-title">المهارات</div>' +
+    skills.map(function(s) { return '<span class="cv-skill">' + s + '</span>'; }).join('') +
+    '</div>' +
+    '<div class="cv-section"><div class="cv-section-title">التعليم</div>' +
+    '<div class="cv-item-desc" style="font-size:.82rem;color:#444">' + education + '</div></div>' +
+    '<div class="cv-section"><div class="cv-section-title">اللغات</div>' +
+    languages.map(function(l) {
+      return '<div class="cv-lang"><span>' + l.name + '</span><span style="font-size:.72rem;color:#888">' + l.level + '</span></div>' +
+        '<div class="cv-lang-bar"><div class="cv-lang-fill" style="width:' + l.percent + '%"></div></div>';
+    }).join('') + '</div></div>' +
+    '<div class="cv-main">' +
+    (summary ? '<div class="cv-section"><div class="cv-section-title">نبذة شخصية</div><div class="cv-item-desc">' + summary + '</div></div>' : '') +
+    '<div class="cv-section"><div class="cv-section-title">الخبرات العملية</div>' +
+    (experiences.length > 0 ? experiences.map(function(exp) {
+      return '<div class="cv-item"><div class="cv-item-title">' + exp.title + '</div>' +
+        '<div class="cv-item-sub">' + exp.company + (exp.period ? ' | ' + exp.period : '') + '</div>' +
+        '<div class="cv-item-desc">' + exp.desc + '</div></div>';
+    }).join('') : '<div class="cv-item-desc">' + document.getElementById('workExp').value + '</div>') +
+    '</div></div></div></div>';
 
   document.getElementById('loadingCard').classList.remove('show');
   document.getElementById('resultCard').classList.add('show');
   document.getElementById('cvPreview').innerHTML = cvHTML;
 }
 
+// ═══ DOWNLOAD CV ═══
 function downloadCV() {
-  const name = document.getElementById('fullName').value;
-  const cvContent = document.getElementById('cvContent').outerHTML;
-
-  const html = '<!DOCTYPE html><html lang="ar" dir="rtl"><head>' +
-    '<meta charset="UTF-8">' +
-    '<title>السيرة الذاتية - ' + name + '</title>' +
+  var name = document.getElementById('fullName').value;
+  var cvContent = document.getElementById('cvContent').outerHTML;
+  var html = '<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>CV - ' + name + '</title>' +
     '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
-    '<style>' +
-    '*{margin:0;padding:0;box-sizing:border-box}' +
-    'body{font-family:Cairo,Arial,sans-serif;direction:rtl;background:#fff;color:#1a1a1a}' +
+    '<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Cairo,sans-serif;direction:rtl;background:#fff}' +
     '.cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:2rem;display:flex;align-items:center;gap:1.5rem}' +
-    '.cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}' +
-    '.cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}' +
+    '.cv-name{font-size:1.8rem;font-weight:900;margin-bottom:.3rem}.cv-title{font-size:1rem;opacity:.9;margin-bottom:.8rem}' +
     '.cv-contact{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.82rem;opacity:.85}' +
     '.cv-body{padding:1.5rem;display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;direction:rtl}' +
-    '.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}' +
-    '.cv-section{margin-bottom:1.2rem}' +
+    '.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.5rem}.cv-section{margin-bottom:1.2rem}' +
     '.cv-section-title{font-size:.85rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.3rem;margin-bottom:.7rem}' +
-    '.cv-item{margin-bottom:.8rem}' +
-    '.cv-item-title{font-size:.9rem;font-weight:800}' +
-    '.cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}' +
-    '.cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}' +
-    '.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}' +
+    '.cv-item{margin-bottom:.8rem}.cv-item-title{font-size:.9rem;font-weight:800}.cv-item-sub{font-size:.78rem;color:#666;margin-bottom:.3rem}' +
+    '.cv-item-desc{font-size:.8rem;color:#444;line-height:1.6}.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin:2px}' +
     '.cv-lang{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;font-size:.82rem}' +
     '.cv-lang-bar{height:4px;background:#f0f0f0;border-radius:2px;margin-top:2px;flex:1;margin-right:.5rem}' +
     '.cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}' +
-    'img{max-width:80px;max-height:80px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.5)}' +
-    '.footer-note{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}' +
+    'img{max-width:80px;height:80px;border-radius:50%;object-fit:cover}' +
+    '.footer{text-align:center;padding:1rem;font-size:.75rem;color:#999;border-top:1px solid #eee;margin-top:1rem}' +
     '.print-btn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}' +
-    '@media print{.print-btn{display:none}}' +
-    '</style></head><body>' +
+    '@media print{.print-btn{display:none}}</style></head><body>' +
     cvContent +
-    '<div class="footer-note">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>' +
+    '<div class="footer">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>' +
     '<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>' +
     '</body></html>';
-
-  const win = window.open('', '_blank');
+  var win = window.open('', '_blank');
   win.document.write(html);
   win.document.close();
 }
 
-
+// ═══ INIT ═══
 window.addEventListener('load', function() {
   renderChips();
   var workExpEl = document.getElementById('workExp');
   if (workExpEl) workExpEl.addEventListener('change', updateSuggestions);
-});
-// ═══ END SKILLS ═══
 
+  if (hasAccess) {
+    document.getElementById('paymentCard').style.display = 'none';
+    var confirmBtn = document.createElement('button');
+    confirmBtn.type = 'button';
+    confirmBtn.className = 'pay-btn pay-paypal';
+    confirmBtn.style.marginTop = '1rem';
+    confirmBtn.style.width = '100%';
+    confirmBtn.innerHTML = '⚡ إنشاء سيرتي الذاتية الآن';
+    confirmBtn.onclick = function() { if (validateForm()) generateCV(); };
+    document.getElementById('formCard').appendChild(confirmBtn);
+  }
+});
+
+detectCurrency();
 </script>
 </body>
 </html>
