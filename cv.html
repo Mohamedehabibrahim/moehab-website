@@ -76,6 +76,12 @@ input::placeholder,textarea::placeholder{color:#64748B}
 select option{background:#111827;color:#F8FAFC}
 textarea{resize:vertical;min-height:70px}
 
+/* Experience */
+.exp-item{background:rgba(255,255,255,0.03);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;margin-bottom:.8rem;position:relative}
+.exp-remove{position:absolute;top:.7rem;left:.7rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#EF4444;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;pointer-events:auto}
+.add-exp-btn{width:100%;padding:.7rem;border-radius:8px;border:1.5px dashed rgba(124,58,237,0.4);background:none;color:#A78BFA;font-family:Cairo,sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .2s;pointer-events:auto}
+.add-exp-btn:hover{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.6)}
+
 /* Skills */
 .skills-chips{display:flex;flex-wrap:wrap;gap:.3rem;min-height:40px;background:rgba(255,255,255,0.03);border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.5rem;margin-bottom:.5rem;position:relative;z-index:1}
 .skills-suggestions{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem;min-height:20px}
@@ -298,6 +304,13 @@ textarea{resize:vertical;min-height:70px}
       </div>
     </div>
 
+    <!-- EXPERIENCE -->
+    <div class="form-group form-full">
+      <label class="form-label">الخبرات العملية *</label>
+      <div id="expContainer"></div>
+      <button type="button" class="add-exp-btn" onclick="addExpField()">+ أضف خبرة عملية</button>
+    </div>
+
     <!-- SKILLS - Full Row -->
     <div class="form-group form-full">
       <label class="form-label">المهارات * — اختر مجال العمل أولاً لتظهر الاقتراحات</label>
@@ -384,6 +397,57 @@ textarea{resize:vertical;min-height:70px}
 </div><!-- end main -->
 
 <script>
+// ═══ EXPERIENCE ═══
+var expCount = 0;
+
+function addExpField() {
+  expCount++;
+  var id = 'exp_' + expCount;
+  var div = document.createElement('div');
+  div.className = 'exp-item';
+  div.id = id;
+  div.innerHTML = [
+    '<button type="button" class="exp-remove" onclick="document.getElementById('' + id + '').remove()">×</button>',
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem">',
+    '<div><label class="form-label">المسمى الوظيفي *</label>',
+    '<input type="text" class="exp-title" placeholder="مسوق رقمي / مطور ويب..."></div>',
+    '<div><label class="form-label">اسم الشركة *</label>',
+    '<input type="text" class="exp-company" placeholder="شركة XYZ"></div>',
+    '<div><label class="form-label">من سنة</label>',
+    '<input type="text" class="exp-from" placeholder="2020"></div>',
+    '<div><label class="form-label">إلى سنة</label>',
+    '<input type="text" class="exp-to" placeholder="2024 / حتى الآن"></div>',
+    '</div>',
+    '<label class="form-label">وصف مختصر (اختياري — AI سيحسّنه)</label>',
+    '<textarea class="exp-desc" placeholder="مسؤوليات وإنجازات..." style="min-height:60px"></textarea>'
+  ].join('');
+  document.getElementById('expContainer').appendChild(div);
+}
+
+function getExperiences() {
+  var items = document.querySelectorAll('.exp-item');
+  var exps = [];
+  items.forEach(function(item) {
+    var title = item.querySelector('.exp-title').value.trim();
+    var company = item.querySelector('.exp-company').value.trim();
+    var from = item.querySelector('.exp-from').value.trim();
+    var to = item.querySelector('.exp-to').value.trim();
+    var desc = item.querySelector('.exp-desc').value.trim();
+    if (title || company) {
+      exps.push({
+        title: title,
+        company: company,
+        period: [from, to].filter(Boolean).join(' — '),
+        desc: desc
+      });
+    }
+  });
+  return exps;
+}
+
+// Add first experience field automatically
+window.addEventListener('DOMContentLoaded', function() { addExpField(); });
+
 // ═══ SKILLS ═══
 var skillsByField = {
   'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel'],
@@ -490,6 +554,12 @@ function previewPhoto(input) {
 // ═══ VALIDATE ═══
 function validateForm() {
   var req = ['fullName','jobTitle','email','phone','experience','workExp','education'];
+  // Check at least one experience
+  var exps = getExperiences();
+  if (exps.length === 0) {
+    alert('من فضلك أضف خبرة عملية واحدة على الأقل');
+    return false;
+  }
   for (var i = 0; i < req.length; i++) {
     var el = document.getElementById(req[i]);
     if (!el || !el.value) {
@@ -621,6 +691,7 @@ async function generateCV() {
           'الموقع: ' + [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join(', '),
           'الخبرة: ' + document.getElementById('experience').value,
           'المجال: ' + document.getElementById('workExp').value,
+          'الخبرات العملية: ' + JSON.stringify(getExperiences()),
           'المهارات: ' + selectedSkills.join(', '),
           'التعليم: ' + document.getElementById('education').value + ' ' + (document.getElementById('eduDetails').value || '') + ' ' + (document.getElementById('gradYear').value || ''),
           'اللغات: ' + langs.join(', '),
@@ -677,11 +748,12 @@ function renderCV(ai) {
   html += '</div></div><div class="cv-main">';
   if (summary) html += '<div class="cv-section"><div class="cv-section-title">نبذة شخصية</div><div class="cv-item-desc">' + summary + '</div></div>';
   html += '<div class="cv-section"><div class="cv-section-title">الخبرات العملية</div>';
-  if (experiences.length) {
-    experiences.forEach(function(exp) {
-      html += '<div class="cv-item"><div class="cv-item-title">' + exp.title + '</div>';
-      html += '<div class="cv-item-sub">' + exp.company + (exp.period ? ' | ' + exp.period : '') + '</div>';
-      html += '<div class="cv-item-desc">' + exp.desc + '</div></div>';
+  var allExps = (experiences && experiences.length) ? experiences : getExperiences();
+  if (allExps.length) {
+    allExps.forEach(function(exp) {
+      html += '<div class="cv-item"><div class="cv-item-title">' + (exp.title || '') + '</div>';
+      html += '<div class="cv-item-sub">' + (exp.company || '') + (exp.period ? ' | ' + exp.period : '') + '</div>';
+      html += '<div class="cv-item-desc">' + (exp.desc || '') + '</div></div>';
     });
   } else {
     html += '<div class="cv-item-desc">' + document.getElementById('workExp').value + '</div>';
