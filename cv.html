@@ -4,807 +4,686 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سيرتك الذاتية في دقائق ⚡ | MO EHAB</title>
-<meta name="description" content="أنشئ سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي في دقائق. قابلة للتحميل PDF فوراً. بـ 10 ريال فقط.">
-<link rel="canonical" href="https://moehabads.com/cv">
-
-<!-- GA4 -->
+<meta name="description" content="أنشئ سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي في دقائق — 10 ريال فقط">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EF8X2FRN"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-G8EF8X2FRN');</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--purple:#7C3AED;--cyan:#06B6D4;--bg:#0F172A;--card:#111827;--text:#F8FAFC;--muted:#94A3B8;--dim:#64748B;--border:rgba(124,58,237,0.2)}
-body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;direction:rtl;min-height:100vh}
+:root{--p:#7C3AED;--c:#06B6D4;--bg:#0F172A;--card:#111827;--txt:#F8FAFC;--mut:#94A3B8;--dim:#64748B;--bdr:rgba(124,58,237,0.25)}
+body{background:var(--bg);color:var(--txt);font-family:Cairo,sans-serif;direction:rtl}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.logo{font-family:Poppins,sans-serif;font-size:1.1rem;font-weight:900;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-back{color:var(--mut);text-decoration:none;font-size:.85rem}
+.hero{padding:5rem 1.5rem 2rem;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;line-height:1.2;margin-bottom:.7rem}
+.hero h1 span{background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--mut);font-size:.9rem;margin-bottom:1rem}
+.hero-badges{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-bottom:.8rem}
+.badge{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#10B981;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:20px}
+.price-tag{display:inline-block;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(6,182,212,.1));border:1px solid var(--bdr);padding:.5rem 1.5rem;border-radius:20px;font-size:1rem;font-weight:800}
+.price-tag span{color:#FCD34D;font-size:1.3rem}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:.15em;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
-.nav-back{color:var(--muted);text-decoration:none;font-size:.85rem}
+.wrap{max-width:720px;margin:0 auto;padding:0 1.2rem 6rem}
 
-.hero{padding:5rem 2rem 2rem;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:900;line-height:1.2;margin-bottom:.8rem}
-.hero h1 span{background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:var(--muted);font-size:.95rem;max-width:500px;margin:0 auto .8rem}
-.hero-badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:.8rem}
-.hero-badge{background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:#10B981;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:20px}
-.hero-price{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(6,182,212,0.1));border:1px solid rgba(124,58,237,0.3);padding:.5rem 1.5rem;border-radius:20px;font-size:1rem;font-weight:800}
-.hero-price span{color:#FCD34D;font-size:1.2rem}
+/* card */
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:1.4rem;margin-bottom:1.2rem}
+.card h2{font-size:.95rem;font-weight:800;margin-bottom:1.1rem}
 
-.main{max-width:760px;margin:0 auto;padding:1.5rem 1.5rem 6rem}
+/* grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.g1{grid-column:1/-1}
+@media(max-width:580px){.g2{grid-template-columns:1fr}.g1{grid-column:1}}
 
-/* Form Card */
-.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.2rem}
-.form-card h2{font-size:1rem;font-weight:800;margin-bottom:1.2rem}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.form-full{grid-column:1/-1}
-.form-group{display:flex;flex-direction:column;gap:.3rem}
-.form-label{font-size:.8rem;font-weight:700;color:var(--muted)}
+/* label */
+.lbl{font-size:.78rem;font-weight:700;color:var(--mut);display:block;margin-bottom:.3rem}
 
-/* INPUTS - very explicit */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="file"],
-select,
-textarea {
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(124,58,237,0.3);
-  border-radius:8px;
-  padding:.65rem 1rem;
-  color:#F8FAFC;
-  font-family:'Cairo',sans-serif;
-  font-size:.88rem;
+/* inputs — explicit reset */
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  all:unset;
+  display:block;
   width:100%;
-  outline:none;
-  transition:border-color .2s;
-  -webkit-appearance:none;
-  appearance:none;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(124,58,237,.3);
+  border-radius:8px;
+  padding:.6rem .9rem;
+  color:#F8FAFC;
+  font-family:Cairo,sans-serif;
+  font-size:.87rem;
   cursor:text;
-  pointer-events:auto;
-  position:relative;
-  z-index:1;
+  box-sizing:border-box;
 }
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-select:focus,
-textarea:focus {
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,select:focus,textarea:focus{
   border-color:#9F67FF;
-  background:rgba(255,255,255,0.08);
+  outline:none;
 }
-input::placeholder,textarea::placeholder{color:#64748B}
-select option{background:#111827;color:#F8FAFC}
-textarea{resize:vertical;min-height:70px}
+input::placeholder,textarea::placeholder{color:#475569}
+select{cursor:pointer}
+select option{background:#111827}
+textarea{resize:vertical;min-height:65px;line-height:1.5}
 
-/* Experience */
-.exp-item{background:rgba(255,255,255,0.03);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;margin-bottom:.8rem;position:relative}
-.exp-remove{position:absolute;top:.7rem;left:.7rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#EF4444;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;pointer-events:auto}
-.add-exp-btn{width:100%;padding:.7rem;border-radius:8px;border:1.5px dashed rgba(124,58,237,0.4);background:none;color:#A78BFA;font-family:Cairo,sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .2s;pointer-events:auto}
-.add-exp-btn:hover{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.6)}
+/* phone row */
+.phone-row{display:flex;gap:.5rem}
+.phone-row select{width:105px;flex-shrink:0}
+.phone-row input{flex:1}
 
-/* Skills */
-.skills-chips{display:flex;flex-wrap:wrap;gap:.3rem;min-height:40px;background:rgba(255,255,255,0.03);border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.5rem;margin-bottom:.5rem;position:relative;z-index:1}
-.skills-suggestions{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem;min-height:20px}
-.skill-suggest-btn{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:3px 10px;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .2s;pointer-events:auto}
-.skill-suggest-btn:hover{background:rgba(124,58,237,0.25)}
-.skill-chip{background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);color:#A78BFA;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem}
-.skill-chip-remove{background:none;border:none;color:#A78BFA;cursor:pointer;font-size:1rem;padding:0;line-height:1;pointer-events:auto}
-.skills-input-row{display:flex;gap:.5rem;position:relative;z-index:2}
-.add-skill-btn{background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.5rem 1rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;pointer-events:auto;flex-shrink:0}
+/* radio */
+.radio-row{display:flex;gap:.5rem}
+.radio-opt{flex:1;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem;border:1px solid var(--bdr);border-radius:8px;cursor:pointer;font-size:.85rem;background:rgba(255,255,255,.02)}
+.radio-opt input[type=radio]{width:14px;height:14px;accent-color:var(--p);cursor:pointer}
 
-/* Checkboxes */
-.checkbox-group{display:flex;gap:1rem;flex-wrap:wrap}
-.checkbox-label{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--muted);cursor:pointer}
-.checkbox-label input{accent-color:var(--purple);width:16px;height:16px;cursor:pointer;pointer-events:auto}
+/* checkboxes */
+.check-row{display:flex;gap:1rem;flex-wrap:wrap}
+.check-opt{display:flex;align-items:center;gap:.4rem;font-size:.85rem;cursor:pointer;color:var(--mut)}
+.check-opt input[type=checkbox]{width:15px;height:15px;accent-color:var(--p);cursor:pointer}
 
-/* Radio */
-.radio-group{display:flex;gap:.5rem}
-.radio-opt{display:flex;align-items:center;gap:.4rem;font-size:.88rem;color:var(--text);cursor:pointer;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.3);padding:.5rem 1rem;border-radius:8px;flex:1;justify-content:center}
-.radio-opt input{accent-color:var(--purple);cursor:pointer;pointer-events:auto}
+/* experience */
+.exp-box{background:rgba(124,58,237,.05);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:1rem;margin-bottom:.7rem;position:relative}
+.exp-del{position:absolute;top:.6rem;left:.6rem;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#F87171;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;font-weight:700;line-height:1}
+.add-exp{width:100%;padding:.65rem;border-radius:8px;border:1.5px dashed rgba(124,58,237,.4);background:none;color:#A78BFA;font-family:Cairo,sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-top:.2rem}
+.add-exp:hover{background:rgba(124,58,237,.08)}
 
-/* Photo */
-.photo-area{display:flex;align-items:center;gap:1rem}
-.photo-preview{width:60px;height:60px;border-radius:50%;background:rgba(124,58,237,0.15);border:2px dashed rgba(124,58,237,0.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;overflow:hidden}
-.photo-btn{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:.5rem 1rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;width:100%;pointer-events:auto}
+/* skills */
+.chips-box{display:flex;flex-wrap:wrap;gap:.3rem;min-height:42px;background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.3);border-radius:8px;padding:.5rem;margin-bottom:.5rem}
+.chip{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#A78BFA;padding:2px 9px;border-radius:20px;font-size:.77rem;font-weight:700;display:inline-flex;align-items:center;gap:.25rem}
+.chip-x{background:none;border:none;color:#A78BFA;cursor:pointer;font-size:.95rem;padding:0;line-height:1}
+.sugg-box{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.5rem;min-height:24px}
+.sugg-btn{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);color:#A78BFA;padding:2px 9px;border-radius:20px;font-family:Cairo,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer}
+.sugg-btn:hover{background:rgba(124,58,237,.22)}
+.skill-row{display:flex;gap:.5rem}
+.skill-row input{flex:1}
+.skill-add{background:linear-gradient(135deg,var(--p),var(--c));border:none;color:white;padding:.55rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0}
 
-/* Payment */
-.payment-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.2rem}
-.payment-card h2{font-size:1rem;font-weight:800;margin-bottom:1.2rem}
-.amount-box{text-align:center;padding:1.2rem;background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(6,182,212,0.05));border:1px solid rgba(124,58,237,0.2);border-radius:10px;margin-bottom:1.2rem}
-.amount-num{font-family:'Poppins',sans-serif;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.amount-label{font-size:.8rem;color:var(--muted);margin-top:.3rem}
-#paypal-container{min-height:50px;margin-bottom:.8rem}
-.pay-divider{text-align:center;color:var(--dim);font-size:.8rem;margin:.6rem 0}
-.instapay-box{background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:10px;padding:1rem;text-align:center}
-.instapay-desc{font-size:.82rem;color:var(--muted);margin-bottom:.7rem}
-.instapay-open{display:block;background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;padding:.7rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.85rem;margin-bottom:.5rem}
-.instapay-wa{display:block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.7rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.85rem}
+/* photo */
+.photo-row{display:flex;align-items:center;gap:1rem}
+.photo-prev{width:58px;height:58px;border-radius:50%;background:rgba(124,58,237,.1);border:2px dashed rgba(124,58,237,.4);display:flex;align-items:center;justify-content:center;font-size:1.4rem;overflow:hidden;flex-shrink:0}
+.photo-prev img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.photo-pick{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:#A78BFA;padding:.5rem 1rem;border-radius:8px;font-family:Cairo,sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;width:100%}
 
-/* Loading */
-.loading-card{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:1.2rem}
+/* payment */
+.amt{text-align:center;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.05));border:1px solid var(--bdr);border-radius:10px;padding:1.1rem;margin-bottom:1.1rem}
+.amt-num{font-family:Poppins,sans-serif;font-size:2rem;font-weight:900;background:linear-gradient(135deg,#A78BFA,#38BDF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.amt-lbl{font-size:.78rem;color:var(--mut);margin-top:.2rem}
+#pp-container{min-height:45px;margin-bottom:.6rem}
+.or{text-align:center;color:var(--dim);font-size:.78rem;margin:.5rem 0}
+.ipay-box{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:.9rem;text-align:center}
+.ipay-desc{font-size:.8rem;color:var(--mut);margin-bottom:.6rem}
+.ipay-btn{display:block;background:linear-gradient(135deg,var(--p),var(--c));color:white;padding:.65rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.83rem;margin-bottom:.4rem}
+.wa-btn{display:block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.65rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.83rem}
+
+/* states */
+.loading-card{display:none;text-align:center;padding:2.5rem}
 .loading-card.show{display:block}
-.loading-icon{font-size:2.5rem;animation:spin 2s linear infinite;display:inline-block}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-title{font-size:1.1rem;font-weight:800;margin:.8rem 0 .3rem}
-.loading-sub{color:var(--muted);font-size:.85rem}
-
-/* Result */
-.result-card{display:none;background:var(--card);border:1px solid rgba(16,185,129,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.2rem}
+.spin{font-size:2.5rem;display:inline-block;animation:sp 1.5s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.result-card{display:none}
 .result-card.show{display:block}
-.result-actions{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
-.btn-dl{background:linear-gradient(135deg,var(--purple),var(--cyan));border:none;color:white;padding:.75rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer}
-.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:.75rem 1.5rem;border-radius:8px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.88rem;text-decoration:none;display:inline-flex;align-items:center}
+.res-acts{display:flex;gap:.7rem;margin-top:1rem;flex-wrap:wrap}
+.btn-dl{background:linear-gradient(135deg,var(--p),var(--c));border:none;color:white;padding:.7rem 1.3rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}
+.btn-wa2{background:linear-gradient(135deg,#25D366,#128C7E);border:none;color:white;padding:.7rem 1.3rem;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;text-decoration:none;display:inline-block}
 
-/* CV Preview */
-.cv-preview{background:#fff;color:#1a1a1a;border-radius:8px;overflow:hidden;margin-top:1rem}
-.cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:1.5rem;display:flex;align-items:center;gap:1.2rem}
-.cv-name{font-size:1.5rem;font-weight:900;margin-bottom:.2rem}
-.cv-title-pos{font-size:.9rem;opacity:.9;margin-bottom:.6rem}
-.cv-contact{display:flex;gap:1rem;flex-wrap:wrap;font-size:.78rem;opacity:.85}
-.cv-body{padding:1.2rem;display:grid;grid-template-columns:1fr 2fr;gap:1.2rem;direction:rtl}
-.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.2rem}
-.cv-section{margin-bottom:1rem}
-.cv-section-title{font-size:.8rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.2rem;margin-bottom:.5rem}
-.cv-item{margin-bottom:.6rem}
-.cv-item-title{font-size:.85rem;font-weight:800}
-.cv-item-sub{font-size:.75rem;color:#666;margin-bottom:.2rem}
-.cv-item-desc{font-size:.78rem;color:#444;line-height:1.5}
-.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:4px;margin:2px}
-.cv-lang{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.3rem}
-.cv-lang-bar{height:3px;background:#f0f0f0;border-radius:2px;margin-top:2px}
-.cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
+/* CV preview */
+.cv-wrap{background:#fff;color:#111;border-radius:8px;overflow:hidden;margin-top:1rem;font-family:Cairo,sans-serif}
+.cv-hdr{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:1.3rem;display:flex;align-items:center;gap:1rem}
+.cv-hdr img{width:70px;height:70px;border-radius:50%;border:3px solid rgba(255,255,255,.4);object-fit:cover;flex-shrink:0}
+.cv-nm{font-size:1.4rem;font-weight:900;margin-bottom:.2rem}
+.cv-pos{font-size:.85rem;opacity:.9;margin-bottom:.5rem}
+.cv-cnt{display:flex;gap:.8rem;flex-wrap:wrap;font-size:.75rem;opacity:.85}
+.cv-bdy{padding:1.1rem;display:grid;grid-template-columns:1fr 2fr;gap:1rem;direction:rtl}
+.cv-side{border-left:2px solid #f0f0f0;padding-left:1.1rem}
+.cv-sec{margin-bottom:.9rem}
+.cv-sec-t{font-size:.78rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.2rem;margin-bottom:.4rem}
+.cv-itm{margin-bottom:.5rem}
+.cv-itm-t{font-size:.82rem;font-weight:800}
+.cv-itm-s{font-size:.73rem;color:#666;margin-bottom:.2rem}
+.cv-itm-d{font-size:.76rem;color:#444;line-height:1.5}
+.cv-sk{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.7rem;font-weight:700;padding:2px 6px;border-radius:4px;margin:1px}
+.cv-lg{display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:.25rem}
+.cv-lb{height:3px;background:#f0f0f0;border-radius:2px}
+.cv-lf{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}
+@media(max-width:540px){.cv-bdy{grid-template-columns:1fr}}
 
-.trust{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;margin-bottom:2rem}
-.trust-item{font-size:.78rem;color:var(--dim)}
-
-@media(max-width:600px){
-  .form-grid{grid-template-columns:1fr}
-  .form-full{grid-column:1}
-  .cv-body{grid-template-columns:1fr}
-}
+.float-wa{position:fixed;bottom:1.5rem;left:1.5rem;z-index:999;width:48px;height:48px;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4)}
 </style>
 </head>
 <body>
 
+<a href="https://wa.me/966580395350" class="float-wa" target="_blank">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <nav>
-  <a href="https://moehabads.com" class="nav-logo">MO EHAB</a>
+  <a href="https://moehabads.com" class="logo">MO EHAB</a>
   <a href="https://moehabads.com" class="nav-back">← الرئيسية</a>
 </nav>
 
 <div class="hero">
   <h1>سيرتك الذاتية<br><span>في دقائق ⚡</span></h1>
-  <p>أدخل بياناتك واحصل على سيرة ذاتية احترافية بالذكاء الاصطناعي — جاهزة للتحميل فوراً</p>
+  <p>أدخل بياناتك واحصل على سيرة ذاتية احترافية بالذكاء الاصطناعي</p>
   <div class="hero-badges">
-    <span class="hero-badge">✅ متوافقة مع ATS</span>
-    <span class="hero-badge">⚡ تجتاز فلاتر التوظيف</span>
-    <span class="hero-badge">📄 PDF فوري</span>
+    <span class="badge">✅ متوافقة مع ATS</span>
+    <span class="badge">⚡ تجتاز فلاتر التوظيف</span>
+    <span class="badge">📄 PDF فوري</span>
   </div>
-  <div class="hero-price" id="heroPrice">🇸🇦 <span>10</span> ريال فقط</div>
+  <div class="price-tag" id="heroPrice">🇸🇦 <span>10</span> ريال فقط</div>
 </div>
 
-<div class="main">
+<div class="wrap">
 
 <!-- FORM -->
-<div class="form-card" id="formCard">
+<div class="card" id="formCard">
   <h2>📋 بياناتك الأساسية</h2>
-  <div class="form-grid">
+  <div class="g2">
 
-    <div class="form-group">
-      <label class="form-label">الاسم الكامل *</label>
-      <input type="text" id="fullName" placeholder="محمد أحمد">
-    </div>
-    <div class="form-group">
-      <label class="form-label">المسمى الوظيفي *</label>
-      <input type="text" id="jobTitle" placeholder="مسوق رقمي | مطور ويب">
-    </div>
-    <div class="form-group">
-      <label class="form-label">البريد الإلكتروني *</label>
-      <input type="email" id="email" placeholder="example@email.com">
-    </div>
-    <div class="form-group">
-      <label class="form-label">رقم الهاتف *</label>
-      <div style="display:flex;gap:.5rem">
-        <select id="countryCode" style="width:110px;flex-shrink:0">
-          <option value="+966">🇸🇦 +966</option>
-          <option value="+20">🇪🇬 +20</option>
-          <option value="+971">🇦🇪 +971</option>
-          <option value="+965">🇰🇼 +965</option>
-          <option value="+974">🇶🇦 +974</option>
-          <option value="+973">🇧🇭 +973</option>
-          <option value="+968">🇴🇲 +968</option>
-          <option value="+962">🇯🇴 +962</option>
-          <option value="+1">🇺🇸 +1</option>
-          <option value="+44">🇬🇧 +44</option>
-        </select>
-        <input type="tel" id="phone" placeholder="5XX XXX XXXX" style="flex:1">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">الدولة</label>
-      <select id="country">
-        <option value="">اختر الدولة</option>
-        <option>المملكة العربية السعودية</option>
-        <option>مصر</option>
-        <option>الإمارات العربية المتحدة</option>
-        <option>الكويت</option>
-        <option>قطر</option>
-        <option>البحرين</option>
-        <option>عُمان</option>
-        <option>الأردن</option>
-        <option>المغرب</option>
-        <option>تونس</option>
-        <option>أخرى</option>
+    <div><label class="lbl">الاسم الكامل *</label>
+    <input type="text" id="fullName" placeholder="محمد أحمد"></div>
+
+    <div><label class="lbl">المسمى الوظيفي *</label>
+    <input type="text" id="jobTitle" placeholder="مسوق رقمي | مطور ويب"></div>
+
+    <div><label class="lbl">البريد الإلكتروني *</label>
+    <input type="email" id="email" placeholder="name@email.com"></div>
+
+    <div><label class="lbl">رقم الهاتف *</label>
+    <div class="phone-row">
+      <select id="cc">
+        <option value="+966">🇸🇦 +966</option>
+        <option value="+20">🇪🇬 +20</option>
+        <option value="+971">🇦🇪 +971</option>
+        <option value="+965">🇰🇼 +965</option>
+        <option value="+974">🇶🇦 +974</option>
+        <option value="+973">🇧🇭 +973</option>
+        <option value="+968">🇴🇲 +968</option>
+        <option value="+962">🇯🇴 +962</option>
+        <option value="+1">🇺🇸 +1</option>
+        <option value="+44">🇬🇧 +44</option>
       </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">المدينة</label>
-      <input type="text" id="city" placeholder="الرياض / القاهرة / دبي">
-    </div>
-    <div class="form-group">
-      <label class="form-label">سنوات الخبرة *</label>
-      <select id="experience">
-        <option value="" disabled selected>اختر</option>
-        <option>حديث التخرج</option>
-        <option>1-3 سنوات</option>
-        <option>3-5 سنوات</option>
-        <option>5-10 سنوات</option>
-        <option>أكثر من 10 سنوات</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">مجال العمل *</label>
-      <select id="workExp">
-        <option value="" disabled selected>اختر مجالك</option>
-        <option>التسويق الرقمي والإعلانات</option>
-        <option>البرمجة وتطوير الويب</option>
-        <option>التصميم الجرافيكي</option>
-        <option>المبيعات وخدمة العملاء</option>
-        <option>المحاسبة والمالية</option>
-        <option>الموارد البشرية</option>
-        <option>إدارة المشاريع</option>
-        <option>الطب والصحة</option>
-        <option>التعليم والتدريب</option>
-        <option>الهندسة</option>
-        <option>الإعلام والصحافة</option>
-        <option>أخرى</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">المؤهل الدراسي *</label>
-      <select id="education">
-        <option value="" disabled selected>اختر</option>
-        <option>دكتوراه</option>
-        <option>ماجستير</option>
-        <option>بكالوريوس</option>
-        <option>دبلوم</option>
-        <option>ثانوية عامة</option>
-        <option>دورات وشهادات مهنية</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">سنة التخرج</label>
-      <select id="gradYear">
-        <option value="">اختر السنة</option>
-        <option>2026</option><option>2025</option><option>2024</option><option>2023</option>
-        <option>2022</option><option>2021</option><option>2020</option><option>2019</option>
-        <option>2018</option><option>2017</option><option>2016</option><option>2015</option>
-        <option>2014</option><option>2013</option><option>2012</option><option>2010</option>
-        <option>2008</option><option>2006</option><option>2004</option><option>2000</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">التخصص والجامعة</label>
-      <input type="text" id="eduDetails" placeholder="تسويق — جامعة القاهرة">
-    </div>
-    <div class="form-group">
-      <label class="form-label">لغة السيرة الذاتية *</label>
-      <div class="radio-group">
-        <label class="radio-opt"><input type="radio" name="cvLang" value="ar" checked> 🇸🇦 عربي</label>
-        <label class="radio-opt"><input type="radio" name="cvLang" value="en"> 🇺🇸 English</label>
-      </div>
+      <input type="tel" id="phone" placeholder="5XX XXX XXXX">
+    </div></div>
+
+    <div><label class="lbl">الدولة</label>
+    <select id="country">
+      <option value="">اختر</option>
+      <option>المملكة العربية السعودية</option>
+      <option>مصر</option>
+      <option>الإمارات العربية المتحدة</option>
+      <option>الكويت</option><option>قطر</option><option>البحرين</option>
+      <option>عُمان</option><option>الأردن</option><option>المغرب</option><option>أخرى</option>
+    </select></div>
+
+    <div><label class="lbl">المدينة</label>
+    <input type="text" id="city" placeholder="الرياض / القاهرة / دبي"></div>
+
+    <div><label class="lbl">سنوات الخبرة *</label>
+    <select id="experience">
+      <option value="" disabled selected>اختر</option>
+      <option>حديث التخرج</option>
+      <option>1-3 سنوات</option>
+      <option>3-5 سنوات</option>
+      <option>5-10 سنوات</option>
+      <option>أكثر من 10 سنوات</option>
+    </select></div>
+
+    <div><label class="lbl">مجال العمل *</label>
+    <select id="workField" onchange="showSkills()">
+      <option value="" disabled selected>اختر مجالك</option>
+      <option>التسويق الرقمي والإعلانات</option>
+      <option>البرمجة وتطوير الويب</option>
+      <option>التصميم الجرافيكي</option>
+      <option>المبيعات وخدمة العملاء</option>
+      <option>المحاسبة والمالية</option>
+      <option>الموارد البشرية</option>
+      <option>إدارة المشاريع</option>
+      <option>الطب والصحة</option>
+      <option>التعليم والتدريب</option>
+      <option>الهندسة</option>
+      <option>الإعلام والصحافة</option>
+      <option>أخرى</option>
+    </select></div>
+
+    <div><label class="lbl">المؤهل الدراسي *</label>
+    <select id="education">
+      <option value="" disabled selected>اختر</option>
+      <option>دكتوراه</option><option>ماجستير</option><option>بكالوريوس</option>
+      <option>دبلوم</option><option>ثانوية عامة</option><option>شهادات مهنية</option>
+    </select></div>
+
+    <div><label class="lbl">التخصص والجامعة</label>
+    <input type="text" id="eduDetails" placeholder="تسويق — جامعة القاهرة"></div>
+
+    <div><label class="lbl">سنة التخرج</label>
+    <select id="gradYear">
+      <option value="">اختر</option>
+      <option>2026</option><option>2025</option><option>2024</option><option>2023</option>
+      <option>2022</option><option>2021</option><option>2020</option><option>2019</option>
+      <option>2018</option><option>2017</option><option>2016</option><option>2015</option>
+      <option>2012</option><option>2010</option><option>2008</option><option>2005</option>
+    </select></div>
+
+    <div class="g1"><label class="lbl">لغة السيرة الذاتية *</label>
+    <div class="radio-row">
+      <label class="radio-opt"><input type="radio" name="cvlang" value="ar" checked> 🇸🇦 عربي</label>
+      <label class="radio-opt"><input type="radio" name="cvlang" value="en"> 🇺🇸 English</label>
+    </div></div>
+
+    <!-- EXPERIENCES -->
+    <div class="g1">
+      <label class="lbl">الخبرات العملية *</label>
+      <div id="expList"></div>
+      <button type="button" class="add-exp" onclick="addExp()">+ أضف خبرة عملية</button>
     </div>
 
-    <!-- EXPERIENCE -->
-    <div class="form-group form-full">
-      <label class="form-label">الخبرات العملية *</label>
-      <div id="expContainer"></div>
-      <button type="button" class="add-exp-btn" onclick="addExpField()">+ أضف خبرة عملية</button>
-    </div>
-
-    <!-- SKILLS - Full Row -->
-    <div class="form-group form-full">
-      <label class="form-label">المهارات * — اختر مجال العمل أولاً لتظهر الاقتراحات</label>
-      <div class="skills-chips" id="skillsChips">
-        <span style="color:#64748B;font-size:.8rem">اختر مهاراتك...</span>
+    <!-- SKILLS -->
+    <div class="g1">
+      <label class="lbl">المهارات * — اختر مجال العمل أولاً</label>
+      <div class="chips-box" id="chipsBox"><span style="color:#475569;font-size:.8rem">اختر مهاراتك...</span></div>
+      <div class="sugg-box" id="suggBox"><span style="color:#475569;font-size:.76rem">← اختر مجال العمل أولاً لتظهر الاقتراحات</span></div>
+      <div class="skill-row">
+        <input type="text" id="skillTxt" placeholder="أضف مهارة يدوياً...">
+        <button type="button" class="skill-add" onclick="addSkillManual()">+ إضافة</button>
       </div>
-      <div class="skills-suggestions" id="skillsSuggestions">
-        <span style="color:#64748B;font-size:.78rem">← اختر مجال العمل أولاً</span>
-      </div>
-      <div class="skills-input-row">
-        <input type="text" id="skillInput" placeholder="أضف مهارة يدوياً..." style="flex:1">
-        <button type="button" class="add-skill-btn" onclick="addSkillManual()">+ إضافة</button>
-      </div>
-      <input type="hidden" id="skills">
     </div>
 
     <!-- LANGUAGES -->
-    <div class="form-group form-full">
-      <label class="form-label">اللغات</label>
-      <div class="checkbox-group">
-        <label class="checkbox-label"><input type="checkbox" id="lang_ar" checked> العربية</label>
-        <label class="checkbox-label"><input type="checkbox" id="lang_en"> الإنجليزية</label>
-        <label class="checkbox-label"><input type="checkbox" id="lang_fr"> الفرنسية</label>
-        <label class="checkbox-label"><input type="checkbox" id="lang_tr"> التركية</label>
+    <div class="g1">
+      <label class="lbl">اللغات</label>
+      <div class="check-row">
+        <label class="check-opt"><input type="checkbox" id="l_ar" checked> العربية</label>
+        <label class="check-opt"><input type="checkbox" id="l_en"> الإنجليزية</label>
+        <label class="check-opt"><input type="checkbox" id="l_fr"> الفرنسية</label>
+        <label class="check-opt"><input type="checkbox" id="l_tr"> التركية</label>
       </div>
     </div>
 
     <!-- PHOTO -->
-    <div class="form-group form-full">
-      <label class="form-label">صورة شخصية (اختياري)</label>
-      <div class="photo-area">
-        <div class="photo-preview" id="photoPreview">👤</div>
+    <div class="g1">
+      <label class="lbl">صورة شخصية (اختياري)</label>
+      <div class="photo-row">
+        <div class="photo-prev" id="photoPrev">👤</div>
         <div style="flex:1">
-          <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(this)">
-          <button type="button" class="photo-btn" onclick="document.getElementById('photoInput').click()">📷 رفع صورة</button>
-          <p style="font-size:.72rem;color:var(--dim);margin-top:.3rem">JPG أو PNG</p>
+          <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="pickPhoto(this)">
+          <button type="button" class="photo-pick" onclick="document.getElementById('photoFile').click()">📷 رفع صورة</button>
+          <p style="font-size:.7rem;color:var(--dim);margin-top:.3rem">JPG أو PNG</p>
         </div>
       </div>
     </div>
 
   </div>
-</div>
+</div><!-- end form -->
 
 <!-- PAYMENT -->
-<div class="payment-card" id="paymentCard">
+<div class="card" id="payCard">
   <h2>💳 إتمام الدفع</h2>
-  <div class="amount-box">
-    <div class="amount-num" id="payAmount">10 <span style="font-size:1.2rem">ريال</span></div>
-    <div class="amount-label">سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي</div>
+  <div class="amt">
+    <div class="amt-num" id="payAmt">10 <span style="font-size:1rem">ريال</span></div>
+    <div class="amt-lbl">سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي</div>
   </div>
-  <div id="paypal-container"></div>
-  <div class="pay-divider">— أو —</div>
-  <div class="instapay-box">
-    <div class="instapay-desc">ادفع عبر InstaPay ثم أرسل إيصال الدفع على واتساب</div>
-    <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="instapay-open">💳 افتح InstaPay للدفع</a>
-    <a href="#" id="waLink" target="_blank" class="instapay-wa">📲 أرسل إيصال على واتساب</a>
+  <div id="pp-container"></div>
+  <div class="or">— أو —</div>
+  <div class="ipay-box">
+    <div class="ipay-desc">ادفع عبر InstaPay ثم أرسل الإيصال على واتساب</div>
+    <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="ipay-btn">💳 افتح InstaPay</a>
+    <a href="https://wa.me/966580395350" id="waLink" target="_blank" class="wa-btn">📲 أرسل إيصال واتساب</a>
   </div>
 </div>
 
 <!-- LOADING -->
-<div class="loading-card" id="loadingCard">
-  <div class="loading-icon">⚡</div>
-  <div class="loading-title">جاري إعداد سيرتك الذاتية</div>
-  <div class="loading-sub">الذكاء الاصطناعي يكتب سيرتك الذاتية الاحترافية</div>
+<div class="card loading-card" id="loadCard">
+  <div class="spin">⚡</div>
+  <div style="font-size:1rem;font-weight:800;margin:.8rem 0 .3rem">جاري إعداد سيرتك الذاتية</div>
+  <div style="font-size:.85rem;color:var(--mut)">الذكاء الاصطناعي يكتب سيرتك الاحترافية...</div>
 </div>
 
 <!-- RESULT -->
-<div class="result-card" id="resultCard">
-  <div style="font-size:1rem;font-weight:800">✅ سيرتك الذاتية جاهزة 🎉</div>
-  <div id="cvPreview"></div>
-  <div class="result-actions">
-    <button class="btn-dl" onclick="downloadCV()">📄 تحميل PDF</button>
-    <a href="https://wa.me/966580395350" target="_blank" class="btn-wa">💬 تواصل معنا</a>
+<div class="card result-card" id="resCard">
+  <div style="font-weight:800;font-size:1rem">✅ سيرتك جاهزة! 🎉</div>
+  <div id="cvOut"></div>
+  <div class="res-acts">
+    <button class="btn-dl" onclick="dlCV()">📄 تحميل PDF</button>
+    <a href="https://wa.me/966580395350" target="_blank" class="btn-wa2">💬 تواصل معنا</a>
   </div>
 </div>
 
-<div class="trust">
-  <span class="trust-item">🔒 بياناتك آمنة</span>
-  <span class="trust-item">⚡ سيرة فورية</span>
-  <span class="trust-item">🎨 تصميم احترافي</span>
-  <span class="trust-item">📄 PDF جاهز</span>
-</div>
-
-</div><!-- end main -->
+</div><!-- end wrap -->
 
 <script>
-// ═══ EXPERIENCE ═══
-var expCount = 0;
-
-function addExpField() {
-  expCount++;
-  var id = 'exp_' + expCount;
-  var div = document.createElement('div');
-  div.className = 'exp-item';
-  div.id = id;
-  div.innerHTML = [
-    '<button type="button" class="exp-remove" onclick="document.getElementById('' + id + '').remove()">×</button>',
-    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem">',
-    '<div><label class="form-label">المسمى الوظيفي *</label>',
-    '<input type="text" class="exp-title" placeholder="مسوق رقمي / مطور ويب..."></div>',
-    '<div><label class="form-label">اسم الشركة *</label>',
-    '<input type="text" class="exp-company" placeholder="شركة XYZ"></div>',
-    '<div><label class="form-label">من سنة</label>',
-    '<input type="text" class="exp-from" placeholder="2020"></div>',
-    '<div><label class="form-label">إلى سنة</label>',
-    '<input type="text" class="exp-to" placeholder="2024 / حتى الآن"></div>',
-    '</div>',
-    '<label class="form-label">وصف مختصر (اختياري — AI سيحسّنه)</label>',
-    '<textarea class="exp-desc" placeholder="مسؤوليات وإنجازات..." style="min-height:60px"></textarea>'
-  ].join('');
-  document.getElementById('expContainer').appendChild(div);
-}
-
-function getExperiences() {
-  var items = document.querySelectorAll('.exp-item');
-  var exps = [];
-  items.forEach(function(item) {
-    var title = item.querySelector('.exp-title').value.trim();
-    var company = item.querySelector('.exp-company').value.trim();
-    var from = item.querySelector('.exp-from').value.trim();
-    var to = item.querySelector('.exp-to').value.trim();
-    var desc = item.querySelector('.exp-desc').value.trim();
-    if (title || company) {
-      exps.push({
-        title: title,
-        company: company,
-        period: [from, to].filter(Boolean).join(' — '),
-        desc: desc
-      });
-    }
-  });
-  return exps;
-}
-
-// ═══ SKILLS ═══
-var skillsByField = {
-  'التسويق الرقمي والإعلانات': ['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Excel'],
-  'البرمجة وتطوير الويب': ['Python','JavaScript','React','Vue.js','Node.js','PHP','Laravel','MySQL','Git','HTML/CSS'],
-  'التصميم الجرافيكي': ['Photoshop','Illustrator','Figma','Canva','After Effects','Premiere Pro','UI/UX'],
-  'المبيعات وخدمة العملاء': ['التفاوض','CRM','خدمة العملاء','Excel','Salesforce','إدارة العملاء'],
-  'المحاسبة والمالية': ['Excel','QuickBooks','SAP','تحليل مالي','ميزانيات','Power BI'],
-  'الموارد البشرية': ['التوظيف','تقييم الأداء','Excel','تدريب وتطوير','Payroll'],
-  'إدارة المشاريع': ['PMP','Agile','Scrum','Jira','Trello','MS Project'],
-  'الطب والصحة': ['الفحص السريري','التشخيص','الرعاية الصحية','الإسعافات الأولية'],
-  'التعليم والتدريب': ['تصميم المناهج','التدريس','Zoom','التعليم الإلكتروني'],
-  'الهندسة': ['AutoCAD','SolidWorks','MATLAB','الرسم الهندسي'],
-  'الإعلام والصحافة': ['الكتابة','التحرير','Premiere Pro','التصوير','Adobe Suite'],
-  'أخرى': ['Excel','Word','PowerPoint','التواصل','العمل الجماعي','إدارة الوقت']
+// ════════════ DATA ════════════
+var SKILLS = {
+  'التسويق الرقمي والإعلانات':['Meta Ads','Google Ads','TikTok Ads','Snapchat Ads','SEO','Content Marketing','تحليل البيانات','Canva','Email Marketing','Excel','CRM'],
+  'البرمجة وتطوير الويب':['Python','JavaScript','React','Vue.js','Node.js','PHP','Laravel','MySQL','MongoDB','Git','HTML/CSS','Flutter','TypeScript'],
+  'التصميم الجرافيكي':['Photoshop','Illustrator','Figma','Canva','After Effects','Premiere Pro','InDesign','UI/UX Design','Branding'],
+  'المبيعات وخدمة العملاء':['التفاوض','CRM','خدمة العملاء','Excel','Salesforce','إدارة العملاء','Cold Calling','HubSpot'],
+  'المحاسبة والمالية':['Excel','QuickBooks','SAP','تحليل مالي','ميزانيات','Power BI','IFRS','Odoo'],
+  'الموارد البشرية':['التوظيف','تقييم الأداء','Excel','تدريب وتطوير','Payroll','SAP HR','إدارة المواهب'],
+  'إدارة المشاريع':['PMP','Agile','Scrum','Jira','Trello','MS Project','Excel','تخطيط استراتيجي'],
+  'الطب والصحة':['الفحص السريري','التشخيص','الرعاية الصحية','الإسعافات الأولية','إدارة المرضى'],
+  'التعليم والتدريب':['تصميم المناهج','التدريس','Zoom','التقييم','التعليم الإلكتروني','Moodle'],
+  'الهندسة':['AutoCAD','SolidWorks','MATLAB','الرسم الهندسي','إدارة المشاريع','Revit'],
+  'الإعلام والصحافة':['الكتابة الصحفية','التحرير','Premiere Pro','التصوير','Adobe Suite','SEO'],
+  'أخرى':['Excel','Word','PowerPoint','التواصل الفعّال','العمل الجماعي','إدارة الوقت','حل المشكلات']
 };
 
 var selectedSkills = [];
+var expCount = 0;
+var photoData = '';
+var cvAmountUSD = '2.67';
+var isEG = false;
+var CODES = ['MOEHAB2026','CV2026','INSTAPAY'];
+var accessCode = new URLSearchParams(window.location.search).get('access') || '';
 
-function updateSuggestions() {
-  var field = document.getElementById('workExp').value;
-  var container = document.getElementById('skillsSuggestions');
-  container.innerHTML = '';
-  if (!field) {
-    container.innerHTML = '<span style="color:#64748B;font-size:.78rem">← اختر مجال العمل أولاً</span>';
+// ════════════ EXPERIENCE ════════════
+function addExp() {
+  expCount++;
+  var n = expCount;
+  var d = document.createElement('div');
+  d.className = 'exp-box';
+  d.id = 'ex' + n;
+  d.innerHTML =
+    '<button type="button" class="exp-del" onclick="document.getElementById(\'ex' + n + '\').remove()">×</button>' +
+    '<div class="g2" style="margin-bottom:.5rem">' +
+    '<div><label class="lbl">المسمى الوظيفي</label><input type="text" class="et" placeholder="مسوق رقمي..."></div>' +
+    '<div><label class="lbl">اسم الشركة</label><input type="text" class="ec" placeholder="شركة XYZ"></div>' +
+    '<div><label class="lbl">من سنة</label><input type="text" class="ef" placeholder="2020"></div>' +
+    '<div><label class="lbl">إلى سنة</label><input type="text" class="eto" placeholder="2024 / حتى الآن"></div>' +
+    '</div>' +
+    '<label class="lbl">وصف مختصر (اختياري)</label>' +
+    '<textarea class="ed" placeholder="مسؤولياتك وإنجازاتك..."></textarea>';
+  document.getElementById('expList').appendChild(d);
+}
+
+function getExps() {
+  var out = [];
+  document.querySelectorAll('.exp-box').forEach(function(b) {
+    var t = b.querySelector('.et') ? b.querySelector('.et').value.trim() : '';
+    var c = b.querySelector('.ec') ? b.querySelector('.ec').value.trim() : '';
+    var f = b.querySelector('.ef') ? b.querySelector('.ef').value.trim() : '';
+    var to = b.querySelector('.eto') ? b.querySelector('.eto').value.trim() : '';
+    var d = b.querySelector('.ed') ? b.querySelector('.ed').value.trim() : '';
+    if (t || c) out.push({title:t, company:c, period:[f,to].filter(Boolean).join(' — '), desc:d});
+  });
+  return out;
+}
+
+// ════════════ SKILLS ════════════
+function showSkills() {
+  var field = document.getElementById('workField').value;
+  var box = document.getElementById('suggBox');
+  box.innerHTML = '';
+  if (!field || !SKILLS[field]) {
+    box.innerHTML = '<span style="color:#475569;font-size:.76rem">← اختر مجال العمل أولاً</span>';
     return;
   }
-  var list = skillsByField[field] || [];
-  list.forEach(function(skill) {
-    if (selectedSkills.indexOf(skill) !== -1) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'skill-suggest-btn';
-    btn.textContent = '+ ' + skill;
-    btn.addEventListener('click', function() { addSkill(skill); });
-    container.appendChild(btn);
+  SKILLS[field].forEach(function(s) {
+    if (selectedSkills.indexOf(s) !== -1) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sugg-btn';
+    b.textContent = '+ ' + s;
+    b.onclick = function() { addSkill(s); };
+    box.appendChild(b);
   });
 }
 
-function addSkill(skill) {
-  if (selectedSkills.indexOf(skill) !== -1) return;
-  selectedSkills.push(skill);
+function addSkill(s) {
+  if (selectedSkills.indexOf(s) !== -1) return;
+  selectedSkills.push(s);
   renderChips();
-  updateSuggestions();
-  document.getElementById('skills').value = selectedSkills.join(', ');
+  showSkills();
 }
 
 function addSkillManual() {
-  var input = document.getElementById('skillInput');
-  var val = input.value.trim();
-  if (!val) return;
-  addSkill(val);
-  input.value = '';
-  input.focus();
+  var inp = document.getElementById('skillTxt');
+  var v = inp.value.trim();
+  if (!v) return;
+  addSkill(v);
+  inp.value = '';
 }
 
-
-
-function removeSkill(skill) {
-  selectedSkills = selectedSkills.filter(function(s) { return s !== skill; });
+function removeSkill(s) {
+  selectedSkills = selectedSkills.filter(function(x) { return x !== s; });
   renderChips();
-  updateSuggestions();
-  document.getElementById('skills').value = selectedSkills.join(', ');
+  showSkills();
 }
 
 function renderChips() {
-  var container = document.getElementById('skillsChips');
-  container.innerHTML = '';
-  if (selectedSkills.length === 0) {
-    container.innerHTML = '<span style="color:#64748B;font-size:.8rem">اختر مهاراتك من الاقتراحات...</span>';
+  var box = document.getElementById('chipsBox');
+  box.innerHTML = '';
+  if (!selectedSkills.length) {
+    box.innerHTML = '<span style="color:#475569;font-size:.8rem">اختر مهاراتك من الاقتراحات...</span>';
     return;
   }
   selectedSkills.forEach(function(s) {
-    var span = document.createElement('span');
-    span.className = 'skill-chip';
-    span.textContent = s;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'skill-chip-remove';
-    btn.textContent = '×';
-    btn.addEventListener('click', function() { removeSkill(s); });
-    span.appendChild(btn);
-    container.appendChild(span);
+    var sp = document.createElement('span');
+    sp.className = 'chip';
+    sp.innerHTML = s + ' <button type="button" class="chip-x" onclick="removeSkill(\'' + s.replace(/'/g,"\\'") + '\')">×</button>';
+    box.appendChild(sp);
   });
 }
 
-// ═══ PHOTO ═══
-var photoBase64 = '';
-function previewPhoto(input) {
-  var file = input.files[0];
-  if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    photoBase64 = e.target.result;
-    var p = document.getElementById('photoPreview');
-    p.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+// Enter key for skill input
+document.getElementById('skillTxt').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); addSkillManual(); }
+});
+
+// ════════════ PHOTO ════════════
+function pickPhoto(inp) {
+  var f = inp.files[0];
+  if (!f) return;
+  var r = new FileReader();
+  r.onload = function(e) {
+    photoData = e.target.result;
+    document.getElementById('photoPrev').innerHTML = '<img src="' + e.target.result + '">';
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(f);
 }
 
-// ═══ VALIDATE ═══
-function validateForm() {
-  var req = ['fullName','jobTitle','email','phone','experience','workExp','education'];
-  // Check at least one experience
-  var exps = getExperiences();
-  if (exps.length === 0) {
-    alert('من فضلك أضف خبرة عملية واحدة على الأقل');
-    return false;
+// ════════════ VALIDATE ════════════
+function validate() {
+  var fields = ['fullName','jobTitle','email','phone','experience','workField','education'];
+  for (var i = 0; i < fields.length; i++) {
+    var el = document.getElementById(fields[i]);
+    if (!el.value) { alert('من فضلك أكمل الحقول المطلوبة *'); el.focus(); return false; }
   }
-  for (var i = 0; i < req.length; i++) {
-    var el = document.getElementById(req[i]);
-    if (!el || !el.value) {
-      alert('من فضلك أكمل جميع الحقول المطلوبة *');
-      if (el) el.focus();
-      return false;
-    }
-  }
-  if (selectedSkills.length === 0) {
-    alert('من فضلك أضف مهارة واحدة على الأقل');
-    return false;
-  }
+  if (!getExps().length) { alert('أضف خبرة عملية واحدة على الأقل'); return false; }
+  if (!selectedSkills.length) { alert('أضف مهارة واحدة على الأقل'); return false; }
   return true;
 }
 
-// ═══ ACCESS CODE ═══
-var urlParams = new URLSearchParams(window.location.search);
-var accessCode = urlParams.get('access');
-var VALID_CODES = ['MOEHAB2026','CV2026','INSTAPAY'];
-
-// ═══ CURRENCY + PAYPAL ═══
-var cvAmount = '2.67';
-var isEgypt = false;
-var ARABIC_CC = ['SA','EG','AE','QA','KW','BH','OM','JO','LB','SD','MA','TN','DZ','IQ','SY','YE','LY'];
-
-async function detectCurrency() {
-  try {
-    var cc = 'SA';
-    try {
-      var r = await fetch('https://ipapi.co/country/', {signal: AbortSignal.timeout(3000)});
-      cc = (await r.text()).trim();
-    } catch(e) {
-      try {
-        var r2 = await fetch('https://api.country.is/', {signal: AbortSignal.timeout(3000)});
-        cc = (await r2.json()).country;
-      } catch(e2) {}
-    }
-    var currencies = {
-      'EG': {flag:'🇪🇬', amount:'75', label:'ج.م', usd:'2.00'},
-      'AE': {flag:'🇦🇪', amount:'10', label:'درهم', usd:'2.72'},
-      'QA': {flag:'🇶🇦', amount:'10', label:'ر.ق', usd:'2.75'},
-      'KW': {flag:'🇰🇼', amount:'1', label:'د.ك', usd:'3.25'},
-    };
-    var cur = currencies[cc] || (ARABIC_CC.indexOf(cc) !== -1
-      ? {flag:'🇸🇦', amount:'10', label:'ريال', usd:'2.67'}
-      : {flag:'🇺🇸', amount:'3', label:'USD', usd:'3.00'});
-    cvAmount = cur.usd;
-    isEgypt = (cc === 'EG');
-    document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
-    document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
-    var waMsg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية\nسأدفع ' + cur.amount + ' ' + cur.label + ' عبر InstaPay:\nhttps://ipn.eg/S/bas6h2/instapay/0iNsR1');
-    document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + waMsg;
-  } catch(e) {}
-  // Load PayPal after currency detection
-  if (VALID_CODES.indexOf(accessCode) === -1) loadPayPal();
-}
-
+// ════════════ CURRENCY + PAYPAL ════════════
 function loadPayPal() {
   var s = document.createElement('script');
   s.src = 'https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
   s.onload = function() {
     paypal.Buttons({
       createOrder: function() {
-        if (!validateForm()) return Promise.reject('validation failed');
+        if (!validate()) return Promise.reject();
         return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({amount: cvAmount, currency: 'USD', packageName: 'سيرتك في دقائق'})
-        }).then(function(r) { return r.json(); }).then(function(d) { return d.id; });
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({amount: cvAmountUSD, currency:'USD', packageName:'سيرتك في دقائق'})
+        }).then(function(r){return r.json();}).then(function(d){return d.id;});
       },
       onApprove: function(data) {
         return fetch('https://paypal-capture-order.mr-mohammedihab.workers.dev', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({orderID: data.orderID})
-        }).then(function() { generateCV(); });
+        }).then(function() { doGenerate(); });
       },
-      onError: function(err) { console.error(err); alert('حدث خطأ في الدفع'); }
-    }).render('#paypal-container');
+      onError: function(e) { console.error(e); alert('حدث خطأ في الدفع — جرب واتساب'); }
+    }).render('#pp-container');
   };
   document.body.appendChild(s);
 }
 
-// ═══ INIT ═══
-window.addEventListener('DOMContentLoaded', function() {
-  // Add first experience field
-  addExpField();
+async function initCurrency() {
+  try {
+    var cc = 'SA';
+    try { cc = (await (await fetch('https://ipapi.co/country/',{signal:AbortSignal.timeout(3000)})).text()).trim(); } catch(e) {
+      try { cc = (await (await fetch('https://api.country.is/',{signal:AbortSignal.timeout(3000)})).json()).country; } catch(e2) {}
+    }
+    var C = {
+      EG:{fl:'🇪🇬',amt:'75',lbl:'ج.م',usd:'2.00'},
+      AE:{fl:'🇦🇪',amt:'10',lbl:'درهم',usd:'2.72'},
+      QA:{fl:'🇶🇦',amt:'10',lbl:'ر.ق',usd:'2.75'},
+      KW:{fl:'🇰🇼',amt:'1',lbl:'د.ك',usd:'3.25'},
+    };
+    var AR = ['SA','EG','AE','QA','KW','BH','OM','JO','LB','MA','TN','DZ','IQ','SY','YE','LY'];
+    var cur = C[cc] || (AR.indexOf(cc)!==-1 ? {fl:'🇸🇦',amt:'10',lbl:'ريال',usd:'2.67'} : {fl:'🇺🇸',amt:'3',lbl:'USD',usd:'3.00'});
+    cvAmountUSD = cur.usd;
+    isEG = (cc === 'EG');
+    document.getElementById('heroPrice').innerHTML = cur.fl + ' <span>' + cur.amt + '</span> ' + cur.lbl + ' فقط';
+    document.getElementById('payAmt').innerHTML = cur.amt + ' <span style="font-size:1rem">' + cur.lbl + '</span>';
+    var msg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية\nسأدفع ' + cur.amt + ' ' + cur.lbl + ' عبر InstaPay');
+    document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + msg;
+  } catch(e) {}
+  if (CODES.indexOf(accessCode) === -1) loadPayPal();
+}
 
-  // Skills field listener
-  var workExpEl = document.getElementById('workExp');
-  if (workExpEl) workExpEl.addEventListener('change', updateSuggestions);
+initCurrency();
 
-  // Skill input Enter key
-  var skillInput = document.getElementById('skillInput');
-  if (skillInput) skillInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') { e.preventDefault(); addSkillManual(); }
-  });
+// ════════════ ACCESS CODE ════════════
+if (CODES.indexOf(accessCode) !== -1) {
+  document.getElementById('payCard').style.display = 'none';
+  var freeBtn = document.createElement('button');
+  freeBtn.type = 'button';
+  freeBtn.style.cssText = 'width:100%;margin-top:1rem;padding:.85rem;border-radius:10px;border:none;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;font-family:Cairo,sans-serif;font-size:.95rem;font-weight:800;cursor:pointer';
+  freeBtn.textContent = '⚡ إنشاء سيرتي الذاتية الآن';
+  freeBtn.onclick = function() { if (validate()) doGenerate(); };
+  document.getElementById('formCard').appendChild(freeBtn);
+}
 
-  // Access code
-  if (VALID_CODES.indexOf(accessCode) !== -1) {
-    var pc = document.getElementById('paymentCard');
-    if (pc) pc.style.display = 'none';
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.style.cssText = 'width:100%;padding:.85rem;border-radius:10px;border:none;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;font-family:Cairo,sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;margin-top:1rem';
-    btn.textContent = '⚡ إنشاء سيرتي الذاتية الآن';
-    btn.addEventListener('click', function() { if (validateForm()) generateCV(); });
-    var fc = document.getElementById('formCard');
-    if (fc) fc.appendChild(btn);
-  }
-
-  renderChips();
-});
-
-detectCurrency();
-
-// ═══ GENERATE CV ═══
-async function generateCV() {
+// ════════════ GENERATE ════════════
+async function doGenerate() {
   document.getElementById('formCard').style.display = 'none';
-  document.getElementById('paymentCard').style.display = 'none';
-  document.getElementById('loadingCard').classList.add('show');
+  document.getElementById('payCard').style.display = 'none';
+  document.getElementById('loadCard').classList.add('show');
 
-  var cvLangEl = document.querySelector('input[name="cvLang"]:checked');
-  var cvLang = cvLangEl ? cvLangEl.value : 'ar';
+  var lang = document.querySelector('input[name="cvlang"]:checked').value;
   var langs = [];
-  var langMap = {lang_ar:'العربية',lang_en:'الإنجليزية',lang_fr:'الفرنسية',lang_tr:'التركية'};
-  Object.keys(langMap).forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el && el.checked) langs.push(langMap[id]);
-  });
+  if (document.getElementById('l_ar').checked) langs.push('العربية');
+  if (document.getElementById('l_en').checked) langs.push('الإنجليزية');
+  if (document.getElementById('l_fr').checked) langs.push('الفرنسية');
+  if (document.getElementById('l_tr').checked) langs.push('التركية');
+
+  var exps = getExps();
+  var payload = {
+    projectName: 'CV',
+    industry: 'سيرة ذاتية',
+    audience: document.getElementById('fullName').value,
+    budget: document.getElementById('experience').value,
+    goal: document.getElementById('jobTitle').value,
+    country: document.getElementById('country').value || (isEG ? 'مصر' : 'السعودية'),
+    extra: [
+      'الاسم: ' + document.getElementById('fullName').value,
+      'المسمى: ' + document.getElementById('jobTitle').value,
+      'الإيميل: ' + document.getElementById('email').value,
+      'الهاتف: ' + document.getElementById('cc').value + document.getElementById('phone').value,
+      'الموقع: ' + [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join(', '),
+      'الخبرة: ' + document.getElementById('experience').value,
+      'المجال: ' + document.getElementById('workField').value,
+      'الخبرات: ' + exps.map(function(e){return e.title+' في '+e.company+' '+e.period+': '+e.desc;}).join(' | '),
+      'المهارات: ' + selectedSkills.join(', '),
+      'التعليم: ' + document.getElementById('education').value + ' ' + (document.getElementById('eduDetails').value||'') + ' ' + (document.getElementById('gradYear').value||''),
+      'اللغات: ' + langs.join(', '),
+      'لغة السيرة: ' + (lang==='ar'?'عربي - اكتب كل شيء بالعربية':'English - write EVERYTHING in English'),
+      '',
+      'اكتب نبذة شخصية 3 أسطر ووصف احترافي لكل خبرة مع تحسين المهارات.',
+      'رد بـ JSON فقط: {"summary":"...","experiences":[{"title":"...","company":"...","period":"...","desc":"..."}],"skills":["..."],"languages":[{"name":"...","level":"...","pct":80}]}'
+    ].join('\n')
+  };
 
   try {
     var res = await fetch('https://generate-plan.mr-mohammedihab.workers.dev', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        projectName: 'CV',
-        industry: 'سيرة ذاتية',
-        audience: document.getElementById('fullName').value,
-        budget: document.getElementById('experience').value,
-        goal: document.getElementById('jobTitle').value,
-        country: document.getElementById('country').value || (isEgypt ? 'مصر' : 'السعودية'),
-        extra: [
-          'الاسم: ' + document.getElementById('fullName').value,
-          'المسمى: ' + document.getElementById('jobTitle').value,
-          'الإيميل: ' + document.getElementById('email').value,
-          'الهاتف: ' + document.getElementById('countryCode').value + document.getElementById('phone').value,
-          'الموقع: ' + [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join(', '),
-          'الخبرة: ' + document.getElementById('experience').value,
-          'المجال: ' + document.getElementById('workExp').value,
-          'الخبرات العملية: ' + JSON.stringify(getExperiences()),
-          'المهارات: ' + selectedSkills.join(', '),
-          'التعليم: ' + document.getElementById('education').value + ' ' + (document.getElementById('eduDetails').value || '') + ' ' + (document.getElementById('gradYear').value || ''),
-          'اللغات: ' + langs.join(', '),
-          'لغة السيرة: ' + (cvLang === 'ar' ? 'عربي' : 'English - write everything in English'),
-          '',
-          'اكتب نبذة شخصية احترافية 3 أسطر ثم وصف لكل خبرة.',
-          'الرد JSON فقط: {"summary":"...","experiences":[{"title":"...","company":"...","period":"...","desc":"..."}],"skills":["..."],"languages":[{"name":"...","level":"...","percent":80}]}'
-        ].join('\n')
-      })
+      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
     });
     var data = await res.json();
-    var cvJson = {};
-    try {
-      var m = data.plan.match(/\{[\s\S]*\}/);
-      if (m) cvJson = JSON.parse(m[0]);
-    } catch(e) {}
-    renderCV(cvJson);
+    var ai = {};
+    try { var m = data.plan.match(/\{[\s\S]*\}/); if(m) ai = JSON.parse(m[0]); } catch(e) {}
+    renderCV(ai, exps);
   } catch(err) {
-    document.getElementById('loadingCard').classList.remove('show');
+    document.getElementById('loadCard').classList.remove('show');
     alert('حدث خطأ — يرجى التواصل على واتساب');
   }
 }
 
-function renderCV(ai) {
+// ════════════ RENDER CV ════════════
+function renderCV(ai, rawExps) {
   var name = document.getElementById('fullName').value;
-  var title = document.getElementById('jobTitle').value;
+  var pos = document.getElementById('jobTitle').value;
   var email = document.getElementById('email').value;
-  var phone = document.getElementById('countryCode').value + document.getElementById('phone').value;
-  var location = [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join('، ');
-  var education = [document.getElementById('education').value, document.getElementById('eduDetails').value, document.getElementById('gradYear').value].filter(Boolean).join(' — ');
+  var phone = document.getElementById('cc').value + document.getElementById('phone').value;
+  var loc = [document.getElementById('city').value, document.getElementById('country').value].filter(Boolean).join('، ');
+  var edu = [document.getElementById('education').value, document.getElementById('eduDetails').value, document.getElementById('gradYear').value].filter(Boolean).join(' — ');
   var skills = (ai.skills && ai.skills.length) ? ai.skills : selectedSkills;
-  var summary = ai.summary || '';
-  var experiences = ai.experiences || [];
-  var languages = ai.languages || [{name:'العربية',level:'ممتاز',percent:100}];
+  var exps = (ai.experiences && ai.experiences.length) ? ai.experiences : rawExps;
+  var langs = ai.languages || [{name:'العربية',level:'ممتاز',pct:100}];
 
-  var html = '<div class="cv-preview" id="cvContent">';
-  html += '<div class="cv-header">';
-  if (photoBase64) html += '<img src="' + photoBase64 + '" style="width:75px;height:75px;border-radius:50%;border:3px solid rgba(255,255,255,0.5);object-fit:cover;flex-shrink:0">';
-  html += '<div><div class="cv-name">' + name + '</div><div class="cv-title-pos">' + title + '</div><div class="cv-contact">';
-  if (email) html += '<span>✉ ' + email + '</span>';
-  if (phone) html += '<span>📞 ' + phone + '</span>';
-  if (location) html += '<span>📍 ' + location + '</span>';
-  html += '</div></div></div>';
-  html += '<div class="cv-body"><div class="cv-sidebar">';
-  html += '<div class="cv-section"><div class="cv-section-title">المهارات</div>';
-  skills.forEach(function(s) { html += '<span class="cv-skill">' + s + '</span>'; });
-  html += '</div>';
-  html += '<div class="cv-section"><div class="cv-section-title">التعليم</div><div class="cv-item-desc">' + education + '</div></div>';
-  html += '<div class="cv-section"><div class="cv-section-title">اللغات</div>';
-  languages.forEach(function(l) {
-    html += '<div class="cv-lang"><span>' + l.name + '</span><span style="font-size:.7rem;color:#888">' + l.level + '</span></div>';
-    html += '<div class="cv-lang-bar"><div class="cv-lang-fill" style="width:' + l.percent + '%"></div></div>';
+  var h = '<div id="cvContent" class="cv-wrap">';
+  h += '<div class="cv-hdr">';
+  if (photoData) h += '<img src="' + photoData + '">';
+  h += '<div><div class="cv-nm">' + name + '</div><div class="cv-pos">' + pos + '</div>';
+  h += '<div class="cv-cnt">';
+  if (email) h += '<span>✉ ' + email + '</span>';
+  if (phone) h += '<span>📞 ' + phone + '</span>';
+  if (loc) h += '<span>📍 ' + loc + '</span>';
+  h += '</div></div></div>';
+  h += '<div class="cv-bdy"><div class="cv-side">';
+  h += '<div class="cv-sec"><div class="cv-sec-t">المهارات</div>';
+  skills.forEach(function(s) { h += '<span class="cv-sk">' + s + '</span>'; });
+  h += '</div>';
+  h += '<div class="cv-sec"><div class="cv-sec-t">التعليم</div><div class="cv-itm-d">' + edu + '</div></div>';
+  h += '<div class="cv-sec"><div class="cv-sec-t">اللغات</div>';
+  langs.forEach(function(l) {
+    h += '<div class="cv-lg"><span>' + l.name + '</span><span style="font-size:.7rem;color:#888">' + l.level + '</span></div>';
+    h += '<div class="cv-lb"><div class="cv-lf" style="width:' + (l.pct||l.percent||80) + '%"></div></div>';
   });
-  html += '</div></div><div class="cv-main">';
-  if (summary) html += '<div class="cv-section"><div class="cv-section-title">نبذة شخصية</div><div class="cv-item-desc">' + summary + '</div></div>';
-  html += '<div class="cv-section"><div class="cv-section-title">الخبرات العملية</div>';
-  var allExps = (experiences && experiences.length) ? experiences : getExperiences();
-  if (allExps.length) {
-    allExps.forEach(function(exp) {
-      html += '<div class="cv-item"><div class="cv-item-title">' + (exp.title || '') + '</div>';
-      html += '<div class="cv-item-sub">' + (exp.company || '') + (exp.period ? ' | ' + exp.period : '') + '</div>';
-      html += '<div class="cv-item-desc">' + (exp.desc || '') + '</div></div>';
-    });
-  } else {
-    html += '<div class="cv-item-desc">' + document.getElementById('workExp').value + '</div>';
-  }
-  html += '</div></div></div></div>';
+  h += '</div></div>';
+  h += '<div class="cv-main">';
+  if (ai.summary) h += '<div class="cv-sec"><div class="cv-sec-t">نبذة شخصية</div><div class="cv-itm-d">' + ai.summary + '</div></div>';
+  h += '<div class="cv-sec"><div class="cv-sec-t">الخبرات العملية</div>';
+  exps.forEach(function(e) {
+    h += '<div class="cv-itm"><div class="cv-itm-t">' + e.title + '</div>';
+    h += '<div class="cv-itm-s">' + e.company + (e.period?' | '+e.period:'') + '</div>';
+    h += '<div class="cv-itm-d">' + e.desc + '</div></div>';
+  });
+  h += '</div></div></div></div>';
 
-  document.getElementById('loadingCard').classList.remove('show');
-  document.getElementById('resultCard').classList.add('show');
-  document.getElementById('cvPreview').innerHTML = html;
+  document.getElementById('loadCard').classList.remove('show');
+  document.getElementById('resCard').classList.add('show');
+  document.getElementById('cvOut').innerHTML = h;
 }
 
-function downloadCV() {
+// ════════════ DOWNLOAD ════════════
+function dlCV() {
   var name = document.getElementById('fullName').value;
-  var cvContent = document.getElementById('cvContent').outerHTML;
-  var win = window.open('', '_blank');
-  win.document.write('<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>CV - ' + name + '</title>' +
+  var cv = document.getElementById('cvContent').outerHTML;
+  var w = window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>CV - '+name+'</title>' +
     '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">' +
     '<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Cairo,sans-serif;direction:rtl;background:#fff}' +
-    '.cv-preview{background:#fff}.cv-header{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:1.5rem;display:flex;align-items:center;gap:1.2rem}' +
-    '.cv-name{font-size:1.5rem;font-weight:900;margin-bottom:.2rem}.cv-title-pos{font-size:.9rem;opacity:.9;margin-bottom:.6rem}' +
-    '.cv-contact{display:flex;gap:1rem;flex-wrap:wrap;font-size:.78rem;opacity:.85}' +
-    '.cv-body{padding:1.2rem;display:grid;grid-template-columns:1fr 2fr;gap:1.2rem;direction:rtl}' +
-    '.cv-sidebar{border-left:2px solid #f0f0f0;padding-left:1.2rem}.cv-section{margin-bottom:1rem}' +
-    '.cv-section-title{font-size:.8rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.2rem;margin-bottom:.5rem}' +
-    '.cv-item{margin-bottom:.6rem}.cv-item-title{font-size:.85rem;font-weight:800}.cv-item-sub{font-size:.75rem;color:#666;margin-bottom:.2rem}' +
-    '.cv-item-desc{font-size:.78rem;color:#444;line-height:1.5}' +
-    '.cv-skill{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.72rem;font-weight:700;padding:2px 7px;border-radius:4px;margin:2px}' +
-    '.cv-lang{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.3rem}' +
-    '.cv-lang-bar{height:3px;background:#f0f0f0;border-radius:2px;margin-top:2px}.cv-lang-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}' +
-    'img{width:75px;height:75px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.5)}' +
-    '.footer{text-align:center;padding:1rem;font-size:.72rem;color:#999;border-top:1px solid #eee}' +
-    '.print-btn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}' +
-    '@media print{.print-btn,.footer{display:none}}</style></head><body>' +
-    cvContent +
-    '<div class="footer">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>' +
-    '<button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>' +
+    '.cv-wrap{background:#fff;font-family:Cairo,sans-serif}' +
+    '.cv-hdr{background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;padding:1.3rem;display:flex;align-items:center;gap:1rem}' +
+    '.cv-hdr img{width:70px;height:70px;border-radius:50%;border:3px solid rgba(255,255,255,.4);object-fit:cover}' +
+    '.cv-nm{font-size:1.4rem;font-weight:900;margin-bottom:.2rem}.cv-pos{font-size:.85rem;opacity:.9;margin-bottom:.5rem}' +
+    '.cv-cnt{display:flex;gap:.8rem;flex-wrap:wrap;font-size:.75rem;opacity:.85}' +
+    '.cv-bdy{padding:1.1rem;display:grid;grid-template-columns:1fr 2fr;gap:1rem;direction:rtl}' +
+    '.cv-side{border-left:2px solid #f0f0f0;padding-left:1.1rem}.cv-sec{margin-bottom:.9rem}' +
+    '.cv-sec-t{font-size:.78rem;font-weight:800;color:#7C3AED;border-bottom:1.5px solid #7C3AED;padding-bottom:.2rem;margin-bottom:.4rem}' +
+    '.cv-itm{margin-bottom:.5rem}.cv-itm-t{font-size:.82rem;font-weight:800}.cv-itm-s{font-size:.73rem;color:#666;margin-bottom:.2rem}.cv-itm-d{font-size:.76rem;color:#444;line-height:1.5}' +
+    '.cv-sk{display:inline-block;background:#f0ebff;color:#7C3AED;font-size:.7rem;font-weight:700;padding:2px 6px;border-radius:4px;margin:1px}' +
+    '.cv-lg{display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:.25rem}' +
+    '.cv-lb{height:3px;background:#f0f0f0;border-radius:2px}.cv-lf{height:100%;background:linear-gradient(90deg,#7C3AED,#06B6D4);border-radius:2px}' +
+    '.foot{text-align:center;padding:1rem;font-size:.7rem;color:#999;border-top:1px solid #eee;margin-top:1rem}' +
+    '.pbtn{display:block;margin:1rem auto;padding:.6rem 2rem;background:linear-gradient(135deg,#7C3AED,#06B6D4);color:white;border:none;border-radius:8px;font-family:Cairo,sans-serif;font-weight:700;cursor:pointer}' +
+    '@media print{.pbtn,.foot{display:none}}</style></head><body>' +
+    cv +
+    '<div class="foot">تم إنشاؤها بواسطة MO EHAB | moehabads.com/cv</div>' +
+    '<button class="pbtn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>' +
     '</body></html>');
-  win.document.close();
+  w.document.close();
 }
+
+// ════════════ INIT ════════════
+addExp(); // Add first experience field on load
 </script>
 </body>
 </html>
