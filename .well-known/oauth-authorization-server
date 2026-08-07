@@ -1,0 +1,9 @@
+{
+  "issuer": "https://moehabads.com",
+  "authorization_endpoint": "https://moehabads.com/services",
+  "token_endpoint": null,
+  "grant_types_supported": ["none"],
+  "response_types_supported": [],
+  "subject_types_supported": ["public"],
+  "id_token_signing_alg_values_supported": []
+}
