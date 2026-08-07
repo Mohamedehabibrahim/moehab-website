@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "marketing-plan",
+      "type": "service",
+      "description": "Generate AI-powered digital marketing plan",
+      "url": "https://moehabads.com/plan"
+    },
+    {
+      "name": "cv-builder",
+      "type": "service",
+      "description": "Generate professional ATS-compatible CV using AI",
+      "url": "https://moehabads.com/cv"
+    },
+    {
+      "name": "ads-services",
+      "type": "service",
+      "description": "Paid advertising management Meta, Google, TikTok, Snapchat",
+      "url": "https://moehabads.com/services"
+    },
+    {
+      "name": "blog",
+      "type": "knowledge",
+      "description": "Educational articles on digital marketing in Arabic",
+      "url": "https://moehabads.com/blog"
+    }
+  ]
+}
