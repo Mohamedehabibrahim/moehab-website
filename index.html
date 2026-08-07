@@ -956,5 +956,45 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+  <script>
+if (typeof navigator !== 'undefined' && navigator.modelContext) {
+  navigator.modelContext.provideContext({
+    tools: [
+      {
+        name: "get_marketing_plan",
+        description: "Generate a complete AI-powered digital marketing plan for a business in Saudi Arabia or Egypt.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            business_type: { type: "string", description: "Type of business" },
+            market: { type: "string", description: "Target market" },
+            budget: { type: "string", description: "Monthly budget" }
+          },
+          required: ["business_type"]
+        },
+        execute: async (params) => {
+          window.location.href = "https://moehabads.com/plan";
+          return { url: "https://moehabads.com/plan" };
+        }
+      },
+      {
+        name: "get_ads_services",
+        description: "View paid advertising services for Meta, Google, TikTok, Snapchat.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            platform: { type: "string", description: "Advertising platform" }
+          },
+          required: []
+        },
+        execute: async (params) => {
+          window.location.href = "https://moehabads.com/services";
+          return { url: "https://moehabads.com/services" };
+        }
+      }
+    ]
+  });
+}
+</script>
 </body>
 </html>
