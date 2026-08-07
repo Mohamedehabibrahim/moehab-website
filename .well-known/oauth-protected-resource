@@ -1,0 +1,6 @@
+{
+  "resource": "https://moehabads.com",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": ["none"]
+}
