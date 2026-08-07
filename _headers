@@ -6,3 +6,6 @@
 /auth.md
   Content-Type: text/markdown
   Access-Control-Allow-Origin: *
+/.well-known/mcp/server-card.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
