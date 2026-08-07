@@ -1,0 +1,35 @@
+{
+  "schema_version": "v1",
+  "server_info": {
+    "name": "MO EHAB ADS",
+    "version": "1.0.0",
+    "description": "Paid advertising specialist in Saudi Arabia and Egypt. Meta, Google, TikTok, Snapchat ads management.",
+    "contact": {
+      "email": "mr.mohammedihab@gmail.com",
+      "url": "https://moehabads.com"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://moehabads.com/.well-known/ai-plugin.json"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "marketing-plan",
+        "description": "Generate AI-powered digital marketing plan",
+        "url": "https://moehabads.com/plan"
+      },
+      {
+        "name": "cv-builder",
+        "description": "Generate professional ATS-compatible CV",
+        "url": "https://moehabads.com/cv"
+      },
+      {
+        "name": "ads-services",
+        "description": "Paid advertising management services",
+        "url": "https://moehabads.com/services"
+      }
+    ]
+  }
+}
