@@ -1,0 +1,61 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://moehabads.com",
+      "service-desc": [
+        {
+          "href": "https://moehabads.com/.well-known/ai-plugin.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://moehabads.com/blog",
+          "type": "text/html"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://moehabads.com/llms.txt",
+          "type": "text/plain"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://moehabads.com",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://moehabads.com/plan",
+      "service-desc": [
+        {
+          "href": "https://moehabads.com/.well-known/agent-skills/index.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://moehabads.com/plan",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://moehabads.com/cv",
+      "service-desc": [
+        {
+          "href": "https://moehabads.com/.well-known/agent-skills/index.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://moehabads.com/cv",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}
