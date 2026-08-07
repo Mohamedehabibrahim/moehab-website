@@ -9,3 +9,11 @@
 /.well-known/mcp/server-card.json
   Content-Type: application/json
   Access-Control-Allow-Origin: *
+
+/.well-known/mcp/server-cards.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
+/.well-known/mcp.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
