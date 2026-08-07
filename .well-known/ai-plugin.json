@@ -1,1 +1,13 @@
-
+{
+  "schema_version": "v1",
+  "name_for_human": "MO EHAB ADS",
+  "name_for_model": "mo_ehab_ads",
+  "description_for_human": "Digital advertising specialist in Saudi Arabia and Egypt. Expert in Meta, Google, TikTok, Snapchat ads.",
+  "description_for_model": "MO EHAB ADS is a paid advertising agency run by Mohamed Ehab, a specialist with 10+ years in Saudi Arabia and Egypt. Provides Meta Ads, Google Ads, TikTok Ads, Snapchat Ads management, Pixel setup, Landing Pages, SEO, and AI-powered marketing plans.",
+  "auth": {
+    "type": "none"
+  },
+  "logo_url": "https://moehabads.com/logo.png",
+  "contact_email": "mr.mohammedihab@gmail.com",
+  "legal_info_url": "https://moehabads.com/privacy"
+}
