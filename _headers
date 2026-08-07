@@ -3,3 +3,6 @@
   Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
   Link: </llms.txt>; rel="describedby"
   Link: </sitemap.xml>; rel="sitemap"
+/auth.md
+  Content-Type: text/markdown
+  Access-Control-Allow-Origin: *
