@@ -21,28 +21,6 @@ Email: mr.mohammedihab@gmail.com
       });
     }
 
-    // Redirects قديمة
-    const redirects = {
-      '/blog/roas-vs-roi': '/blog/blog-2.html',
-      '/blog/best-time-ads': '/blog/blog-3.html',
-      '/blog/tiktok-ads-targeting': '/blog/blog-4.html',
-      '/blog/ads-mistakes': '/blog/blog-5.html',
-      '/blog/claude-ai-advertising': '/blog/blog-6.html',
-      '/blog/meta-pixel-guide': '/blog/blog-12.html',
-      '/blog/awareness-vs-conversions': '/blog/blog-14.html',
-    };
-
-    if (redirects[path]) {
-      return Response.redirect(url.origin + redirects[path], 301);
-    }
-
-    // Blog بدون .html
-    if (path.match(/^\/blog\/blog-\d+$/)) {
-      const newUrl = new URL(request.url);
-      newUrl.pathname = path + '.html';
-      return env.ASSETS.fetch(new Request(newUrl, request));
-    }
-
     return env.ASSETS.fetch(request);
   }
 };
