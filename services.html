@@ -540,16 +540,51 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
       <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
       <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
       <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.7rem">
-        <a href="https://wa.me/966580395350?text=مرحباً،%20أنا%20مهتم%20بخدمة%20إدارة%20حملات%20المؤثرين" target="_blank"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;display:block">
-          💬 تواصل للحصول على عرض سعر
-        </a>
-        <a href="mailto:mr.mohammedihab@gmail.com?subject=استفسار عن خدمة المؤثرين"
-          style="background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:#A78BFA;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;display:block">
-          📧 أرسل بريد إلكتروني
-        </a>
+      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
+        <div>
+          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
+          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
+            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
+        </div>
+        <div>
+          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
+          <select id="inf-type"
+            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
+            <option value="">اختر النوع</option>
+            <option>🌱 Nano (1K - 10K متابع)</option>
+            <option>⭐ Micro (10K - 100K متابع)</option>
+            <option>🌟 Macro (100K - 1M متابع)</option>
+            <option>👑 Mega / مشهور (+1M متابع)</option>
+            <option>🔀 مفتوح — اختر أنت الأنسب</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
+          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
+            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
+        </div>
+        <button onclick="sendInfluencerRequest()"
+          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
+          💬 أرسل الطلب على واتساب
+        </button>
       </div>
+      <script>
+      function sendInfluencerRequest() {
+        const brand = document.getElementById('inf-brand').value.trim();
+        const type = document.getElementById('inf-type').value;
+        const name = document.getElementById('inf-name').value.trim();
+        if (!brand || !type) {
+          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
+          return;
+        }
+        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
+          "اسم البراند: " + brand + "\n" +
+          "نوع المؤثر: " + type + "\n" +
+          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
+          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
+        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
+      }
+      </script>
     </div>
   </div>
 
