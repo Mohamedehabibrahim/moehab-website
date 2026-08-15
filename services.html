@@ -125,6 +125,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 .sf-btn.active{background:rgba(124,58,237,0.15);border-color:var(--pl);color:var(--pl)}
 .service-block{transition:all .3s}
 .service-block.hidden{display:none}
+
+/* SUB FILTERS */
+.sub-filters{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
+.sf-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:.4rem 1rem;border-radius:20px;font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.sf-btn:hover{border-color:var(--pl);color:var(--pl)}
+.sf-btn.active{background:rgba(124,58,237,0.15);border-color:var(--pl);color:var(--pl)}
+.svc-block{margin-bottom:1rem}
+.svc-block.hidden{display:none!important}
+
 </style>
 </head>
 <body>
@@ -153,2029 +162,366 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 <div class="tabs-wrap">
   <div class="tabs">
     <button class="tab active" onclick="showTab('ads',this)" id="tab-btn-ads">📢 الإعلانات</button>
-    <button class="tab" onclick="showTab('ecom',this)" id="tab-btn-ecom">🛍️ المتاجر والمواقع</button>
-    <button class="tab" onclick="showTab('media',this)" id="tab-btn-media">🎬 الإنتاج</button>
-    <button class="tab" onclick="showTab('ai',this)" id="tab-btn-ai">🤖 AI والتقنية</button>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('ads',this)">📢 الإعلانات</button>
+    <button class="tab" onclick="showTab('ecom',this)">🛍️ المتاجر والمواقع</button>
+    <button class="tab" onclick="showTab('media',this)">🎬 الإنتاج</button>
+    <button class="tab" onclick="showTab('ai',this)">🤖 AI والتقنية</button>
   </div>
 </div>
 
-<!-- ADS -->
+<!-- ════ ADS TAB ════ -->
 <div class="tab-panel active" id="tab-ads">
   <div class="panel-head">
     <h2>📢 الإعلانات <span>والاستشارات</span></h2>
     <p>إدارة الحملات الإعلانية على كل المنصات + استشارات تسويقية متخصصة</p>
   </div>
-<div id="sf-ads" class="sub-filters">
-  <button class="sf-btn active" onclick="filterService('ads','all',this)">الكل</button>
-  <button class="sf-btn" onclick="filterService('ads','campaigns',this)">📢 إدارة الحملات</button>
-  <button class="sf-btn" onclick="filterService('ads','consult',this)">💬 الاستشارات</button>
-</div>
-  <div class="service-block" data-cat="campaigns">
-  <div class="pkg-grid">
-    <div class="pkg">
-      <div class="pkg-icon">🛒</div>
-      <div class="pkg-name" id="p-ads-0-name">حملة مبيعات</div>
-      <div class="pkg-desc" id="p-ads-0-desc">للمتاجر الإلكترونية — حملات موجهة لتحقيق أعلى ROAS وتحويلات حقيقية</div>
-      <div class="price-box">
-        <div class="curr-toggle">
-          <button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button>
-          <button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button>
+
+  <div class="sub-filters">
+    <button class="sf-btn active" onclick="filterSvc('ads','all',this)">الكل</button>
+    <button class="sf-btn" onclick="filterSvc('ads','campaigns',this)">📢 إدارة الحملات</button>
+    <button class="sf-btn" onclick="filterSvc('ads','consult',this)">💬 الاستشارات</button>
+  </div>
+
+  <!-- إدارة الحملات -->
+  <div class="svc-block" data-tab="ads" data-cat="campaigns">
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-icon">🛒</div><div class="pkg-name">حملة مبيعات</div>
+        <div class="pkg-desc">للمتاجر الإلكترونية — حملات موجهة لتحقيق أعلى ROAS وتحويلات حقيقية</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">3,500 ر.س</div><div class="new-price">1,400 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">18,000 ج.م</div><div class="new-price">7,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
         </div>
-        <div class="usd-price" id="usd-ads-0">$380/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">3,500 ر.س</div><div class="new-price">1,400 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">18,000 ج.م</div><div class="new-price">7,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        <ul class="pkg-features"><li>إعداد حملة مبيعات كاملة</li><li>استهداف المشترين المحتملين</li><li>تحسين ROAS مستمر</li><li>متابعة يومية وتقرير شهري</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('حملة مبيعات','1,400 ر.س/شهر','7,200 ج.م/شهر','373')">🛒 اطلب الآن</button>
       </div>
-      <ul class="pkg-features" id="p-ads-0-feat"><li>إعداد حملة مبيعات كاملة</li><li>استهداف المشترين المحتملين</li><li>تحسين ROAS مستمر</li><li>متابعة يومية وتقرير شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('حملة مبيعات','1,400 ر.س/شهر','7,200 ج.م/شهر','373')">🛒 اطلب الآن</button>
+      <div class="pkg">
+        <div class="pkg-icon">💬</div><div class="pkg-name">حملة رسايل</div>
+        <div class="pkg-desc">للخدمات والأعمال — جذب عملاء محتملين يتواصلون معك مباشرة</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ر.س</div><div class="new-price">1,000 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">13,000 ج.م</div><div class="new-price">5,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        </div>
+        <ul class="pkg-features"><li>إعداد حملة رسايل احترافية</li><li>استهداف دقيق للجمهور</li><li>تحسين تكلفة الرسالة</li><li>متابعة يومية وتقرير شهري</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('حملة رسايل','1,000 ر.س/شهر','5,200 ج.م/شهر','267')">💬 اطلب الآن</button>
+      </div>
+      <div class="pkg">
+        <div class="pkg-icon">👥</div><div class="pkg-name">حملة متابعين</div>
+        <div class="pkg-desc">بناء جمهور حقيقي ومهتم وتعزيز الحضور الرقمي لبراندك</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,500 ر.س</div><div class="new-price">600 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">8,000 ج.م</div><div class="new-price">3,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        </div>
+        <ul class="pkg-features"><li>حملة زيادة متابعين مستهدفة</li><li>جمهور حقيقي ومهتم</li><li>تحسين التفاعل</li><li>متابعة يومية وتقرير شهري</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('حملة متابعين','600 ر.س/شهر','3,200 ج.م/شهر','160')">👥 اطلب الآن</button>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge">الأكثر طلباً</div>
+        <div class="pkg-icon">🎯</div><div class="pkg-name">الباقة الشاملة</div>
+        <div class="pkg-desc">مبيعات + رسايل + متابعين — تغطية كاملة على كل المنصات</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ر.س</div><div class="new-price">2,000 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">26,000 ج.م</div><div class="new-price">10,400 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        </div>
+        <ul class="pkg-features"><li>إدارة كل المنصات</li><li>مبيعات + رسايل + متابعين</li><li>متابعة يومية مكثفة</li><li>تقارير أسبوعية وشهرية</li><li>CRO + تتبع مجاناً</li></ul>
+        <button class="pkg-btn primary" onclick="openModal('الباقة الشاملة','2,000 ر.س/شهر','10,400 ج.م/شهر','550')">🚀 اطلب الآن</button>
+      </div>
     </div>
-    <div class="pkg">
-      <div class="pkg-icon">💬</div>
-      <div class="pkg-name" id="p-ads-1-name">حملة رسايل</div>
-      <div class="pkg-desc" id="p-ads-1-desc">للخدمات والأعمال — جذب عملاء محتملين يتواصلون معك مباشرة</div>
-      <div class="price-box">
-        <div class="curr-toggle">
-          <button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button>
-          <button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button>
+  </div>
+
+  <!-- الاستشارات -->
+  <div class="svc-block" data-tab="ads" data-cat="consult">
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-icon">💬</div><div class="pkg-name">استشارة ساعة</div>
+        <div class="pkg-desc">جلسة مركزة لحل مشكلة محددة أو تقييم حملاتك الحالية</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">300 ر.س</div><div class="new-price">120 <small>ر.س</small></div><div class="price-unit">جلسة واحدة</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">1,500 ج.م</div><div class="new-price">600 <small>ج.م</small></div><div class="price-unit">جلسة واحدة</div></div>
         </div>
-        <div class="usd-price" id="usd-ads-1">$270/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ر.س</div><div class="new-price">1,000 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">13,000 ج.م</div><div class="new-price">5,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        <ul class="pkg-features"><li>جلسة ساعة كاملة</li><li>تقييم حملاتك</li><li>توصيات فورية</li><li>تسجيل الجلسة</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('استشارة ساعة','120 ر.س','600 ج.م','35')">📅 احجز الآن</button>
       </div>
-      <ul class="pkg-features" id="p-ads-1-feat"><li>إعداد حملة رسايل احترافية</li><li>استهداف دقيق للجمهور</li><li>تحسين تكلفة الرسالة</li><li>متابعة يومية وتقرير شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('حملة رسايل','1,000 ر.س/شهر','5,200 ج.م/شهر','267')">💬 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">👥</div>
-      <div class="pkg-name" id="p-ads-2-name">حملة متابعين</div>
-      <div class="pkg-desc" id="p-ads-2-desc">بناء جمهور حقيقي ومهتم وتعزيز الحضور الرقمي لبراندك</div>
-      <div class="price-box">
-        <div class="curr-toggle">
-          <button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button>
-          <button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button>
+      <div class="pkg featured">
+        <div class="pkg-badge">الأفضل قيمة</div>
+        <div class="pkg-icon">📅</div><div class="pkg-name">استشارة شهرية</div>
+        <div class="pkg-desc">4 جلسات شهرية لمتابعة مستمرة وتحسين استراتيجيتك</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
         </div>
-        <div class="usd-price" id="usd-ads-2">$160/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,500 ر.س</div><div class="new-price">600 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">8,000 ج.م</div><div class="new-price">3,200 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        <ul class="pkg-features"><li>4 جلسات شهرية</li><li>متابعة مستمرة</li><li>خطة تحسين شهرية</li><li>تسجيل الجلسات</li><li>دعم واتساب</li></ul>
+        <button class="pkg-btn primary" onclick="openModal('استشارة شهرية','400 ر.س/شهر','2,000 ج.م/شهر','110')">📅 احجز الآن</button>
       </div>
-      <ul class="pkg-features" id="p-ads-2-feat"><li>حملة زيادة متابعين مستهدفة</li><li>جمهور حقيقي ومهتم</li><li>تحسين التفاعل</li><li>متابعة يومية وتقرير شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('حملة متابعين','600 ر.س/شهر','3,200 ج.م/شهر','160')">👥 اطلب الآن</button>
-    </div>
-    <div class="pkg featured">
-      <div class="pkg-badge" id="badge-ads">الأكثر طلباً</div>
-      <div class="pkg-icon">🎯</div>
-      <div class="pkg-name" id="p-ads-3-name">الباقة الشاملة</div>
-      <div class="pkg-desc" id="p-ads-3-desc">مبيعات + رسايل + متابعين — تغطية كاملة على كل المنصات</div>
-      <div class="price-box">
-        <div class="curr-toggle">
-          <button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button>
-          <button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button>
-        </div>
-        <div class="usd-price" id="usd-ads-3">$550/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ر.س</div><div class="new-price">2,000 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">26,000 ج.م</div><div class="new-price">10,400 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features" id="p-ads-3-feat"><li>إدارة كل المنصات</li><li>مبيعات + رسايل + متابعين</li><li>متابعة يومية مكثفة</li><li>تقارير أسبوعية وشهرية</li><li>CRO + تتبع مجاناً</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('الباقة الشاملة','2,000 ر.س/شهر','10,400 ج.م/شهر','550')">🚀 اطلب الآن</button>
     </div>
   </div>
 </div>
 
-  </div></div><!-- end campaigns block -->
-
-  <div class="service-block" data-cat="consult">
-  <!-- ─── الاستشارات ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>💬 <span>الاستشارات</span> التسويقية</h2>
-      <p>جلسة استشارية مع خبير — تخرج بخطة واضحة وقرارات صحيحة</p>
-    </div>
-
-<div class="panel-head">
-    <h2>الاستشارات <span>والتقارير</span></h2>
-    <p>استشارات تسويقية متخصصة وأدوات تتبع وتحليل بيانات</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg">
-      <div class="pkg-icon">💬</div><div class="pkg-name">استشارة ساعة</div>
-      <div class="pkg-desc">جلسة مركزة لحل مشكلة محددة أو تقييم حملاتك الحالية</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$35</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">300 ر.س</div><div class="new-price">120 <small>ر.س</small></div><div class="price-unit">جلسة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">1,500 ج.م</div><div class="new-price">600 <small>ج.م</small></div><div class="price-unit">جلسة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>جلسة ساعة كاملة</li><li>تقييم حملاتك</li><li>توصيات فورية</li><li>تسجيل الجلسة</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('استشارة ساعة','120 ر.س','600 ج.م','35')">📅 احجز الآن</button>
-    </div>
-    <div class="pkg featured">
-      <div class="pkg-badge">الأفضل قيمة</div>
-      <div class="pkg-icon">📅</div><div class="pkg-name">استشارة شهرية</div>
-      <div class="pkg-desc">4 جلسات شهرية لمتابعة مستمرة وتحسين استراتيجيتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-      </div>
-      <ul class="pkg-features"><li>4 جلسات شهرية</li><li>متابعة مستمرة</li><li>خطة تحسين شهرية</li><li>تسجيل الجلسات</li><li>دعم واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('استشارة شهرية','400 ر.س/شهر','2,000 ج.م/شهر','110')">📅 احجز الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🎯</div><div class="pkg-name">Meta Pixel + CAPI</div>
-      <div class="pkg-desc">ربط Meta Pixel وإعداد Conversions API لتتبع دقيق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$55</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">500 ر.س</div><div class="new-price">200 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ج.م</div><div class="new-price">1,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>ربط Meta Pixel</li><li>إعداد Conversions API</li><li>اختبار الأحداث</li><li>تقرير تأكيد</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('Meta Pixel + CAPI','200 ر.س','1,000 ج.م','55')">⚡ اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">⚡</div><div class="pkg-name">باقة تتبع شاملة</div>
-      <div class="pkg-desc">ربط كامل — Meta + Google + TikTok + Snapchat</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>Meta Pixel + CAPI</li><li>Google Tag Manager</li><li>TikTok Pixel</li><li>Snapchat Pixel</li><li>GA4 + تقرير شامل</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('باقة تتبع شاملة','400 ر.س','2,000 ج.م','110')">⚡ اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📊</div><div class="pkg-name">GA4 + Looker Studio</div>
-      <div class="pkg-desc">لوحة تحكم مخصصة لمتابعة أداء موقعك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>ربط GA4</li><li>إعداد Looker Studio</li><li>لوحة مخصصة</li><li>شرح الاستخدام</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('GA4 + Looker Studio','320 ر.س','1,600 ج.م','85')">📊 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">تقارير شهرية</div>
-      <div class="pkg-desc">تقارير أداء شهرية احترافية لعملائك بتصميم مميز</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$55/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">500 ر.س</div><div class="new-price">200 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ج.م</div><div class="new-price">1,000 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تقرير شهري مفصل</li><li>تصميم احترافي</li><li>توصيات واضحة</li><li>ملف PDF</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تقارير شهرية','200 ر.س/شهر','1,000 ج.م/شهر','55')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- ECOM -->
+<!-- ════ ECOM TAB ════ -->
 <div class="tab-panel" id="tab-ecom">
   <div class="panel-head">
-    <h2>المتاجر <span>الإلكترونية</span></h2>
-    <p>إعداد وإدارة متاجرك على Zid وSalla وShopify وأمازون ونون</p>
+    <h2>🛍️ المتاجر <span>والمواقع</span></h2>
+    <p>إعداد وإدارة متاجرك الإلكترونية + صفحات هبوط وSEO</p>
   </div>
-  <div class="pkg-grid">
-    <div class="pkg">
-      <div class="pkg-icon">🛍️</div><div class="pkg-name">إعداد Zid أو Salla</div>
-      <div class="pkg-desc">إعداد متجر كامل مع إعدادات الدفع والشحن</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+
+  <div class="sub-filters">
+    <button class="sf-btn active" onclick="filterSvc('ecom','all',this)">الكل</button>
+    <button class="sf-btn" onclick="filterSvc('ecom','stores',this)">🛒 المتاجر</button>
+    <button class="sf-btn" onclick="filterSvc('ecom','landing',this)">🌐 الهبوط والـ SEO</button>
+  </div>
+
+  <!-- المتاجر -->
+  <div class="svc-block" data-tab="ecom" data-cat="stores">
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-icon">🛍️</div><div class="pkg-name">إعداد Zid أو Salla</div>
+        <div class="pkg-desc">إعداد متجر كامل مع إعدادات الدفع والشحن</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+        </div>
+        <ul class="pkg-features"><li>إعداد المتجر كامل</li><li>إعدادات الدفع والشحن</li><li>ربط الدومين</li><li>تدريب على الإدارة</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('إعداد Zid أو Salla','240 ر.س','1,200 ج.م','65')">🛍️ اطلب الآن</button>
       </div>
-      <ul class="pkg-features"><li>إعداد المتجر كامل</li><li>إعدادات الدفع والشحن</li><li>ربط الدومين</li><li>تدريب على الإدارة</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('إعداد Zid أو Salla','240 ر.س','1,200 ج.م','65')">🛍️ اطلب الآن</button>
+      <div class="pkg">
+        <div class="pkg-icon">🛒</div><div class="pkg-name">إعداد Shopify</div>
+        <div class="pkg-desc">إعداد متجر Shopify احترافي مع Theme مخصص</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+        </div>
+        <ul class="pkg-features"><li>إعداد Shopify كامل</li><li>Theme احترافي</li><li>إعدادات الدفع والشحن</li><li>Apps ضرورية</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('إعداد Shopify','400 ر.س','2,000 ج.م','110')">🛒 اطلب الآن</button>
+      </div>
+      <div class="pkg">
+        <div class="pkg-icon">📦</div><div class="pkg-name">رفع المنتجات</div>
+        <div class="pkg-desc">رفع وتحسين بيانات المنتجات مع صور وأوصاف احترافية</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">حتى 50 منتج</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">حتى 50 منتج</div></div>
+        </div>
+        <ul class="pkg-features"><li>رفع حتى 50 منتج</li><li>تحسين الأوصاف</li><li>ضبط الأسعار والمخزون</li><li>إعداد الفئات</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('رفع المنتجات','320 ر.س','1,600 ج.م','85')">📦 اطلب الآن</button>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge">جديد</div>
+        <div class="pkg-icon">🏪</div><div class="pkg-name">إدارة أمازون ونون</div>
+        <div class="pkg-desc">إدارة متكاملة — منتجات وإعلانات وSEO وشحن</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="new-price">500 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="new-price">5,000 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        </div>
+        <ul class="pkg-features"><li>إضافة 15 منتج شهرياً</li><li>إدارة الحملات الإعلانية</li><li>تحسين SEO المنتجات</li><li>خطة الشحن FBA</li><li>متابعة المخزون والأوردرات</li><li>تقرير شهري</li></ul>
+        <button class="pkg-btn primary" onclick="openModal('إدارة أمازون ونون','500 ر.س/شهر','5,000 ج.م/شهر','134')">🚀 اطلب الآن</button>
+      </div>
     </div>
-    <div class="pkg">
-      <div class="pkg-icon">🛒</div><div class="pkg-name">إعداد Shopify</div>
-      <div class="pkg-desc">إعداد متجر Shopify احترافي مع Theme مخصص</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+  </div>
+
+  <!-- الهبوط والـ SEO -->
+  <div class="svc-block" data-tab="ecom" data-cat="landing">
+    <div class="pkg-grid">
+      <div class="pkg featured">
+        <div class="pkg-badge">الأكثر طلباً</div>
+        <div class="pkg-icon">🌐</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
+        <div class="pkg-desc">صفحة هبوط احترافية بتصميم مخصص لبراندك وحملاتك</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">300 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,500 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+        </div>
+        <ul class="pkg-features"><li>تصميم مخصص لبراندك</li><li>متجاوبة مع الموبايل</li><li>ربط Pixel وتتبع كامل</li><li>فورم تواصل وزرار واتساب</li></ul>
+        <button class="pkg-btn primary" onclick="openModal('صفحة هبوط ديناميكية','300 ر.س','1,500 ج.م','80')">🌐 اطلب الآن</button>
       </div>
-      <ul class="pkg-features"><li>إعداد Shopify كامل</li><li>Theme احترافي</li><li>إعدادات الدفع والشحن</li><li>Apps ضرورية</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('إعداد Shopify','400 ر.س','2,000 ج.م','110')">🛒 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📦</div><div class="pkg-name">رفع المنتجات</div>
-      <div class="pkg-desc">رفع وتحسين بيانات المنتجات مع صور وأوصاف احترافية</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">حتى 50 منتج</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">حتى 50 منتج</div></div>
+      <div class="pkg">
+        <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO أساسية</div>
+        <div class="pkg-desc">تحسين موقعك لمحركات البحث — Meta Tags وSchema وسرعة</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
+        </div>
+        <ul class="pkg-features"><li>تحسين Meta Tags</li><li>Schema Markup</li><li>تحسين السرعة</li><li>Sitemap وRobots.txt</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','240 ر.س','1,200 ج.م','65')">🔍 اطلب الآن</button>
       </div>
-      <ul class="pkg-features"><li>رفع حتى 50 منتج</li><li>تحسين الأوصاف</li><li>ضبط الأسعار والمخزون</li><li>إعداد الفئات</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('رفع المنتجات','320 ر.س','1,600 ج.م','85')">📦 اطلب الآن</button>
-    </div>
-    <div class="pkg featured">
-      <div class="pkg-badge">جديد</div>
-      <div class="pkg-icon">🏪</div><div class="pkg-name">إدارة أمازون ونون</div>
-      <div class="pkg-desc">إدارة متكاملة — منتجات وإعلانات وSEO وشحن</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$134/mo</div>
-        <div class="price-sar show"><div class="new-price">500 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="new-price">5,000 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+      <div class="pkg">
+        <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري</div>
+        <div class="pkg-desc">تحسين مستمر مع محتوى وبناء روابط شهرياً</div>
+        <div class="price-box">
+          <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+          <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
+          <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
+        </div>
+        <ul class="pkg-features"><li>تحسين الكلمات المفتاحية</li><li>مقالات SEO شهرياً</li><li>بناء Backlinks</li><li>تقرير ترتيب شهري</li></ul>
+        <button class="pkg-btn outline" onclick="openModal('SEO شهري','320 ر.س/شهر','1,600 ج.م/شهر','85')">📈 اطلب الآن</button>
       </div>
-      <ul class="pkg-features"><li>إضافة 15 منتج شهرياً</li><li>إدارة الحملات الإعلانية</li><li>تحسين SEO المنتجات</li><li>خطة الشحن FBA</li><li>متابعة المخزون والأوردرات</li><li>تقرير شهري بالمبيعات</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('إدارة أمازون ونون','500 ر.س/شهر','5,000 ج.م/شهر','134')">🚀 اطلب الآن</button>
     </div>
   </div>
 </div>
 
-<!-- LANDING -->
-  </div></div><!-- end stores block -->
-
-  <div class="service-block" data-cat="landing">
-  <!-- ─── الهبوط والـ SEO ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌐 صفحات الهبوط <span>والـ SEO</span></h2>
-      <p>صفحات هبوط عالية التحويل + تحسين ظهورك في محركات البحث</p>
-    </div>
-
-<div class="panel-head">
-    <h2>صفحات الهبوط <span>والـ SEO</span></h2>
-    <p>صفحات هبوط احترافية وتحسين محركات البحث</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">🌐</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
-      <div class="pkg-desc">صفحة هبوط احترافية بتصميم مخصص لبراندك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$80</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">300 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,500 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تصميم مخصص لبراندك</li><li>متجاوبة مع الموبايل</li><li>ربط Pixel وتتبع كامل</li><li>فورم تواصل وزرار واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('صفحة هبوط ديناميكية','300 ر.س','1,500 ج.م','80')">🌐 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO أساسية</div>
-      <div class="pkg-desc">تحسين موقعك لمحركات البحث — Meta Tags وSchema وسرعة</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين Meta Tags</li><li>Schema Markup</li><li>تحسين السرعة</li><li>Sitemap وRobots.txt</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','240 ر.س','1,200 ج.م','65')">🔍 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري</div>
-      <div class="pkg-desc">تحسين مستمر مع محتوى وبناء روابط شهرياً</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين الكلمات المفتاحية</li><li>مقالات SEO شهرياً</li><li>بناء Backlinks</li><li>تقرير ترتيب شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('SEO شهري','320 ر.س/شهر','1,600 ج.م/شهر','85')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- AI -->
-<div class="tab-panel" id="tab-ai">
-  <div class="panel-head">
-    <h2>خدمات <span>الذكاء الاصطناعي</span></h2>
-    <p>خطتك التسويقية وسيرتك الذاتية في دقائق بالذكاء الاصطناعي</p>
-  </div>
-  <div class="pkg-grid" style="max-width:700px;margin:0 auto">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">⚡</div><div class="pkg-name">خطتك في دقائق</div>
-      <div class="pkg-desc">خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$6</div>
-        <div class="price-sar show"><div class="new-price">20 <small>ر.س</small></div><div class="price-unit">لكل خطة</div></div>
-        <div class="price-egp"><div class="new-price">100 <small>ج.م</small></div><div class="price-unit">لكل خطة</div></div>
-      </div>
-      <ul class="pkg-features"><li>خطة تسويقية مخصصة</li><li>أفضل المنصات والاستهداف</li><li>توزيع الميزانية والأهداف</li><li>خطة محتوى وخطوات تنفيذية</li><li>قابلة للتحميل PDF</li></ul>
-      <a href="/plan" class="pkg-btn primary">⚡ ابدأ الآن</a>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📄</div><div class="pkg-name">سيرتك الذاتية في دقائق</div>
-      <div class="pkg-desc">سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$3</div>
-        <div class="price-sar show"><div class="new-price">10 <small>ر.س</small></div><div class="price-unit">لكل سيرة</div></div>
-        <div class="price-egp"><div class="new-price">75 <small>ج.م</small></div><div class="price-unit">لكل سيرة</div></div>
-      </div>
-      <ul class="pkg-features"><li>سيرة ذاتية متوافقة مع ATS</li><li>عربي أو إنجليزي</li><li>تصميم احترافي مع صورة</li><li>قابلة للتحميل PDF فوراً</li></ul>
-      <a href="/cv" class="pkg-btn outline">📄 ابدأ الآن</a>
-    </div>
-  </div>
-</div>
-
-
-  <!-- ─── المؤثرون ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌟 إدارة حملات <span>المؤثرين</span></h2>
-      <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-    </div>
-
-<div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end influencer section -->
-</div><!-- end influencer inject -->
-
-<div class="tab-panel" id="tab-influencer-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end landing section -->
-  </div><!-- end landing block -->
-</div><!-- end landing inject -->
-
-<div class="tab-panel" id="tab-landing-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>صفحات الهبوط <span>والـ SEO</span></h2>
-    <p>صفحات هبوط احترافية وتحسين محركات البحث</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">🌐</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
-      <div class="pkg-desc">صفحة هبوط احترافية بتصميم مخصص لبراندك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$80</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">300 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,500 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تصميم مخصص لبراندك</li><li>متجاوبة مع الموبايل</li><li>ربط Pixel وتتبع كامل</li><li>فورم تواصل وزرار واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('صفحة هبوط ديناميكية','300 ر.س','1,500 ج.م','80')">🌐 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO أساسية</div>
-      <div class="pkg-desc">تحسين موقعك لمحركات البحث — Meta Tags وSchema وسرعة</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين Meta Tags</li><li>Schema Markup</li><li>تحسين السرعة</li><li>Sitemap وRobots.txt</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','240 ر.س','1,200 ج.م','65')">🔍 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري</div>
-      <div class="pkg-desc">تحسين مستمر مع محتوى وبناء روابط شهرياً</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين الكلمات المفتاحية</li><li>مقالات SEO شهرياً</li><li>بناء Backlinks</li><li>تقرير ترتيب شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('SEO شهري','320 ر.س/شهر','1,600 ج.م/شهر','85')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- AI -->
-<div class="tab-panel" id="tab-ai">
-  <div class="panel-head">
-    <h2>خدمات <span>الذكاء الاصطناعي</span></h2>
-    <p>خطتك التسويقية وسيرتك الذاتية في دقائق بالذكاء الاصطناعي</p>
-  </div>
-  <div class="pkg-grid" style="max-width:700px;margin:0 auto">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">⚡</div><div class="pkg-name">خطتك في دقائق</div>
-      <div class="pkg-desc">خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$6</div>
-        <div class="price-sar show"><div class="new-price">20 <small>ر.س</small></div><div class="price-unit">لكل خطة</div></div>
-        <div class="price-egp"><div class="new-price">100 <small>ج.م</small></div><div class="price-unit">لكل خطة</div></div>
-      </div>
-      <ul class="pkg-features"><li>خطة تسويقية مخصصة</li><li>أفضل المنصات والاستهداف</li><li>توزيع الميزانية والأهداف</li><li>خطة محتوى وخطوات تنفيذية</li><li>قابلة للتحميل PDF</li></ul>
-      <a href="/plan" class="pkg-btn primary">⚡ ابدأ الآن</a>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📄</div><div class="pkg-name">سيرتك الذاتية في دقائق</div>
-      <div class="pkg-desc">سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$3</div>
-        <div class="price-sar show"><div class="new-price">10 <small>ر.س</small></div><div class="price-unit">لكل سيرة</div></div>
-        <div class="price-egp"><div class="new-price">75 <small>ج.م</small></div><div class="price-unit">لكل سيرة</div></div>
-      </div>
-      <ul class="pkg-features"><li>سيرة ذاتية متوافقة مع ATS</li><li>عربي أو إنجليزي</li><li>تصميم احترافي مع صورة</li><li>قابلة للتحميل PDF فوراً</li></ul>
-      <a href="/cv" class="pkg-btn outline">📄 ابدأ الآن</a>
-    </div>
-  </div>
-</div>
-
-
-  <!-- ─── المؤثرون ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌟 إدارة حملات <span>المؤثرين</span></h2>
-      <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-    </div>
-
-<div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end influencer section -->
-</div><!-- end influencer inject -->
-
-<div class="tab-panel" id="tab-influencer-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end consult section -->
-  </div><!-- end consult block -->
-</div><!-- end consult inject -->
-
-<div class="tab-panel" id="tab-consult-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>الاستشارات <span>والتقارير</span></h2>
-    <p>استشارات تسويقية متخصصة وأدوات تتبع وتحليل بيانات</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg">
-      <div class="pkg-icon">💬</div><div class="pkg-name">استشارة ساعة</div>
-      <div class="pkg-desc">جلسة مركزة لحل مشكلة محددة أو تقييم حملاتك الحالية</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$35</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">300 ر.س</div><div class="new-price">120 <small>ر.س</small></div><div class="price-unit">جلسة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">1,500 ج.م</div><div class="new-price">600 <small>ج.م</small></div><div class="price-unit">جلسة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>جلسة ساعة كاملة</li><li>تقييم حملاتك</li><li>توصيات فورية</li><li>تسجيل الجلسة</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('استشارة ساعة','120 ر.س','600 ج.م','35')">📅 احجز الآن</button>
-    </div>
-    <div class="pkg featured">
-      <div class="pkg-badge">الأفضل قيمة</div>
-      <div class="pkg-icon">📅</div><div class="pkg-name">استشارة شهرية</div>
-      <div class="pkg-desc">4 جلسات شهرية لمتابعة مستمرة وتحسين استراتيجيتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">شهرياً — 4 جلسات</div></div>
-      </div>
-      <ul class="pkg-features"><li>4 جلسات شهرية</li><li>متابعة مستمرة</li><li>خطة تحسين شهرية</li><li>تسجيل الجلسات</li><li>دعم واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('استشارة شهرية','400 ر.س/شهر','2,000 ج.م/شهر','110')">📅 احجز الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🎯</div><div class="pkg-name">Meta Pixel + CAPI</div>
-      <div class="pkg-desc">ربط Meta Pixel وإعداد Conversions API لتتبع دقيق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$55</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">500 ر.س</div><div class="new-price">200 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ج.م</div><div class="new-price">1,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>ربط Meta Pixel</li><li>إعداد Conversions API</li><li>اختبار الأحداث</li><li>تقرير تأكيد</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('Meta Pixel + CAPI','200 ر.س','1,000 ج.م','55')">⚡ اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">⚡</div><div class="pkg-name">باقة تتبع شاملة</div>
-      <div class="pkg-desc">ربط كامل — Meta + Google + TikTok + Snapchat</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>Meta Pixel + CAPI</li><li>Google Tag Manager</li><li>TikTok Pixel</li><li>Snapchat Pixel</li><li>GA4 + تقرير شامل</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('باقة تتبع شاملة','400 ر.س','2,000 ج.م','110')">⚡ اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📊</div><div class="pkg-name">GA4 + Looker Studio</div>
-      <div class="pkg-desc">لوحة تحكم مخصصة لمتابعة أداء موقعك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>ربط GA4</li><li>إعداد Looker Studio</li><li>لوحة مخصصة</li><li>شرح الاستخدام</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('GA4 + Looker Studio','320 ر.س','1,600 ج.م','85')">📊 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">تقارير شهرية</div>
-      <div class="pkg-desc">تقارير أداء شهرية احترافية لعملائك بتصميم مميز</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$55/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">500 ر.س</div><div class="new-price">200 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">2,500 ج.م</div><div class="new-price">1,000 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تقرير شهري مفصل</li><li>تصميم احترافي</li><li>توصيات واضحة</li><li>ملف PDF</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تقارير شهرية','200 ر.س/شهر','1,000 ج.م/شهر','55')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- ECOM -->
-<div class="tab-panel" id="tab-ecom">
-  <div class="panel-head">
-    <h2>المتاجر <span>الإلكترونية</span></h2>
-    <p>إعداد وإدارة متاجرك على Zid وSalla وShopify وأمازون ونون</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg">
-      <div class="pkg-icon">🛍️</div><div class="pkg-name">إعداد Zid أو Salla</div>
-      <div class="pkg-desc">إعداد متجر كامل مع إعدادات الدفع والشحن</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>إعداد المتجر كامل</li><li>إعدادات الدفع والشحن</li><li>ربط الدومين</li><li>تدريب على الإدارة</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('إعداد Zid أو Salla','240 ر.س','1,200 ج.م','65')">🛍️ اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🛒</div><div class="pkg-name">إعداد Shopify</div>
-      <div class="pkg-desc">إعداد متجر Shopify احترافي مع Theme مخصص</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$110</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">1,000 ر.س</div><div class="new-price">400 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">5,000 ج.م</div><div class="new-price">2,000 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>إعداد Shopify كامل</li><li>Theme احترافي</li><li>إعدادات الدفع والشحن</li><li>Apps ضرورية</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('إعداد Shopify','400 ر.س','2,000 ج.م','110')">🛒 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📦</div><div class="pkg-name">رفع المنتجات</div>
-      <div class="pkg-desc">رفع وتحسين بيانات المنتجات مع صور وأوصاف احترافية</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">حتى 50 منتج</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">حتى 50 منتج</div></div>
-      </div>
-      <ul class="pkg-features"><li>رفع حتى 50 منتج</li><li>تحسين الأوصاف</li><li>ضبط الأسعار والمخزون</li><li>إعداد الفئات</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('رفع المنتجات','320 ر.س','1,600 ج.م','85')">📦 اطلب الآن</button>
-    </div>
-    <div class="pkg featured">
-      <div class="pkg-badge">جديد</div>
-      <div class="pkg-icon">🏪</div><div class="pkg-name">إدارة أمازون ونون</div>
-      <div class="pkg-desc">إدارة متكاملة — منتجات وإعلانات وSEO وشحن</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$134/mo</div>
-        <div class="price-sar show"><div class="new-price">500 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="new-price">5,000 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>إضافة 15 منتج شهرياً</li><li>إدارة الحملات الإعلانية</li><li>تحسين SEO المنتجات</li><li>خطة الشحن FBA</li><li>متابعة المخزون والأوردرات</li><li>تقرير شهري بالمبيعات</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('إدارة أمازون ونون','500 ر.س/شهر','5,000 ج.م/شهر','134')">🚀 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- LANDING -->
-  </div></div><!-- end stores block -->
-
-  <div class="service-block" data-cat="landing">
-  <!-- ─── الهبوط والـ SEO ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌐 صفحات الهبوط <span>والـ SEO</span></h2>
-      <p>صفحات هبوط عالية التحويل + تحسين ظهورك في محركات البحث</p>
-    </div>
-
-<div class="panel-head">
-    <h2>صفحات الهبوط <span>والـ SEO</span></h2>
-    <p>صفحات هبوط احترافية وتحسين محركات البحث</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">🌐</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
-      <div class="pkg-desc">صفحة هبوط احترافية بتصميم مخصص لبراندك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$80</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">300 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,500 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تصميم مخصص لبراندك</li><li>متجاوبة مع الموبايل</li><li>ربط Pixel وتتبع كامل</li><li>فورم تواصل وزرار واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('صفحة هبوط ديناميكية','300 ر.س','1,500 ج.م','80')">🌐 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO أساسية</div>
-      <div class="pkg-desc">تحسين موقعك لمحركات البحث — Meta Tags وSchema وسرعة</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين Meta Tags</li><li>Schema Markup</li><li>تحسين السرعة</li><li>Sitemap وRobots.txt</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','240 ر.س','1,200 ج.م','65')">🔍 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري</div>
-      <div class="pkg-desc">تحسين مستمر مع محتوى وبناء روابط شهرياً</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين الكلمات المفتاحية</li><li>مقالات SEO شهرياً</li><li>بناء Backlinks</li><li>تقرير ترتيب شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('SEO شهري','320 ر.س/شهر','1,600 ج.م/شهر','85')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- AI -->
-<div class="tab-panel" id="tab-ai">
-  <div class="panel-head">
-    <h2>خدمات <span>الذكاء الاصطناعي</span></h2>
-    <p>خطتك التسويقية وسيرتك الذاتية في دقائق بالذكاء الاصطناعي</p>
-  </div>
-  <div class="pkg-grid" style="max-width:700px;margin:0 auto">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">⚡</div><div class="pkg-name">خطتك في دقائق</div>
-      <div class="pkg-desc">خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$6</div>
-        <div class="price-sar show"><div class="new-price">20 <small>ر.س</small></div><div class="price-unit">لكل خطة</div></div>
-        <div class="price-egp"><div class="new-price">100 <small>ج.م</small></div><div class="price-unit">لكل خطة</div></div>
-      </div>
-      <ul class="pkg-features"><li>خطة تسويقية مخصصة</li><li>أفضل المنصات والاستهداف</li><li>توزيع الميزانية والأهداف</li><li>خطة محتوى وخطوات تنفيذية</li><li>قابلة للتحميل PDF</li></ul>
-      <a href="/plan" class="pkg-btn primary">⚡ ابدأ الآن</a>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📄</div><div class="pkg-name">سيرتك الذاتية في دقائق</div>
-      <div class="pkg-desc">سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$3</div>
-        <div class="price-sar show"><div class="new-price">10 <small>ر.س</small></div><div class="price-unit">لكل سيرة</div></div>
-        <div class="price-egp"><div class="new-price">75 <small>ج.م</small></div><div class="price-unit">لكل سيرة</div></div>
-      </div>
-      <ul class="pkg-features"><li>سيرة ذاتية متوافقة مع ATS</li><li>عربي أو إنجليزي</li><li>تصميم احترافي مع صورة</li><li>قابلة للتحميل PDF فوراً</li></ul>
-      <a href="/cv" class="pkg-btn outline">📄 ابدأ الآن</a>
-    </div>
-  </div>
-</div>
-
-
-  <!-- ─── المؤثرون ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌟 إدارة حملات <span>المؤثرين</span></h2>
-      <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-    </div>
-
-<div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end influencer section -->
-</div><!-- end influencer inject -->
-
-<div class="tab-panel" id="tab-influencer-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end landing section -->
-  </div><!-- end landing block -->
-</div><!-- end landing inject -->
-
-<div class="tab-panel" id="tab-landing-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>صفحات الهبوط <span>والـ SEO</span></h2>
-    <p>صفحات هبوط احترافية وتحسين محركات البحث</p>
-  </div>
-  <div class="pkg-grid">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">🌐</div><div class="pkg-name">صفحة هبوط ديناميكية</div>
-      <div class="pkg-desc">صفحة هبوط احترافية بتصميم مخصص لبراندك وحملاتك</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$80</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">300 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,500 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تصميم مخصص لبراندك</li><li>متجاوبة مع الموبايل</li><li>ربط Pixel وتتبع كامل</li><li>فورم تواصل وزرار واتساب</li></ul>
-      <button class="pkg-btn primary" onclick="openModal('صفحة هبوط ديناميكية','300 ر.س','1,500 ج.م','80')">🌐 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">🔍</div><div class="pkg-name">تهيئة SEO أساسية</div>
-      <div class="pkg-desc">تحسين موقعك لمحركات البحث — Meta Tags وSchema وسرعة</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$65</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">600 ر.س</div><div class="new-price">240 <small>ر.س</small></div><div class="price-unit">مرة واحدة</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">3,000 ج.م</div><div class="new-price">1,200 <small>ج.م</small></div><div class="price-unit">مرة واحدة</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين Meta Tags</li><li>Schema Markup</li><li>تحسين السرعة</li><li>Sitemap وRobots.txt</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('تهيئة SEO','240 ر.س','1,200 ج.م','65')">🔍 اطلب الآن</button>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📈</div><div class="pkg-name">SEO شهري</div>
-      <div class="pkg-desc">تحسين مستمر مع محتوى وبناء روابط شهرياً</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$85/mo</div>
-        <div class="price-sar show"><div class="off-badge">خصم 50%</div><div class="old-price">800 ر.س</div><div class="new-price">320 <small>ر.س</small></div><div class="price-unit">شهرياً</div></div>
-        <div class="price-egp"><div class="off-badge">خصم 50%</div><div class="old-price">4,000 ج.م</div><div class="new-price">1,600 <small>ج.م</small></div><div class="price-unit">شهرياً</div></div>
-      </div>
-      <ul class="pkg-features"><li>تحسين الكلمات المفتاحية</li><li>مقالات SEO شهرياً</li><li>بناء Backlinks</li><li>تقرير ترتيب شهري</li></ul>
-      <button class="pkg-btn outline" onclick="openModal('SEO شهري','320 ر.س/شهر','1,600 ج.م/شهر','85')">📈 اطلب الآن</button>
-    </div>
-  </div>
-</div>
-
-<!-- AI -->
-<div class="tab-panel" id="tab-ai">
-  <div class="panel-head">
-    <h2>خدمات <span>الذكاء الاصطناعي</span></h2>
-    <p>خطتك التسويقية وسيرتك الذاتية في دقائق بالذكاء الاصطناعي</p>
-  </div>
-  <div class="pkg-grid" style="max-width:700px;margin:0 auto">
-    <div class="pkg featured">
-      <div class="pkg-badge">الأكثر طلباً</div>
-      <div class="pkg-icon">⚡</div><div class="pkg-name">خطتك في دقائق</div>
-      <div class="pkg-desc">خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$6</div>
-        <div class="price-sar show"><div class="new-price">20 <small>ر.س</small></div><div class="price-unit">لكل خطة</div></div>
-        <div class="price-egp"><div class="new-price">100 <small>ج.م</small></div><div class="price-unit">لكل خطة</div></div>
-      </div>
-      <ul class="pkg-features"><li>خطة تسويقية مخصصة</li><li>أفضل المنصات والاستهداف</li><li>توزيع الميزانية والأهداف</li><li>خطة محتوى وخطوات تنفيذية</li><li>قابلة للتحميل PDF</li></ul>
-      <a href="/plan" class="pkg-btn primary">⚡ ابدأ الآن</a>
-    </div>
-    <div class="pkg">
-      <div class="pkg-icon">📄</div><div class="pkg-name">سيرتك الذاتية في دقائق</div>
-      <div class="pkg-desc">سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي</div>
-      <div class="price-box">
-        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
-        <div class="usd-price">$3</div>
-        <div class="price-sar show"><div class="new-price">10 <small>ر.س</small></div><div class="price-unit">لكل سيرة</div></div>
-        <div class="price-egp"><div class="new-price">75 <small>ج.م</small></div><div class="price-unit">لكل سيرة</div></div>
-      </div>
-      <ul class="pkg-features"><li>سيرة ذاتية متوافقة مع ATS</li><li>عربي أو إنجليزي</li><li>تصميم احترافي مع صورة</li><li>قابلة للتحميل PDF فوراً</li></ul>
-      <a href="/cv" class="pkg-btn outline">📄 ابدأ الآن</a>
-    </div>
-  </div>
-</div>
-
-
-  <!-- ─── المؤثرون ─── -->
-  <div style="margin-top:2.5rem;border-top:1px solid rgba(124,58,237,0.15);padding-top:2rem">
-    <div class="panel-head" style="margin-bottom:1.5rem">
-      <h2>🌟 إدارة حملات <span>المؤثرين</span></h2>
-      <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-    </div>
-
-<div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-  </div><!-- end influencer section -->
-</div><!-- end influencer inject -->
-
-<div class="tab-panel" id="tab-influencer-OLD-HIDDEN" style="display:none">
-  <div class="panel-head">
-    <h2>إدارة حملات <span>المؤثرين</span></h2>
-    <p>تنسيق وإدارة حملات المؤثرين في المملكة العربية السعودية — من الاختيار حتى التقرير</p>
-  </div>
-
-  <!-- ميزة حصرية -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متخصصون في السوق السعودي حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">شبكة واسعة من المؤثرين في السعودية — Nano وMicro وMacro وMega</div>
-  </div>
-
-  <!-- ما تشمله الخدمة -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;color:#F8FAFC">كل ما تحتاجه في مكان واحد</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔍</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">البحث والاختيار</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحليل المؤثرين وفحص Engagement Rate والجمهور الحقيقي واختيار الأنسب لبراندك</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🤝</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التفاوض والعقود</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى والشروط</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🎬</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">Brief احترافي للمؤثر، مراجعة المحتوى قبل النشر، ضمان الالتزام بمعايير البراند</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">📊</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">التتبع والقياس</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">مراقبة أداء الحملة، تتبع الـ Reach والتفاعل والمبيعات وتقرير كامل في النهاية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">💰</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إدارة المدفوعات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">تحويل مستحقات المؤثرين وتوثيق كل المعاملات المالية بشفافية كاملة</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.2rem">
-        <div style="font-size:1.3rem;margin-bottom:.5rem">🔄</div>
-        <div style="font-weight:800;margin-bottom:.3rem;font-size:.9rem">إعادة استخدام المحتوى</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7">توظيف محتوى المؤثرين كـ UGC Ads في حملاتك الإعلانية المدفوعة لتحقيق أقصى عائد</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- أنواع المؤثرين -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <h3 style="text-align:center;font-size:1rem;font-weight:800;margin-bottom:1rem;color:#F8FAFC">أنواع المؤثرين التي نتعامل معها</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem">
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌱</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Nano</div>
-        <div style="font-size:.78rem;color:#64748B">1K - 10K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">تفاعل عالي جداً</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">⭐</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Micro</div>
-        <div style="font-size:.78rem;color:#64748B">10K - 100K متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">ثقة عالية</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">🌟</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Macro</div>
-        <div style="font-size:.78km;color:#64748B">100K - 1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">وصول واسع</div>
-      </div>
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem;text-align:center">
-        <div style="font-size:1.5rem">👑</div>
-        <div style="font-weight:800;font-size:.85rem;margin:.3rem 0;color:#A78BFA">Mega</div>
-        <div style="font-size:.78rem;color:#64748B">+1M متابع</div>
-        <div style="font-size:.78rem;color:#94A3B8;margin-top:.3rem">مشاهير</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- السعر والتواصل -->
-  <div style="max-width:600px;margin:0 auto;text-align:center">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🌟</div>
-      <div style="font-size:1.1rem;font-weight:900;margin-bottom:.4rem">السعر حسب الطلب</div>
-      <div style="font-size:.85rem;color:#94A3B8;margin-bottom:1.2rem;line-height:1.7">أسعار المؤثرين تختلف حسب الحجم والمجال والنوع — تواصل معنا للحصول على عرض سعر مخصص لحملتك</div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع المؤثر *</label>
-          <select id="inf-type"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر النوع</option>
-            <option>🌱 Nano (1K - 10K متابع)</option>
-            <option>⭐ Micro (10K - 100K متابع)</option>
-            <option>🌟 Macro (100K - 1M متابع)</option>
-            <option>👑 Mega / مشهور (+1M متابع)</option>
-            <option>🔀 مفتوح — اختر أنت الأنسب</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم المؤثر أو رابط حسابه (اختياري)</label>
-          <input id="inf-name" type="text" placeholder="مثال: @username أو رابط الحساب"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-        <button onclick="sendInfluencerRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.8rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%">
-          💬 أرسل الطلب على واتساب
-        </button>
-      </div>
-      <script>
-      function sendInfluencerRequest() {
-        const brand = document.getElementById('inf-brand').value.trim();
-        const type = document.getElementById('inf-type').value;
-        const name = document.getElementById('inf-name').value.trim();
-        if (!brand || !type) {
-          alert('يرجى تعبئة اسم البراند ونوع المؤثر');
-          return;
-        }
-        const msg = "مرحباً، أنا مهتم بخدمة إدارة حملات المؤثرين 🌟\n\n" +
-          "اسم البراند: " + brand + "\n" +
-          "نوع المؤثر: " + type + "\n" +
-          (name ? "المؤثر المطلوب: " + name + "\n" : "") +
-          "\nأرجو التواصل لمعرفة التفاصيل والأسعار.";
-        window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-      }
-      </script>
-    </div>
-  </div>
-
-</div>
-
-
+<!-- ════ MEDIA TAB ════ -->
 <div class="tab-panel" id="tab-media">
   <div class="panel-head">
     <h2>🎬 الإنتاج <span>والمحتوى</span></h2>
-    <p>تصوير منتجات احترافي، فيديو إعلاني، ومونتاج — في المملكة العربية السعودية حصراً</p>
+    <p>تصوير منتجات + فيديو إعلاني + مونتاج + إدارة المؤثرين — في السعودية حصراً</p>
   </div>
-<div id="sf-media" class="sub-filters">
-  <button class="sf-btn active" onclick="filterService('media','all',this)">الكل</button>
-  <button class="sf-btn" onclick="filterService('media','photo',this)">📦 تصوير منتجات</button>
-  <button class="sf-btn" onclick="filterService('media','video',this)">🎥 فيديو إعلاني</button>
-  <button class="sf-btn" onclick="filterService('media','edit',this)">🎞️ مونتاج</button>
-  <button class="sf-btn" onclick="filterService('media','influencer',this)">🌟 المؤثرون</button>
+
+  <div class="sub-filters">
+    <button class="sf-btn active" onclick="filterSvc('media','all',this)">الكل</button>
+    <button class="sf-btn" onclick="filterSvc('media','photo',this)">📦 تصوير منتجات</button>
+    <button class="sf-btn" onclick="filterSvc('media','video',this)">🎥 فيديو إعلاني</button>
+    <button class="sf-btn" onclick="filterSvc('media','edit',this)">🎞️ مونتاج</button>
+    <button class="sf-btn" onclick="filterSvc('media','influencer',this)">🌟 المؤثرون</button>
+  </div>
+
+  <!-- تصوير منتجات -->
+  <div class="svc-block" data-tab="media" data-cat="photo">
+    <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem;max-width:700px;margin:0 auto">
+      <div style="font-size:2rem;margin-bottom:.7rem">📦</div>
+      <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">تصوير المنتجات</div>
+      <div style="font-size:.85rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">تصوير احترافي بخلفيات بيضاء أو ملونة أو إبداعية — مناسب للمتاجر الإلكترونية والإعلانات.</div>
+      <ul style="list-style:none;font-size:.83rem;color:#94A3B8;margin-bottom:1.2rem">
+        <li style="padding:.25rem 0">✅ خلفية بيضاء / ملونة / إبداعية</li>
+        <li style="padding:.25rem 0">✅ تصوير بزوايا متعددة</li>
+        <li style="padding:.25rem 0">✅ تعديل ألوان وتحسين جودة</li>
+        <li style="padding:.25rem 0">✅ تسليم بدقة عالية للإعلانات</li>
+      </ul>
+      <div style="font-size:.85rem;color:#FCD34D;font-weight:700;text-align:center">💰 السعر حسب الطلب — تواصل للحصول على عرض</div>
+    </div>
+  </div>
+
+  <!-- فيديو إعلاني -->
+  <div class="svc-block" data-tab="media" data-cat="video">
+    <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem;max-width:700px;margin:0 auto">
+      <div style="font-size:2rem;margin-bottom:.7rem">🎥</div>
+      <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">فيديو إعلاني كامل</div>
+      <div style="font-size:.85rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">إنتاج فيديو إعلاني من الفكرة حتى التسليم — مناسب للإعلانات على Meta وTikTok وSnapchat.</div>
+      <ul style="list-style:none;font-size:.83rem;color:#94A3B8;margin-bottom:1.2rem">
+        <li style="padding:.25rem 0">✅ سيناريو وإخراج احترافي</li>
+        <li style="padding:.25rem 0">✅ تصوير بمعدات احترافية</li>
+        <li style="padding:.25rem 0">✅ Reels وStories وAds</li>
+        <li style="padding:.25rem 0">✅ نسخ بأحجام 9:16 و1:1 و16:9</li>
+      </ul>
+      <div style="font-size:.85rem;color:#FCD34D;font-weight:700;text-align:center">💰 السعر حسب الطلب — تواصل للحصول على عرض</div>
+    </div>
+  </div>
+
+  <!-- مونتاج -->
+  <div class="svc-block" data-tab="media" data-cat="edit">
+    <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem;max-width:700px;margin:0 auto">
+      <div style="font-size:2rem;margin-bottom:.7rem">🎞️</div>
+      <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">مونتاج احترافي</div>
+      <div style="font-size:.85rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">مونتاج على مقاطعك — تحرير وموسيقى وتأثيرات ونصوص وتحسين جودة الصوت.</div>
+      <ul style="list-style:none;font-size:.83rem;color:#94A3B8;margin-bottom:1.2rem">
+        <li style="padding:.25rem 0">✅ تحرير احترافي للفيديو</li>
+        <li style="padding:.25rem 0">✅ موسيقى وتأثيرات بصرية</li>
+        <li style="padding:.25rem 0">✅ نصوص وترجمة</li>
+        <li style="padding:.25rem 0">✅ تصدير بجودة 4K</li>
+      </ul>
+      <div style="font-size:.85rem;color:#FCD34D;font-weight:700;text-align:center">💰 السعر حسب الطلب — تواصل للحصول على عرض</div>
+    </div>
+  </div>
+
+  <!-- المؤثرون -->
+  <div class="svc-block" data-tab="media" data-cat="influencer">
+    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.08),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.25);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 1.5rem">
+      <div style="font-size:1.3rem;margin-bottom:.3rem">🇸🇦</div>
+      <div style="font-size:.95rem;font-weight:800;color:#FCD34D;margin-bottom:.2rem">متخصصون في السوق السعودي حصراً</div>
+      <div style="font-size:.82rem;color:#94A3B8">Nano وMicro وMacro وMega</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;max-width:900px;margin:0 auto 1.5rem">
+      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem">
+        <div style="font-size:1.1rem;margin-bottom:.4rem">🔍</div><div style="font-weight:800;font-size:.88rem;margin-bottom:.2rem">البحث والاختيار</div>
+        <div style="font-size:.8rem;color:#94A3B8">تحليل المؤثرين وفحص Engagement Rate واختيار الأنسب</div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem">
+        <div style="font-size:1.1rem;margin-bottom:.4rem">🤝</div><div style="font-weight:800;font-size:.88rem;margin-bottom:.2rem">التفاوض والعقود</div>
+        <div style="font-size:.8rem;color:#94A3B8">التفاوض على الأسعار وصياغة العقود وتحديد حقوق المحتوى</div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem">
+        <div style="font-size:1.1rem;margin-bottom:.4rem">🎬</div><div style="font-weight:800;font-size:.88rem;margin-bottom:.2rem">إدارة المحتوى</div>
+        <div style="font-size:.8rem;color:#94A3B8">Brief للمؤثر ومراجعة المحتوى قبل النشر</div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(124,58,237,0.15);border-radius:10px;padding:1rem">
+        <div style="font-size:1.1rem;margin-bottom:.4rem">📊</div><div style="font-weight:800;font-size:.88rem;margin-bottom:.2rem">التتبع والقياس</div>
+        <div style="font-size:.8rem;color:#94A3B8">مراقبة أداء الحملة وتقرير كامل في النهاية</div>
+      </div>
+    </div>
+    <div style="max-width:500px;margin:0 auto;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:12px;padding:1.5rem;text-align:right">
+      <div style="font-weight:800;font-size:.95rem;margin-bottom:.8rem;text-align:center">📋 أرسل تفاصيل طلبك</div>
+      <div style="display:flex;flex-direction:column;gap:.7rem">
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.25rem">اسم البراند *</label>
+          <input id="inf-brand" type="text" placeholder="مثال: متجر الأناقة" style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.6rem .9rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.83rem;outline:none">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.25rem">نوع المؤثر *</label>
+          <select id="inf-type" style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.6rem .9rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.83rem;outline:none">
+            <option value="">اختر النوع</option>
+            <option>🌱 Nano (1K - 10K)</option>
+            <option>⭐ Micro (10K - 100K)</option>
+            <option>🌟 Macro (100K - 1M)</option>
+            <option>👑 Mega / مشهور (+1M)</option>
+            <option>🔀 مفتوح</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.25rem">اسم المؤثر أو رابطه (اختياري)</label>
+          <input id="inf-name" type="text" placeholder="@username أو رابط الحساب" style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.6rem .9rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.83rem;outline:none">
+        </div>
+        <button onclick="sendInfluencerRequest()" style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.75rem;border-radius:8px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:Cairo,sans-serif">💬 أرسل على واتساب</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- فورم التصوير العام -->
+  <div class="svc-block" data-tab="media" data-cat="all-media-form" style="display:none"></div>
+
 </div>
 
-
-  <!-- SA Only Badge -->
-  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(245,158,11,0.08));border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:1.2rem;text-align:center;max-width:800px;margin:0 auto 2rem;direction:rtl">
-    <div style="font-size:1.5rem;margin-bottom:.4rem">🇸🇦</div>
-    <div style="font-size:1rem;font-weight:800;color:#FCD34D;margin-bottom:.3rem">متاح في المملكة العربية السعودية حصراً</div>
-    <div style="font-size:.85rem;color:#94A3B8">فريق متخصص في الرياض وجدة والدمام</div>
+<!-- ════ AI TAB ════ -->
+<div class="tab-panel" id="tab-ai">
+  <div class="panel-head">
+    <h2>خدمات <span>الذكاء الاصطناعي</span></h2>
+    <p>خطتك التسويقية وسيرتك الذاتية في دقائق بالذكاء الاصطناعي</p>
   </div>
-
-  <!-- Services Grid -->
-  <div style="max-width:900px;margin:0 auto 2rem">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
-
-  <div class="service-block" data-cat="photo">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
-      <!-- تصوير منتجات -->
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem">
-        <div style="font-size:2rem;margin-bottom:.7rem">📦</div>
-        <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">تصوير المنتجات</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">
-          تصوير احترافي لمنتجاتك بخلفيات بيضاء أو ملونة أو إبداعية — مناسب للمتاجر الإلكترونية والإعلانات والسوشيال ميديا.
-        </div>
-        <ul style="list-style:none;font-size:.8rem;color:#94A3B8">
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ خلفية بيضاء / ملونة / إبداعية</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ تصوير بزوايا متعددة</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ تعديل ألوان وتحسين جودة</li>
-          <li style="padding:.2rem 0">✅ تسليم بدقة عالية للإعلانات</li>
-        </ul>
+  <div class="pkg-grid" style="max-width:700px;margin:0 auto">
+    <div class="pkg featured">
+      <div class="pkg-badge">الأكثر طلباً</div>
+      <div class="pkg-icon">⚡</div><div class="pkg-name">خطتك في دقائق</div>
+      <div class="pkg-desc">خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="new-price">20 <small>ر.س</small></div><div class="price-unit">لكل خطة</div></div>
+        <div class="price-egp"><div class="new-price">100 <small>ج.م</small></div><div class="price-unit">لكل خطة</div></div>
       </div>
-
-</div></div><!-- end photo -->
-  <div class="service-block" data-cat="video">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
-      <!-- فيديو إعلاني -->
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem">
-        <div style="font-size:2rem;margin-bottom:.7rem">🎥</div>
-        <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">فيديو إعلاني</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">
-          إنتاج فيديو إعلاني كامل من الفكرة حتى التسليم — مناسب للإعلانات المدفوعة على Meta وTikTok وSnapchat.
-        </div>
-        <ul style="list-style:none;font-size:.8rem;color:#94A3B8">
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ سيناريو وإخراج احترافي</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ تصوير بمعدات احترافية</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ Reels وStories وAds</li>
-          <li style="padding:.2rem 0">✅ نسخ بأحجام مختلفة 9:16 و1:1</li>
-        </ul>
+      <ul class="pkg-features"><li>خطة تسويقية مخصصة</li><li>أفضل المنصات والاستهداف</li><li>توزيع الميزانية والأهداف</li><li>خطة محتوى وخطوات تنفيذية</li><li>قابلة للتحميل PDF</li></ul>
+      <a href="/plan" class="pkg-btn primary">⚡ ابدأ الآن</a>
+    </div>
+    <div class="pkg">
+      <div class="pkg-icon">📄</div><div class="pkg-name">سيرتك الذاتية في دقائق</div>
+      <div class="pkg-desc">سيرة ذاتية احترافية متوافقة مع ATS بالذكاء الاصطناعي</div>
+      <div class="price-box">
+        <div class="curr-toggle"><button class="curr-btn active" onclick="setCurr(this,'s')">🇸🇦 ريال</button><button class="curr-btn" onclick="setCurr(this,'e')">🇪🇬 جنيه</button></div>
+        <div class="price-sar show"><div class="new-price">10 <small>ر.س</small></div><div class="price-unit">لكل سيرة</div></div>
+        <div class="price-egp"><div class="new-price">75 <small>ج.م</small></div><div class="price-unit">لكل سيرة</div></div>
       </div>
-
-</div></div><!-- end video -->
-  <div class="service-block" data-cat="edit">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
-      <!-- مونتاج -->
-      <div style="background:#111827;border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:1.5rem">
-        <div style="font-size:2rem;margin-bottom:.7rem">🎞️</div>
-        <div style="font-weight:800;font-size:1rem;margin-bottom:.5rem">مونتاج احترافي</div>
-        <div style="font-size:.82rem;color:#94A3B8;line-height:1.7;margin-bottom:1rem">
-          مونتاج على مقاطع الفيديو الخاصة بك — تحرير وإضافة موسيقى وتأثيرات ونصوص وتحسين جودة الصوت.
-        </div>
-        <ul style="list-style:none;font-size:.8rem;color:#94A3B8">
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ تحرير احترافي للفيديو</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ موسيقى وتأثيرات بصرية</li>
-          <li style="padding:.2rem 0;border-bottom:1px solid rgba(124,58,237,0.1)">✅ نصوص وترجمة</li>
-          <li style="padding:.2rem 0">✅ تصدير بجودة 4K</li>
-        </ul>
-      </div>
-
+      <ul class="pkg-features"><li>سيرة ذاتية متوافقة مع ATS</li><li>عربي أو إنجليزي</li><li>تصميم احترافي</li><li>قابلة للتحميل PDF فوراً</li></ul>
+      <a href="/cv" class="pkg-btn outline">📄 ابدأ الآن</a>
     </div>
   </div>
-
-  <!-- Form -->
-  <div style="max-width:600px;margin:0 auto">
-    <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(6,182,212,0.06));border:1px solid rgba(124,58,237,0.25);border-radius:14px;padding:2rem">
-      <div style="font-size:1rem;font-weight:900;margin-bottom:1.2rem;text-align:center">📋 أرسل تفاصيل طلبك</div>
-
-      <div style="display:flex;flex-direction:column;gap:.8rem;text-align:right">
-
-        <!-- نوع الخدمة -->
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">نوع الخدمة *</label>
-          <select id="media-type" style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر الخدمة</option>
-            <option>📦 تصوير منتجات</option>
-            <option>🎥 فيديو إعلاني كامل</option>
-            <option>🎞️ مونتاج فقط</option>
-            <option>📦🎥 تصوير منتجات + فيديو إعلاني</option>
-            <option>🎥🎞️ تصوير + مونتاج</option>
-          </select>
-        </div>
-
-        <!-- اسم البراند -->
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">اسم البراند *</label>
-          <input id="media-brand" type="text" placeholder="مثال: متجر الأناقة"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-
-        <!-- المدينة -->
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">المدينة *</label>
-          <select id="media-city" style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-            <option value="">اختر المدينة</option>
-            <option>الرياض</option>
-            <option>جدة</option>
-            <option>الدمام</option>
-            <option>مكة المكرمة</option>
-            <option>المدينة المنورة</option>
-            <option>أخرى</option>
-          </select>
-        </div>
-
-        <!-- عدد المنتجات / مدة الفيديو -->
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">عدد المنتجات أو مدة الفيديو المطلوبة</label>
-          <input id="media-qty" type="text" placeholder="مثال: 10 منتجات / فيديو 30 ثانية"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none">
-        </div>
-
-        <!-- تفاصيل إضافية -->
-        <div>
-          <label style="font-size:.8rem;font-weight:700;color:#A78BFA;display:block;margin-bottom:.3rem">تفاصيل إضافية (اختياري)</label>
-          <textarea id="media-details" placeholder="أي تفاصيل عن المنتج أو الفيديو أو أسلوب التصوير المطلوب..."
-            rows="3"
-            style="width:100%;background:#0F172A;border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:.7rem 1rem;color:#F8FAFC;font-family:Cairo,sans-serif;font-size:.85rem;outline:none;resize:vertical"></textarea>
-        </div>
-
-        <!-- Send Button -->
-        <button onclick="sendMediaRequest()"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.9rem 1.5rem;border-radius:8px;font-weight:700;font-size:.95rem;border:none;cursor:pointer;font-family:Cairo,sans-serif;width:100%;margin-top:.3rem">
-          💬 أرسل الطلب على واتساب
-        </button>
-
-      </div>
-    </div>
-  </div>
-
-  <script>
-  function sendMediaRequest() {
-    const type    = document.getElementById('media-type').value;
-    const brand   = document.getElementById('media-brand').value.trim();
-    const city    = document.getElementById('media-city').value;
-    const qty     = document.getElementById('media-qty').value.trim();
-    const details = document.getElementById('media-details').value.trim();
-
-    if (!type || !brand || !city) {
-      alert('يرجى تعبئة الخدمة واسم البراند والمدينة');
-      return;
-    }
-
-    const msg =
-      "مرحباً، أنا مهتم بخدمة التصوير والمونتاج 🎬\n\n" +
-      "نوع الخدمة: " + type + "\n" +
-      "اسم البراند: " + brand + "\n" +
-      "المدينة: " + city + "\n" +
-      (qty     ? "التفاصيل الكمية: " + qty + "\n" : "") +
-      (details ? "تفاصيل إضافية: " + details + "\n" : "") +
-      "\nأرجو التواصل لمعرفة السعر والتفاصيل.";
-
-    window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
-  }
-  </script>
-
 </div>
 
 <!-- MODAL -->
@@ -2212,6 +558,43 @@ function filterService(tabId, category, btn) {
       block.classList.add('hidden');
     }
   });
+}
+
+
+function filterSvc(tabId, cat, btn) {
+  document.querySelectorAll('#tab-' + tabId + ' .sf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#tab-' + tabId + ' .svc-block').forEach(block => {
+    if (cat === 'all' || block.dataset.cat === cat) {
+      block.classList.remove('hidden');
+    } else {
+      block.classList.add('hidden');
+    }
+  });
+}
+
+function sendMediaRequest() {
+  const type    = document.getElementById('media-type').value;
+  const brand   = document.getElementById('media-brand').value.trim();
+  const city    = document.getElementById('media-city').value;
+  const qty     = document.getElementById('media-qty').value.trim();
+  const details = document.getElementById('media-details').value.trim();
+  if (!type || !brand || !city) { alert('يرجى تعبئة الخدمة واسم البراند والمدينة'); return; }
+  const msg = "مرحباً، أنا مهتم بخدمة التصوير والمونتاج 🎬\n\n" +
+    "نوع الخدمة: " + type + "\n" + "اسم البراند: " + brand + "\n" + "المدينة: " + city + "\n" +
+    (qty ? "التفاصيل: " + qty + "\n" : "") + (details ? "ملاحظات: " + details + "\n" : "") +
+    "\nأرجو التواصل لمعرفة السعر.";
+  window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
+}
+function sendInfluencerRequest() {
+  const brand = document.getElementById('inf-brand').value.trim();
+  const type  = document.getElementById('inf-type').value;
+  const name  = document.getElementById('inf-name').value.trim();
+  if (!brand || !type) { alert('يرجى تعبئة اسم البراند ونوع المؤثر'); return; }
+  const msg = "مرحباً، أنا مهتم بخدمة إدارة المؤثرين 🌟\n\n" +
+    "اسم البراند: " + brand + "\n" + "نوع المؤثر: " + type + "\n" +
+    (name ? "المؤثر: " + name + "\n" : "") + "\nأرجو التواصل.";
+  window.open("https://wa.me/966580395350?text=" + encodeURIComponent(msg), "_blank");
 }
 
 function showTab(id, btn) {
@@ -2311,60 +694,3 @@ async function detectCurrency() {
         box.querySelectorAll('.price-sar').forEach(el => el.classList.remove('show'));
         box.querySelectorAll('.price-egp').forEach(el => el.classList.add('show'));
       });
-    } else if (!ARABIC_CC.includes(cc)) {
-      // Show USD prices for non-Arabic countries
-      document.querySelectorAll('.usd-price').forEach(el => el.style.display = 'block');
-    }
-    // Default SAR already set in HTML
-  } catch(e) {}
-}
-detectCurrency();
-
-// ═══ LANGUAGE ═══
-let isEnglish = false;
-const EN = {
-  banner: '🔥 Limited Offer — 50% OFF all services!',
-  heroTitle: 'Choose The Right', heroSpan: 'Service For You',
-  heroDesc: 'Complete digital services with transparent pricing — no surprises',
-  tabs: ['📢 Ad Management','💬 Consulting','🛒 E-Commerce','🌐 Landing & SEO','🤖 AI Services'],
-  modalPkgName: 'Selected Service',
-};
-const AR = {
-  banner: '🔥 عرض محدود — خصم 50% على جميع الخدمات!',
-  heroTitle: 'اختر الخدمة', heroSpan: 'المناسبة لك',
-  heroDesc: 'خدمات إعلانية ورقمية متكاملة بأسعار واضحة — بدون مفاجآت',
-  tabs: ['📢 إدارة الإعلانات','💬 الاستشارات','🛒 المتاجر','🌐 الهبوط والـ SEO','🤖 خدمات AI'],
-  modalPkgName: 'الخدمة المختارة',
-};
-
-function toggleLang() {
-  isEnglish = !isEnglish;
-  const t = isEnglish ? EN : AR;
-  document.documentElement.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
-  document.getElementById('langBtn').textContent = isEnglish ? '🇸🇦 عربي' : '🇺🇸 EN';
-  document.getElementById('bannerText').textContent = t.banner;
-  document.getElementById('heroTitle').childNodes[0].textContent = t.heroTitle;
-  document.getElementById('heroSpan').textContent = t.heroSpan;
-  document.getElementById('heroDesc').textContent = t.heroDesc;
-  document.querySelectorAll('.tab').forEach((tab, i) => { if(t.tabs[i]) tab.textContent = t.tabs[i]; });
-  document.querySelector('.modal-pkg-name').textContent = t.modalPkgName;
-  // Show/hide USD prices
-  document.querySelectorAll('.usd-price').forEach(el => {
-    el.style.display = isEnglish ? 'block' : 'none';
-  });
-}
-
-async function detectLanguage() {
-  try {
-    let cc = 'SA';
-    try {
-      const r = await fetch('https://ipapi.co/country/', {signal: AbortSignal.timeout(3000)});
-      cc = (await r.text()).trim();
-    } catch(e) {}
-    if (!ARABIC_CC.includes(cc)) toggleLang();
-  } catch(e) {}
-}
-detectLanguage();
-</script>
-</body>
-</html>
