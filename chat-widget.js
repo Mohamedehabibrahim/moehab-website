@@ -281,11 +281,187 @@
     if (t) t.remove();
   }
 
+
+  // ═══ SMART REPLIES — بدون API ═══
+  const QUICK_ANSWERS = [
+    {
+      keys: ['سعر','أسعار','تكلفة','كم','بكام','بقد ايه'],
+      reply: `💰 **أسعارنا:**
+
+📢 **الإعلانات:**
+• حملة مبيعات: 1,400 ريال/شهر
+• حملة رسايل: 1,000 ريال/شهر
+• حملة متابعين: 600 ريال/شهر
+• الباقة الشاملة: 2,000 ريال/شهر
+
+🌐 **المتاجر والمواقع:**
+• صفحة هبوط: 300 ريال
+• SEO أساسي: 240 ريال
+• إعداد Zid/Salla: 240 ريال
+
+🤖 **AI:**
+• خطة تسويقية: 20 ريال
+• سيرة ذاتية: 10 ريال
+
+📸 التصوير والمؤثرين: حسب الطلب`,
+      service: null
+    },
+    {
+      keys: ['خدمات','خدمة','ايه اللي','ايه الخدمات','بتقدموا ايه'],
+      reply: `✅ **خدماتنا الكاملة:**
+
+📢 إعلانات Meta / Google / TikTok / Snapchat
+🌐 صفحات هبوط وSEO
+🛒 إعداد متاجر Zid / Salla / Shopify
+🏪 إدارة Amazon / Noon
+📸 تصوير منتجات وفيديو إعلاني 🇸🇦
+🌟 إدارة حملات المؤثرين 🇸🇦
+🤖 خطة تسويقية AI في دقائق`,
+      service: null
+    },
+    {
+      keys: ['نتائج','نتيجة','حققتم','roas','روآس','أرقام'],
+      reply: `📊 **نتائج حقيقية:**
+
+• ROAS 12.56x على Meta Ads
+• ROAS 8.71x على TikTok
+• 519,000 ريال مبيعات في 6 أشهر
+• 6,200 متبرع بتكلفة 13 ريال
+• +340% حجوزات مطعم في 60 يوم
+• 12,000 تحميل تطبيق في 45 يوم`,
+      service: null
+    },
+    {
+      keys: ['تواصل','واتساب','اتصل','ايميل','رقم','كيف اتواصل'],
+      reply: `📞 **تواصل معنا:**
+
+💬 واتساب السعودية: +966580395350
+💬 واتساب مصر: +201090200880
+📧 إيميل: mr.mohammedihab@gmail.com
+
+نرد خلال ساعات 🚀`,
+      service: null
+    },
+    {
+      keys: ['تصوير','تصوير منتجات','photography'],
+      reply: `📸 **خدمة تصوير المنتجات:**
+
+متاحة في السعودية حصراً 🇸🇦
+
+✅ تصوير بخلفيات بيضاء / ملونة / إبداعية
+✅ زوايا متعددة
+✅ تعديل ألوان وتحسين جودة
+✅ تسليم بدقة عالية للإعلانات
+
+💰 السعر حسب الطلب`,
+      service: { name: 'تصوير منتجات', price: 'حسب الطلب' }
+    },
+    {
+      keys: ['مؤثر','مؤثرين','influencer','مشهور'],
+      reply: `🌟 **إدارة حملات المؤثرين:**
+
+متاحة في السعودية حصراً 🇸🇦
+
+✅ بحث واختيار المؤثر المناسب
+✅ التفاوض والعقود
+✅ إدارة المحتوى والBrief
+✅ تتبع الأداء وتقرير نهائي
+
+Nano / Micro / Macro / Mega
+
+💰 السعر حسب الطلب`,
+      service: { name: 'إدارة مؤثرين', price: 'حسب الطلب' }
+    },
+    {
+      keys: ['فيديو','video','إعلاني','اعلاني'],
+      reply: `🎥 **خدمة الفيديو الإعلاني:**
+
+متاحة في السعودية حصراً 🇸🇦
+
+✅ سيناريو وإخراج احترافي
+✅ تصوير بمعدات احترافية
+✅ Reels وStories وAds
+✅ تسليم بأحجام 9:16 و1:1 و16:9
+
+💰 السعر حسب الطلب`,
+      service: { name: 'فيديو إعلاني', price: 'حسب الطلب' }
+    },
+    {
+      keys: ['مونتاج','montage','تحرير فيديو'],
+      reply: `🎞️ **خدمة المونتاج:**
+
+متاحة في السعودية حصراً 🇸🇦
+
+✅ تحرير احترافي
+✅ موسيقى وتأثيرات بصرية
+✅ نصوص وترجمة
+✅ تصدير بجودة 4K
+
+💰 السعر حسب الطلب`,
+      service: { name: 'مونتاج', price: 'حسب الطلب' }
+    },
+    {
+      keys: ['شاملة','شامل','كل المنصات'],
+      reply: `🎯 **الباقة الشاملة:**
+
+✅ إدارة كل المنصات
+✅ مبيعات + رسايل + متابعين
+✅ متابعة يومية مكثفة
+✅ تقارير أسبوعية وشهرية
+✅ CRO + تتبع مجاناً
+
+💰 2,000 ريال/شهر (خصم 50%)`,
+      service: { name: 'الباقة الشاملة', price: '2,000 ريال/شهر' }
+    },
+    {
+      keys: ['خطة','plan','تسويقية','خطة تسويقية'],
+      reply: `⚡ **خطة تسويقية AI:**
+
+✅ خطة مخصصة لمشروعك في دقائق
+✅ أفضل المنصات والاستهداف
+✅ توزيع الميزانية والأهداف
+✅ قابلة للتحميل PDF
+
+💰 20 ريال فقط
+
+👉 moehabads.com/plan`,
+      service: { name: 'خطة تسويقية AI', price: '20 ريال' }
+    },
+  ];
+
+  function moSmartReply(text) {
+    const lower = text.toLowerCase();
+    for (const item of QUICK_ANSWERS) {
+      if (item.keys.some(k => lower.includes(k))) {
+        return item;
+      }
+    }
+    return null;
+  }
+
   async function moHandleMsg(text) {
     moAddMsg('user', text);
     document.getElementById('mo-qr').innerHTML = '';
-    moShowTyping();
 
+    // Check smart replies first — no API needed
+    const smart = moSmartReply(text);
+    if (smart) {
+      setTimeout(() => {
+        moAddMsg('bot', smart.reply);
+        const btns = [{ text: '🏠 القائمة الرئيسية', msg: null, isBack: true }];
+        if (smart.service) {
+          const waMsg = `مرحباً، أنا مهتم بـ ${smart.service.name} — ${smart.service.price}. تحدثت مع المساعد الذكي وأريد إتمام الطلب.`;
+          btns.unshift({ text: `✅ اطلب ${smart.service.name}`, msg: null, isWA: true, waMsg });
+        } else {
+          btns.push({ text: '💬 تواصل على واتساب', msg: null, isWA: true, waMsg: 'مرحباً، أريد الاستفسار عن خدماتكم.' });
+        }
+        moSetQR(btns);
+      }, 600);
+      return;
+    }
+
+    // Complex question — use Claude AI
+    moShowTyping();
     history.push({ role: 'user', content: text });
     if (history.length > 10) history.splice(0, 2);
 
