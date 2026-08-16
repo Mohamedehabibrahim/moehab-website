@@ -218,16 +218,7 @@
 
   function moAddWelcome() {
     moAddMsg('bot', 'أهلاً! 👋 أنا مساعد MO EHAB ADS — يسعدني أساعدك في أي استفسار عن الخدمات والأسعار.');
-    setTimeout(() => {
-      moSetQR([
-        { text: '💰 الأسعار', msg: 'كم تكلفة الخدمات؟' },
-        { text: '📢 الإعلانات', msg: 'ما هي خدمات الإعلانات؟' },
-        { text: '📸 التصوير', msg: 'ما هي خدمة التصوير؟' },
-        { text: '🌟 المؤثرين', msg: 'ما هي خدمة المؤثرين؟' },
-        { text: '📊 النتائج', msg: 'ما هي أبرز النتائج التي حققتموها؟' },
-        { text: '💬 تواصل', msg: 'كيف أتواصل معكم؟' },
-      ]);
-    }, 500);
+    setTimeout(() => { moShowMainMenu(); }, 500);
   }
 
   function moAddMsg(role, text) {
@@ -251,9 +242,30 @@
       const btn = document.createElement('button');
       btn.className = 'qr-btn';
       btn.textContent = item.text;
-      btn.onclick = () => { qr.innerHTML = ''; moHandleMsg(item.msg); };
+      btn.onclick = () => {
+        qr.innerHTML = '';
+        if (item.isBack) {
+          moShowMainMenu();
+        } else if (item.isWA) {
+          window.open('https://wa.me/966580395350?text=' + encodeURIComponent(item.waMsg), '_blank');
+          moShowMainMenu();
+        } else {
+          moHandleMsg(item.msg);
+        }
+      };
       qr.appendChild(btn);
     });
+  }
+
+  function moShowMainMenu() {
+    moSetQR([
+      { text: '💰 الأسعار', msg: 'كم تكلفة الخدمات؟' },
+      { text: '📢 الإعلانات', msg: 'ما هي خدمات الإعلانات؟' },
+      { text: '📸 التصوير', msg: 'ما هي خدمة التصوير؟' },
+      { text: '🌟 المؤثرين', msg: 'ما هي خدمة المؤثرين؟' },
+      { text: '📊 النتائج', msg: 'ما هي أبرز النتائج التي حققتموها؟' },
+      { text: '💬 تواصل', msg: 'كيف أتواصل معكم؟' },
+    ]);
   }
 
   function moShowTyping() {
@@ -295,9 +307,48 @@
       history.push({ role: 'assistant', content: reply });
 
       // Show WA button if mentions contact
-      if (text.includes('تواصل') || text.includes('واتساب') || text.includes('اتصال')) {
+      if (text.includes('تواصل') || text.includes('واتساب') || text.includes('اتصال') || reply.includes('واتساب')) {
         document.getElementById('mo-wa-suggest').style.display = 'block';
       }
+
+      // Detect service interest and show order button
+      const serviceMap = [
+        { keys: ['مبيعات','بيعات'], name: 'حملة مبيعات', price: '1,400 ريال/شهر' },
+        { keys: ['رسايل','رسائل','messages'], name: 'حملة رسايل', price: '1,000 ريال/شهر' },
+        { keys: ['متابعين','followers'], name: 'حملة متابعين', price: '600 ريال/شهر' },
+        { keys: ['شاملة','شامل','كل المنصات'], name: 'الباقة الشاملة', price: '2,000 ريال/شهر' },
+        { keys: ['استشارة','استشاره'], name: 'استشارة تسويقية', price: '120 ريال' },
+        { keys: ['صفحة هبوط','landing'], name: 'صفحة هبوط', price: '300 ريال' },
+        { keys: ['seo','سيو'], name: 'تهيئة SEO', price: '240 ريال' },
+        { keys: ['زيد','سلة','zid','salla'], name: 'إعداد متجر', price: '240 ريال' },
+        { keys: ['شوبيفاي','shopify'], name: 'إعداد Shopify', price: '400 ريال' },
+        { keys: ['تصوير','تصويرة'], name: 'تصوير منتجات', price: 'حسب الطلب' },
+        { keys: ['فيديو','video'], name: 'فيديو إعلاني', price: 'حسب الطلب' },
+        { keys: ['مونتاج','montage'], name: 'مونتاج', price: 'حسب الطلب' },
+        { keys: ['مؤثر','مشهور','influencer'], name: 'إدارة مؤثرين', price: 'حسب الطلب' },
+        { keys: ['خطة','plan'], name: 'خطة تسويقية AI', price: '20 ريال' },
+      ];
+
+      let detected = null;
+      const combined = text + ' ' + reply;
+      for (const svc of serviceMap) {
+        if (svc.keys.some(k => combined.includes(k))) {
+          detected = svc; break;
+        }
+      }
+
+      const btns = [
+        { text: '🏠 القائمة الرئيسية', msg: null, isBack: true },
+      ];
+
+      if (detected) {
+        const waMsg = `مرحباً، أنا مهتم بـ ${detected.name} — ${detected.price}. تحدثت مع المساعد الذكي وأريد إتمام الطلب.`;
+        btns.unshift({ text: `✅ اطلب ${detected.name}`, msg: null, isWA: true, waMsg });
+      } else {
+        btns.push({ text: '💬 تواصل على واتساب', msg: 'كيف أتواصل معكم؟' });
+      }
+
+      moSetQR(btns);
     } catch(e) {
       moHideTyping();
       moAddMsg('bot', 'عذراً، حدث خطأ مؤقت. تواصل معنا مباشرة على واتساب 👇');
