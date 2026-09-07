@@ -106,9 +106,8 @@ textarea{resize:vertical;min-height:65px;line-height:1.5}
 .amt-lbl{font-size:.78rem;color:var(--mut);margin-top:.2rem}
 #pp-container{min-height:45px;margin-bottom:.6rem}
 .or{text-align:center;color:var(--dim);font-size:.78rem;margin:.5rem 0}
-.ipay-box{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:.9rem;text-align:center}
-.ipay-desc{font-size:.8rem;color:var(--mut);margin-bottom:.6rem}
-.ipay-btn{display:block;background:linear-gradient(135deg,var(--p),var(--c));color:white;padding:.65rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.83rem;margin-bottom:.4rem}
+.wa-box{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:.9rem;text-align:center}
+.wa-desc{font-size:.8rem;color:var(--mut);margin-bottom:.6rem}
 .wa-btn{display:block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:.65rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.83rem}
 
 /* states */
@@ -165,7 +164,7 @@ textarea{resize:vertical;min-height:65px;line-height:1.5}
     <span class="badge">⚡ تجتاز فلاتر التوظيف</span>
     <span class="badge">📄 PDF فوري</span>
   </div>
-  <div class="price-tag" id="heroPrice">🇸🇦 <span>50</span> ريال فقط</div>
+  <div class="price-tag" id="heroPrice"><span>50</span> ريال فقط</div>
 </div>
 
 <div class="wrap">
@@ -212,7 +211,7 @@ textarea{resize:vertical;min-height:65px;line-height:1.5}
     </select></div>
 
     <div><label class="lbl">المدينة</label>
-    <input type="text" id="city" placeholder="الرياض / القاهرة / دبي"></div>
+    <input type="text" id="city" placeholder="الرياض / جدة / الدمام"></div>
 
     <div><label class="lbl">سنوات الخبرة *</label>
     <select id="experience">
@@ -249,7 +248,7 @@ textarea{resize:vertical;min-height:65px;line-height:1.5}
     </select></div>
 
     <div><label class="lbl">التخصص والجامعة</label>
-    <input type="text" id="eduDetails" placeholder="تسويق — جامعة القاهرة"></div>
+    <input type="text" id="eduDetails" placeholder="تسويق — جامعة الملك سعود"></div>
 
     <div><label class="lbl">سنة التخرج</label>
     <select id="gradYear">
@@ -315,15 +314,14 @@ textarea{resize:vertical;min-height:65px;line-height:1.5}
 <div class="card" id="payCard">
   <h2>💳 إتمام الدفع</h2>
   <div class="amt">
-    <div class="amt-num" id="payAmt">10 <span style="font-size:1rem">ريال</span></div>
+    <div class="amt-num" id="payAmt">50 <span style="font-size:1rem">ريال</span></div>
     <div class="amt-lbl">سيرة ذاتية احترافية كاملة بالذكاء الاصطناعي</div>
   </div>
   <div id="pp-container"></div>
   <div class="or">— أو —</div>
-  <div class="ipay-box">
-    <div class="ipay-desc">ادفع عبر InstaPay ثم أرسل الإيصال على واتساب</div>
-    <a href="https://ipn.eg/S/bas6h2/instapay/0iNsR1" target="_blank" class="ipay-btn">💳 افتح InstaPay</a>
-    <a href="https://wa.me/966580395350" id="waLink" target="_blank" class="wa-btn">📲 أرسل إيصال واتساب</a>
+  <div class="wa-box">
+    <div class="wa-desc">للدفع عبر تحويل بنكي، تواصل معنا على واتساب</div>
+    <a href="https://wa.me/966580395350" id="waLink" target="_blank" class="wa-btn">📲 الدفع عبر واتساب</a>
   </div>
 </div>
 
@@ -366,9 +364,8 @@ var SKILLS = {
 var selectedSkills = [];
 var expCount = 0;
 var photoData = '';
-var cvAmountUSD = '2.67';
-var isEG = false;
-var CODES = ['MOEHAB2026','CV2026','INSTAPAY'];
+var cvAmountUSD = '13.33';  // 50 ريال ≈ 13.33 دولار
+var CODES = ['MOEHAB2026','CV2026'];
 var accessCode = new URLSearchParams(window.location.search).get('access') || '';
 
 // ════════════ EXPERIENCE ════════════
@@ -489,7 +486,7 @@ function validate() {
   return true;
 }
 
-// ════════════ CURRENCY + PAYPAL ════════════
+// ════════════ PAYPAL ════════════
 function loadPayPal() {
   var s = document.createElement('script');
   s.src = 'https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
@@ -499,7 +496,7 @@ function loadPayPal() {
         if (!validate()) return Promise.reject();
         return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev', {
           method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({amount: cvAmountUSD, currency:'USD', packageName:'سيرتك في دقائق'})
+          body: JSON.stringify({amount: cvAmountUSD, currency:'USD', packageName:'سيرتك في دقائق (50 ريال)'})
         }).then(function(r){return r.json();}).then(function(d){return d.id;});
       },
       onApprove: function(data) {
@@ -514,31 +511,16 @@ function loadPayPal() {
   document.body.appendChild(s);
 }
 
-async function initCurrency() {
-  try {
-    var cc = 'SA';
-    try { cc = (await (await fetch('https://ipapi.co/country/',{signal:AbortSignal.timeout(3000)})).text()).trim(); } catch(e) {
-      try { cc = (await (await fetch('https://api.country.is/',{signal:AbortSignal.timeout(3000)})).json()).country; } catch(e2) {}
-    }
-    var C = {
-      EG:{fl:'🇪🇬',amt:'75',lbl:'ج.م',usd:'2.00'},
-      AE:{fl:'🇦🇪',amt:'10',lbl:'درهم',usd:'2.72'},
-      QA:{fl:'🇶🇦',amt:'10',lbl:'ر.ق',usd:'2.75'},
-      KW:{fl:'🇰🇼',amt:'1',lbl:'د.ك',usd:'3.25'},
-    };
-    var AR = ['SA','EG','AE','QA','KW','BH','OM','JO','LB','MA','TN','DZ','IQ','SY','YE','LY'];
-    var cur = C[cc] || (AR.indexOf(cc)!==-1 ? {fl:'🇸🇦',amt:'10',lbl:'ريال',usd:'2.67'} : {fl:'🇺🇸',amt:'3',lbl:'USD',usd:'3.00'});
-    cvAmountUSD = cur.usd;
-    isEG = (cc === 'EG');
-    document.getElementById('heroPrice').innerHTML = cur.fl + ' <span>' + cur.amt + '</span> ' + cur.lbl + ' فقط';
-    document.getElementById('payAmt').innerHTML = cur.amt + ' <span style="font-size:1rem">' + cur.lbl + '</span>';
-    var msg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية\nسأدفع ' + cur.amt + ' ' + cur.lbl + ' عبر InstaPay');
-    document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + msg;
-  } catch(e) {}
+// ════════════ INIT PRICE (سعر موحّد 50 ريال) ════════════
+function initPrice() {
+  document.getElementById('heroPrice').innerHTML = '<span>50</span> ريال فقط';
+  document.getElementById('payAmt').innerHTML = '50 <span style="font-size:1rem">ريال</span>';
+  var msg = encodeURIComponent('مرحباً، أريد إنشاء سيرة ذاتية\nسأدفع 50 ريال عبر تحويل بنكي');
+  document.getElementById('waLink').href = 'https://wa.me/966580395350?text=' + msg;
   if (CODES.indexOf(accessCode) === -1) loadPayPal();
 }
 
-initCurrency();
+initPrice();
 
 // ════════════ ACCESS CODE ════════════
 if (CODES.indexOf(accessCode) !== -1) {
@@ -571,7 +553,7 @@ async function doGenerate() {
     audience: document.getElementById('fullName').value,
     budget: document.getElementById('experience').value,
     goal: document.getElementById('jobTitle').value,
-    country: document.getElementById('country').value || (isEG ? 'مصر' : 'السعودية'),
+    country: document.getElementById('country').value || 'السعودية',
     extra: [
       'الاسم: ' + document.getElementById('fullName').value,
       'المسمى: ' + document.getElementById('jobTitle').value,
