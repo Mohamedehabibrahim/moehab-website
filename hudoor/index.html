@@ -1,1 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حُضور | تحليل بصمة الحضور والانصراف جاهز لنظام مدد</title>
+<meta name="description" content="ارفع ملف بصمة الحضور والانصراف واحصل على تقرير منسّق للتأخير والغياب وساعات العمل — جاهز للرفع على نظام مدد. خدمة سعودية بـ 250 ريال للتقرير.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  :root{
+    --ink:#122A3A;        /* كحلي نصي */
+    --deep:#0C2230;       /* كحلي غامق */
+    --teal:#0E7C7B;       /* فيروزي مؤسسي */
+    --teal-2:#12A594;     /* فيروزي نشط */
+    --amber:#E0A458;      /* عنبري دافئ للتمييز */
+    --paper:#F7F5F0;      /* ورقي فاتح */
+    --paper-2:#EFEBE2;
+    --line:#E1DBCF;
+    --white:#fff;
+    --muted:#41586A;
+    --green:#1E9E6A;
+    --red:#D6604A;
+    --yellow:#D9A227;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Tajawal',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  a{text-decoration:none;color:inherit}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:800;cursor:pointer;border:none;border-radius:12px;transition:transform .15s, box-shadow .2s, background .2s}
+  .btn-primary{background:var(--teal);color:#fff;padding:14px 30px;font-size:16px;box-shadow:0 8px 22px rgba(14,124,123,.28)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--teal-2);box-shadow:0 12px 30px rgba(14,124,123,.38)}
+  .btn-lg{padding:17px 38px;font-size:18px;border-radius:14px}
+  .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:14px 28px}
+  .btn-ghost:hover{border-color:var(--teal)}
+  .btn-wa{background:#25D366;color:#fff;padding:13px 26px}
+  .btn-wa:hover{background:#1eb457}
 
+  /* NAV */
+  nav{position:sticky;top:0;z-index:60;background:rgba(247,245,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:21px;color:var(--deep)}
+  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:500;font-size:15px;transition:color .2s}
+  .nav-links a:hover{color:var(--deep)}
+
+  /* HERO */
+  .hero{padding:64px 0 40px;display:grid;grid-template-columns:1.1fr .95fr;gap:52px;align-items:center}
+  .madad-badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);padding:8px 15px;border-radius:100px;font-size:13.5px;font-weight:700;color:var(--teal);margin-bottom:22px;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+  .madad-badge .tick{width:18px;height:18px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
+  h1{font-size:50px;line-height:1.16;font-weight:900;color:#1B3A4E;letter-spacing:-1px;margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--teal);position:relative}
+  .lead{font-size:19px;color:#2C4658;max-width:500px;margin-bottom:30px;font-weight:500}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+  .micro{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  .micro span{display:flex;align-items:center;gap:7px}
+  .micro .c{color:var(--green);font-weight:900}
+
+  /* HERO REPORT VISUAL */
+  .report{background:#fff;border-radius:20px;box-shadow:0 30px 60px -22px rgba(12,34,48,.32);border:1px solid var(--line);overflow:hidden}
+  .report-bar{background:var(--deep);padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
+  .report-bar .t{color:#fff;font-weight:800;font-size:15px}
+  .report-bar .madad{font-size:11px;color:#fff;background:var(--green);padding:4px 10px;border-radius:100px;font-weight:700}
+  .report-body{padding:20px}
+  .rstat{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:16px}
+  .rs{background:var(--paper);border-radius:11px;padding:11px 9px;text-align:center}
+  .rs .n{font-size:21px;font-weight:900;line-height:1;color:var(--deep)}
+  .rs .l{font-size:11px;color:var(--muted);margin-top:5px}
+  .rs.g .n{color:var(--green)} .rs.r .n{color:var(--red)} .rs.y .n{color:var(--yellow)}
+  .rrow{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:1px solid var(--paper-2);font-size:13px}
+  .rrow:last-child{border:none}
+  .rrow .nm{flex:1;font-weight:700;color:var(--ink)}
+  .rrow .hr{color:var(--muted);font-size:12px}
+  .tag{font-size:11px;font-weight:800;padding:3px 9px;border-radius:100px}
+  .tag.ok{background:rgba(30,158,106,.12);color:var(--green)}
+  .tag.lt{background:rgba(217,162,39,.14);color:var(--yellow)}
+  .tag.ab{background:rgba(214,96,74,.12);color:var(--red)}
+
+  /* SECTION */
+  section{padding:76px 0}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 48px}
+  .eyebrow{color:var(--teal);font-weight:800;font-size:15px;margin-bottom:12px}
+  .sec-head h2{font-size:36px;font-weight:900;color:var(--deep);letter-spacing:-.5px;margin-bottom:12px}
+  .sec-head p{font-size:18px;color:var(--muted)}
+
+  /* PROBLEM STRIP */
+  .problem{background:var(--deep);color:#fff}
+  .problem .sec-head h2{color:#fff}
+  .problem .sec-head p{color:#C4D6E2}
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pain{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:26px}
+  .pain .ic{font-size:26px;margin-bottom:12px}
+  .pain h3{font-size:18px;font-weight:800;margin-bottom:8px}
+  .pain p{font-size:14.5px;color:#C4D6E2}
+
+  /* FEATURES (what the report shows) */
+  .features{background:#fff}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feat{padding:26px;border-radius:16px;border:1px solid var(--line);background:var(--paper);transition:transform .2s, border-color .2s}
+  .feat:hover{transform:translateY(-4px);border-color:var(--teal)}
+  .feat .ic{width:48px;height:48px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px}
+  .feat h3{font-size:18px;font-weight:800;color:var(--deep);margin-bottom:8px}
+  .feat p{font-size:15px;color:var(--muted)}
+
+  /* MADAD CALLOUT */
+  .madad-sec{background:linear-gradient(135deg,#EAF5F3,#F7F5F0)}
+  .madad-box{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:38px;box-shadow:0 14px 40px -18px rgba(12,34,48,.2)}
+  .madad-box .big{width:96px;height:96px;border-radius:20px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:44px;flex-shrink:0}
+  .madad-box h2{font-size:28px;font-weight:900;color:var(--deep);margin-bottom:10px}
+  .madad-box p{font-size:16.5px;color:var(--muted)}
+  .madad-box b{color:var(--teal)}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+  .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 22px}
+  .step::before{counter-increment:s;content:counter(s);width:38px;height:38px;background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;margin-bottom:16px}
+  .step h3{font-size:16.5px;font-weight:800;color:var(--deep);margin-bottom:7px}
+  .step p{font-size:14.5px;color:var(--muted)}
+
+  /* PRICING */
+  .pricing{background:var(--deep)}
+  .pricing .sec-head h2{color:#fff}
+  .pricing .sec-head p{color:#C4D6E2}
+  .price-card{max-width:460px;margin:0 auto;background:#fff;border-radius:24px;padding:40px 36px;box-shadow:0 40px 80px -24px rgba(0,0,0,.5);text-align:center}
+  .price-card .tier{font-size:15px;font-weight:800;color:var(--teal);margin-bottom:14px}
+  .price-card .amt{font-size:64px;font-weight:900;color:var(--deep);line-height:1;letter-spacing:-2px}
+  .price-card .amt small{font-size:19px;font-weight:600;color:var(--muted)}
+  .price-card .per{color:var(--muted);font-size:15px;margin:8px 0 26px}
+  .plist{list-style:none;text-align:right;margin-bottom:28px}
+  .plist li{display:flex;align-items:flex-start;gap:11px;padding:9px 0;font-size:15.5px;font-weight:500;border-bottom:1px dashed var(--line)}
+  .plist li:last-child{border:none}
+  .plist .c{color:var(--green);font-weight:900;margin-top:1px}
+  .price-card .btn-primary{width:100%}
+  .paynote{margin-top:16px;font-size:13.5px;color:var(--muted)}
+
+  /* ========== TOOL ========== */
+  .tool{background:var(--paper-2)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:20px}
+  .card-title{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:var(--deep);margin-bottom:20px}
+  .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .fg{display:flex;flex-direction:column;gap:7px}
+  .fg label{font-size:14px;font-weight:700;color:var(--ink)}
+  .fg input,.fg textarea,.fg select{font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+  .fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--teal)}
+  .tabs{display:flex;gap:10px;margin-bottom:18px}
+  .tab-btn{padding:11px 20px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--muted);font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;transition:all .2s}
+  .tab-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+  .upload-zone{border:2.5px dashed var(--line);border-radius:14px;padding:44px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--paper)}
+  .upload-zone:hover{border-color:var(--teal);background:#fff}
+  .upload-zone .big-ic{font-size:44px;margin-bottom:12px}
+  .upload-zone .ut{font-size:17px;font-weight:800;color:var(--deep);margin-bottom:5px}
+  .upload-zone .us{font-size:14px;color:var(--muted)}
+  .col-map{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+  .hidden{display:none}
+  .manual-row{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:9px;margin-bottom:9px;align-items:center}
+  .manual-row input{font-family:inherit;font-size:14px;padding:9px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--paper)}
+  .del-btn{background:var(--red);color:#fff;border:none;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px}
+
+  /* RESULTS */
+  #results{margin-top:8px}
+  .stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+  .sc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 12px;text-align:center}
+  .sc .n{font-size:28px;font-weight:900;line-height:1;color:var(--deep)}
+  .sc .l{font-size:13px;color:var(--muted);margin-top:7px}
+  .sc.g .n{color:var(--green)} .sc.r .n{color:var(--red)} .sc.y .n{color:var(--yellow)} .sc.b .n{color:var(--teal)}
+  .table-wrap{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
+  .tw-head{padding:15px 20px;font-weight:800;color:var(--deep);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:var(--paper);text-align:right;padding:12px 14px;font-weight:800;color:var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:11px 14px;border-bottom:1px solid var(--paper-2);color:var(--ink)}
+  tr:last-child td{border:none}
+  .row-abs{background:rgba(214,96,74,.05)}
+  .row-late{background:rgba(217,162,39,.05)}
+  .st{font-size:12px;font-weight:800;padding:3px 10px;border-radius:100px}
+  .st.ok{background:rgba(30,158,106,.12);color:var(--green)}
+  .st.late{background:rgba(217,162,39,.14);color:var(--yellow)}
+  .st.abs{background:rgba(214,96,74,.12);color:var(--red)}
+  .st.forgot{background:rgba(92,112,128,.14);color:var(--muted)}
+  .export-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn-excel{background:var(--green);color:#fff;padding:13px 24px}
+  .btn-pdf{background:var(--red);color:#fff;padding:13px 24px}
+
+  /* LOCK */
+  .lock-banner{background:linear-gradient(135deg,var(--deep),#183849);color:#fff;border-radius:16px;padding:26px;margin-bottom:18px;text-align:center}
+  .lock-banner h3{font-size:21px;font-weight:900;margin-bottom:8px}
+  .lock-banner p{color:#CDDCE6;font-size:15px;margin-bottom:18px}
+  .lock-banner .price-tag{font-size:34px;font-weight:900;color:var(--amber);margin-bottom:16px}
+  .lock-banner .price-tag small{font-size:16px;color:#CDDCE6;font-weight:600}
+  .lock-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  #paypal-container{max-width:340px;margin:14px auto 0}
+  .locked-blur{filter:blur(6px);pointer-events:none;user-select:none}
+  .unlocked-badge{display:none;background:rgba(30,158,106,.12);color:var(--green);border:1px solid rgba(30,158,106,.3);border-radius:12px;padding:14px;text-align:center;font-weight:800;margin-bottom:18px}
+
+  footer{background:var(--deep);color:#A9BFCD;padding:38px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:14px}
+  .foot-in .brand{color:#fff;font-size:18px}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:36px;padding-top:36px}
+    h1{font-size:36px}
+    .nav-links{display:none}
+    .pain-grid,.feat-grid,.steps,.form-grid{grid-template-columns:1fr}
+    .stat-grid{grid-template-columns:repeat(2,1fr)}
+    .madad-box{grid-template-columns:1fr;text-align:center}
+    .madad-box .big{margin:0 auto}
+    .manual-row{grid-template-columns:1fr 1fr;gap:8px}
+    .sec-head h2{font-size:28px}
+    table{font-size:12.5px}
+    th,td{padding:9px 8px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand"><span class="mark">🕐</span>حُضور</div>
+    <div class="nav-links">
+      <a href="#what">الخدمة</a>
+      <a href="#madad">جاهز لمدد</a>
+      <a href="#how">كيف يعمل</a>
+      <a href="#pricing">السعر</a>
+    </div>
+    <a href="#tool" class="btn btn-primary">جرّب الآن</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero wrap">
+  <div>
+    <div class="madad-badge"><span class="tick">✓</span> التقرير جاهز للرفع على نظام مدد</div>
+    <h1>حوّل ملف البصمة إلى <em>تقرير حضور</em> منسّق في دقائق</h1>
+    <p class="lead">ارفع ملف بصمة الحضور والانصراف — واحصل على تقرير كامل بالتأخيرات والغياب وساعات العمل ومن نسي البصمة. جاهز مباشرة لرفعه على منصة مدد لمعالجة الرواتب.</p>
+    <div class="hero-cta">
+      <a href="#tool" class="btn btn-primary btn-lg">ابدأ تحليل ملفك</a>
+      <a href="#what" class="btn btn-ghost btn-lg">شاهد التفاصيل</a>
+    </div>
+    <div class="micro">
+      <span><i class="c">✓</i> بدون تثبيت برامج</span>
+      <span><i class="c">✓</i> يدعم أي تنسيق أعمدة</span>
+      <span><i class="c">✓</i> تصدير Excel و PDF</span>
+    </div>
+  </div>
+
+  <div class="report" aria-hidden="true">
+    <div class="report-bar">
+      <div class="t">تقرير الحضور — أكتوبر ٢٠٢٦</div>
+      <div class="madad">✓ متوافق مع مدد</div>
+    </div>
+    <div class="report-body">
+      <div class="rstat">
+        <div class="rs g"><div class="n">٢٤</div><div class="l">حاضر</div></div>
+        <div class="rs y"><div class="n">٦</div><div class="l">تأخير</div></div>
+        <div class="rs r"><div class="n">٢</div><div class="l">غياب</div></div>
+        <div class="rs"><div class="n">٣</div><div class="l">نسي البصمة</div></div>
+      </div>
+      <div class="rrow"><span class="nm">محمد</span><span class="hr">٨.٠ س</span><span class="tag ok">منتظم</span></div>
+      <div class="rrow"><span class="nm">سارة</span><span class="hr">٧.٥ س</span><span class="tag lt">تأخير ٢٥ د</span></div>
+      <div class="rrow"><span class="nm">عبدالله</span><span class="hr">— </span><span class="tag ab">غياب</span></div>
+      <div class="rrow"><span class="nm">نوف</span><span class="hr">٨.٢ س</span><span class="tag ok">منتظم</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section id="problem" class="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--amber)">المشكلة</span>
+      <h2>تنسيق شيت البصمة يدويًا يضيّع ساعات كل شهر</h2>
+      <p>ملف البصمة بيطلع بمئات الحركات وأعمدة غير مرتبة — وتحويله لتقرير رواتب مهمة متعبة ومليانة أخطاء</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain"><div class="ic">🗂️</div><h3>أعمدة غير منظمة</h3><p>ملف الجهاز بيجي بأعمدة إنجليزية أو مبعثرة، ولازم تفهمها وترتبها كل مرة.</p></div>
+      <div class="pain"><div class="ic">🧮</div><h3>حساب يدوي متعب</h3><p>حساب ساعات كل موظف والتأخير والغياب على الآلة الحاسبة = وقت وأخطاء.</p></div>
+      <div class="pain"><div class="ic">📤</div><h3>تجهيز ملف مدد</h3><p>لازم تعيد صياغة كل ده في صيغة تقبلها منصة مدد قبل معالجة الرواتب.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT / FEATURES -->
+<section id="what" class="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الحل</span>
+      <h2>كل ما يحتويه تقريرك</h2>
+      <p>ارفع الملف مرة واحدة — والأداة تحسب وتنسّق كل شيء تلقائيًا</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">⏱️</div><h3>ساعات العمل الفعلية</h3><p>حساب دقيق لساعات عمل كل موظف من أول حضور لآخر انصراف.</p></div>
+      <div class="feat"><div class="ic">⏰</div><h3>رصد التأخير</h3><p>عدد مرات التأخير ومقدار الدقائق لكل موظف، مع دقائق سماح تحددها أنت.</p></div>
+      <div class="feat"><div class="ic">🚫</div><h3>حصر الغياب</h3><p>كشف الأيام الغائبة تلقائيًا لكل موظف طوال الفترة.</p></div>
+      <div class="feat"><div class="ic">🔕</div><h3>نسيان البصمة</h3><p>تحديد من نسي بصمة الدخول أو الخروج بدقة.</p></div>
+      <div class="feat"><div class="ic">👤</div><h3>ملخص لكل موظف</h3><p>بطاقة تقييم فردية: منتظم / جيد / يحتاج متابعة.</p></div>
+      <div class="feat"><div class="ic">📊</div><h3>تصدير Excel و PDF</h3><p>ملف منسّق بورقتين — التفاصيل اليومية والملخص الشهري — جاهز للأرشفة والرفع.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MADAD CALLOUT -->
+<section id="madad" class="madad-sec">
+  <div class="wrap">
+    <div class="madad-box">
+      <div class="big">✓</div>
+      <div>
+        <h2>مُعدّ خصيصًا لنظام مدد</h2>
+        <p>التقرير النهائي مرتّب بالأعمدة والصيغة التي تسهّل رفعه على <b>منصة مدد</b> لمعالجة رواتب موظفيك — بدون إعادة تنسيق يدوي. تحصل على ساعات العمل والخصومات والغياب جاهزة للاعتماد.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head" style="--h2c:#2E5268;--pc:#5E7686">
+      <span class="eyebrow">آلية العمل</span>
+      <h2 style="color:#2E5268">من الملف إلى التقرير في ٤ خطوات</h2>
+      <p style="color:#5E7686">لا يستغرق الأمر أكثر من دقيقتين</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>اضبط الإعدادات</h3><p>وقت الدوام ودقائق السماح واسم الجهة والفترة.</p></div>
+      <div class="step"><h3>ارفع ملف البصمة</h3><p>Excel أو CSV — وطابق الأعمدة بسهولة.</p></div>
+      <div class="step"><h3>راجع النتائج</h3><p>إحصائيات فورية وجدول تفصيلي لكل موظف.</p></div>
+      <div class="step"><h3>حمّل التقرير</h3><p>ادفع ٢٥٠ ريال وصدّر Excel و PDF كاملين.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>سعر واضح.. بدون اشتراكات</h2>
+      <p>ادفع لكل تقرير فقط عند الحاجة</p>
+    </div>
+    <div class="price-card">
+      <div class="tier">تقرير حضور كامل</div>
+      <div class="amt">٢٥٠ <small>ريال</small></div>
+      <div class="per">لكل تقرير — دفعة واحدة</div>
+      <ul class="plist">
+        <li><i class="c">✓</i> تحليل عدد غير محدود من الموظفين في الملف</li>
+        <li><i class="c">✓</i> تقرير التأخير والغياب ونسيان البصمة</li>
+        <li><i class="c">✓</i> حساب ساعات العمل الفعلية لكل موظف</li>
+        <li><i class="c">✓</i> ملخص شهري وتقييم فردي</li>
+        <li><i class="c">✓</i> تصدير Excel و PDF جاهز لمدد</li>
+        <li><i class="c">✓</i> دعم عبر واتساب</li>
+      </ul>
+      <a href="#tool" class="btn btn-primary btn-lg">ابدأ الآن</a>
+      <p class="paynote">دفع آمن عبر PayPal أو تحويل بنكي عبر واتساب</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOOL ========== -->
+<section id="tool" class="tool">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">الأداة</span>
+      <h2>حلّل ملفك الآن</h2>
+      <p>اضبط الإعدادات وارفع الملف — النتائج تظهر فورًا</p>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="card">
+      <div class="card-title"><span>⚙️</span> إعدادات الدوام والتقرير</div>
+      <div class="form-grid">
+        <div class="fg"><label>وقت بداية الدوام</label><input type="time" id="workStart" value="08:00"></div>
+        <div class="fg"><label>وقت نهاية الدوام</label><input type="time" id="workEnd" value="17:00"></div>
+        <div class="fg"><label>دقائق السماح للتأخير</label><input type="number" id="graceMin" value="15" min="0" max="60"></div>
+        <div class="fg"><label>اسم الجهة / الشركة</label><input type="text" id="companyName" placeholder="مثال: شركة الأهداف"></div>
+        <div class="fg"><label>الفترة الزمنية</label><input type="text" id="period" placeholder="مثال: أكتوبر ٢٠٢٦"></div>
+        <div class="fg"><label>ملاحظات عامة (اختياري)</label><input type="text" id="generalNotes" placeholder="أي ملاحظات للتقرير"></div>
+      </div>
+    </div>
+
+    <!-- INPUT TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('upload',this)">📁 رفع ملف Excel</button>
+      <button class="tab-btn" onclick="switchTab('manual',this)">✏️ إدخال يدوي</button>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="tab-upload">
+      <div class="card">
+        <div class="card-title"><span>📁</span> رفع ملف البصمة</div>
+        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+          <div class="big-ic">📄</div>
+          <div class="ut">اسحب الملف هنا أو اضغط للاختيار</div>
+          <div class="us">يدعم Excel (.xlsx / .xls) و CSV</div>
+        </div>
+        <input type="file" id="fileInput" class="hidden" accept=".xlsx,.xls,.csv" onchange="handleFile(event)">
+
+        <div id="colMapWrap" class="hidden">
+          <div style="margin-top:20px;font-weight:800;color:var(--deep)">طابِق الأعمدة (لملفات غير معربة):</div>
+          <div class="col-map">
+            <div class="fg"><label>عمود اسم الموظف</label><select id="mapName"></select></div>
+            <div class="fg"><label>عمود التاريخ / الوقت</label><select id="mapDateTime"></select></div>
+            <div class="fg"><label>عمود نوع الحركة (حضور/انصراف)</label><select id="mapType"></select></div>
+            <div class="fg"><label>عمود رقم الموظف (اختياري)</label><select id="mapId"></select></div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px" onclick="analyzeUpload()">🔍 حلّل الملف</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANUAL -->
+    <div id="tab-manual" class="hidden">
+      <div class="card">
+        <div class="card-title"><span>✏️</span> إدخال البيانات يدويًا</div>
+        <div style="font-size:14px;color:var(--muted);margin-bottom:14px">أدخل لكل موظف: الاسم، التاريخ، أول حضور، آخر انصراف، وملاحظة اختيارية.</div>
+        <div id="manualRows"></div>
+        <button class="btn btn-ghost" style="margin-top:8px" onclick="addManualRow()">➕ إضافة صف</button>
+        <button class="btn btn-primary" style="margin-top:8px;margin-right:8px" onclick="analyzeManual()">🔍 حلّل البيانات</button>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="results" class="hidden">
+      <div class="sec-head" style="margin:30px auto 24px"><h2 style="font-size:26px">📊 نتائج التحليل</h2></div>
+
+      <div class="stat-grid">
+        <div class="sc b"><div class="n" id="stTotal">0</div><div class="l">إجمالي السجلات</div></div>
+        <div class="sc g"><div class="n" id="stPresent">0</div><div class="l">حضور منتظم</div></div>
+        <div class="sc y"><div class="n" id="stLate">0</div><div class="l">تأخير</div></div>
+        <div class="sc r"><div class="n" id="stAbsent">0</div><div class="l">غياب</div></div>
+        <div class="sc"><div class="n" id="stForgot">0</div><div class="l">نسي البصمة</div></div>
+      </div>
+
+      <!-- LOCK BANNER -->
+      <div class="lock-banner" id="lockBanner">
+        <h3>🔒 التقرير الكامل جاهز</h3>
+        <p>أنت تشاهد جزءًا من النتائج فقط. افتح التقرير الكامل + التصدير إلى Excel و PDF الجاهز لمدد.</p>
+        <div class="price-tag">٢٥٠ <small>ريال / تقرير (≈ $67 عبر PayPal)</small></div>
+        <div id="paypal-container"></div>
+        <div class="lock-actions">
+          <a href="https://wa.me/966580395350?text=أريد%20دفع%20250%20ريال%20عبر%20تحويل%20بنكي%20لتقرير%20الحضور" class="btn btn-wa">💬 دفع عبر تحويل بنكي (واتساب)</a>
+        </div>
+      </div>
+
+      <div class="unlocked-badge" id="unlockedBadge">✅ تم فتح التقرير الكامل — يمكنك الآن التصدير</div>
+
+      <!-- DETAIL TABLE -->
+      <div class="table-wrap">
+        <div class="tw-head"><span>📋 التفاصيل اليومية</span></div>
+        <div style="overflow-x:auto"><table id="detailTable"><thead></thead><tbody></tbody></table></div>
+      </div>
+
+      <!-- SUMMARY TABLE -->
+      <div class="table-wrap" id="summaryWrap">
+        <div class="tw-head"><span>👤 ملخص الموظفين</span></div>
+        <div style="overflow-x:auto"><table id="summaryTable"><thead></thead><tbody></tbody></table></div>
+      </div>
+
+      <!-- EXPORT -->
+      <div class="export-row" id="exportRow" style="display:none">
+        <button class="btn btn-excel" onclick="exportExcel()">📊 تصدير Excel (جاهز لمدد)</button>
+        <button class="btn btn-pdf" onclick="window.print()">📄 طباعة / PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="brand" style="display:flex;gap:10px;align-items:center"><span class="mark" style="width:30px;height:30px;font-size:15px">🕐</span>حُضور</div>
+    <div>© ٢٠٢٦ — خدمة من MO EHAB ADS · moehabads.com · جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script>
+// ===== STATE =====
+let rawRows=[], headers=[], processedData=[], summaryData=[];
+window.paidUnlocked=false;
+
+// ===== TABS =====
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-upload').classList.toggle('hidden',tab!=='upload');
+  document.getElementById('tab-manual').classList.toggle('hidden',tab!=='manual');
+  if(tab==='manual' && document.getElementById('manualRows').children.length===0) addManualRow();
+}
+
+// ===== FILE UPLOAD =====
+function handleFile(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const data=new Uint8Array(ev.target.result);
+    const wb=XLSX.read(data,{type:'array'});
+    const ws=wb.Sheets[wb.SheetNames[0]];
+    const json=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    if(json.length<2){alert('الملف فارغ أو غير صالح'); return;}
+    headers=json[0].map(h=>String(h).trim());
+    rawRows=json.slice(1).filter(r=>r.some(c=>String(c).trim()!==''));
+    buildColMap();
+    document.getElementById('uploadZone').innerHTML='<div class="big-ic">✅</div><div class="ut">تم رفع: '+file.name+'</div><div class="us">'+rawRows.length+' سجل — طابق الأعمدة بالأسفل</div>';
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function buildColMap(){
+  const sels=['mapName','mapDateTime','mapType','mapId'];
+  sels.forEach(id=>{
+    const s=document.getElementById(id);
+    s.innerHTML = (id==='mapId'?'<option value="-1">— بدون —</option>':'') +
+      headers.map((h,i)=>'<option value="'+i+'">'+(h||('عمود '+(i+1)))+'</option>').join('');
+  });
+  // smart guess
+  guess('mapName',['name','الاسم','اسم','الموظف','employee']);
+  guess('mapDateTime',['date','time','التاريخ','الوقت','datetime']);
+  guess('mapType',['type','الحركة','نوع','status','state','punch']);
+  guess('mapId',['id','رقم','no','البصمة','card']);
+  document.getElementById('colMapWrap').classList.remove('hidden');
+}
+function guess(sel,keys){
+  const s=document.getElementById(sel);
+  for(let i=0;i<headers.length;i++){
+    const h=String(headers[i]).toLowerCase();
+    if(keys.some(k=>h.includes(k))){ s.value=i; return; }
+  }
+}
+
+// ===== ANALYZE UPLOAD =====
+function analyzeUpload(){
+  const ni=+document.getElementById('mapName').value;
+  const di=+document.getElementById('mapDateTime').value;
+  const ti=+document.getElementById('mapType').value;
+  const ii=+document.getElementById('mapId').value;
+
+  // group punches by employee + date
+  const byEmpDay={};
+  rawRows.forEach(r=>{
+    const name=String(r[ni]||'').trim(); if(!name) return;
+    const dtRaw=String(r[di]||'').trim();
+    const parsed=parseDateTime(dtRaw);
+    if(!parsed) return;
+    const key=name+'|'+parsed.date;
+    if(!byEmpDay[key]) byEmpDay[key]={name,id:ii>=0?String(r[ii]||''):'',date:parsed.date,times:[]};
+    byEmpDay[key].times.push(parsed.time);
+  });
+
+  processedData=Object.values(byEmpDay).map(computeRow);
+  buildSummary();
+  renderAll();
+}
+
+function parseDateTime(s){
+  if(!s) return null;
+  // try to split date and time
+  let d='',t='';
+  const m=s.match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}[-/]\d{1,2}[-/]\d{2,4})/);
+  const tm=s.match(/(\d{1,2}:\d{2}(?::\d{2})?)/);
+  if(m) d=m[1];
+  if(tm) t=tm[1].slice(0,5);
+  if(!d && !t) return null;
+  if(!d) d='—';
+  return {date:d,time:t||'00:00'};
+}
+
+// ===== MANUAL =====
+function addManualRow(){
+  const div=document.createElement('div');
+  div.className='manual-row';
+  div.innerHTML=`
+    <input placeholder="اسم الموظف" data-f="name">
+    <input placeholder="التاريخ" data-f="date">
+    <input placeholder="أول حضور 08:05" data-f="in">
+    <input placeholder="آخر انصراف 17:10" data-f="out">
+    <input placeholder="ملاحظة" data-f="note">
+    <button class="del-btn" onclick="this.parentElement.remove()">×</button>`;
+  document.getElementById('manualRows').appendChild(div);
+}
+function analyzeManual(){
+  const rows=[...document.querySelectorAll('#manualRows .manual-row')];
+  processedData=rows.map(r=>{
+    const g=f=>r.querySelector('[data-f="'+f+'"]').value.trim();
+    const name=g('name'); if(!name) return null;
+    return computeRow({name,id:'',date:g('date'),times:[g('in'),g('out')].filter(Boolean),note:g('note')});
+  }).filter(Boolean);
+  if(!processedData.length){alert('أدخل موظفًا واحدًا على الأقل'); return;}
+  buildSummary();
+  renderAll();
+}
+
+// ===== COMPUTE ONE ROW =====
+function computeRow(rec){
+  const start=document.getElementById('workStart').value;
+  const grace=+document.getElementById('graceMin').value||0;
+  const times=(rec.times||[]).filter(Boolean).sort();
+  const firstIn=times[0]||'';
+  const lastOut=times.length>1?times[times.length-1]:'';
+  let status='present', workHours=0;
+
+  if(times.length===0){ status='absent'; }
+  else if(times.length===1){ status='forgot'; }
+  else {
+    workHours=diffH(firstIn,lastOut);
+    const lateBy=minsAfter(firstIn,start);
+    if(lateBy>grace) status='late';
+  }
+  const lateMin = (firstIn && status==='late') ? minsAfter(firstIn,start) : 0;
+  return {name:rec.name,id:rec.id||'',date:rec.date||'—',firstIn:firstIn||'—',lastOut:lastOut||'—',
+          workHours:workHours?workHours.toFixed(1):'0.0',status,lateMin,note:rec.note||''};
+}
+function diffH(a,b){const[ah,am]=a.split(':').map(Number),[bh,bm]=b.split(':').map(Number);let d=(bh*60+bm)-(ah*60+am);if(d<0)d+=1440;return d/60;}
+function minsAfter(t,ref){const[th,tm]=t.split(':').map(Number),[rh,rm]=ref.split(':').map(Number);return (th*60+tm)-(rh*60+rm);}
+
+// ===== SUMMARY =====
+function buildSummary(){
+  const byEmp={};
+  processedData.forEach(r=>{
+    if(!byEmp[r.name]) byEmp[r.name]={name:r.name,id:r.id,present:0,late:0,absent:0,forgot:0,totalH:0,totalLate:0,lateCount:0};
+    const e=byEmp[r.name];
+    if(r.status==='present')e.present++;
+    else if(r.status==='late'){e.late++;e.totalLate+=r.lateMin;e.lateCount++;}
+    else if(r.status==='absent')e.absent++;
+    else if(r.status==='forgot')e.forgot++;
+    e.totalH+=parseFloat(r.workHours)||0;
+  });
+  summaryData=Object.values(byEmp).map(e=>({...e,
+    avgLate:e.lateCount?Math.round(e.totalLate/e.lateCount):0,
+    rating:e.absent===0&&e.late===0?'ممتاز':e.absent===0&&e.late<=2?'جيد':e.absent<=1&&e.late<=3?'مقبول':'يحتاج متابعة'}));
+}
+
+// ===== RENDER =====
+function renderAll(){
+  document.getElementById('results').classList.remove('hidden');
+  const total=processedData.length;
+  const c=s=>processedData.filter(r=>r.status===s).length;
+  document.getElementById('stTotal').textContent=total;
+  document.getElementById('stPresent').textContent=c('present');
+  document.getElementById('stLate').textContent=c('late');
+  document.getElementById('stAbsent').textContent=c('absent');
+  document.getElementById('stForgot').textContent=c('forgot');
+  renderTable();
+  renderSummary();
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+  setTimeout(initPayPal,400);
+}
+
+const stMap={present:['منتظم','ok'],late:['تأخير','late'],absent:['غياب','abs'],forgot:['نسي البصمة','forgot']};
+function renderTable(){
+  const show = window.paidUnlocked ? processedData : processedData.slice(0, Math.max(1,Math.ceil(processedData.length*0.3)));
+  const thead=document.querySelector('#detailTable thead');
+  const tbody=document.querySelector('#detailTable tbody');
+  thead.innerHTML='<tr><th>الموظف</th><th>التاريخ</th><th>أول حضور</th><th>آخر انصراف</th><th>الساعات</th><th>الحالة</th><th>ملاحظة</th></tr>';
+  tbody.innerHTML=show.map(r=>{
+    const[lbl,cls]=stMap[r.status];
+    const rowc=r.status==='absent'?'row-abs':(r.status==='late'?'row-late':'');
+    return `<tr class="${rowc}"><td>${r.name}</td><td>${r.date}</td><td>${r.firstIn}</td><td>${r.lastOut}</td><td>${r.workHours}</td><td><span class="st ${cls}">${lbl}${r.status==='late'&&r.lateMin>0?' '+r.lateMin+'د':''}</span></td><td>${r.note||'—'}</td></tr>`;
+  }).join('');
+  if(!window.paidUnlocked && processedData.length>show.length){
+    tbody.innerHTML+=`<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:16px">🔒 ${processedData.length-show.length} سجل إضافي — افتح التقرير الكامل بالأعلى</td></tr>`;
+  }
+}
+function renderSummary(){
+  const wrap=document.getElementById('summaryWrap');
+  const exp=document.getElementById('exportRow');
+  wrap.style.display = window.paidUnlocked ? 'block':'none';
+  exp.style.display = window.paidUnlocked ? 'flex':'none';
+  if(!window.paidUnlocked) return;
+  const thead=document.querySelector('#summaryTable thead');
+  const tbody=document.querySelector('#summaryTable tbody');
+  thead.innerHTML='<tr><th>الموظف</th><th>أيام الحضور</th><th>تأخير</th><th>غياب</th><th>نسي البصمة</th><th>إجمالي الساعات</th><th>متوسط التأخير</th><th>التقييم</th></tr>';
+  tbody.innerHTML=summaryData.map(e=>`<tr><td>${e.name}</td><td>${e.present}</td><td>${e.late}</td><td>${e.absent}</td><td>${e.forgot}</td><td>${e.totalH.toFixed(1)}</td><td>${e.avgLate} د</td><td>${e.rating}</td></tr>`).join('');
+}
+
+// ===== PAYPAL =====
+let ppRendered=false;
+function initPayPal(){
+  if(ppRendered||!window.paypal){return;}
+  ppRendered=true;
+  paypal.Buttons({
+    createOrder:function(){
+      return fetch('https://paypal-create-order.mr-mohammedihab.workers.dev',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({amount:'66.67',currency:'USD',packageName:'حُضور — تقرير تحليل الحضور والانصراف (250 ريال)'})
+      }).then(r=>r.json()).then(d=>d.id);
+    },
+    onApprove:function(data){
+      return fetch('https://paypal-capture-order.mr-mohammedihab.workers.dev',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({orderID:data.orderID})
+      }).then(function(){unlockTool();});
+    },
+    onError:function(err){console.error(err);alert('حدث خطأ في الدفع — تواصل معنا عبر واتساب');}
+  }).render('#paypal-container');
+}
+function unlockTool(){
+  window.paidUnlocked=true;
+  document.getElementById('lockBanner').style.display='none';
+  document.getElementById('unlockedBadge').style.display='block';
+  renderTable();
+  renderSummary();
+}
+
+// ===== EXPORT =====
+function exportExcel(){
+  if(!window.paidUnlocked)return;
+  const wb=XLSX.utils.book_new();
+  const detail=processedData.map(r=>({'الموظف':r.name,'الرقم':r.id,'التاريخ':r.date,'أول حضور':r.firstIn,'آخر انصراف':r.lastOut,'الساعات':r.workHours,'الحالة':stMap[r.status][0],'دقائق التأخير':r.lateMin||0,'ملاحظة':r.note}));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(detail),'التفاصيل اليومية');
+  const summary=summaryData.map(e=>({'الموظف':e.name,'أيام الحضور':e.present,'التأخير':e.late,'الغياب':e.absent,'نسي البصمة':e.forgot,'إجمالي الساعات':e.totalH.toFixed(1),'متوسط التأخير (د)':e.avgLate,'التقييم':e.rating}));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(summary),'الملخص الشهري');
+  const company=document.getElementById('companyName').value||'تقرير';
+  XLSX.writeFile(wb,'تقرير_الحضور_'+company+'.xlsx');
+}
+
+// PayPal SDK (sandbox/live client id placeholder — replace before deploy)
+(function(){
+  const s=document.createElement('script');
+  s.src='https://www.paypal.com/sdk/js?client-id=ATh-lPIt42UjT1aeFR2GotzJXkv1h93y7_LjG2CT2Tb6N-iF66zKSRAkIyXbd4qDbGdAbKS-GF5WBboM&currency=USD';
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
