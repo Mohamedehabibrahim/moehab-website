@@ -309,30 +309,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 let planText = '';
 let paypalLoaded = false;
 
-// Access code check
-const urlParams = new URLSearchParams(window.location.search);
-const accessCode = urlParams.get('access');
-const VALID_CODES = ['MOEHAB2026', 'PLAN2026', 'INSTAPAY'];
-const hasAccess = VALID_CODES.includes(accessCode);
-
-if (hasAccess) {
-  // Hide payment, show form directly
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('paymentCard').style.display = 'none';
-    document.getElementById('formCard').style.display = 'block';
-    // Add confirm button
-    const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'pay-btn pay-paypal';
-    confirmBtn.style.marginTop = '1rem';
-    confirmBtn.innerHTML = '⚡ توليد خطتي التسويقية الآن';
-    confirmBtn.onclick = function() {
-      if (!validateForm()) return;
-      generatePlan();
-    };
-    document.getElementById('formCard').appendChild(confirmBtn);
-  });
-}
-
 // Currency detection
 let isEgypt = false;
 let planAmount = '5.33'; // USD for SAR

@@ -1,3 +1,25 @@
+// Server-side price list (USD) — the client only tells us which package
+// was picked; the amount charged always comes from here, never from the
+// request body, so a tampered `amount` in the client request can't change
+// what PayPal actually charges.
+const PACKAGE_PRICES_USD = {
+  'سيرتك في دقائق (50 ريال)': ['13.33'],
+  'خطتك في دقائق': ['1.00', '5.33', '5.45', '5.49', '6.50'],
+  'حملة مبيعات': ['373'],
+  'حملة رسايل': ['267'],
+  'حملة متابعين': ['160'],
+  'الباقة الشاملة': ['550'],
+  'استشارة ساعة': ['35'],
+  'استشارة شهرية': ['110'],
+  'إعداد Zid أو Salla': ['65'],
+  'إعداد Shopify': ['110'],
+  'رفع المنتجات': ['85'],
+  'إدارة أمازون ونون': ['134'],
+  'صفحة هبوط ديناميكية': ['80'],
+  'تهيئة SEO': ['65'],
+  'SEO شهري': ['85']
+};
+
 exports.handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -11,6 +33,12 @@ exports.handler = async (event) => {
 
   try {
     const { amount, currency, packageName } = JSON.parse(event.body);
+
+    const allowedAmounts = PACKAGE_PRICES_USD[packageName];
+    if (!allowedAmounts || (currency && currency !== 'USD') || !allowedAmounts.includes(String(amount))) {
+      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid package or amount' }) };
+    }
+
     const clientId = process.env.PAYPAL_CLIENT_ID;
     const secret = process.env.PAYPAL_SECRET;
 
