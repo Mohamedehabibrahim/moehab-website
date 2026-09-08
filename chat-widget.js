@@ -161,7 +161,7 @@
           </svg>
         </div>
         <div class="chat-header-info">
-          <div class="chat-header-name">أبو فيصل | مساعد MO EHAB</div>
+          <div class="chat-header-name">أبو أحمد | مساعد MO EHAB</div>
           <div class="chat-header-status">متاح الآن</div>
         </div>
         <button class="chat-close" onclick="moChatToggle()">✕</button>
@@ -189,7 +189,7 @@
   let showedWA = false;
   const history = [];
 
-  const SYSTEM = `أنت "أبو فيصل" — مساعد سعودي لـ MO EHAB ADS، وكالة إعلانات رقمية متخصصة.
+  const SYSTEM = `أنت "أبو أحمد" — مساعد سعودي لـ MO EHAB ADS، وكالة إعلانات رقمية متخصصة.
 
 شخصيتك:
 - سعودي، تتكلم عامية سعودية طبيعية زي ما يتكلم أي واحد في الواقع — مو نص مسرحي ومو حاشي كل تعبيرات اللهجة في نفس الرسالة
@@ -249,7 +249,7 @@
   };
 
   function moAddWelcome() {
-    moAddMsg('bot', 'هلا فيك 👋 أنا أبو فيصل من MO EHAB ADS، اسأل عن أي خدمة أو سعر وأنا بخدمتك.');
+    moAddMsg('bot', 'هلا فيك 👋 أنا أبو أحمد من MO EHAB ADS، اسأل عن أي خدمة أو سعر وأنا بخدمتك.');
     setTimeout(() => { moShowMainMenu(); }, 500);
   }
 
