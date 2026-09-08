@@ -169,7 +169,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 <div class="steps">
   <div class="step"><div class="step-num">١</div><span>أدخل بيانات مشروعك</span></div>
   <div class="step-arrow">←</div>
-  <div class="step"><div class="step-num">٢</div><span>ادفع 20 ريال</span></div>
+  <div class="step"><div class="step-num">٢</div><span id="stepPrice">ادفع 20 ريال</span></div>
   <div class="step-arrow">←</div>
   <div class="step"><div class="step-num">٣</div><span>الخطة تظهر فوراً</span></div>
 </div>
@@ -329,10 +329,12 @@ async function detectCurrency() {
     isEgypt = (cc === 'EG');
     document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
     document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
+    document.getElementById('stepPrice').textContent = 'ادفع ' + cur.amount + ' ' + cur.label;
   } catch(e) {
     planAmount = '5.33';
     document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
     document.getElementById('payAmount').innerHTML = '20 <span style="font-size:1.2rem">ريال</span>';
+    document.getElementById('stepPrice').textContent = 'ادفع 20 ريال';
   }
   // Load PayPal AFTER currency is set
   loadPayPal();
