@@ -37,10 +37,19 @@
     }
     .chat-avatar {
       width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(135deg, #7C3AED, #06B6D4);
+      background: linear-gradient(135deg, #FDE9D0, #F6D3A8);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
+      flex-shrink: 0; overflow: hidden;
     }
+    .chat-avatar svg { width: 100%; height: 100%; }
+    .chat-avatar .mo-eye { transform-origin: center; animation: moBlink 4.5s infinite; }
+    .chat-avatar .mo-mouth-closed { opacity: 1; }
+    .chat-avatar .mo-mouth-open { opacity: 0; }
+    .chat-avatar.mo-talking .mo-mouth-closed { animation: moMouthClosed .32s steps(1) infinite; }
+    .chat-avatar.mo-talking .mo-mouth-open { animation: moMouthOpen .32s steps(1) infinite; }
+    @keyframes moBlink { 0%,90%,100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+    @keyframes moMouthOpen { 0%,50% { opacity: 0; } 51%,100% { opacity: 1; } }
+    @keyframes moMouthClosed { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
     .chat-header-info { flex: 1; }
     .chat-header-name { font-size: 0.88rem; font-weight: 800; color: #F8FAFC; }
     .chat-header-status { font-size: 0.72rem; color: #10B981; display: flex; align-items: center; gap: 0.3rem; }
@@ -133,9 +142,26 @@
 
     <div id="mo-chat-box">
       <div class="chat-header">
-        <div class="chat-avatar">🇸🇦</div>
+        <div class="chat-avatar" id="mo-avatar">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="58" r="27" fill="#E3A97A"/>
+            <path d="M13,48 Q50,8 87,48 L87,36 Q50,-4 13,36 Z" fill="#FFFFFF"/>
+            <path d="M13,48 L19,88 Q50,102 81,88 L87,48 Q50,64 13,48 Z" fill="#FFFFFF"/>
+            <path d="M13,36 L5,82 L21,88 L19,42 Z" fill="#F1F1F1"/>
+            <path d="M87,36 L95,82 L79,88 L81,42 Z" fill="#F1F1F1"/>
+            <ellipse cx="50" cy="28" rx="35" ry="7" fill="none" stroke="#111827" stroke-width="4"/>
+            <ellipse cx="50" cy="22" rx="31" ry="6" fill="none" stroke="#111827" stroke-width="4"/>
+            <path d="M35,53 q6,-4 12,0" stroke="#3B2A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M53,53 q6,-4 12,0" stroke="#3B2A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse class="mo-eye" cx="41" cy="60" rx="3.2" ry="4" fill="#1F2937"/>
+            <ellipse class="mo-eye" cx="59" cy="60" rx="3.2" ry="4" fill="#1F2937"/>
+            <path d="M37,71 q13,7 26,0 q-2,5 -13,5 q-11,0 -13,-5 Z" fill="#3B2A1E"/>
+            <path class="mo-mouth-closed" d="M42,80 q8,4 16,0" stroke="#7A4A32" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse class="mo-mouth-open" cx="50" cy="80" rx="7" ry="5" fill="#5C3826"/>
+          </svg>
+        </div>
         <div class="chat-header-info">
-          <div class="chat-header-name">أبو فيصل | مساعد MO EHAB</div>
+          <div class="chat-header-name">أبو أحمد | مساعد MO EHAB</div>
           <div class="chat-header-status">متاح الآن</div>
         </div>
         <button class="chat-close" onclick="moChatToggle()">✕</button>
@@ -163,14 +189,13 @@
   let showedWA = false;
   const history = [];
 
-  const SYSTEM = `أنت "أبو فيصل" — مساعد ذكاء اصطناعي سعودي لـ MO EHAB ADS، وكالة إعلانات رقمية متخصصة. إنت شخصية سعودية أصيلة، عزيز نفسك وبتتكلم بشماخ وثقة زي الرجال، بس مع كده محترم وكريم مع كل عميل يكلمك.
+  const SYSTEM = `أنت "أبو أحمد" — مساعد سعودي لـ MO EHAB ADS، وكالة إعلانات رقمية متخصصة.
 
 شخصيتك:
-- تتكلم باللهجة السعودية (خليط نجدي/حجازي بسيط ومفهوم للكل)، مو فصحى جامدة
-- واثق من نفسك ومن الخدمة اللي تقدمها، ما تتردد وما تعتذر بلا داعي
-- كريم بكلامك: "هلا وغلا"، "يا طويل العمر"، "على عيني وراسي"، "أبشر"، "تسلم"، "الله يعطيك العافية"، "من عيوني"
-- فخور إنك سعودي وفخور بالخدمة، بس بدون مبالغة أو تكرار ممل
-- لو حد استفزك أو استهبل، ترد بهدوء ووقار — الشموخ مو غرور
+- سعودي، تتكلم عامية سعودية طبيعية زي ما يتكلم أي واحد في الواقع — مو نص مسرحي ومو حاشي كل تعبيرات اللهجة في نفس الرسالة
+- واثق من نفسك وهادئ، ما تعتذر بلا داعي وما تتردد في الرد
+- ودود وبسيط، وخفة دمك تطلع من طريقة ردك مش من عدد الكليشيهات اللي تقولها
+- خليك مختصر ومباشر زي أي شخص شغله يرد على عملاء، مش زي ممثل بيؤدي دور "سعودي"
 
 معلوماتك الكاملة:
 
@@ -208,7 +233,7 @@
 - إيميل: mr.mohammedihab@gmail.com
 
 قواعد الرد:
-- رد باللهجة السعودية دائماً، بشماخ وثقة بس بذوق
+- رد بعامية سعودية طبيعية، مش مصطنعة
 - ردود قصيرة ومباشرة (2-4 أسطر)
 - استخدم إيموجي بشكل معقول
 - لو العميل مهتم بخدمة — اذكر السعر مباشرة
@@ -224,7 +249,7 @@
   };
 
   function moAddWelcome() {
-    moAddMsg('bot', 'هلا وغلا فيك يا طويل العمر 🇸🇦 أنا أبو فيصل، مساعد MO EHAB ADS — بشماخ وثقة جاهز أخدمك في أي سؤال عن خدماتنا وأسعارنا، أبشر بس قل وش تبي.');
+    moAddMsg('bot', 'هلا فيك 👋 أنا أبو أحمد من MO EHAB ADS، اسأل عن أي خدمة أو سعر وأنا بخدمتك.');
     setTimeout(() => { moShowMainMenu(); }, 500);
   }
 
@@ -281,11 +306,21 @@
     div.innerHTML = '<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
     document.getElementById('mo-chat-msgs').appendChild(div);
     document.getElementById('mo-chat-msgs').scrollTop = 999999;
+    moTalkStart();
   }
 
   function moHideTyping() {
     const t = document.getElementById('mo-typing');
     if (t) t.remove();
+    moTalkStop();
+  }
+
+  function moTalkStart() {
+    document.getElementById('mo-avatar').classList.add('mo-talking');
+  }
+
+  function moTalkStop() {
+    document.getElementById('mo-avatar').classList.remove('mo-talking');
   }
 
 
@@ -453,7 +488,9 @@ Nano / Micro / Macro / Mega
     // Check smart replies first — no API needed
     const smart = moSmartReply(text);
     if (smart) {
+      moTalkStart();
       setTimeout(() => {
+        moTalkStop();
         moAddMsg('bot', smart.reply);
         const btns = [{ text: '🏠 القائمة الرئيسية', msg: null, isBack: true }];
         if (smart.service) {
