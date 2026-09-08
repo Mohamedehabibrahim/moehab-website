@@ -2,16 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 20 ريال</title>
-<meta name="description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 20 ريال فقط.">
+<title>خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 200 ريال</title>
+<meta name="description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 200 ريال فقط.">
 <meta name="keywords" content="خطة تسويقية, خطة إعلانية, تسويق رقمي بالذكاء الاصطناعي, خطة تسويق AI, خطة مشروع, استراتيجية تسويقية">
 <meta name="author" content="محمد إيهاب | MO EHAB">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://moehabads.com/plan.html">
 
 <!-- Open Graph -->
-<meta property="og:title" content="خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 20 ريال">
-<meta property="og:description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 20 ريال فقط.">
+<meta property="og:title" content="خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 200 ريال">
+<meta property="og:description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 200 ريال فقط.">
 <meta property="og:url" content="https://moehabads.com/plan.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://moehabads.com/og-image.jpg">
@@ -19,8 +19,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 20 ريال">
-<meta name="twitter:description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 20 ريال فقط.">
+<meta name="twitter:title" content="خطتك التسويقية في دقائق ⚡ | خطة AI مخصصة بـ 200 ريال">
+<meta name="twitter:description" content="احصل على خطة تسويقية رقمية كاملة لمشروعك بالذكاء الاصطناعي في أقل من 10 دقائق. منصات + استهداف + ميزانية + توقعات. بـ 200 ريال فقط.">
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EF8X2FRN"></script>
 <script>
@@ -144,7 +144,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
   },
   "offers": {
     "@type": "Offer",
-    "price": "20",
+    "price": "200",
     "priceCurrency": "SAR"
   }
 }
@@ -169,7 +169,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 <div class="steps">
   <div class="step"><div class="step-num">١</div><span>أدخل بيانات مشروعك</span></div>
   <div class="step-arrow">←</div>
-  <div class="step"><div class="step-num">٢</div><span>ادفع 20 ريال</span></div>
+  <div class="step"><div class="step-num">٢</div><span id="stepPrice">ادفع 200 ريال</span></div>
   <div class="step-arrow">←</div>
   <div class="step"><div class="step-num">٣</div><span>الخطة تظهر فوراً</span></div>
 </div>
@@ -309,33 +309,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
 let planText = '';
 let paypalLoaded = false;
 
-// Access code check
-const urlParams = new URLSearchParams(window.location.search);
-const accessCode = urlParams.get('access');
-const VALID_CODES = ['MOEHAB2026', 'PLAN2026', 'INSTAPAY'];
-const hasAccess = VALID_CODES.includes(accessCode);
-
-if (hasAccess) {
-  // Hide payment, show form directly
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('paymentCard').style.display = 'none';
-    document.getElementById('formCard').style.display = 'block';
-    // Add confirm button
-    const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'pay-btn pay-paypal';
-    confirmBtn.style.marginTop = '1rem';
-    confirmBtn.innerHTML = '⚡ توليد خطتي التسويقية الآن';
-    confirmBtn.onclick = function() {
-      if (!validateForm()) return;
-      generatePlan();
-    };
-    document.getElementById('formCard').appendChild(confirmBtn);
-  });
-}
-
 // Currency detection
 let isEgypt = false;
-let planAmount = '5.33'; // USD for SAR
+let planAmount = '53.33'; // USD for 200 SAR
 
 async function detectCurrency() {
   try {
@@ -343,20 +319,22 @@ async function detectCurrency() {
     const data = await res.json();
     const cc = data.country_code;
     const currencies = {
-      'EG': { flag:'🇪🇬', amount:'100', label:'ج.م',  usd:'1.00' },
-      'AE': { flag:'🇦🇪', amount:'20',  label:'درهم', usd:'5.45' },
-      'QA': { flag:'🇶🇦', amount:'20',  label:'ر.ق',  usd:'5.49' },
-      'KW': { flag:'🇰🇼', amount:'2',   label:'د.ك',  usd:'6.50' },
+      'EG': { flag:'🇪🇬', amount:'1000', label:'ج.م',  usd:'10.00' },
+      'AE': { flag:'🇦🇪', amount:'200',  label:'درهم', usd:'54.50' },
+      'QA': { flag:'🇶🇦', amount:'200',  label:'ر.ق',  usd:'54.90' },
+      'KW': { flag:'🇰🇼', amount:'20',   label:'د.ك',  usd:'65.00' },
     };
-    const cur = currencies[cc] || { flag:'🇸🇦', amount:'20', label:'ريال', usd:'5.33' };
+    const cur = currencies[cc] || { flag:'🇸🇦', amount:'200', label:'ريال', usd:'53.33' };
     planAmount = cur.usd;
     isEgypt = (cc === 'EG');
     document.getElementById('heroPrice').innerHTML = cur.flag + ' <span>' + cur.amount + '</span> ' + cur.label + ' فقط';
     document.getElementById('payAmount').innerHTML = cur.amount + ' <span style="font-size:1.2rem">' + cur.label + '</span>';
+    document.getElementById('stepPrice').textContent = 'ادفع ' + cur.amount + ' ' + cur.label;
   } catch(e) {
-    planAmount = '5.33';
-    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>20</span> ريال فقط';
-    document.getElementById('payAmount').innerHTML = '20 <span style="font-size:1.2rem">ريال</span>';
+    planAmount = '53.33';
+    document.getElementById('heroPrice').innerHTML = '🇸🇦 <span>200</span> ريال فقط';
+    document.getElementById('payAmount').innerHTML = '200 <span style="font-size:1.2rem">ريال</span>';
+    document.getElementById('stepPrice').textContent = 'ادفع 200 ريال';
   }
   // Load PayPal AFTER currency is set
   loadPayPal();
@@ -414,7 +392,7 @@ function handleInstapay() {
     'مرحباً، أريد الحصول على خطة تسويقية ⚡\n\n' +
     'اسم المشروع: ' + projectName + '\n' +
     'الهدف: ' + goal + '\n\n' +
-    'سأقوم بالدفع ' + (isEgypt ? '100 ج.م' : '20 ريال') + ' عبر InstaPay:\n' +
+    'سأقوم بالدفع ' + (isEgypt ? '1000 ج.م' : '200 ريال') + ' عبر InstaPay:\n' +
     'https://ipn.eg/S/bas6h2/instapay/0iNsR1\n\n' +
     'وسأرسل إيصال الدفع هنا للتأكيد.'
   );
