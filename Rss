@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>مدونة MO EHAB ADS</title>
+    <link>https://moehabads.com/blog</link>
+    <description>مقالات عملية في التسويق الرقمي والذكاء الاصطناعي وإدارة الإعلانات</description>
+    <language>ar</language>
+    <atom:link href="https://moehabads.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>كيف يغيّر الذكاء الاصطناعي استراتيجية الإعلانات الرقمية في 2026</title>
+      <link>https://moehabads.com/blog/blog-67</link>
+      <description>تأثير الذكاء الاصطناعي على الإعلانات الرقمية في 2026 — من الاستهداف للكريتيف للتحليل وكيف تتكيف مع هذا التغيير.</description>
+      <pubDate>Fri, 19 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-67</guid>
+    </item>
+
+    <item>
+      <title>Google Performance Max 2026 — كل ما تحتاج معرفته</title>
+      <link>https://moehabads.com/blog/blog-66</link>
+      <description>دليل شامل لـ Google Performance Max في 2026 — التحديثات الجديدة وكيف تستخدمها بشكل صحيح لتحقيق أفضل نتائج.</description>
+      <pubDate>Fri, 19 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-66</guid>
+    </item>
+
+    <item>
+      <title>تحديثات Meta Ads 2026 — Advantage+ والذكاء الاصطناعي في الإعلانات</title>
+      <link>https://moehabads.com/blog/blog-65</link>
+      <description>كل تحديثات Meta Ads في 2026 — Advantage+ Shopping وAI Creative وكيف تستفيد منها لزيادة ROAS.</description>
+      <pubDate>Thu, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-65</guid>
+    </item>
+
+    <item>
+      <title>أهم 5 تغييرات SEO يجب تطبيقها الآن في 2026</title>
+      <link>https://moehabads.com/blog/blog-64</link>
+      <description>5 تغييرات جوهرية في عالم SEO خلال 2026 يجب على كل صاحب موقع تطبيقها فوراً للحفاظ على ترتيبه في Google.</description>
+      <pubDate>Thu, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-64</guid>
+    </item>
+
+    <item>
+      <title>كيف تحسّن موقعك للظهور في AI Search — ChatGPT وPerplexity وGoogle AI</title>
+      <link>https://moehabads.com/blog/blog-63</link>
+      <description>دليل عملي لتحسين موقعك للظهور في محركات البحث المدعومة بالذكاء الاصطناعي مثل ChatGPT وPerplexity وGoogle AI Overviews.</description>
+      <pubDate>Wed, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-63</guid>
+    </item>
+
+    <item>
+      <title>تحديث Google Core 2026 وتأثيره على المواقع العربية</title>
+      <link>https://moehabads.com/blog/blog-62</link>
+      <description>كل ما تحتاج معرفته عن Google Core Update 2026 — كيف يؤثر على المواقع العربية وخطوات التعافي إذا انخفض ترتيبك.</description>
+      <pubDate>Wed, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-62</guid>
+    </item>
+
+    <item>
+      <title>AI Content Creation — الذكاء الاصطناعي في إنتاج المحتوى</title>
+      <link>https://moehabads.com/blog/blog-61</link>
+      <description>كيف يغير الذكاء الاصطناعي طريقة إنتاج المحتوى التسويقي وما الذي يجب أن يعرفه كل مسوق رقمي.</description>
+      <pubDate>Mon, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-61</guid>
+    </item>
+
+    <item>
+      <title>إزاي تخفض تكلفة الإعلان على Meta بدون ما تقلل النتائج</title>
+      <link>https://moehabads.com/blog/blog-1</link>
+      <description>7 استراتيجيات مجربة حققت ROAS 12x وخفضت التكلفة 62% في السوق السعودي والمصري.</description>
+      <pubDate>Mon, 01 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://moehabads.com/blog/blog-1</guid>
+    </item>
+
+  </channel>
+</rss>
