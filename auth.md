@@ -15,7 +15,7 @@ All content on moehabads.com is publicly accessible without authentication.
 - Agent Skills: https://moehabads.com/.well-known/agent-skills/index.json
 
 ## Contact
-- Email: mr.mohammedihab@gmail.com
+- Email: info@moehabads.com
 - WhatsApp: +966580395350
 - Website: https://moehabads.com
 

@@ -14,7 +14,7 @@ Paid Advertising Specialist | Saudi Arabia & Egypt
 - AI Marketing Plan: moehabads.com/plan
 ## Contact
 WhatsApp: +966580395350
-Email: mr.mohammedihab@gmail.com
+Email: info@moehabads.com
 `;
       return new Response(markdown, {
         headers: { 'Content-Type': 'text/markdown' }
