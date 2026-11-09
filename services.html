@@ -121,6 +121,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
     <button class="tab" onclick="showTab('ecom',this)">🛍️ المتاجر والمواقع</button>
     <button class="tab" onclick="showTab('media',this)">🎬 الإنتاج</button>
     <button class="tab" onclick="showTab('ai',this)">🤖 AI والتقنية</button>
+    <button class="tab" onclick="showTab('dash',this)">📊 لوحة الإعلانات <span style="background:linear-gradient(135deg,#7C3AED,#06B6D4);color:#fff;font-size:.65rem;padding:1px 7px;border-radius:10px;margin-inline-start:4px">جديد</span></button>
   </div>
 </div>
 
@@ -456,6 +457,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;ali
   </div>
 </div>
 
+<!-- ══ ADS DASHBOARD (SaaS) ══ -->
+<div class="tab-panel" id="tab-dash">
+  <div class="panel-head">
+    <h2>📊 لوحة <span>الإعلانات الذكية</span></h2>
+    <p>كل حساباتك الإعلانية ومبيعاتك الفعلية في لوحة واحدة: تحليل تلقائي وتوصيات بالأعمار والمدن والإعلانات الفائزة. اشتراك شهري، وبتربط بنفسك في دقيقة.</p>
+  </div>
+  <div class="pkg-grid" style="max-width:760px;margin:0 auto">
+    <div class="pkg">
+      <div class="pkg-icon">📈</div><div class="pkg-name">الباقة الأساسية</div>
+      <div class="pkg-desc">لو شغال على منصتين: كل أرقامك وتحليلها وتوصياتها في مكان واحد</div>
+      <div class="price-box"><div class="new-price">$50 <small style="font-size:.9rem">/ شهريًا</small></div><div class="price-unit">≈ 188 ر.س شهريًا · ادفع بـ PayPal</div></div>
+      <ul class="pkg-features"><li>منصتين تختارهم (سناب، ميتا، تيك توك، جوجل)</li><li>حساب إعلاني واحد لكل منصة</li><li>الصرف والمبيعات الفعلية وROAS الحقيقي</li><li>توصيات الأعمار والمدن والنوع</li><li>الإعلانات الفائزة بالصور والفيديو</li><li>ربط متجرك والمبيعات الفعلية</li></ul>
+      <a href="https://moehab-dash.pages.dev/signup?plan=basic" class="pkg-btn outline">📈 اشترك في الأساسية</a>
+    </div>
+    <div class="pkg featured">
+      <div class="pkg-badge">الأكثر قيمة</div>
+      <div class="pkg-icon">🚀</div><div class="pkg-name">الباقة الكاملة</div>
+      <div class="pkg-desc">كل المنصات + مكتبة إعلانات المنافسين ومقارنتها بإعلاناتك</div>
+      <div class="price-box"><div class="new-price">$100 <small style="font-size:.9rem">/ شهريًا</small></div><div class="price-unit">≈ 375 ر.س شهريًا · ادفع بـ PayPal</div></div>
+      <ul class="pkg-features"><li>كل المنصات، حساب إعلاني لكل منصة</li><li>كل مميزات الباقة الأساسية</li><li>مكتبة إعلانات المنافسين (10 منافسين)</li><li>مقارنة إعلاناتك بأطول إعلاناتهم تشغيلًا</li><li>3 مستخدمين لفريقك</li></ul>
+      <a href="https://moehab-dash.pages.dev/signup?plan=full" class="pkg-btn primary">🚀 اشترك في الكاملة</a>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--dim);font-size:.82rem;margin-top:1.2rem">🔒 الربط بصلاحية قراءة فقط · بياناتك معزولة · <a href="https://moehab-dash.pages.dev/how" style="color:var(--pl)">إزاي بنربط؟</a> · <a href="https://moehab-dash.pages.dev/terms" style="color:var(--pl)">الشروط</a></p>
+</div>
+
 <!-- MODAL -->
 <div class="modal-overlay" id="payModal">
   <div class="modal-box">
@@ -504,6 +531,13 @@ function showTab(id, btn) {
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+// open the tab named in ?tab= (links from the homepage)
+document.addEventListener('DOMContentLoaded', () => {
+  const t = new URLSearchParams(location.search).get('tab');
+  const btn = t && [...document.querySelectorAll('.tab')].find(b => (b.getAttribute('onclick') || '').includes("'" + t + "'"));
+  if (btn && document.getElementById('tab-' + t)) showTab(t, btn);
+});
 
 function setCurr(btn, type) {
   const box = btn.closest('.price-box');
